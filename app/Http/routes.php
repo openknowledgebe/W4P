@@ -15,19 +15,6 @@ Route::get('/', 'HomeController@index');
 
 /*
 |--------------------------------------------------------------------------
-| Setup routes
-|--------------------------------------------------------------------------
-| Routes for the application setup (on the first go).
-|
-*/
-
-Route::group(['prefix' => 'setup'], function (){
-    Route::get('/', 'SetupController@index');
-    Route::get('/{id}', 'SetupController@showStep');
-});
-
-/*
-|--------------------------------------------------------------------------
 | Application Routes
 |--------------------------------------------------------------------------
 |
@@ -38,5 +25,19 @@ Route::group(['prefix' => 'setup'], function (){
 */
 
 Route::group(['middleware' => ['web']], function () {
-    //
+
+    /*
+    |--------------------------------------------------------------------------
+    | Setup routes
+    |--------------------------------------------------------------------------
+    | Routes for the application setup (on the first go).
+    |
+    */
+
+    Route::group(['prefix' => 'setup'], function () {
+        Route::get('/', 'SetupController@index');
+        Route::get('/{id}', 'SetupController@showStep');
+        Route::post('/{id}', 'SetupController@handleStep');
+    });
+
 });

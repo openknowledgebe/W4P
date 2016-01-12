@@ -6,7 +6,7 @@
     </li>
     <li>
         @if (isset($step) && $step == 1)<strong>@endif
-        Administration Setup
+        Administration Setup @if(W4P\Models\Setting::exists('pwd')) &#10003; @endif
         @if (isset($step) && $step == 1)</strong>@endif
     </li>
     <li>
