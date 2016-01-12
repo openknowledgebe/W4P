@@ -1,2 +1,9 @@
-// @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+// Libraries
+@import "libraries/bootstrap";
 
+// Core
+@import "typo";
+@import "config";
+@import "colors";
+
+// TODO: Your CSS here. Well, actually, in other files.

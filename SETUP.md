@@ -16,6 +16,12 @@ If you want to locally develop on the platform, you can follow the instructions 
     # Environment file
     cp .env.example .env
 
+    # Install Elixir dependencies
+    sudo npm install
+
+    # Gulp
+    gulp watch
+
 You will want to replace some of the lines in the environment file with different values, depending on your setup.
 
 To set it all up in one go:
