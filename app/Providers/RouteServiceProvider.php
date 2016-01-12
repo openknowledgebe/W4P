@@ -1,6 +1,6 @@
 <?php
 
-namespace w4p\Providers;
+namespace W4P\Providers;
 
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -14,7 +14,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'w4p\Http\Controllers';
+    protected $namespace = 'W4P\Http\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.

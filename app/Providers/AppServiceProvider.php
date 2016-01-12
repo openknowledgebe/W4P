@@ -1,6 +1,6 @@
 <?php
 
-namespace w4p\Providers;
+namespace W4P\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

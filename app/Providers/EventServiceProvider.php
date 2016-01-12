@@ -1,6 +1,6 @@
 <?php
 
-namespace w4p\Providers;
+namespace W4P\Providers;
 
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -13,8 +13,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'w4p\Events\SomeEvent' => [
-            'w4p\Listeners\EventListener',
+        'W4P\Events\SomeEvent' => [
+            'W4P\Listeners\EventListener',
         ],
     ];
 

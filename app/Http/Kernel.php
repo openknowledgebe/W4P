@@ -1,6 +1,6 @@
 <?php
 
-namespace w4p\Http;
+namespace W4P\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -24,11 +24,11 @@ class Kernel extends HttpKernel
      */
     protected $middlewareGroups = [
         'web' => [
-            \w4p\Http\Middleware\EncryptCookies::class,
+            \W4P\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-            \w4p\Http\Middleware\VerifyCsrfToken::class,
+            \W4P\Http\Middleware\VerifyCsrfToken::class,
         ],
 
         'api' => [
@@ -44,9 +44,9 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'auth' => \w4p\Http\Middleware\Authenticate::class,
+        'auth' => \W4P\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        'guest' => \w4p\Http\Middleware\RedirectIfAuthenticated::class,
+        'guest' => \W4P\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
     ];
 }

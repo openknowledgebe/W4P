@@ -1,6 +1,6 @@
 <?php
 
-namespace w4p\Http\Controllers;
+namespace W4P\Http\Controllers;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;

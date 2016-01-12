@@ -30,7 +30,7 @@ return [
     ],
 
     'stripe' => [
-        'model'  => w4p\User::class,
+        'model'  => W4P\User::class,
         'key'    => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],

@@ -1,6 +1,6 @@
 <?php
 
-namespace w4p\Exceptions;
+namespace W4P\Exceptions;
 
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;

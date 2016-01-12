@@ -1,6 +1,6 @@
 <?php
 
-namespace w4p\Providers;
+namespace W4P\Providers;
 
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -13,7 +13,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'w4p\Model' => 'w4p\Policies\ModelPolicy',
+        'W4P\Model' => 'W4P\Policies\ModelPolicy',
     ];
 
     /**

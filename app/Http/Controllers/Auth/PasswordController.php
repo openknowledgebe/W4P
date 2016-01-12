@@ -1,8 +1,8 @@
 <?php
 
-namespace w4p\Http\Controllers\Auth;
+namespace W4P\Http\Controllers\Auth;
 
-use w4p\Http\Controllers\Controller;
+use W4P\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class PasswordController extends Controller

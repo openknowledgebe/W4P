@@ -151,10 +151,10 @@ return [
         /*
          * Application Service Providers...
          */
-        w4p\Providers\AppServiceProvider::class,
-        w4p\Providers\AuthServiceProvider::class,
-        w4p\Providers\EventServiceProvider::class,
-        w4p\Providers\RouteServiceProvider::class,
+        W4P\Providers\AppServiceProvider::class,
+        W4P\Providers\AuthServiceProvider::class,
+        W4P\Providers\EventServiceProvider::class,
+        W4P\Providers\RouteServiceProvider::class,
 
     ],
 

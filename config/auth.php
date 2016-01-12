@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => w4p\User::class,
+            'model' => W4P\User::class,
         ],
 
         // 'users' => [

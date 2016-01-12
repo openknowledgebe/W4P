@@ -21,3 +21,7 @@ You will want to replace some of the lines in the environment file with differen
 To set it all up in one go:
 
     composer install && touch database/database.sqlite && php artisan migrate && cp .env.example .env
+
+If you do not want to go through the wizard, you can use the SettingsDevTableSeeder to seed default data.
+
+    php artisan db:seed --class=SettingsDevTableSeeder

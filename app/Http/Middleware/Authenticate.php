@@ -1,6 +1,6 @@
 <?php
 
-namespace w4p\Http\Middleware;
+namespace W4P\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;

@@ -1,6 +1,6 @@
 <?php
 
-namespace w4p\Jobs;
+namespace W4P\Jobs;
 
 use Illuminate\Bus\Queueable;
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace w4p\Http\Controllers\Auth;
+namespace W4P\Http\Controllers\Auth;
 
-use w4p\User;
+use W4P\User;
 use Validator;
-use w4p\Http\Controllers\Controller;
+use W4P\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 

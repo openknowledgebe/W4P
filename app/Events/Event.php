@@ -1,6 +1,6 @@
 <?php
 
-namespace w4p\Events;
+namespace W4P\Events;
 
 abstract class Event
 {
