@@ -18,7 +18,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if (Setting::exists('configured')) {
+        if (
+            Setting::exists('pwd') &&
+            Setting::exists('platform.name') &&
+            Setting::exists('project.title') &&
+            Setting::exists('project.brief'))
+        {
             return "Your environment is ready.";
         } else {
             return Redirect::to('/setup');

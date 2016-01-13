@@ -26,7 +26,7 @@
                 </div>
             @endif
 
-            <form method="POST" action="/setup/1">
+            <form method="POST" action="/setup/1" enctype="multipart/form-data">
                 <input name="_method" type="hidden" value="POST">
                 {{ csrf_field() }}
                 <div class="form-group">

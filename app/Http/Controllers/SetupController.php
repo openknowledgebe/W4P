@@ -140,8 +140,7 @@ class SetupController extends Controller
             Input::all(),
             [
                 'platformOwnerName' => 'required|min:4',
-                'platformOwnerLogo' => 'required'
-                // TODO: Make sure the file is validated
+                'platformOwnerLogo' => 'required|image'
             ]
         );
         // Check if the validator fails

@@ -20,7 +20,7 @@
                 </div>
             @endif
 
-            <form method="POST" action="/setup/2">
+            <form method="POST" action="/setup/2" enctype="multipart/form-data">
                 <input name="_method" type="hidden" value="POST">
                 {{ csrf_field() }}
                 <div class="form-group">
