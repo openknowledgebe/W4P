@@ -2,8 +2,6 @@
 
 namespace W4P\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Hash;
 
@@ -13,6 +11,8 @@ use W4P\Models\Setting;
 
 use View;
 use Redirect;
+use Validator;
+use Request;
 
 class SetupController extends Controller
 {
@@ -32,8 +32,29 @@ class SetupController extends Controller
      */
     public function showStep($number)
     {
+        $data = [];
+        switch ($number) {
+            case 1:
+                break;
+            case 2:
+                $data = [
+                    "platformOwnerName" => Setting::get('platform.name'),
+                    "analyticsId" => Setting::get('platform.analytics-id'),
+                    "mollieApiKey" => Setting::get('platform.mollie-key'),
+                ];
+                break;
+            case 3:
+                $data = [
+                    "projectTitle" => Setting::get('project.title'),
+                    "projectBrief" => Setting::get('project.brief'),
+                ];
+                break;
+            default:
+                break;
+        }
         return View::make('setup.step' . $number)
-            ->with('step', $number);
+            ->with('step', $number)
+            ->with('data', $data);
     }
 
     // Errors for the current POST request
@@ -58,9 +79,10 @@ class SetupController extends Controller
                 $this->handleMasterPasswordValidation();
                 break;
             case 2:
-                // $this->handleOrganisationValidation();
+                $this->handleOrganisationValidation();
                 break;
             case 3:
+                $this->handleProjectValidation();
                 break;
             default:
                 break;
@@ -68,9 +90,8 @@ class SetupController extends Controller
         if ($this->success) {
             return Redirect::to('/setup/' . ($number + 1));
         } else {
-            return Redirect::back()->withErrors($this->errors)->withInput();
+            return Redirect::back()->withErrors($this->errors)->withInput(Input::all());
         }
-
     }
 
     /**
@@ -79,28 +100,83 @@ class SetupController extends Controller
      */
     private function handleMasterPasswordValidation()
     {
-        // Check if the passwords match
-        if (Input::get('password') != Input::get('passwordConfirm')) {
-            array_push($this->errors, "The passwords do not match.");
-            $this->success = false;
-        }
-        // Check if the password is 6 characters or longer
-        if (strlen(Input::get('password')) <= 5) {
-            array_push($this->errors, "Your password must be 6 characters or longer.");
-            $this->success = false;
-        }
-        if ($this->success) {
-            // Hash the password
-            $hashedPassword = Hash::make(Input::get('password'));
-            // Depending on whether the password exists, update or create a new setting
-            if (Setting::exists('pwd')) {
-                $this->success = Setting::updateKeyValuePair('pwd', $hashedPassword);
-            } else {
-                $this->success = Setting::createKeyValuePair('pwd', $hashedPassword);
+        // If the password already exists, allow inputs to be empty
+        if (Setting::exists('pwd') && strlen(Input::get('password')) == 0) {
+            // Proceed to the next step, don't do anything else
+        } else {
+            // Check if the passwords match
+            if (Input::get('password') != Input::get('passwordConfirm')) {
+                array_push($this->errors, "The passwords do not match.");
+                $this->success = false;
             }
-            if (!$this->success) {
-                array_push($errors, "Something went wrong saving the password in the database.");
+            // Check if the password is 6 characters or longer
+            if (strlen(Input::get('password')) <= 5) {
+                array_push($this->errors, "Your password must be 6 characters or longer.");
+                $this->success = false;
             }
+            if ($this->success) {
+                // Hash the password
+                $hashedPassword = Hash::make(Input::get('password'));
+                // Depending on whether the password exists, update or create a new setting
+                if (Setting::exists('pwd')) {
+                    $this->success = Setting::updateKeyValuePair('pwd', $hashedPassword);
+                } else {
+                    $this->success = Setting::createKeyValuePair('pwd', $hashedPassword);
+                }
+                if (!$this->success) {
+                    array_push($errors, "Something went wrong saving the password in the database.");
+                }
+            }
+        }
+    }
+
+    /**
+     * Handle organisation validation
+     * Sets $this->success & $this->errors depending on input.
+     */
+    private function handleOrganisationValidation()
+    {
+        $validator = Validator::make(
+            Input::all(),
+            [
+                'platformOwnerName' => 'required|min:4',
+                'platformOwnerLogo' => 'required'
+                // TODO: Make sure the file is validated
+            ]
+        );
+        // Check if the validator fails
+        if (!$validator->fails()) {
+            // TODO: Move the uploaded file
+            // Save the platform name
+            Setting::set('platform.name', Input::get('platformOwnerName'));
+            // Save the Google Analytics ID
+            Setting::set('platform.analytics-id', Input::get('analyticsId'));
+            // Save the Mollie API key
+            Setting::set('platform.mollie-key', Input::get('mollieApiKey'));
+        } else {
+            // Validation has failed. Set success to false. Set validator messages
+            $this->success = false;
+            $this->errors = $validator->messages();
+        }
+    }
+
+    private function handleProjectValidation()
+    {
+        $validator = Validator::make(
+            Input::all(),
+            [
+                'projectTitle' => 'required|min:4',
+                'projectBrief' => 'required|min:4'
+            ]
+        );
+        // Check if the validator fails
+        if (!$validator->fails()) {
+            Setting::set('project.title', Input::get('projectTitle'));
+            Setting::set('project.brief', Input::get('projectBrief'));
+        } else {
+            // Validation has failed. Set success to false. Set validator messages
+            $this->success = false;
+            $this->errors = $validator->messages();
         }
     }
 }

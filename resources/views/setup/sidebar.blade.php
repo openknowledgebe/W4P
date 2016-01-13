@@ -12,11 +12,20 @@
     <li>
         @if (isset($step) && $step == 2)<strong>@endif
         Platform Setup
+            @if(
+                W4P\Models\Setting::exists('platform.name'))
+                &#10003;
+            @endif
         @if (isset($step) && $step == 2)</strong>@endif
     </li>
     <li>
         @if (isset($step) && $step == 3)<strong>@endif
         Project Setup
+            @if(
+                W4P\Models\Setting::exists('project.title')
+                && W4P\Models\Setting::exists('project.brief'))
+                &#10003;
+            @endif
         @if (isset($step) && $step == 3)</strong>@endif
     </li>
     <li>

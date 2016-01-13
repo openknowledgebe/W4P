@@ -1,6 +1,6 @@
 @extends('layouts.core')
 
-@section('title', 'Welcome | Setup')
+@section('title', 'Administration Setup | Setup')
 
 @section('content')
     <div class="row">
@@ -32,15 +32,17 @@
                 <div class="form-group">
                     <label for="password">Password</label>
                     <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                    <span id="helpBlock" class="help-block">Enter a password of at least 6 characters. We recommend longer passwords.</span>
                 </div>
                 <div class="form-group">
                     <label for="password">Confirm password</label>
                     <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" placeholder="Password (again)">
+                    <span id="helpBlock" class="help-block">Repeat the same password as above.</span>
                 </div>
             <hr/>
 
             <a class="btn btn-primary btn-sm" href="/setup">&larr; Back</a>
-            <button type="submit" class="btn btn-primary btn-sm pull-right" href="/setup/2">Next &rarr;</button>
+            <button type="submit" class="btn btn-primary btn-sm pull-right">Next &rarr;</button>
             </form>
 
         </div>

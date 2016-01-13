@@ -12,6 +12,35 @@ class Setting extends Model
     protected $fillable = ['key', 'value'];
 
     /**
+     * Gets value for a specific setting; if setting does not exist (or is empty), return null
+     * @param string $key
+     * @return string | null
+     */
+    static function get($key) {
+        $setting = Setting::where('key', $key)->first();
+        if ($setting != null) {
+            return $setting->value;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * Set a specific key.
+     * @param string $key Key to set
+     * @param string $value Value to save
+     * @return boolean
+     */
+    static function set($key, $value)
+    {
+        if (Setting::exists($key)) {
+            return Setting::updateKeyValuePair($key, $value);
+        } else {
+            return Setting::createKeyValuePair($key, $value);
+        }
+    }
+
+    /**
      * Checks if a specific setting exists.
      * @param string $key The name of the key that needs to be checked.
      * @return bool
