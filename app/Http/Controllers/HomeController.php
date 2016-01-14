@@ -24,7 +24,7 @@ class HomeController extends Controller
             Setting::exists('project.title') &&
             Setting::exists('project.brief'))
         {
-            return "Your environment is ready.";
+            return trans('setup.environment.isready');
         } else {
             return Redirect::to('/setup');
         }

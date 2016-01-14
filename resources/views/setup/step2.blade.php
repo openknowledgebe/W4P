@@ -5,17 +5,17 @@
 @section('content')
     <div class="row">
         <div class="col-md-3">
-            @include('setup.sidebar')
+            @include('setup.progress')
         </div>
         <div class="col-md-6">
 
-            <h1>Platform Setup</h1>
+            <h1>{{ trans('setup.detail.platform.title') }}</h1>
             <hr/>
-            <p>Now, we will allow you to set up the information about the platform itself.</p>
+            <p>{{ trans('setup.detail.platform.paragraph') }}</p>
 
             @if($errors->any())
                 <div class="alert alert-danger" role="alert">
-                    <strong>Oops!</strong>
+                    <strong>{{ trans('setup.generic.oops') }}</strong>
                     {{$errors->first()}}
                 </div>
             @endif
@@ -24,8 +24,11 @@
                 <input name="_method" type="hidden" value="POST">
                 {{ csrf_field() }}
                 <div class="form-group">
-                    <label for="platformOwnerName">Platform owner</label>
-                    <input type="text" class="form-control" name="platformOwnerName" placeholder="Platform owner name (e.g. Open Belgium)"
+                    <label for="platformOwnerName">
+                        {{ trans('setup.detail.platform.fields.owner.name') }}
+                    </label>
+                    <input type="text" class="form-control" name="platformOwnerName"
+                           placeholder="{{ trans('setup.detail.platform.fields.owner.placeholder') }}"
                            value=
                            "<?php
                            if (Request::old('platformOwnerName')) {
@@ -35,22 +38,28 @@
                            }
                            ?>"
                     >
-                    <span id="helpBlock" class="help-block">Who is responsible for this crowdfunding/gathering initiative?</span>
+                    <span id="helpBlock" class="help-block">
+                        {{ trans('setup.detail.platform.fields.owner.info') }}
+                    </span>
                 </div>
                 <div class="form-group">
-                    <label for="platformOwnerLogo">Platform owner logo</label>
+                    <label for="platformOwnerLogo">
+                        {{ trans('setup.detail.platform.fields.logo.name') }}
+                    </label>
                     @if (file_exists(public_path() . "/platform/logo.png"))
                         <br/>
                         <img class="logo" src="/platform/logo.png" width="100" height="100" />
-                        <span id="helpBlock" class="help-block">This is the current picture. By selecting a new image in the file upload below, you will overwrite this existing logo.</span>
+                        <span id="helpBlock" class="help-block">{{ trans('setup.detail.platform.fields.logo.existing') }}</span>
                     @endif
                     <input type="file" class="form-control" name="platformOwnerLogo" id="platformOwnerLogo">
-                    <span id="helpBlock" class="help-block">You can upload a transparent logo here. Most image formats are allowed. Recommended format: PNG with alpha channel.</span>
+                    <span id="helpBlock" class="help-block">
+                        {{ trans('setup.detail.platform.fields.logo.info') }}
+                    </span>
                 </div>
-                <div class=""></div>
                 <div class="form-group">
-                    <label for="GAID">Google Analytics ID</label>
-                    <input type="text" class="form-control" name="analyticsId" placeholder="UA-XXXXXXX-X"
+                    <label for="GAID">{{ trans('setup.detail.platform.fields.gaid.name') }}</label>
+                    <input type="text" class="form-control" name="analyticsId"
+                           placeholder="{{ trans('setup.detail.platform.fields.gaid.placeholder') }}"
                            value=
                            "<?php
                            if (Request::old('analyticsId')) {
@@ -60,11 +69,14 @@
                            }
                            ?>"
                     >
-                    <span id="helpBlock" class="help-block">If you want to use Google Analytics you can enter your API key here.</span>
+                    <span id="helpBlock" class="help-block">
+                        {{ trans('setup.detail.platform.fields.gaid.info') }}
+                    </span>
                 </div>
                 <div class="form-group">
-                    <label for="password">Mollie API key</label>
-                    <input type="text" class="form-control" name="mollieApiKey" placeholder="XXXX_XXXXXXXXXXXXXXXXXXX"
+                    <label for="mollieApiKey">{{ trans('setup.detail.platform.fields.mollie.name') }}</label>
+                    <input type="text" class="form-control" name="mollieApiKey"
+                           placeholder="{{ trans('setup.detail.platform.fields.mollie.placeholder') }}"
                            value="<?php
                            if (Request::old('mollieApiKey')) {
                                echo Request::old('mollieApiKey');
@@ -73,12 +85,14 @@
                            }
                            ?>"
                     >
-                    <span id="helpBlock" class="help-block">If you are going to accept payments, you will need to request a Mollie API key.</span>
+                    <span id="helpBlock" class="help-block">
+                        {{ trans('setup.detail.platform.fields.mollie.info') }}
+                    </span>
                 </div>
             <hr/>
 
-            <a class="btn btn-primary btn-sm" href="/setup/1">&larr; Back</a>
-            <button type="submit" class="btn btn-primary btn-sm pull-right">Next &rarr;</button>
+            <a class="btn btn-primary btn-sm" href="/setup/1">&larr; {{ trans('setup.generic.back') }}</a>
+            <button type="submit" class="btn btn-primary btn-sm pull-right">{{ trans('setup.generic.next') }} &rarr;</button>
             </form>
 
         </div>

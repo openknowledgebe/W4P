@@ -107,12 +107,12 @@ class SetupController extends Controller
         } else {
             // Check if the passwords match
             if (Input::get('password') != Input::get('passwordConfirm')) {
-                array_push($this->errors, "The passwords do not match.");
+                array_push($this->errors, trans('setup.detail.admin.validation.nomatch'));
                 $this->success = false;
             }
             // Check if the password is 6 characters or longer
             if (strlen(Input::get('password')) <= 5) {
-                array_push($this->errors, "Your password must be 6 characters or longer.");
+                array_push($this->errors, trans('setup.detail.admin.validation.length'));
                 $this->success = false;
             }
             if ($this->success) {
@@ -125,7 +125,7 @@ class SetupController extends Controller
                     $this->success = Setting::createKeyValuePair('pwd', $hashedPassword);
                 }
                 if (!$this->success) {
-                    array_push($errors, "Something went wrong saving the password in the database.");
+                    array_push($errors, trans('setup.detail.admin.validation.generic'));
                 }
             }
         }

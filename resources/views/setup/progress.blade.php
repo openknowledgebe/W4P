@@ -1,17 +1,17 @@
 <ul>
     <li>
         @if (!isset($step))<strong>@endif
-        Welcome @if (isset($step)) &#10003; @endif
+        {{ trans('setup.steps.welcome') }} @if (isset($step)) &#10003; @endif
         @if (!isset($step))</strong>@endif
     </li>
     <li>
         @if (isset($step) && $step == 1)<strong>@endif
-        Administration Setup @if(W4P\Models\Setting::exists('pwd')) &#10003; @endif
+            {{ trans('setup.steps.admin') }} @if(W4P\Models\Setting::exists('pwd')) &#10003; @endif
         @if (isset($step) && $step == 1)</strong>@endif
     </li>
     <li>
         @if (isset($step) && $step == 2)<strong>@endif
-        Platform Setup
+            {{ trans('setup.steps.platform') }}
             @if(
                 W4P\Models\Setting::exists('platform.name'))
                 &#10003;
@@ -20,7 +20,7 @@
     </li>
     <li>
         @if (isset($step) && $step == 3)<strong>@endif
-        Project Setup
+            {{ trans('setup.steps.project') }}
             @if(
                 W4P\Models\Setting::exists('project.title')
                 && W4P\Models\Setting::exists('project.brief'))
@@ -29,6 +29,6 @@
         @if (isset($step) && $step == 3)</strong>@endif
     </li>
     <li>
-        Get Started
+        {{ trans('setup.steps.finish') }}
     </li>
 </ul>
