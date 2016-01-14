@@ -14,6 +14,7 @@ use Redirect;
 use Validator;
 use Request;
 use Image;
+use Mail;
 
 class SetupController extends Controller
 {
@@ -219,8 +220,31 @@ class SetupController extends Controller
         );
         // Check if the validator fails
         if (!$validator->fails()) {
+            Setting::set('email.host', Input::get('emailHost'));
+            Setting::set('email.port', Input::get('emailPort'));
+            Setting::set('email.username', Input::get('emailUsername'));
+            Setting::set('email.password', Input::get('emailPassword'));
+            $encryption = Input::get('emailEncryption');
+            if ($encryption == "null") {
+                $encryption = "";
+            }
+            Setting::set('email.encryption', $encryption);
+            Setting::set('email.from', Input::get('emailFrom'));
+            Setting::set('email.name', Input::get('emailName'));
             // Test configuration
-            // TODO: Test email configuration saved
+            try {
+                Mail::queue('mails.test', [], function($message) {
+                    $message->to(Input::get('emailFrom'), Input::get('emailName'))
+                        ->subject(trans('setup.generic.mailSuccess'));
+                });
+                Setting::set('email.valid', 'true');
+            } catch (\Exception $ex) {
+                $this->success = false;
+                $this->errors = [
+                    trans('setup.generic.mailFail')
+                ];
+            }
+
         } else {
             // Validation has failed. Set success to false. Set validator messages
             $this->success = false;

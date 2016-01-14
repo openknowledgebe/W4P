@@ -1,1 +1,1 @@
-<p>This is a test mail message.</p>
+<p>You have correctly set up the mail server for your W4P installation.</p>

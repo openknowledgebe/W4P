@@ -13,7 +13,6 @@ class ExampleTest extends TestCase
      */
     public function testBasicExample()
     {
-
         Mail::queue('mails.test', [], function($message) {
             $message->to("test@dev.test", "test")
                 ->subject('Test message');

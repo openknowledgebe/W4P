@@ -27,6 +27,8 @@ return [
         'finish' => 'Finish',
         'oops' => 'Oops!',
         'wizard' => 'Wizard',
+        'mailFail' => 'There was an issue sending your mail message. Please check the configuration and try again.',
+        'mailSuccess' => 'If you have received this message, you have successfully set up the mail configuration for a W4P installation configured with this mail account.'
     ],
 
     // Page details
