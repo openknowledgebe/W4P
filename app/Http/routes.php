@@ -34,10 +34,33 @@ Route::group(['middleware' => ['web']], function () {
     |
     */
 
-    Route::group(['prefix' => 'setup'], function () {
-        Route::get('/', 'SetupController@index');
-        Route::get('/{id}', 'SetupController@showStep');
-        Route::post('/{id}', 'SetupController@handleStep');
+    Route::group(['prefix' => 'setup', 'as' => 'setup::'], function () {
+        Route::get('/', ['as' => 'index', 'uses' => 'SetupController@index']);
+        Route::get('/{id}', ['as' => 'step', 'uses' => 'SetupController@showStep']);
+        Route::post('/{id}', ['as' => 'handleStep', 'uses' => 'SetupController@handleStep']);
     });
+
+    /*
+    |--------------------------------------------------------------------------
+    | Administrator routes
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    // Login does not require auth middleware
+    Route::get('/admin/login', ['as' => 'admin::login', 'uses' => 'AdminAuthController@login']);
+    Route::post('/admin/login', ['as' => 'admin::login', 'uses' => 'AdminAuthController@doLogin']);
+
+    // All other admin routes require admin middleware
+    Route::group(
+        [
+            'prefix' => 'admin',
+            'as' => 'admin::',
+            'middleware' => ['auth', 'env.ready'],
+        ],
+        function () {
+            Route::get('/', ['as' => 'index', 'uses' => 'AdminController@dashboard']);
+        }
+    );
 
 });

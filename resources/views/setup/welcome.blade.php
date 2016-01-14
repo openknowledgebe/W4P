@@ -1,6 +1,6 @@
-@extends('layouts.core')
+@extends('layouts.setup')
 
-@section('title', 'Welcome | Setup')
+@section('title', trans('setup.steps.welcome') . " | " . trans('setup.generic.wizard'))
 
 @section('content')
     <div class="row">
@@ -12,7 +12,7 @@
             <hr/>
             <p>{{ trans('setup.detail.welcome.paragraph') }}</p>
             <hr/>
-            <a class="btn btn-primary btn-sm pull-right" href="/setup/1">{{ trans('setup.detail.welcome.button') }} &rarr;</a>
+            <a class="btn btn-primary btn-sm pull-right" href="{{ URL::route('setup::step', 1) }}">{{ trans('setup.detail.welcome.button') }} &rarr;</a>
         </div>
     </div>
 @endsection

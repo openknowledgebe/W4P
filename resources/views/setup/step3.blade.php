@@ -1,6 +1,6 @@
 @extends('layouts.core')
 
-@section('title', 'Project Setup | Setup')
+@section('title', trans('setup.steps.project') . " | " . trans('setup.generic.wizard'))
 
 @section('content')
     <div class="row">
@@ -24,7 +24,7 @@
                 </div>
             @endif
 
-            <form method="POST" action="/setup/3" files="true" enctype="multipart/form-data">
+            <form method="POST" action="{{ URL::route('setup::step', 3) }}" files="true" enctype="multipart/form-data">
                 <input name="_method" type="hidden" value="POST">
                 {{ csrf_field() }}
                 <div class="form-group">
@@ -62,7 +62,7 @@
                 </div>
             <hr/>
 
-            <a class="btn btn-primary btn-sm" href="/setup/2">&larr; {{ trans('setup.generic.back') }}</a>
+            <a class="btn btn-primary btn-sm" href="{{ URL::route('setup::step', 2) }}">&larr; {{ trans('setup.generic.back') }}</a>
             <button type="submit" class="btn btn-primary btn-sm pull-right">{{ trans('setup.generic.next') }} &rarr;</button>
             </form>
 

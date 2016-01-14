@@ -25,6 +25,7 @@ return [
         'next' => 'Next',
         'finish' => 'Finish',
         'oops' => 'Oops!',
+        'wizard' => 'Wizard',
     ],
 
     // Page details

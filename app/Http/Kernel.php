@@ -48,5 +48,6 @@ class Kernel extends HttpKernel
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'guest' => \W4P\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'env.ready' => \W4P\Http\Middleware\CheckIfEnvironmentIsReady::class
     ];
 }
