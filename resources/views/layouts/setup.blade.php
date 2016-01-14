@@ -16,10 +16,15 @@
                     </div>
                 </div>
             </nav>
+            <div>
+                @yield('content')
+            </div>
         </div>
-        <div class="container">
-            @yield('content')
-        </div>
+        <footer class="footer">
+            <div class="container">
+                <p class="text-muted small">Powered by W4P.</p>
+            </div>
+        </footer>
     </body>
     <script></script>
 </html>

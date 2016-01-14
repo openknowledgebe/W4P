@@ -1,4 +1,4 @@
-@extends('layouts.core')
+@extends('layouts.setup')
 
 @section('title', trans('setup.steps.project') . " | " . trans('setup.generic.wizard'))
 

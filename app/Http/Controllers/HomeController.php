@@ -9,6 +9,7 @@ use W4P\Http\Controllers\Controller;
 use W4P\Models\Setting;
 
 use Redirect;
+use View;
 
 class HomeController extends Controller
 {
@@ -18,6 +19,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return trans('setup.environment.isready');
+        return View::make('front.home');
     }
 }
