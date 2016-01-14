@@ -8,6 +8,8 @@ return [
     |--------------------------------------------------------------------------
     */
 
+    'nav' => 'W4P Setup',
+
     // Steps of the progress bar
     'steps' => [
         'welcome' => "Welcome",
