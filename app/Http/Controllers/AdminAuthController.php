@@ -7,6 +7,15 @@ use Illuminate\Http\Request;
 use W4P\Http\Requests;
 use W4P\Http\Controllers\Controller;
 
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
+
+use View;
+
+use W4P\Models\Setting;
+
 class AdminAuthController extends Controller
 {
     /**
@@ -15,7 +24,7 @@ class AdminAuthController extends Controller
     public function login()
     {
         // TODO: Make view for login form and return it here
-        return "Login form here";
+        return View::make('backoffice.login');
     }
 
     /**
@@ -23,8 +32,18 @@ class AdminAuthController extends Controller
      */
     public function doLogin()
     {
-        // TODO: Handle authentication here, also do validation
-        // TODO: Redirect if correctly logged in to the dashboard
-        return "Submit login form here";
+        // Check if the credentials are correct, otherwise redirect back
+        $password = Input::get('password');
+        if (Hash::check($password, Setting::get('pwd'))) {
+            // Generate a random token
+            $token = str_random(50);
+            // Set a random token in the session
+            Session::put('token', $token);
+            Setting::set('token', $token);
+            // Redirect to the index (dashboard)
+            return Redirect::route('admin::index');
+        } else {
+            return Redirect::back()->withErrors(["This password is incorrect."]);
+        }
     }
 }
