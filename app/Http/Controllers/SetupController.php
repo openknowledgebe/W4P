@@ -89,7 +89,7 @@ class SetupController extends Controller
                 break;
         }
         if ($this->success) {
-            return Redirect::to('/setup/' . ($number + 1));
+            return Redirect::route("setup::step", ($number + 1));
         } else {
             return Redirect::back()->withErrors($this->errors)->withInput(Input::all());
         }

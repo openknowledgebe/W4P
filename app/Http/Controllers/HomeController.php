@@ -18,15 +18,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if (
-            Setting::exists('pwd') &&
-            Setting::exists('platform.name') &&
-            Setting::exists('project.title') &&
-            Setting::exists('project.brief'))
-        {
-            return trans('setup.environment.isready');
-        } else {
-            return Redirect::to('/setup');
-        }
+        return trans('setup.environment.isready');
     }
 }

@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+Route::get('/', ['as' => 'home', 'middleware' => 'env.ready', 'uses' => 'HomeController@index']);
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +34,7 @@ Route::group(['middleware' => ['web']], function () {
     |
     */
 
-    Route::group(['prefix' => 'setup', 'as' => 'setup::'], function () {
+    Route::group(['prefix' => 'setup', 'as' => 'setup::', 'middleware' => 'setup.restricted'], function () {
         Route::get('/', ['as' => 'index', 'uses' => 'SetupController@index']);
         Route::get('/{id}', ['as' => 'step', 'uses' => 'SetupController@showStep']);
         Route::post('/{id}', ['as' => 'handleStep', 'uses' => 'SetupController@handleStep']);
