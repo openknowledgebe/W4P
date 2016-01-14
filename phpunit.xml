@@ -8,8 +8,11 @@
          convertWarningsToExceptions="true"
          processIsolation="false"
          stopOnFailure="false">
+    <listeners>
+        <listener file=".app/test/TestCase.php" class="TestCase" />
+    </listeners>
     <testsuites>
-        <testsuite name="Application Test Suite">
+        <testsuite name="W4P Test Suite">
             <directory>./tests/</directory>
         </testsuite>
     </testsuites>
@@ -20,6 +23,7 @@
     </filter>
     <php>
         <env name="APP_ENV" value="testing"/>
+        <env name="DB_DEFAULT_CONNECTION" value="testing"/>
         <env name="CACHE_DRIVER" value="array"/>
         <env name="SESSION_DRIVER" value="array"/>
         <env name="QUEUE_DRIVER" value="sync"/>
