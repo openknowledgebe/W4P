@@ -13,6 +13,7 @@ use View;
 use Redirect;
 use Validator;
 use Request;
+use Image;
 
 class SetupController extends Controller
 {
@@ -145,7 +146,13 @@ class SetupController extends Controller
         );
         // Check if the validator fails
         if (!$validator->fails()) {
-            // TODO: Move the uploaded file
+            $image = Input::file('platformOwnerLogo');
+            if ($image->isValid())
+            {
+                // Set the destination path for the platform logo
+                $destinationPath = public_path() . '/platform/logo.png';
+                Image::make($image->getRealPath())->resize(400, 400)->save($destinationPath);
+            }
             // Save the platform name
             Setting::set('platform.name', Input::get('platformOwnerName'));
             // Save the Google Analytics ID

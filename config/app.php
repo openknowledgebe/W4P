@@ -149,12 +149,17 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
-         * Application Service Providers...
+         * Application Service Providers
          */
         W4P\Providers\AppServiceProvider::class,
         W4P\Providers\AuthServiceProvider::class,
         W4P\Providers\EventServiceProvider::class,
         W4P\Providers\RouteServiceProvider::class,
+
+        /*
+         * Third Party Service Providers
+         */
+        Intervention\Image\ImageServiceProvider::class
 
     ],
 
@@ -201,6 +206,7 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
+        'Image'     => Intervention\Image\Facades\Image::class,
 
     ],
 
