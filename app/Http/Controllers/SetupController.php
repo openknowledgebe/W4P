@@ -137,17 +137,22 @@ class SetupController extends Controller
      */
     private function handleOrganisationValidation()
     {
+        // Depending on whether a logo exists already, change the validation rule for the logo upload
+        $logoValidationRule = 'required|image';
+        if (file_exists(public_path() . "/platform/logo.png")) {
+            $logoValidationRule = 'image';
+        }
         $validator = Validator::make(
             Input::all(),
             [
                 'platformOwnerName' => 'required|min:4',
-                'platformOwnerLogo' => 'required|image'
+                'platformOwnerLogo' => $logoValidationRule
             ]
         );
         // Check if the validator fails
         if (!$validator->fails()) {
             $image = Input::file('platformOwnerLogo');
-            if ($image->isValid())
+            if ($image != null && $image->isValid())
             {
                 // Set the destination path for the platform logo
                 $destinationPath = public_path() . '/platform/logo.png';

@@ -39,8 +39,13 @@
                 </div>
                 <div class="form-group">
                     <label for="platformOwnerLogo">Platform owner logo</label>
+                    @if (file_exists(public_path() . "/platform/logo.png"))
+                        <br/>
+                        <img class="logo" src="/platform/logo.png" width="100" height="100" />
+                        <span id="helpBlock" class="help-block">This is the current picture. By selecting a new image in the file upload below, you will overwrite this existing logo.</span>
+                    @endif
                     <input type="file" class="form-control" name="platformOwnerLogo" id="platformOwnerLogo">
-                    <span id="helpBlock" class="help-block">You can upload a transparent logo here (required format: PNG).</span>
+                    <span id="helpBlock" class="help-block">You can upload a transparent logo here. Most image formats are allowed. Recommended format: PNG with alpha channel.</span>
                 </div>
                 <div class=""></div>
                 <div class="form-group">
