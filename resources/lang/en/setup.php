@@ -16,6 +16,7 @@ return [
         'admin' => "Administration Setup",
         'platform' => "Platform Setup",
         'project' => "Project Setup",
+        'mail' => "Email Setup",
         'finish' => "Get Started"
     ],
 
@@ -106,6 +107,49 @@ return [
                     'name' => 'Brief description',
                     'existing' => 'e.g. Apps for Y is looking for coaches and a budget',
                     'info' => 'Explain in less than 255 characters what your project is all about.',
+                ],
+            ]
+        ],
+
+        // Email setup page
+
+        'mail' => [
+            'title' => "Email Setup",
+            'paragraph' => "You need a SMTP-capable mail server. It will be used to send backers updates as well as confirmation messages for pledges. Please note that we will be sending a test mail to ensure that this configuration is correct.",
+            'fields' => [
+                'host' => [
+                    'name' => 'SMTP Host',
+                    'placeholder' => 'e.g. smtp.mydomain.com',
+                    'info' => "The hostname of your mail server. This can also be an IP address. If you are setting this up locally, you can use 127.0.0.1, for example."
+                ],
+                'port' => [
+                    'name' => 'Port',
+                    'placeholder' => 'e.g. 1025',
+                    'info' => 'The port for the SMTP server.',
+                ],
+                'username' => [
+                    'name' => 'SMTP Username',
+                    'placeholder' => 'e.g. mail@mydomain.com',
+                    'info' => 'This username is used to authenticate with the mail server. In many cases you use the email address here.',
+                ],
+                'password' => [
+                    'name' => 'SMTP Password',
+                    'placeholder' => 'Enter your password here',
+                    'info' => 'In order to authenticate with the server, we will also need a password. Please note that the password is stored in plain-text in the database.',
+                ],
+                'from' => [
+                    'name' => 'Sender email address (from)',
+                    'placeholder' => 'e.g. mail@mydomain.com',
+                    'info' => 'The email address that will appear in the "from" field in email clients.',
+                ],
+                'name' => [
+                    'name' => 'Sender name',
+                    'placeholder' => 'e.g. John Appleseed',
+                    'info' => 'The name that will appear in the "from" field in email clients.',
+                ],
+                'encryption' => [
+                    'name' => 'SMTP Encryption',
+                    'info' => 'Select the type of encryption that is used when authenticating with the SMTP server. In most cases, this is going to be TLS.',
                 ],
             ]
         ],

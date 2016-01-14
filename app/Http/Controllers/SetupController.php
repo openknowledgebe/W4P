@@ -50,6 +50,17 @@ class SetupController extends Controller
                     "projectBrief" => Setting::get('project.brief'),
                 ];
                 break;
+            case 4:
+                $data = [
+                    "emailHost" => Setting::get('email.host'),
+                    "emailPort" => Setting::get('email.port'),
+                    "emailUsername" => Setting::get('email.username'),
+                    "emailPassword" => Setting::get('email.password'),
+                    "emailEncryption" => Setting::get('email.encryption'),
+                    "emailFrom" => Setting::get('email.from'),
+                    "emailName" => Setting::get('email.name'),
+                ];
+                break;
             default:
                 break;
         }
@@ -84,6 +95,9 @@ class SetupController extends Controller
                 break;
             case 3:
                 $this->handleProjectValidation();
+                break;
+            case 4:
+                $this->handleEmailConfigValidation();
                 break;
             default:
                 break;
@@ -184,6 +198,29 @@ class SetupController extends Controller
         if (!$validator->fails()) {
             Setting::set('project.title', Input::get('projectTitle'));
             Setting::set('project.brief', Input::get('projectBrief'));
+        } else {
+            // Validation has failed. Set success to false. Set validator messages
+            $this->success = false;
+            $this->errors = $validator->messages();
+        }
+    }
+
+    private function handleEmailConfigValidation()
+    {
+        $validator = Validator::make(
+            Input::all(),
+            [
+                'emailHost' => 'required|min:3',
+                'emailPort' => 'required|min:1',
+                'emailFrom' => 'required|email|min:3',
+                'emailName' => 'required|min:3',
+                'emailEncryption' => 'required|in:tls,null',
+            ]
+        );
+        // Check if the validator fails
+        if (!$validator->fails()) {
+            // Test configuration
+            // TODO: Test email configuration saved
         } else {
             // Validation has failed. Set success to false. Set validator messages
             $this->success = false;

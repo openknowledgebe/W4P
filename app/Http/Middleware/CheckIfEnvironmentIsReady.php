@@ -23,7 +23,8 @@ class CheckIfEnvironmentIsReady
             !Setting::exists('pwd') ||
             !Setting::exists('platform.name') ||
             !Setting::exists('project.title') ||
-            !Setting::exists('project.brief'))
+            !Setting::exists('project.brief') ||
+            !Setting::exists('mail.valid'))
         {
             // If the settings are invalid or incomplete, redirect to setup
             return redirect()->route('setup::index');

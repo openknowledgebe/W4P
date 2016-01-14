@@ -22,7 +22,8 @@ class CheckSetupInaccessible
             Setting::exists('pwd') &&
             Setting::exists('platform.name') &&
             Setting::exists('project.title') &&
-            Setting::exists('project.brief')
+            Setting::exists('project.brief') &&
+            Setting::exists('mail.valid')
         )
         {
             // If the settings are valid, check if the URL isn't setup
