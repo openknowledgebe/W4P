@@ -27,5 +27,14 @@
         <env name="CACHE_DRIVER" value="array"/>
         <env name="SESSION_DRIVER" value="array"/>
         <env name="QUEUE_DRIVER" value="sync"/>
+
+        <env name="MAIL_DRIVER" value="smtp"/>
+        <env name="MAIL_HOST" value="127.0.0.1"/>
+        <env name="MAIL_PORT" value="1025"/>
+        <env name="MAIL_USERNAME" value="null"/>
+        <env name="MAIL_PASSWORD" value="null"/>
+        <env name="MAIL_ENCRYPTION" value="null"/>
+        <env name="MAIL_FROM" value="mail@W4P.org"/>
+        <env name="MAIL_NAME" value="W4P"/>
     </php>
 </phpunit>

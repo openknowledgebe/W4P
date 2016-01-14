@@ -13,9 +13,10 @@ class ExampleTest extends TestCase
      */
     public function testBasicExample()
     {
-        /*
-        $this->visit('/')
-             ->see('Your environment is ready');
-        */
+
+        Mail::queue('mails.test', [], function($message) {
+            $message->to("test@dev.test", "test")
+                ->subject('Test message');
+        });
     }
 }

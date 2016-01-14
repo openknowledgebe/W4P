@@ -24,7 +24,6 @@ class TestCase  extends Illuminate\Foundation\Testing\TestCase
         return $app;
     }
 
-
     /**
      * All tests started
      * @param PHPUnit_Framework_TestSuite $suite
@@ -41,6 +40,13 @@ class TestCase  extends Illuminate\Foundation\Testing\TestCase
             exec('php artisan migrate --database=testing');
             exec('php artisan db:seed --database=testing');
             printf("Initialised database. \n\n");
+            exec("pgrep mailcatcher", $pids);
+            printf("Checking if MailChatcher is running... \n");
+            if(empty($pids)) {
+                printf("MailCatcher is not running, so tests with mails will fail. \n");
+            } else {
+                printf("MailCatcher is running. Great! \n");
+            }
         }
     }
 
