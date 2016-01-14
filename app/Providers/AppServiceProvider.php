@@ -16,6 +16,24 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->loadEmailSettingsFromDatabase();
+    }
+
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
+    }
+
+    /**
+     * Loads email settings from the database, if possible
+     */
+    private function loadEmailSettingsFromDatabase()
+    {
         // Load configuration from database
         $values = Setting::where('key', 'LIKE', '%email.%')->get()->toArray();
         $settings = [];
@@ -36,15 +54,5 @@ class AppServiceProvider extends ServiceProvider
             $array = ['address' => $settings['email.from'], 'name' => $settings['email.name']];
             Config::set('mail.from', $array);
         }
-    }
-
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        //
     }
 }
