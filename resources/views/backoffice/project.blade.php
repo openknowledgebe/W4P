@@ -6,6 +6,14 @@
     <h1>{{ trans('backoffice.project') }}</h1>
     <p>{{ trans('backoffice.page.project.about') }}</p>
     <hr/>
+
+    @if($errors->any())
+        <div class="alert alert-danger" role="alert">
+            <strong>{{ trans('setup.generic.oops') }}</strong>
+            {{$errors->first()}}
+        </div>
+    @endif
+
     <form method="POST" action="{{ URL::route('admin::project') }}" files="true" enctype="multipart/form-data">
         <input name="_method" type="hidden" value="POST">
         {{ csrf_field() }}
@@ -66,7 +74,7 @@
                     </span>
         </div>
         <div class="form-group">
-            <label for="projectLogo">
+            <label for="projectVideo">
                 {{ trans('backoffice.page.project.fields.video.name') }}
             </label>
             @if (file_exists(public_path() . "/project/video.mp4"))
@@ -74,7 +82,7 @@
                 <video controls src="{{ URL::to('project/video.mp4') }}" width="50%"></video>
                 <span id="helpBlock" class="help-block">{{ trans('backoffice.page.project.fields.video.existing') }}</span>
             @endif
-            <input type="file" class="form-control" name="projectLogo" id="projectLogo">
+            <input type="file" class="form-control" name="projectVideo" id="projectVideo">
                     <span id="helpBlock" class="help-block">
                         {{ trans('backoffice.page.project.fields.video.info') }}
                     </span>
