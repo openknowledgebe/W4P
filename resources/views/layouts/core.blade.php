@@ -31,5 +31,5 @@
             </div>
         </footer>
     </body>
-    <script src="{{ elixir("js/all.js") }}"></script>
+    <script src="{{ elixir("js/core.js") }}"></script>
 </html>

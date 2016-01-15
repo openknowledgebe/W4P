@@ -55,3 +55,12 @@ Route::group(['middleware' => ['web']], function () {
     );
 
 });
+
+/*
+|--------------------------------------------------------------------------
+| Simple drag and drop upload
+|--------------------------------------------------------------------------
+|
+*/
+
+Route::post('inline-attach', ['uses' => 'UploadController@inlineAttach']);
