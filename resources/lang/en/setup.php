@@ -107,7 +107,7 @@ return [
                 ],
                 'brief' => [
                     'name' => 'Brief description',
-                    'existing' => 'e.g. Apps for Y is looking for coaches and a budget',
+                    'placeholder' => 'e.g. Apps for Y is looking for coaches and a budget',
                     'info' => 'Explain in less than 255 characters what your project is all about.',
                 ],
             ]
