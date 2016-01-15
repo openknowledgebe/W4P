@@ -74,6 +74,20 @@
                     </span>
         </div>
         <div class="form-group">
+            <label for="projectBanner">
+                {{ trans('backoffice.page.project.fields.banner.name') }}
+            </label>
+            @if (file_exists(public_path() . "/project/banner.png"))
+                <br/>
+                <img class="banner" src="{{ URL::to("/project/banner.png") }}" width="500" height="100" />
+                <span id="helpBlock" class="help-block">{{ trans('backoffice.page.project.fields.banner.existing') }}</span>
+            @endif
+            <input type="file" class="form-control" name="projectBanner" id="projectBanner">
+                    <span id="helpBlock" class="help-block">
+                        {{ trans('backoffice.page.project.fields.banner.info') }}
+                    </span>
+        </div>
+        <div class="form-group">
             <label for="projectVideoProvider">
                 {{ trans('backoffice.page.project.fields.video.name') }}
             </label>

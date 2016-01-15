@@ -23,6 +23,11 @@ return [
                     "name" => "Video URL",
                     "placeholder" => "YouTube/Vimeo URL",
                     "info" => "You can enter a video URL here."
+                ],
+                "banner" => [
+                    "name" => "Project banner",
+                    "existing" => "You have already uploaded a banner. If you want to upload a new banner, you can select it below.",
+                    "info" => "You can upload a project banner here. Recommended size: 200x1000px."
                 ]
             ]
         ]
@@ -31,5 +36,6 @@ return [
     "organisation" => "Organisation",
     "posts" => "Posts",
     "backers" => "Backers",
-    "dashboard" => "Dashboard"
+    "dashboard" => "Dashboard",
+    "save" => "Save"
 ];

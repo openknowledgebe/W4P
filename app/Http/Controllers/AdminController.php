@@ -46,6 +46,7 @@ class AdminController extends Controller
                 'projectBrief' => 'required|min:4',
                 'projectDescription' => 'min:4',
                 'projectLogo' => 'image',
+                'projectBanner' => 'image',
                 'projectVideoProvider' => 'in:null,youtube,vimeo',
                 'projectVideo' => 'min:4'
             ]
@@ -59,6 +60,14 @@ class AdminController extends Controller
             {
                 // Set the destination path for the platform logo
                 $destinationPath = public_path() . '/project/logo.png';
+                Image::make($image->getRealPath())->save($destinationPath);
+            }
+
+            $image = Input::file('projectBanner');
+            if ($image != null && $image->isValid())
+            {
+                // Set the destination path for the platform logo
+                $destinationPath = public_path() . '/project/banner.png';
                 Image::make($image->getRealPath())->save($destinationPath);
             }
 
