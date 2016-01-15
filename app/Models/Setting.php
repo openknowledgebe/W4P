@@ -91,4 +91,18 @@ class Setting extends Model
             return true;
         }
     }
+
+    /**
+     * Get all settings that begin with a specific word
+     * @param $string
+     * @return array
+     */
+    public static function getBeginsWith($string) {
+        $values = Setting::where('key', 'LIKE', "%$string%")->get()->toArray();
+        $settings = [];
+        foreach ($values as $kvp) {
+            $settings[$kvp['key']] = $kvp['value'];
+        }
+        return $settings;
+    }
 }

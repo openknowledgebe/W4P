@@ -8,6 +8,7 @@ use W4P\Http\Requests;
 use W4P\Http\Controllers\Controller;
 
 use View;
+use W4P\Models\Setting;
 
 class AdminController extends Controller
 {
@@ -18,6 +19,9 @@ class AdminController extends Controller
 
     public function project()
     {
-        return View::make('backoffice.project');
+        $data = [];
+        $data['project'] = Setting::getBeginsWith('project.');
+        return View::make('backoffice.project')
+            ->with('data', $data);
     }
 }

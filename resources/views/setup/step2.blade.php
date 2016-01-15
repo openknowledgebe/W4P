@@ -48,7 +48,7 @@
                     </label>
                     @if (file_exists(public_path() . "/platform/logo.png"))
                         <br/>
-                        <img class="logo" src="/platform/logo.png" width="100" height="100" />
+                        <img class="logo" src="{{ URL::to("/platform/logo.png") }}" width="100" height="100" />
                         <span id="helpBlock" class="help-block">{{ trans('setup.detail.platform.fields.logo.existing') }}</span>
                     @endif
                     <input type="file" class="form-control" name="platformOwnerLogo" id="platformOwnerLogo">

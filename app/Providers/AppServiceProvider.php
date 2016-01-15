@@ -42,11 +42,7 @@ class AppServiceProvider extends ServiceProvider
 
         if (Schema::hasTable('settings')) {
             // Load configuration from database
-            $values = Setting::where('key', 'LIKE', '%email.%')->get()->toArray();
-            $settings = [];
-            foreach ($values as $kvp) {
-                $settings[$kvp['key']] = $kvp['value'];
-            }
+            $settings = Setting::getBeginsWith('email.');
             $check = ["host", "port", "encryption", "username", "password"];
             foreach ($check as $value) {
                 if (array_key_exists("email." . $value, $settings)) {
