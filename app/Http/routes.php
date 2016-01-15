@@ -49,6 +49,7 @@ Route::group(['middleware' => ['web']], function () {
         ],
         function () {
             Route::get('/', ['as' => 'index', 'uses' => 'AdminController@dashboard']);
+            Route::get('/project', ['as' => 'project', 'uses' => 'AdminController@project']);
         }
     );
 

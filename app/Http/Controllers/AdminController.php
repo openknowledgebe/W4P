@@ -15,4 +15,9 @@ class AdminController extends Controller
     {
         return View::make('backoffice.dashboard');
     }
+
+    public function project()
+    {
+        return View::make('backoffice.project');
+    }
 }

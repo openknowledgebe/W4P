@@ -3,5 +3,5 @@
 @section('title', '')
 
 @section('content')
-    <h1>{{ trans('backoffice.dashboard') }}</h1>
+    <h1>Project</h1>
 @endsection

@@ -13,16 +13,19 @@
                         <a class="navbar-brand" href="/">{{ \W4P\Models\Setting::get('platform.name') }}</a>
                         <ul class="nav navbar-nav">
                             <li>
-                                <a href="#">Project</a>
+                                <a href="{{ URL::route('admin::index') }}">{{ trans('backoffice.dashboard') }}</a>
                             </li>
                             <li>
-                                <a href="#">Organisation</a>
+                                <a href="{{ URL::route('admin::project') }}">{{ trans('backoffice.project') }}</a>
                             </li>
                             <li>
-                                <a href="#">Posts</a>
+                                <a href="#">{{ trans('backoffice.organisation') }}</a>
                             </li>
                             <li>
-                                <a href="#">Backers</a>
+                                <a href="#">{{ trans('backoffice.posts') }}</a>
+                            </li>
+                            <li>
+                                <a href="#">{{ trans('backoffice.backers') }}</a>
                             </li>
                         </ul>
                     </div>
