@@ -22,7 +22,8 @@ If you want to locally develop on the platform, you can follow the instructions 
     sudo npm install
 
     # Gulp
-    gulp watch
+    # Use --production flag for minified files
+    gulp watch --production
 
 ### Setting up environment
 
