@@ -17,7 +17,7 @@ class TestCase  extends Illuminate\Foundation\Testing\TestCase
      */
     public function createApplication()
     {
-        $app = require __DIR__.'/../bootstrap/app.php';
+        $app = require __DIR__ . '/../bootstrap/app.php';
 
         $app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
 
@@ -30,23 +30,20 @@ class TestCase  extends Illuminate\Foundation\Testing\TestCase
      */
     public function startTestSuite(PHPUnit_Framework_TestSuite $suite)
     {
-        if ($suite->getName() === "W4P Test Suite") {
-            printf("Started W4P Test Suite: \n");
+        if ($suite->getName() === "setup") {
             printf("PHP version: " . phpversion() . "\n");
             printf("Initialising database...\n", $suite->getName());
-            exec('rm storage/testing.sqlite 2> /dev/null');
-            exec('touch storage/testing.sqlite');
+            exec('rm database/testing.sqlite 2> /dev/null');
+            exec('touch database/testing.sqlite');
             exec('php artisan migrate:reset --database=testing');
             exec('php artisan migrate --database=testing');
-            exec('php artisan db:seed --database=testing');
-            printf("Initialised database. \n\n");
-            exec("pgrep mailcatcher", $pids);
-            printf("Checking if MailChatcher is running... \n");
-            if(empty($pids)) {
-                printf("MailCatcher is not running, so tests with mails will fail. \n");
-            } else {
-                printf("MailCatcher is running. Great! \n");
-            }
+            printf("Initialised database. \n");
+            printf("Started W4P Setup Test Suite: \n\n");
+        }
+        if ($suite->getName() === "application") {
+            // Seeding test settings here
+            exec('php artisan db:seed --database=testing --class=SettingsTestSeeder');
+            printf("Started W4P Application Test Suite: \n\n");
         }
     }
 
@@ -55,8 +52,13 @@ class TestCase  extends Illuminate\Foundation\Testing\TestCase
      */
     public function endTestSuite(PHPUnit_Framework_TestSuite $suite)
     {
-        if ($suite->getName() === "W4P Test Suite") {
-            printf("\n\nFinished running W4P Test Suite.");
+        if ($suite->getName() === "setup") {
+            printf("\n\n> Finished running setup test suite.");
+            printf("\n\n");
+        }
+        if ($suite->getName() === "application") {
+            printf("\n\n> Finished running application test suite.");
+            printf("\n");
         }
     }
 

@@ -2,7 +2,9 @@
 
 ## Setup instructions for developers
 
-If you want to locally develop on the platform, you can follow the instructions above using the wizard to configure the application. However, you can also perform these operations manually:
+### Without script
+
+If you want to locally develop on the platform, you can follow the instructions above using the script to configure the application. However, you can also perform these operations manually:
 
     # Composer install
     composer install
@@ -22,7 +24,11 @@ If you want to locally develop on the platform, you can follow the instructions 
     # Gulp
     gulp watch
 
+### Setting up environment
+
 You will want to replace some of the lines in the environment file with different values, depending on your setup.
+
+### ez-mode
 
 To set it all up in one go:
 
