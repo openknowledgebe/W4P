@@ -12,7 +12,7 @@ class SetupStepsEmailTest extends TestCase
 {
     public function testEmailFieldsEmpty()
     {
-        $this->visit('/setup/4')
+        $this->visit('/setup/5')
             ->see('Email Setup');
         $this->assertFalse(Setting::exists('email.host'));
         $this->assertFalse(Setting::exists('email.port'));

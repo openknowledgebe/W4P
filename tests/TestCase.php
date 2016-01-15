@@ -42,7 +42,7 @@ class TestCase  extends Illuminate\Foundation\Testing\TestCase
         }
         if ($suite->getName() === "application") {
             // Seeding test settings here
-            exec('php artisan db:seed --database=testing --class=SettingsTestSeeder');
+            exec('php artisan db:seed --database=testing --class=SettingsTestSeeder', $array);
             printf("Started W4P Application Test Suite: \n\n");
         }
     }

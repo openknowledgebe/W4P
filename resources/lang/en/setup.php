@@ -15,6 +15,7 @@ return [
         'welcome' => "Welcome",
         'admin' => "Administration Setup",
         'platform' => "Platform Setup",
+        'organisation' => "Organisation Setup",
         'project' => "Project Setup",
         'mail' => "Email Setup",
         'finish' => "Get Started"
@@ -92,6 +93,35 @@ return [
                     'placeholder' => "XXXX_XXXXXXXXXXXXXXXXXXX",
                     'info' => "If you are going to accept payments, you will need to request a Mollie API key.",
                 ]
+            ]
+        ],
+
+        // Organisation setup page
+
+        'organisation' => [
+            'title' => "Organisation Setup",
+            'paragraph' => "Next, set up information about your organisation.",
+            'fields' => [
+                'name' => [
+                    'name' => "Name of your organisation",
+                    'placeholder' => "My Organisation",
+                    'info' => "Enter your organisation's name here."
+                ],
+                'logo' => [
+                    'name' => "Organisation logo",
+                    'existing' => "You have already set an organisation logo. You can set it again.",
+                    'info' => "Upload your organisation's logo here. You must upload an image."
+                ],
+                'description' => [
+                    'name' => "Description",
+                    'placeholder' => "Enter a short description here",
+                    'info' => "Enter your organisation's description here. Keep it brief, though."
+                ],
+                'website' => [
+                    'name' => "Website of your organisation",
+                    'placeholder' => "http://website.com",
+                    'info' => "Enter your organisation's website URL here."
+                ],
             ]
         ],
 

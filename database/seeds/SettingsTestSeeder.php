@@ -25,7 +25,14 @@ class SettingsTestSeeder extends Seeder
             'title' => "Test project",
             'brief' => "Test project description",
             'description' => "Long description",
+            'videoProvider' => "null",
+            'videoUrl' => ""
         ]);
+
+        Setting::set('organisation.name', 'Organisation Name');
+        Setting::set('organisation.description', 'This is a short description');
+        Setting::set('organisation.website', 'http://website.com');
+        Setting::set('organisation.valid', 'true');
 
         Setting::set('email.host', '127.0.0.1');
         Setting::set('email.port', '1025');

@@ -47,6 +47,14 @@ class SetupController extends Controller
                 ];
                 break;
             case 3:
+                $data = [
+                    "organisationName" => Setting::get('organisation.name'),
+                    "organisationDescription" => Setting::get('organisation.description'),
+                    "organisationLogo" => Setting::get('organisation.logo'),
+                    "organisationWebsite" => Setting::get('organisation.website')
+                ];
+                break;
+            case 4:
                 $project = Project::all()->first();
                 if (!$project) {
                     $data = [
@@ -61,7 +69,7 @@ class SetupController extends Controller
                 }
 
                 break;
-            case 4:
+            case 5:
                 $data = [
                     "emailHost" => Setting::get('email.host'),
                     "emailPort" => Setting::get('email.port'),
@@ -105,9 +113,12 @@ class SetupController extends Controller
                 $this->handleOrganisationValidation();
                 break;
             case 3:
-                $this->handleProjectValidation();
+                $this->handleOrganisationStep2Validation();
                 break;
             case 4:
+                $this->handleProjectValidation();
+                break;
+            case 5:
                 $this->handleEmailConfigValidation();
                 break;
             default:
@@ -189,6 +200,45 @@ class SetupController extends Controller
             Setting::set('platform.analytics-id', Input::get('analyticsId'));
             // Save the Mollie API key
             Setting::set('platform.mollie-key', Input::get('mollieApiKey'));
+        } else {
+            // Validation has failed. Set success to false. Set validator messages
+            $this->success = false;
+            $this->errors = $validator->messages();
+        }
+    }
+
+    private function handleOrganisationStep2Validation()
+    {
+        // Depending on whether a logo exists already, change the validation rule for the logo upload
+        $logoValidationRule = 'required|image';
+        if (file_exists(public_path() . "/organisation/logo.png")) {
+            $logoValidationRule = 'image';
+        }
+        $validator = Validator::make(
+            Input::all(),
+            [
+                'organisationName' => 'required|min:4',
+                'organisationDescription' => 'required|min:4',
+                'organisationWebsite' => 'required|min:4',
+                'organisationLogo' => $logoValidationRule
+            ]
+        );
+        // Check if the validator fails
+        if (!$validator->fails()) {
+            $image = Input::file('organisationLogo');
+            if ($image != null && $image->isValid())
+            {
+                // Set the destination path for the platform logo
+                $destinationPath = public_path() . '/organisation/logo.png';
+                Image::make($image->getRealPath())->resize(400, 400)->save($destinationPath);
+            }
+            // Save the platform name
+            Setting::set('organisation.name', Input::get('organisationName'));
+            // Save the Google Analytics ID
+            Setting::set('organisation.description', Input::get('organisationDescription'));
+            // Save the Mollie API key
+            Setting::set('organisation.website', Input::get('organisationWebsite'));
+            Setting::set('organisation.valid', 'true');
         } else {
             // Validation has failed. Set success to false. Set validator messages
             $this->success = false;

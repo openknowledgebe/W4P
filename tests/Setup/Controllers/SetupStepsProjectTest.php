@@ -12,7 +12,7 @@ class SetupStepsProjectTest extends TestCase
 {
     public function testProjectFieldsEmpty()
     {
-        $this->visit('/setup/3')
+        $this->visit('/setup/4')
             ->see('Project Setup');
         $this->assertFalse(Setting::exists('project.title'));
         $this->assertFalse(Setting::exists('project.brief'));
