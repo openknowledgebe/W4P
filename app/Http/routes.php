@@ -37,8 +37,8 @@ Route::group(['middleware' => ['web']], function () {
     */
 
     // Login does not require auth middleware
-    Route::get('/admin/login', ['as' => 'admin::login', 'uses' => 'AdminAuthController@login']);
-    Route::post('/admin/login', ['as' => 'admin::login', 'uses' => 'AdminAuthController@doLogin']);
+    Route::get('/admin/login', ['as' => 'admin::login', 'middleware' => 'env.ready', 'uses' => 'AdminAuthController@login']);
+    Route::post('/admin/login', ['as' => 'admin::login', 'middleware' => 'env.ready', 'uses' => 'AdminAuthController@doLogin']);
 
     // All other admin routes require admin middleware
     Route::group(

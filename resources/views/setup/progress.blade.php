@@ -22,8 +22,7 @@
         @if (isset($step) && $step == 3)<strong>@endif
             {{ trans('setup.steps.project') }}
             @if(
-                W4P\Models\Setting::exists('project.title')
-                && W4P\Models\Setting::exists('project.brief'))
+                W4P\Models\Project::valid())
                 &#10003;
             @endif
         @if (isset($step) && $step == 3)</strong>@endif

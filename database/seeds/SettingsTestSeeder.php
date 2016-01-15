@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
+
 use W4P\Models\Setting;
+use W4P\Models\Project;
 
 use Illuminate\Support\Facades\Hash;
 
@@ -18,8 +20,13 @@ class SettingsTestSeeder extends Seeder
         Setting::set('platform.name', 'Open Knowledge');
         Setting::set('platform.analytics-id', '');
         Setting::set('platform.mollie-key', '');
-        Setting::set('project.title', 'Test project');
-        Setting::set('project.brief', 'Test project description');
+
+        Project::create([
+            'title' => "Test project",
+            'brief' => "Test project description",
+            'description' => "Long description",
+        ]);
+
         Setting::set('email.host', '127.0.0.1');
         Setting::set('email.port', '1025');
         Setting::set('email.username', '');

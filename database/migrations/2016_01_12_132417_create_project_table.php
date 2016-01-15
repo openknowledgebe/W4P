@@ -19,9 +19,6 @@ class CreateProjectTable extends Migration
                 $table->string('title'); // Title of the project
                 $table->string('brief'); // Description in less than 255 characters
                 $table->text('description'); // Longer description
-                $table->string('owner'); // Project owner name
-                $table->string('owner_logo'); // Project owner logo
-                $table->string('logo'); // Project logo
                 $table->timestamps();
             }
         );

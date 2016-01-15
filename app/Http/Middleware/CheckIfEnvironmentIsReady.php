@@ -3,6 +3,7 @@
 namespace W4P\Http\Middleware;
 
 use W4P\Models\Setting;
+use W4P\Models\Project;
 
 use Closure;
 
@@ -22,8 +23,7 @@ class CheckIfEnvironmentIsReady
         if (
             !Setting::exists('pwd') ||
             !Setting::exists('platform.name') ||
-            !Setting::exists('project.title') ||
-            !Setting::exists('project.brief') ||
+            !Project::valid() ||
             !Setting::exists('email.valid'))
         {
             // If the settings are invalid or incomplete, redirect to setup

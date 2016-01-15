@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use W4P\Http\Requests;
 use W4P\Http\Controllers\Controller;
 use W4P\Models\Setting;
+use W4P\Models\Project;
 
 use View;
 use Redirect;
@@ -46,10 +47,19 @@ class SetupController extends Controller
                 ];
                 break;
             case 3:
-                $data = [
-                    "projectTitle" => Setting::get('project.title'),
-                    "projectBrief" => Setting::get('project.brief'),
-                ];
+                $project = Project::all()->first();
+                if (!$project) {
+                    $data = [
+                        "projectTitle" => null,
+                        "projectBrief" => null,
+                    ];
+                } else {
+                    $data = [
+                        "projectTitle" => $project->title,
+                        "projectBrief" => $project->brief,
+                    ];
+                }
+
                 break;
             case 4:
                 $data = [
@@ -197,8 +207,18 @@ class SetupController extends Controller
         );
         // Check if the validator fails
         if (!$validator->fails()) {
-            Setting::set('project.title', Input::get('projectTitle'));
-            Setting::set('project.brief', Input::get('projectBrief'));
+            // Get the first record
+            $project = Project::all()->first();
+            $data = [
+                "title" => Input::get('projectTitle'),
+                "brief" => Input::get('projectBrief'),
+                "description" => ""
+            ];
+            if ($project == null) {
+                Project::create($data);
+            } else {
+                $project->update($data);
+            }
         } else {
             // Validation has failed. Set success to false. Set validator messages
             $this->success = false;

@@ -19,8 +19,8 @@
                    "<?php
                    if (Request::old('projectTitle')) {
                        echo Request::old('projectTitle');
-                   } else if (isset($data["project"]["project.title"])) {
-                       echo $data["project"]["project.title"];
+                   } else if (isset($data["project"]->title)) {
+                       echo $data["project"]->title;
                    }
                    ?>"
             >
@@ -34,8 +34,8 @@
                    "<?php
                    if (Request::old('projectBrief')) {
                        echo Request::old('projectBrief');
-                   } else if (isset($data["project"]["project.brief"])){
-                       echo $data["project"]["project.brief"];
+                   } else if (isset($data["project"]->brief)){
+                       echo $data["project"]->brief;
                    }?>"
             >
                     <span id="helpBlock" class="help-block">
@@ -48,7 +48,7 @@
             </label>
             <textarea class="form-control" rows="10" name="projectDescription"
                       placeholder="{{ trans('backoffice.page.project.fields.description.placeholder') }}"><?php if (Request::old('projectDescription')) { echo Request::old('projectDescription');
-                } else if (isset($data["project"]["project.description"])) { echo $data["project"]["project.description"]; } ?></textarea>
+                } else if (isset($data["project"]->description)) { echo $data["project"]->description; } ?></textarea>
             <span id="helpBlock" class="help-block">{{ trans('backoffice.page.project.fields.description.info') }}</span>
         </div>
         <div class="form-group">

@@ -5,6 +5,7 @@ namespace W4P\Http\Middleware;
 use W4P\Models\Setting;
 
 use Closure;
+use W4P\Models\Project;
 
 class CheckSetupInaccessible
 {
@@ -21,8 +22,7 @@ class CheckSetupInaccessible
         if (
             Setting::exists('pwd') &&
             Setting::exists('platform.name') &&
-            Setting::exists('project.title') &&
-            Setting::exists('project.brief') &&
+            Project::valid() &&
             Setting::exists('email.valid')
         )
         {

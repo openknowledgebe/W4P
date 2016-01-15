@@ -10,6 +10,7 @@ use W4P\Models\Setting;
 
 use Redirect;
 use View;
+use W4P\Models\Project;
 
 class HomeController extends Controller
 {
@@ -19,6 +20,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return View::make('front.home');
+        return View::make('front.home')->with("project", Project::get());
     }
 }
