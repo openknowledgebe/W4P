@@ -46,7 +46,8 @@ class AdminController extends Controller
                 'projectBrief' => 'required|min:4',
                 'projectDescription' => 'min:4',
                 'projectLogo' => 'image',
-                'projectVideo' => 'mimes:mp4,qt,mov'
+                'projectVideoProvider' => 'in:null,youtube,vimeo',
+                'projectVideo' => 'min:4'
             ]
         );
 
@@ -75,6 +76,8 @@ class AdminController extends Controller
                 'title' => Input::get('projectTitle'),
                 'brief' => Input::get('projectTitle'),
                 'description' => Input::get('projectDescription'),
+                'videoProvider' => Input::get('projectVideoProvider'),
+                'videoUrl' => Input::get('projectVideo'),
             ]);
 
         } else {

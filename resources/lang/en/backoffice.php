@@ -16,9 +16,13 @@ return [
                     "info" => "You can upload a project logo here."
                 ],
                 "video" => [
-                    "name" => "Project video",
-                    "existing" => "You have already uploaded a video. If you want to upload a new video, you can select it below.",
-                    "info" => "You can upload a project video here. Accepted format: MP4. (It's recommended you encode the video with the H.265 codec. You can use Handbrake for this.)"
+                    "name" => "Project video provider",
+                    "info" => "Select a video provider from the list."
+                ],
+                "video-url" => [
+                    "name" => "Video URL",
+                    "placeholder" => "YouTube/Vimeo URL",
+                    "info" => "You can enter a video URL here."
                 ]
             ]
         ]

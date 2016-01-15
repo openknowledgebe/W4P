@@ -74,21 +74,36 @@
                     </span>
         </div>
         <div class="form-group">
-            <label for="projectVideo">
+            <label for="projectVideoProvider">
                 {{ trans('backoffice.page.project.fields.video.name') }}
             </label>
-            @if (file_exists(public_path() . "/project/video.mp4"))
-                <br/>
-                <video controls src="{{ URL::to('project/video.mp4') }}" width="50%"></video>
-                <span id="helpBlock" class="help-block">{{ trans('backoffice.page.project.fields.video.existing') }}</span>
-            @endif
-            <input type="file" class="form-control" name="projectVideo" id="projectVideo">
-                    <span id="helpBlock" class="help-block">
+            <select class="form-control" name="projectVideoProvider">
+                <option value="vimeo" @if ($data["project"]->videoProvider == "vimeo") selected @endif>Vimeo</option>
+                <option value="youtube" @if ($data["project"]->videoProvider == "youtube") selected @endif>YouTube</option>
+                <option value="null" @if ($data["project"]->videoProvider == null || $data["project"]->videoProvider == "null") selected @endif>No video</option>
+            </select>
+            <span id="helpBlock" class="help-block">
                         {{ trans('backoffice.page.project.fields.video.info') }}
                     </span>
         </div>
-
-
+        <div class="form-group">
+            <label for="projectVideo">
+                {{ trans('backoffice.page.project.fields.video-url.name') }}
+            </label>
+            <input type="text" class="form-control" name="projectVideo"
+                   placeholder="{{ trans('backoffice.page.project.fields.video-url.placeholder') }}"
+                   value=
+                   "<?php
+                   if (Request::old('projectVideo')) {
+                       echo Request::old('projectVideo');
+                   } else if (isset($data["project"]->videoUrl)){
+                       echo $data["project"]->videoUrl;
+                   }?>"
+            >
+                    <span id="helpBlock" class="help-block">
+                        {{ trans('backoffice.page.project.fields.video-url.info') }}
+                    </span>
+        </div>
         <hr/>
         <button type="submit" class="btn btn-primary pull-right">{{ trans('backoffice.save') }}</button>
     </form>
