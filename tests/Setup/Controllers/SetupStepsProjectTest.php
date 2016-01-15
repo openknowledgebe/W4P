@@ -10,11 +10,13 @@ use W4P\Models\Setting;
 
 class SetupStepsProjectTest extends TestCase
 {
-    public function testPlatformSetupStep()
+    public function testProjectFieldsEmpty()
     {
         $this->visit('/setup/3')
             ->see('Project Setup');
         $this->assertFalse(Setting::exists('project.title'));
         $this->assertFalse(Setting::exists('project.brief'));
     }
+
+    // TODO: Unit test form submission
 }

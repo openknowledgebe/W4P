@@ -10,7 +10,7 @@ use W4P\Models\Setting;
 
 class SetupStepsPlatformTest extends TestCase
 {
-    public function testPlatformSetupStep()
+    public function testPlatformFieldsEmpty()
     {
         $this->visit('/setup/2')
             ->see('Platform Setup');
@@ -18,4 +18,6 @@ class SetupStepsPlatformTest extends TestCase
         $this->assertFalse(Setting::exists('platform.analytics-id'));
         $this->assertFalse(Setting::exists('platform.mollie-key'));
     }
+
+    // TODO: Unit test form submission
 }

@@ -10,7 +10,7 @@ use W4P\Models\Setting;
 
 class SetupStepsEmailTest extends TestCase
 {
-    public function testPlatformSetupStep()
+    public function testEmailFieldsEmpty()
     {
         $this->visit('/setup/4')
             ->see('Email Setup');
@@ -23,4 +23,6 @@ class SetupStepsEmailTest extends TestCase
         $this->assertFalse(Setting::exists('email.name'));
         $this->assertFalse(Setting::exists('email.valid'));
     }
+
+    // TODO: Unit test form submission
 }
