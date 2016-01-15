@@ -50,5 +50,11 @@
     </body>
     <script src="{{ elixir("js/core.js") }}"></script>
     <script src="{{ elixir("js/admin.js") }}"></script>
-    <script>$('textarea').inlineattachment(options);</script>
+
+    <script>
+        options.extraParams = {
+            "token": "{{ W4P\Models\Setting::get('token') }}"
+        };
+        $('textarea').inlineattachment(options);
+    </script>
 </html>
