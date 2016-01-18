@@ -5,6 +5,7 @@ use Illuminate\Database\Seeder;
 use W4P\Models\Setting;
 use W4P\Models\Project;
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 
 class SettingsTestSeeder extends Seeder
@@ -26,7 +27,9 @@ class SettingsTestSeeder extends Seeder
             'brief' => "Test project description",
             'description' => "Long description",
             'videoProvider' => "null",
-            'videoUrl' => ""
+            'videoUrl' => "",
+            'starts_at' => Carbon::now(),
+            'ends_at' => Carbon::now()->addMonth()
         ]);
 
         Setting::set('organisation.name', 'Organisation Name');

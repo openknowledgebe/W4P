@@ -128,7 +128,7 @@ return [
         // Project setup page
         'project' => [
             'title' => "Project Setup",
-            'paragraph' => "Next up, we will allow you to set up the project. We only need a project name and description for now.",
+            'paragraph' => "Next up, we will allow you to set up the project. We only need a project name and description for now. (We will default the start date of your campaign to today, and the end date for next month. You can adjust more details later.)",
             'fields' => [
                 'title' => [
                     'name' => 'Title of your project',

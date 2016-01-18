@@ -9,6 +9,7 @@ use W4P\Http\Requests;
 use W4P\Http\Controllers\Controller;
 use W4P\Models\Setting;
 use W4P\Models\Project;
+use Carbon\Carbon;
 
 use View;
 use Redirect;
@@ -262,7 +263,9 @@ class SetupController extends Controller
             $data = [
                 "title" => Input::get('projectTitle'),
                 "brief" => Input::get('projectBrief'),
-                "description" => ""
+                "description" => "",
+                "starts_at" => Carbon::now(),
+                "ends_at" => Carbon::now()->addMonth()
             ];
             if ($project == null) {
                 Project::create($data);
