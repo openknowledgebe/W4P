@@ -265,7 +265,8 @@ class SetupController extends Controller
                 "brief" => Input::get('projectBrief'),
                 "description" => "",
                 "starts_at" => Carbon::now(),
-                "ends_at" => Carbon::now()->addMonth()
+                "ends_at" => Carbon::now()->addMonth(),
+                "videoProvider" => "null",
             ];
             if ($project == null) {
                 Project::create($data);

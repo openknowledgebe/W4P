@@ -60,17 +60,9 @@
                     <label for="organisationDescription">
                         {{ trans('setup.detail.organisation.fields.description.name') }}
                     </label>
-                    <input type="text" class="form-control" name="organisationDescription"
-                           placeholder="{{ trans('setup.detail.organisation.fields.description.placeholder') }}"
-                           value=
-                           "<?php
-                           if (Request::old('organisationDescription')) {
-                               echo Request::old('organisationDescription');
-                           } else {
-                               echo $data["organisationDescription"];
-                           }
-                           ?>"
-                    >
+                     <textarea class="form-control" rows="3" name="organisationDescription"
+                               placeholder="{{ trans('setup.detail.organisation.fields.description.placeholder') }}"><?php if (Request::old('organisationDescription')) { echo Request::old('organisationDescription');
+                         } else if (isset($data["organisationDescription"])) { echo $data["organisationDescription"]; } ?></textarea>
                     <span id="helpBlock" class="help-block">
                         {{ trans('setup.detail.organisation.fields.description.info') }}
                     </span>
