@@ -20,6 +20,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return View::make('front.home')->with("project", Project::get());
+        return View::make('front.home')
+            ->with("project", Project::get())
+            ->with("data", Setting::getBeginsWith('organisation.'));
     }
 }

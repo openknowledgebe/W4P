@@ -9,6 +9,7 @@ class Project extends Model
     protected $table = "project";
     public $timestamps = true;
     protected $fillable = ["title", "brief", "description", "videoProvider", "videoUrl"];
+    protected $dates = ['created_at', 'updated_at', 'deleted_at', 'starts_at', 'ends_at'];
 
     /**
      * Returns the project, if it exists. Returns null if it doesn't exist.

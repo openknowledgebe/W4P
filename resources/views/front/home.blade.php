@@ -3,15 +3,69 @@
 @section('title', trans('generic.homepage'))
 
 @section('content')
-    <div>
+    <div class="project">
+
         @if (file_exists(public_path() . "/project/banner.png"))
             <img class="banner" src="{{ URL::to("/project/banner.png") }}"/>
         @endif
 
-        <h1>{{ $project->title }}</h1>
-        <p>{{ $project->brief }}</p>
-        <div>
-            {!! Markdown::convertToHtml($project->description) !!}
+        <div class="row">
+            <div class="col-md-6">
+                <section class="meta">
+                    <h1>{{ $project->title }}</h1>
+                    <span>
+                        <img src="icon/date.png" width="20" height="20"/> <!-- TODO: add icon -->
+                        {{ trans('home.projectby') }}
+                        <a href="{{ $data['organisation.website'] }}">
+                            {{ $data['organisation.name'] }}
+                        </a>
+                    </span>
+                    <span>
+                        <img src="icon/date.png" width="20" height="20" /> <!-- TODO: add icon -->
+                        {{ trans('home.startedon') }}
+                        XX/XX/XX <!-- TODO: replace placeholder date -->
+                    </span>
+                    <!-- TODO: Section for custom categories -->
+                </section>
+            </div>
+            <div class="col-md-6">
+                <section class="numbers">
+                    <!-- TODO: replace number of backers, percentage complete, link to pledge -->
+                    <span>
+                        X <br/>
+                        {{ trans('home.backers') }}
+                    </span><br/>
+                    <span>X% <br/>
+                        {{ trans('home.funded') }}
+                    </span><br/>
+                    <a href="">{{ trans('home.support') }}</a>
+                </section>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <section class="about-video">
+                    <h2>{{ trans('home.aboutproject') }}</h2>
+                    <!-- TODO: add video depending on provider -->
+                </section>
+            </div>
+            <div class="col-md-6">
+                <section class="about-organisation">
+                    <h2>{{ $data['organisation.name'] }}</h2>
+                    <p>{!! nl2br($data['organisation.description']) !!}</p>
+                    <a href="{{ $data['organisation.website'] }}">
+                        Website
+                    </a>
+                </section>
+                <section class="custom">
+                    <!-- Allow for some more custom html for e.g. sponsors -->
+                </section>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                {!! Markdown::convertToHtml($project->description) !!}
+            </div>
         </div>
     </div>
 @endsection

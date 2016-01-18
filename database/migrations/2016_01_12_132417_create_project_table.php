@@ -21,6 +21,8 @@ class CreateProjectTable extends Migration
                 $table->text('description'); // Longer description
                 $table->string('videoProvider'); // Longer description
                 $table->string('videoUrl')->nullable(); // Video URL
+                $table->dateTime('starts_at');
+                $table->dateTime('ends_at');
                 $table->timestamps();
             }
         );

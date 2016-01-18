@@ -1,4 +1,12 @@
-// Configuration
+/**
+CONFIGURATION VARIABLES
+*/
 
+// Height of the navigation bar.
 $navigation-height: 100px;
-$footer-height: 50px;
+
+// Preferred fixed height of the footer.
+$footer-height: 140px;
+
+// Additional spacing between the footer and body. Applied as padding to the body tag.
+$footer-additional-padding: 25px;

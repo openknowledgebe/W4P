@@ -37,16 +37,7 @@
                 @yield('content')
             </div>
         </div>
-        <footer class="footer">
-            <div class="container">
-                <span class="text-muted">
-                    Powered by <a href="https://github.com/openknowledgebe/W4P">W4P</a>.
-                </span>
-                <span class="pull-right text-muted">
-                    <a href="{{ URL::route('admin::index') }}">Administration</a>
-                </span>
-            </div>
-        </footer>
+        @include('partials.footer')
     </body>
     <script src="{{ elixir("js/core.js") }}"></script>
     <script src="{{ elixir("js/admin.js") }}"></script>
