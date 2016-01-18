@@ -17,6 +17,7 @@ use Validator;
 use Request;
 use Image;
 use Mail;
+use Session;
 
 class AdminController extends Controller
 {
@@ -88,7 +89,65 @@ class AdminController extends Controller
                 'videoProvider' => Input::get('projectVideoProvider'),
                 'videoUrl' => Input::get('projectVideo'),
             ]);
+            Session::flash('info', "Your project's details were updated successfully.");
+        } else {
+            // Validation has failed. Set success to false. Set validator messages
+            $success = false;
+            $errors = $validator->messages();
+        }
 
+        if ($success) {
+            return Redirect::back();
+        } else {
+            return Redirect::back()->withErrors($errors)->withInput(Input::all());
+        }
+    }
+
+    public function organisation()
+    {
+        $data = [
+            "organisationName" => Setting::get('organisation.name'),
+            "organisationDescription" => Setting::get('organisation.description'),
+            "organisationLogo" => Setting::get('organisation.logo'),
+            "organisationWebsite" => Setting::get('organisation.website')
+        ];
+        return View::make('backoffice.organisation')
+            ->with('data', $data);
+    }
+
+    public function updateOrganisation()
+    {
+        $success = true;
+        $errors = [];
+
+        // Depending on whether a logo exists already, change the validation rule for the logo upload
+        $logoValidationRule = 'required|image';
+        if (file_exists(public_path() . "/organisation/logo.png")) {
+            $logoValidationRule = 'image';
+        }
+        $validator = Validator::make(
+            Input::all(),
+            [
+                'organisationName' => 'required|min:4',
+                'organisationDescription' => 'required|min:4',
+                'organisationWebsite' => 'required|min:4',
+                'organisationLogo' => $logoValidationRule
+            ]
+        );
+        // Check if the validator fails
+        if (!$validator->fails()) {
+            $image = Input::file('organisationLogo');
+            if ($image != null && $image->isValid())
+            {
+                // Set the destination path for the platform logo
+                $destinationPath = public_path() . '/organisation/logo.png';
+                Image::make($image->getRealPath())->resize(400, 400)->save($destinationPath);
+            }
+            Setting::set('organisation.name', Input::get('organisationName'));
+            Setting::set('organisation.description', Input::get('organisationDescription'));
+            Setting::set('organisation.website', Input::get('organisationWebsite'));
+            Setting::set('organisation.valid', 'true');
+            Session::flash('info', "Your organisation's details were updated successfully.");
         } else {
             // Validation has failed. Set success to false. Set validator messages
             $success = false;

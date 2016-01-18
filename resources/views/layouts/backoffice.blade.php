@@ -19,7 +19,7 @@
                                 <a href="{{ URL::route('admin::project') }}">{{ trans('backoffice.project') }}</a>
                             </li>
                             <li>
-                                <a href="#">{{ trans('backoffice.organisation') }}</a>
+                                <a href="{{ URL::route('admin::organisation') }}">{{ trans('backoffice.organisation') }}</a>
                             </li>
                             <li>
                                 <a href="#">{{ trans('backoffice.posts') }}</a>
@@ -55,6 +55,6 @@
         options.extraParams = {
             "token": "{{ W4P\Models\Setting::get('token') }}"
         };
-        $('textarea').inlineattachment(options);
+        $('textarea.allowsinline').inlineattachment(options);
     </script>
 </html>

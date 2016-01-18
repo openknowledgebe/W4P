@@ -1,17 +1,19 @@
-@extends('layouts.setup')
+@extends('layouts.backoffice')
 
-@section('title', trans('setup.steps.platform') . " | " . trans('setup.generic.wizard'))
+@section('title', '')
 
 @section('content')
     <div class="row">
-        <div class="col-md-3">
-            @include('setup.progress')
-        </div>
-        <div class="col-md-6">
-
-            <h1>{{ trans('setup.detail.organisation.title') }}</h1>
+        <div class="col-md-push-3 col-md-6">
+            <h1>{{ trans('backoffice.organisation') }}</h1>
+            <p>{{ trans('backoffice.page.organisation.about') }}</p>
             <hr/>
-            <p>{{ trans('setup.detail.organisation.paragraph') }}</p>
+
+            @if(Session::has('info'))
+                <div class="alert alert-info" role="alert">
+                    {{ Session::get('info') }}
+                </div>
+            @endif
 
             @if($errors->any())
                 <div class="alert alert-danger" role="alert">
@@ -20,7 +22,7 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ URL::route('setup::step', 3) }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ URL::route('admin::organisation') }}" enctype="multipart/form-data">
                 <input name="_method" type="hidden" value="POST">
                 {{ csrf_field() }}
                 <div class="form-group">
@@ -60,17 +62,9 @@
                     <label for="organisationDescription">
                         {{ trans('setup.detail.organisation.fields.description.name') }}
                     </label>
-                    <input type="text" class="form-control" name="organisationDescription"
-                           placeholder="{{ trans('setup.detail.organisation.fields.description.placeholder') }}"
-                           value=
-                           "<?php
-                           if (Request::old('organisationDescription')) {
-                               echo Request::old('organisationDescription');
-                           } else {
-                               echo $data["organisationDescription"];
-                           }
-                           ?>"
-                    >
+                    <textarea class="form-control" rows="3" name="organisationDescription"
+                                          placeholder="{{ trans('setup.detail.organisation.fields.description.placeholder') }}"><?php if (Request::old('organisationDescription')) { echo Request::old('organisationDescription');
+                                    } else if (isset($data["organisationDescription"])) { echo $data["organisationDescription"]; } ?></textarea>
                     <span id="helpBlock" class="help-block">
                         {{ trans('setup.detail.organisation.fields.description.info') }}
                     </span>
@@ -94,12 +88,9 @@
                         {{ trans('setup.detail.organisation.fields.website.info') }}
                     </span>
                 </div>
-            <hr/>
-
-            <a class="btn btn-primary btn-sm" href="{{ URL::route('setup::step', 2) }}">&larr; {{ trans('setup.generic.back') }}</a>
-            <button type="submit" class="btn btn-primary btn-sm pull-right">{{ trans('setup.generic.next') }} &rarr;</button>
+                <hr/>
+                <button type="submit" class="btn btn-primary pull-right">{{ trans('backoffice.save') }}</button>
             </form>
-
         </div>
     </div>
 @endsection

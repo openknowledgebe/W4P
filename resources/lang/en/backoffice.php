@@ -30,6 +30,10 @@ return [
                     "info" => "You can upload a project banner here. Recommended size: 200x1000px."
                 ]
             ]
+        ],
+        "organisation" => [
+            "about" => "You can edit information about your organisation here.",
+            // Please note that the field text used here is sourced from setup.php's translation file
         ]
     ],
     "project" => "Project",

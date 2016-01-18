@@ -48,9 +48,14 @@ Route::group(['middleware' => ['web']], function () {
             'middleware' => ['auth', 'env.ready'],
         ],
         function () {
+            // Dashboard
             Route::get('/', ['as' => 'index', 'uses' => 'AdminController@dashboard']);
+            // Project
             Route::get('/project', ['as' => 'project', 'uses' => 'AdminController@project']);
             Route::post('/project', ['as' => 'project', 'uses' => 'AdminController@updateProject']);
+            // Organisation
+            Route::get('/organisation', ['as' => 'organisation', 'uses' => 'AdminController@organisation']);
+            Route::post('/organisation', ['as' => 'organisation', 'uses' => 'AdminController@updateOrganisation']);
         }
     );
 
