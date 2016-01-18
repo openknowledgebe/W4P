@@ -60,6 +60,40 @@
                     </span>
                 </div>
                 <div class="form-group">
+                    <label for="projectStartDate">
+                        {{ trans('setup.detail.project.fields.startdate.name') }}
+                    </label>
+                    <input type="text" class="form-control" name="projectStartDate"
+                           placeholder="{{ trans('setup.detail.project.fields.startdate.placeholder') }}"
+                           value=
+                           "<?php
+                           if (Request::old('projectStartDate')) {
+                               echo Request::old('projectStartDate');
+                           } else if (isset($data["project"]->starts_at)) {
+                               echo $data["project"]->starts_at;
+                           }
+                           ?>"
+                    >
+                    <span id="helpBlock" class="help-block">{{ trans('setup.detail.project.fields.startdate.info') }}</span>
+                </div>
+                <div class="form-group">
+                    <label for="projectEndDate">
+                        {{ trans('setup.detail.project.fields.enddate.name') }}
+                    </label>
+                    <input type="text" class="form-control" name="projectEndDate"
+                           placeholder="{{ trans('setup.detail.project.fields.enddate.placeholder') }}"
+                           value=
+                           "<?php
+                           if (Request::old('projectEndDate')) {
+                               echo Request::old('projectEndDate');
+                           } else if (isset($data["project"]->ends_at)) {
+                               echo $data["project"]->ends_at;
+                           }
+                           ?>"
+                    >
+                    <span id="helpBlock" class="help-block">{{ trans('setup.detail.project.fields.enddate.info') }}</span>
+                </div>
+                <div class="form-group">
                     <label for="projectDescription">
                         {{ trans('backoffice.page.project.fields.description.name') }}
                     </label>

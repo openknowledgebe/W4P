@@ -49,9 +49,21 @@ class AdminController extends Controller
                 'projectLogo' => 'image',
                 'projectBanner' => 'image',
                 'projectVideoProvider' => 'in:null,youtube,vimeo',
-                'projectVideo' => 'min:4'
+                'projectVideo' => 'min:4',
+                'projectStartDate' => 'date',
+                'projectEndDate' => 'date'
             ]
         );
+
+        $validator->after(function($validator) {
+            if (
+                // Check if the end date is earlier than the start date
+                date(Input::get('projectStartDate')) >
+                date(Input::get('projectEndDate'))
+            ) {
+                $validator->errors()->add('projectEndDate', 'The end date is set before the start date. It must be set after the start date.');
+            }
+        });
 
         // Check if the validator fails
         if (!$validator->fails()) {
@@ -88,6 +100,8 @@ class AdminController extends Controller
                 'description' => Input::get('projectDescription'),
                 'videoProvider' => Input::get('projectVideoProvider'),
                 'videoUrl' => Input::get('projectVideo'),
+                'starts_at' => Input::get('projectStartDate'),
+                'ends_at' => Input::get('projectEndDate')
             ]);
             Session::flash('info', "Your project's details were updated successfully.");
         } else {
