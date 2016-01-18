@@ -23,7 +23,7 @@
                     <span>
                         <img src="icon/date.png" width="20" height="20" /> <!-- TODO: add icon -->
                         {{ trans('home.startedon') }}
-                        XX/XX/XX <!-- TODO: replace placeholder date -->
+                        {{ $project->starts_at->format("F j, Y") }}
                     </span>
                     <!-- TODO: Section for custom categories -->
                 </section>
@@ -46,6 +46,8 @@
             <div class="col-md-6">
                 <section class="about-video">
                     <h2>{{ trans('home.aboutproject') }}</h2>
+                    <span>{{ trans('home.timeleft', ['left' => $left]) }}</span>
+                    <br/>
                     <!-- TODO: add video depending on provider -->
                 </section>
             </div>

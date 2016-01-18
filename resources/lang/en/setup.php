@@ -143,12 +143,12 @@ return [
                 'startdate' => [
                     'name' => 'Start date',
                     'placeholder' => 'e.g. 2016-11-30 12:00:00',
-                    'info' => 'The start date of your project. From this point on, pledges can be made. Format: YYYY-MM-DD hh-mm:ss.',
+                    'info' => 'The start date of your project. From this point on, pledges can be made. Format: YYYY-MM-DD hh:mm:ss.',
                 ],
                 'enddate' => [
                     'name' => 'End date',
                     'placeholder' => 'e.g. 2016-12-30 12:00:00',
-                    'info' => 'The end date of your project. After this date your project is closed (still visible but pledges cannot be added). Format: YYYY-MM-DD hh-mm:ss.',
+                    'info' => 'The end date of your project. After this date your project is closed (still visible but pledges cannot be added). Format: YYYY-MM-DD hh:mm:ss.',
                 ],
             ]
         ],
