@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <title>@yield('title')</title>
         <link rel="stylesheet" href="{{ elixir('css/app.css') }}">
+        <link href='https://fonts.googleapis.com/css?family=Istok+Web:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
     </head>
     <body>
         <div class="container">
@@ -16,7 +17,7 @@
                     </div>
                 </div>
             </nav>
-            <div>
+            <div class="content">
                 @yield('content')
             </div>
         </div>

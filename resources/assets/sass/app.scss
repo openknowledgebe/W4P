@@ -1,10 +1,10 @@
-// Libraries
-@import "libraries/bootstrap";
-
 // Core
 @import "typo";
 @import "config";
 @import "colors";
+
+// Libraries
+@import "bootstrap";
 
 // Page-specific CSS
 @import "pages/home";
@@ -18,3 +18,7 @@
 
 // Sticky footer
 @import "stickyfooter";
+
+.content{
+    margin-top: 50px;
+}

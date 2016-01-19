@@ -11,5 +11,8 @@ return [
     "tier" => [
         "pledge" => "Support us with a minimum of :currency:pledgeAmount"
     ],
-    "rewards" => "Rewards"
+    "rewards" => "Rewards",
+    "of" => "of",
+    "daysleft" => "days left",
+    "hoursleft" => "hours left"
 ];

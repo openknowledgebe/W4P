@@ -1,5 +1,5 @@
 .home-banner {
-    height: 250px;
+    height: 300px;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -15,4 +15,56 @@
         line-height: 1.2em;
         color: #888;
     }
+}
+
+.goals {
+    position: relative;
+    top: -20px;
+
+    .meta-container {
+        background-color: white;
+    }
+
+    .numbers-container {
+        padding: 25px;
+        position: relative;
+        top: 20px;
+        background-color: $color-primary;
+        color: #FFF;
+        height: 350px;
+
+        span.number-lg{
+            display: block;
+            margin-top: 40px;
+            line-height: 0.3;
+            font-size: 84px;
+            font-weight: bold;
+        }
+
+        span.number-sm{
+            display: inline-block;
+            overflow: hidden;
+            text-transform: uppercase;
+            line-height: 1;
+            font-size: 16px;
+            font-weight: 300;
+            color: $color-primary-contrast;
+            max-height: 20px;
+        }
+
+        .btn-support{
+            padding: 15px;
+            background-color: $color-primary-contrast;
+            text-transform: uppercase;
+            color: #FFF;
+            border-radius: 30px;
+            display: inline-block;
+            margin-bottom: 15px;
+            margin-top: 15px;
+        }
+    }
+}
+
+.about {
+    background-color: $color-gray;
 }

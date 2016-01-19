@@ -29,14 +29,15 @@ class HomeController extends Controller
         // Get when the project runs out
         $ends_at = new Carbon($project->ends_at);
         $now = Carbon::now();
-        // TODO: diffForHumans should support multiple locales, verify if this is correct without extra work!
-        $left = $now->diffForHumans($ends_at);
+        $leftDays = $now->diffInDays($ends_at);
+        $leftHours = $now->diffInHours($ends_at);
 
         // Return the view with all the text
         return View::make('front.home')
             ->with("project", $project)
             ->with("data", Setting::getBeginsWith('organisation.'))
             ->with("tiers", Tier::all()->sortBy('pledge'))
-            ->with("left", $left);
+            ->with("hoursleft", $leftHours)
+            ->with("daysleft", $leftDays);
     }
 }
