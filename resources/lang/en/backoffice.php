@@ -1,9 +1,38 @@
 <?php
 
 return [
+
+    /**
+     * GENERIC WORDS
+     */
+
+    "project" => "Project",
+    "manageproject" => "Manage project",
+    "tiers" => "Reward tiers",
+    "organisation" => "Organisation",
+    "platform" => "Platform",
+    "posts" => "Posts",
+    "backers" => "Backers",
+    "dashboard" => "Dashboard",
+    "save" => "Save",
+    "create" => "Create",
+    "edit" => "Edit",
+    "delete" => "Delete",
+    "create_tier" => "Create a new tier",
+
+    /**
+     * WARNINGS
+     */
+
     "warnings" => [
         "no_tiers" => "You have not created any tiers yet."
     ],
+
+    /**
+     * PAGE TITLES & DESCRIPTIONS
+     * (for pages that already have labels defined in setup translation file)
+     */
+
     "page" => [
         "project" => [
             "about" => "You can edit your campaign here.",
@@ -45,16 +74,29 @@ return [
             "about" => "You can manage your project's pledge tiers here."
         ]
     ],
-    "project" => "Project",
-    "manageproject" => "Manage project",
-    "tiers" => "Pledge tiers",
-    "organisation" => "Organisation",
-    "platform" => "Platform",
-    "posts" => "Posts",
-    "backers" => "Backers",
-    "dashboard" => "Dashboard",
-    "save" => "Save",
-    "create" => "Create",
-    "edit" => "Edit",
-    "create_tier" => "Create a new tier"
+
+    /**
+     * EDIT/NEW TIER
+     */
+
+    "edit_tier" => [
+        "title" => "Edit a reward tier",
+        "about" => "You can edit an existing tier here."
+    ],
+    "new_tier" => [
+        "title" => "Create a reward tier",
+        "about" => "You can create a new tier here."
+    ],
+    "tier_form" => [
+        "value" => [
+            "name" => "Minimum required contribution",
+            "placeholder" => "5",
+            "info" => "The minimum required contribution that must be paid before this tier is reached. Each tier requires a separate value.",
+        ],
+        "description" => [
+            "name" => "Description",
+            "placeholder" => "You can write a description here.",
+            "info" => "You can write about the rewards here. You cannot use Markdown here.",
+        ]
+    ],
 ];

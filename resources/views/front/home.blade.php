@@ -6,7 +6,7 @@
     <div class="project">
 
         @if (file_exists(public_path() . "/project/banner.png"))
-            <div class="row banner" style="background-image: url('{{ URL::to("/project/banner.png") }}');">
+            <div class="row home-banner" style="background-image: url('{{ URL::to("/project/banner.png") }}');">
             </div>
         @endif
 
