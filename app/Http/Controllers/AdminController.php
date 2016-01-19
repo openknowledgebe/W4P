@@ -125,7 +125,7 @@ class AdminController extends Controller
         }
 
         if ($success) {
-            return Redirect::back();
+            return Redirect::route('admin::project');
         } else {
             return Redirect::back()->withErrors($errors)->withInput(Input::all());
         }
@@ -191,7 +191,7 @@ class AdminController extends Controller
         }
 
         if ($success) {
-            return Redirect::back();
+            return Redirect::route('admin::organisation');
         } else {
             return Redirect::back()->withErrors($errors)->withInput(Input::all());
         }
@@ -256,7 +256,7 @@ class AdminController extends Controller
         }
 
         if ($success) {
-            return Redirect::back();
+            return Redirect::route('admin::platform');
         } else {
             return Redirect::back()->withErrors($errors)->withInput(Input::all());
         }

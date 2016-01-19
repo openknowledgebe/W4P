@@ -66,8 +66,29 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-9">
                 {!! Markdown::convertToHtml($project->description) !!}
+            </div>
+            <div class="col-md-3">
+                <h2>{{ trans('home.rewards') }}</h2>
+                @foreach ($tiers as $tier)
+                    <div class="panel panel-default">
+                        <div class="panel-body support-panel">
+                            <span>
+                                <strong>
+                                    {{ trans('home.tier.pledge', [
+                                     "currency" => "€",
+                                     "pledgeAmount" => $tier->pledge
+                                     ]) }}
+                                </strong>
+                            </span><br/>
+                            <span class="backer-count">X {{ trans('home.backers') }}</span><br/>
+                            <div class="description">
+                                {!! nl2br(htmlspecialchars($tier->description)) !!}
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>

@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 
 use W4P\Http\Requests;
 use W4P\Http\Controllers\Controller;
+
 use W4P\Models\Setting;
+use W4P\Models\Tier;
 
 use Redirect;
 use View;
@@ -34,6 +36,7 @@ class HomeController extends Controller
         return View::make('front.home')
             ->with("project", $project)
             ->with("data", Setting::getBeginsWith('organisation.'))
+            ->with("tiers", Tier::all()->sortBy('pledge'))
             ->with("left", $left);
     }
 }

@@ -14,7 +14,7 @@ class CreateTierTable extends Migration
     {
         Schema::create('tier', function (Blueprint $table) {
             $table->increments('id');
-            $table->decimal('pledge');
+            $table->decimal('pledge')->unique();
             $table->text('description');
             $table->timestamps();
         });

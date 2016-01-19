@@ -4,3 +4,15 @@
     background-size: cover;
     background-repeat: no-repeat;
 }
+
+.support-panel{
+    .backer-count{
+        margin-top: 5px;
+        font-size: 0.9em;
+    }
+    .description{
+        margin-top: 10px;
+        line-height: 1.2em;
+        color: #888;
+    }
+}

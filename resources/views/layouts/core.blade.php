@@ -11,7 +11,7 @@
                 <div class="container">
                     <div class="navbar-header">
                         <a class="navbar-brand" href="">
-                            <img src="{{ URL::to('/organisation/logo.png') }}" class="navlogo" />
+                            <img src="{{ URL::to('/platform/logo.png') }}" class="navlogo" />
                         </a>
                     </div>
                     <div>

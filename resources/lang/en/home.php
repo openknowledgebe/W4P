@@ -7,5 +7,9 @@ return [
     "funded" => "funded",
     "support" => "Support this project",
     "timeleft" => "There is :left the project ends.",
-    "aboutproject" => "About this project"
+    "aboutproject" => "About this project",
+    "tier" => [
+        "pledge" => "Support us with a minimum of :currency:pledgeAmount"
+    ],
+    "rewards" => "Rewards"
 ];

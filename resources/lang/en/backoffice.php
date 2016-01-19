@@ -1,6 +1,9 @@
 <?php
 
 return [
+    "warnings" => [
+        "no_tiers" => "You have not created any tiers yet."
+    ],
     "page" => [
         "project" => [
             "about" => "You can edit your campaign here.",
@@ -37,6 +40,9 @@ return [
         ],
         "platform" => [
             "about" => "You can edit your platform's configuration here."
+        ],
+        "tiers" => [
+            "about" => "You can manage your project's pledge tiers here."
         ]
     ],
     "project" => "Project",
@@ -47,5 +53,8 @@ return [
     "posts" => "Posts",
     "backers" => "Backers",
     "dashboard" => "Dashboard",
-    "save" => "Save"
+    "save" => "Save",
+    "create" => "Create",
+    "edit" => "Edit",
+    "create_tier" => "Create a new tier"
 ];
