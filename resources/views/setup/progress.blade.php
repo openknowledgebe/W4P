@@ -31,7 +31,7 @@
         @if (isset($step) && $step == 4)<strong>@endif
             {{ trans('setup.steps.project') }}
             @if(
-                W4P\Models\Project::valid())
+                W4P\Models\Project::valid($W4P_project))
                 &#10003;
             @endif
         @if (isset($step) && $step == 4)</strong>@endif

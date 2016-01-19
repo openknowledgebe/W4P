@@ -19,10 +19,10 @@ class HomeController extends Controller
      * Start point for the application
      * @return string
      */
-    public function index()
+    public function index(Request $request)
     {
         // Get the project
-        $project = Project::get();
+        $project = $request->project;
 
         // Get when the project runs out
         $ends_at = new Carbon($project->ends_at);
@@ -32,7 +32,7 @@ class HomeController extends Controller
 
         // Return the view with all the text
         return View::make('front.home')
-            ->with("project", Project::get())
+            ->with("project", $project)
             ->with("data", Setting::getBeginsWith('organisation.'))
             ->with("left", $left);
     }

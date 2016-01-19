@@ -25,9 +25,8 @@ class Project extends Model
      * description that is at least 1 character long.
      * @return bool
      */
-    public static function valid() {
-        $project = Project::all()->first();
-        if ($project) {
+    public static function valid($project) {
+        if ($project != null) {
             if (strlen($project->title) > 0 && strlen($project->brief) > 0) {
                 return true;
             }
