@@ -34,10 +34,14 @@ return [
         "organisation" => [
             "about" => "You can edit information about your organisation here.",
             // Please note that the field text used here is sourced from setup.php's translation file
+        ],
+        "platform" => [
+            "about" => "You can edit your platform's configuration here."
         ]
     ],
     "project" => "Project",
     "organisation" => "Organisation",
+    "platform" => "Platform",
     "posts" => "Posts",
     "backers" => "Backers",
     "dashboard" => "Dashboard",

@@ -35,6 +35,6 @@ To set it all up in one go:
 
     composer install && touch database/database.sqlite && php artisan migrate && cp .env.example .env
 
-If you do not want to go through the wizard, you can use the SettingsDevTableSeeder to seed default data.
+If you do not want to go through the wizard, you can use the SettingsTestSeeder to seed default data. (This is the data that is also used by the unit tests.)
 
-    php artisan db:seed --class=SettingsDevTableSeeder
+    php artisan db:seed --class=SettingsTestSeeder

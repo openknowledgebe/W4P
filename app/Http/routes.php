@@ -56,6 +56,9 @@ Route::group(['middleware' => ['web']], function () {
             // Organisation
             Route::get('/organisation', ['as' => 'organisation', 'uses' => 'AdminController@organisation']);
             Route::post('/organisation', ['as' => 'organisation', 'uses' => 'AdminController@updateOrganisation']);
+            // Platform
+            Route::get('/platform', ['as' => 'platform', 'uses' => 'AdminController@platform']);
+            Route::post('/platform', ['as' => 'platform', 'uses' => 'AdminController@updatePlatform']);
         }
     );
 

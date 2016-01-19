@@ -6,8 +6,12 @@
 @import "config";
 @import "colors";
 
+// Page-specific CSS
+@import "pages/home";
+
 // Components
 @import "components/form";
+@import "components/topnav";
 
 // 3rd party libs
 @import "components/lib/jquery.datetimepicker";

@@ -22,6 +22,9 @@
                                 <a href="{{ URL::route('admin::organisation') }}">{{ trans('backoffice.organisation') }}</a>
                             </li>
                             <li>
+                                <a href="{{ URL::route('admin::platform') }}">{{ trans('backoffice.platform') }}</a>
+                            </li>
+                            <li>
                                 <a href="#">{{ trans('backoffice.posts') }}</a>
                             </li>
                             <li>
