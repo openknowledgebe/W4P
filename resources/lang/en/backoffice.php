@@ -40,6 +40,8 @@ return [
         ]
     ],
     "project" => "Project",
+    "manageproject" => "Manage project",
+    "tiers" => "Pledge tiers",
     "organisation" => "Organisation",
     "platform" => "Platform",
     "posts" => "Posts",

@@ -59,6 +59,8 @@ Route::group(['middleware' => ['web']], function () {
             // Platform
             Route::get('/platform', ['as' => 'platform', 'uses' => 'AdminController@platform']);
             Route::post('/platform', ['as' => 'platform', 'uses' => 'AdminController@updatePlatform']);
+            // Tiers
+            Route::get('/tiers', ['as' => 'tiers', 'uses' => 'AdminTierController@index']);
         }
     );
 
