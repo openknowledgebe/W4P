@@ -104,8 +104,28 @@
                         {{ trans('setup.detail.mail.fields.encryption.name') }}
                     </label>
                     <select class="form-control" name="emailEncryption">
-                        <option value="tls">TLS</option>
-                        <option value="null">Off</option>
+                        <option value="tls"
+                        <?php
+                        if (Request::old('emailEncryption')) {
+                            if (Request::old('emailEncryption') == "tls") { echo "selected"; };
+                        } else {
+                            if ($data["emailEncryption"] == "tls") { echo "selected"; };
+                        }
+                        ?>
+                            >TLS</option>
+                        <option value="null"
+                        <?php
+                        if (Request::old('emailEncryption')) {
+                            if (Request::old('emailEncryption') == "null"
+                                || Request::old('emailEncryption') == "")
+                            { echo "selected"; };
+                        } else {
+                            if ($data["emailEncryption"] == "null"
+                                || $data["emailEncryption"] == "")
+                            { echo "selected"; };
+                        }
+                        ?>
+                        >Off</option>
                     </select>
                     <span id="helpBlock" class="help-block">{{ trans('setup.detail.mail.fields.encryption.info') }}</span>
                 </div>

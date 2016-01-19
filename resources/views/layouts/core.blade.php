@@ -17,23 +17,17 @@
                     <div>
                         <ul class="nav navbar-nav">
                             <li>
-                                <a href="{{ URL::route('home') }}">{{ \W4P\Models\Setting::get('platform.name') }}</a>
+                                <a href="{{ URL::route('home') }}">{{ trans('core.project') }}</a>
                             </li>
                             <li>
-                                <a href="">{{ trans('backoffice.project') }}</a>
+                                <a href="">{{ trans('core.howdoesitwork') }}</a>
                             </li>
                         </ul>
                     </div>
                     <div>
                         <ul class="nav navbar-nav navbar-right">
                             <li>
-                                <a href="#">NL</a>
-                            </li>
-                            <li>
-                                <a href="#">EN</a>
-                            </li>
-                            <li>
-                                <a href="#">FR</a>
+                                <a href="#">Language</a>
                             </li>
                         </ul>
                     </div>

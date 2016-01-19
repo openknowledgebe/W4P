@@ -18,7 +18,7 @@ class CreateProjectTable extends Migration
                 $table->increments('id');
                 $table->string('title'); // Title of the project
                 $table->string('brief'); // Description in less than 255 characters
-                $table->text('description'); // Longer description
+                $table->text('description')->nullable(); // Longer description, initially nullable
                 $table->string('videoProvider'); // Longer description
                 $table->string('videoUrl')->nullable(); // Video URL
                 $table->dateTime('starts_at');

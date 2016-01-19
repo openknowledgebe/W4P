@@ -263,7 +263,6 @@ class SetupController extends Controller
             $data = [
                 "title" => Input::get('projectTitle'),
                 "brief" => Input::get('projectBrief'),
-                "description" => "",
                 "starts_at" => Carbon::now(),
                 "ends_at" => Carbon::now()->addMonth(),
                 "videoProvider" => "null",
