@@ -63,14 +63,14 @@
                     <label for="projectStartDate">
                         {{ trans('setup.detail.project.fields.startdate.name') }}
                     </label>
-                    <input type="text" class="form-control" name="projectStartDate"
+                    <input type="text" class="form-control dtp" name="projectStartDate"
                            placeholder="{{ trans('setup.detail.project.fields.startdate.placeholder') }}"
                            value=
                            "<?php
                            if (Request::old('projectStartDate')) {
                                echo Request::old('projectStartDate');
                            } else if (isset($data["project"]->starts_at)) {
-                               echo $data["project"]->starts_at;
+                               echo date('Y-m-d H:i', strtotime($data["project"]->starts_at));
                            }
                            ?>"
                     >
@@ -80,14 +80,14 @@
                     <label for="projectEndDate">
                         {{ trans('setup.detail.project.fields.enddate.name') }}
                     </label>
-                    <input type="text" class="form-control" name="projectEndDate"
+                    <input type="text" class="form-control dtp" name="projectEndDate"
                            placeholder="{{ trans('setup.detail.project.fields.enddate.placeholder') }}"
                            value=
                            "<?php
                            if (Request::old('projectEndDate')) {
                                echo Request::old('projectEndDate');
                            } else if (isset($data["project"]->ends_at)) {
-                               echo $data["project"]->ends_at;
+                               echo date('Y-m-d H:i', strtotime($data["project"]->ends_at));
                            }
                            ?>"
                     >

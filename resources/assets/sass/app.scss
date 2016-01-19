@@ -6,9 +6,11 @@
 @import "config";
 @import "colors";
 
+// Components
 @import "components/form";
+
+// 3rd party libs
+@import "components/lib/jquery.datetimepicker";
 
 // Sticky footer
 @import "stickyfooter";
-
-// TODO: Your CSS here. Well, actually, in other files.

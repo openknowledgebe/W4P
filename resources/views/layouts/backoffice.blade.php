@@ -47,5 +47,10 @@
             "token": "{{ W4P\Models\Setting::get('token') }}"
         };
         $('textarea.allowsinline').inlineattachment(options);
+        $('input.dtp').datetimepicker({
+            format:'Y-m-d H:i',
+            formatTime:'H:i',
+            formatDate:'Y-m-d'
+        });
     </script>
 </html>

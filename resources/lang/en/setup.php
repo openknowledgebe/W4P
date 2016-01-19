@@ -141,14 +141,14 @@ return [
                     'info' => 'Explain in less than 255 characters what your project is all about.',
                 ],
                 'startdate' => [
-                    'name' => 'Start date',
+                    'name' => 'Start date (pledges open)',
                     'placeholder' => 'e.g. 2016-11-30 12:00:00',
-                    'info' => 'The start date of your project. From this point on, pledges can be made. Format: YYYY-MM-DD hh:mm:ss.',
+                    'info' => 'The start date of your project. From this point on, pledges can be made. Remember, your project will not be hidden if you set the start date in the future.',
                 ],
                 'enddate' => [
-                    'name' => 'End date',
+                    'name' => 'End date (pledges close)',
                     'placeholder' => 'e.g. 2016-12-30 12:00:00',
-                    'info' => 'The end date of your project. After this date your project is closed (still visible but pledges cannot be added). Format: YYYY-MM-DD hh:mm:ss.',
+                    'info' => 'The end date of your project. After this date your project is closed (still visible but pledges cannot be added).',
                 ],
             ]
         ],

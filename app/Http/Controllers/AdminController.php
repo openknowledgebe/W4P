@@ -2,6 +2,8 @@
 
 namespace W4P\Http\Controllers;
 
+use Carbon\Carbon;
+
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Hash;
 
@@ -100,8 +102,8 @@ class AdminController extends Controller
                 'description' => Input::get('projectDescription'),
                 'videoProvider' => Input::get('projectVideoProvider'),
                 'videoUrl' => Input::get('projectVideo'),
-                'starts_at' => Input::get('projectStartDate'),
-                'ends_at' => Input::get('projectEndDate')
+                'starts_at' => Carbon::createFromFormat('Y-m-d H:i', Input::get('projectStartDate')),
+                'ends_at' => Carbon::createFromFormat('Y-m-d H:i', Input::get('projectEndDate')),
             ]);
             Session::flash('info', "Your project's details were updated successfully.");
         } else {

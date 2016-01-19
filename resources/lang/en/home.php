@@ -6,5 +6,6 @@ return [
     "backers" => "backers",
     "funded" => "funded",
     "support" => "Support this project",
-    "timeleft" => "There is :left the project ends."
+    "timeleft" => "There is :left the project ends.",
+    "aboutproject" => "About this project"
 ];
