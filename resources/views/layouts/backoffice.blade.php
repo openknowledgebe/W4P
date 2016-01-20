@@ -8,47 +8,49 @@
     </head>
     <body>
         <div class="container">
-            <nav class="navbar navbar-default">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href="/">{{ \W4P\Models\Setting::get('platform.name') }}</a>
-                        <ul class="nav navbar-nav">
-                            <li>
-                                <a href="{{ URL::route('admin::index') }}">{{ trans('backoffice.dashboard') }}</a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ trans('backoffice.project') }} <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li class="separator">Manage</li>
-                                    <li>
-                                        <a href="{{ URL::route('admin::project') }}">{{ trans('backoffice.project') }}</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ URL::route('admin::tiers') }}">{{ trans('backoffice.tiers') }}</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="disabled">{{ trans('backoffice.posts') }}</a>
-                                    </li>
-                                    <li role="separator" class="divider"></li>
-                                    <li class="separator">View</li>
-                                    <li>
-                                        <a href="#" class="disabled">{{ trans('backoffice.backers') }}</a>
-                                    </li>
-                                </ul>
-                            <li>
-                                <a href="{{ URL::route('admin::organisation') }}">{{ trans('backoffice.organisation') }}</a>
-                            </li>
-                            <li>
-                                <a href="{{ URL::route('admin::platform') }}">{{ trans('backoffice.platform') }}</a>
-                            </li>
+            <div class="row">
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="/">{{ \W4P\Models\Setting::get('platform.name') }}</a>
+                            <ul class="nav navbar-nav">
+                                <li>
+                                    <a href="{{ URL::route('admin::index') }}">{{ trans('backoffice.dashboard') }}</a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ trans('backoffice.project') }} <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li class="separator">Manage</li>
+                                        <li>
+                                            <a href="{{ URL::route('admin::project') }}">{{ trans('backoffice.project') }}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ URL::route('admin::tiers') }}">{{ trans('backoffice.tiers') }}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="disabled">{{ trans('backoffice.posts') }}</a>
+                                        </li>
+                                        <li role="separator" class="divider"></li>
+                                        <li class="separator">View</li>
+                                        <li>
+                                            <a href="#" class="disabled">{{ trans('backoffice.backers') }}</a>
+                                        </li>
+                                    </ul>
+                                <li>
+                                    <a href="{{ URL::route('admin::organisation') }}">{{ trans('backoffice.organisation') }}</a>
+                                </li>
+                                <li>
+                                    <a href="{{ URL::route('admin::platform') }}">{{ trans('backoffice.platform') }}</a>
+                                </li>
 
 
-                        </ul>
+                            </ul>
+                        </div>
+                        <div>
+                        </div>
                     </div>
-                    <div>
-                    </div>
-                </div>
-            </nav>
+                </nav>
+            </div>
             <div class="content">
                 @yield('content')
             </div>

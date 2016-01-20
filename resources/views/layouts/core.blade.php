@@ -8,32 +8,34 @@
     </head>
     <body>
         <div class="container">
-            <nav class="navbar navbar-default navbar-fixed-top">
-                <div class="container">
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href="">
-                            <img src="{{ URL::to('/platform/logo.png') }}" class="navlogo" />
-                        </a>
+            <div class="row">
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="">
+                                <img src="{{ URL::to('/platform/logo.png') }}" class="navlogo" />
+                            </a>
+                        </div>
+                        <div>
+                            <ul class="nav navbar-nav">
+                                <li>
+                                    <a href="{{ URL::route('home') }}">{{ trans('core.project') }}</a>
+                                </li>
+                                <li>
+                                    <a href="">{{ trans('core.howdoesitwork') }}</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>
+                                    <a href="#">Language</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                    <div>
-                        <ul class="nav navbar-nav">
-                            <li>
-                                <a href="{{ URL::route('home') }}">{{ trans('core.project') }}</a>
-                            </li>
-                            <li>
-                                <a href="">{{ trans('core.howdoesitwork') }}</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li>
-                                <a href="#">Language</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
+                </nav>
+            </div>
             <div class="content">
                 @yield('content')
             </div>

@@ -61,7 +61,7 @@
                     <section class="about-video">
                         <h2>{{ trans('home.aboutproject') }}</h2>
                         <br/>
-                        <!-- TODO: add video depending on provider -->
+                        {!! $project->video_embed !!}
                     </section>
                 </div>
                 <div class="col-md-6">

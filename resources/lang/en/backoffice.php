@@ -47,14 +47,10 @@ return [
                     "existing" => "You have already uploaded a logo. If you want to upload a new logo, you can select it below.",
                     "info" => "You can upload a project logo here."
                 ],
-                "video" => [
-                    "name" => "Project video provider",
-                    "info" => "Select a video provider from the list."
-                ],
-                "video-url" => [
-                    "name" => "Video URL",
-                    "placeholder" => "YouTube/Vimeo URL",
-                    "info" => "You can enter a video URL here."
+                "embed" => [
+                    "name" => "Project video embed code",
+                    "placeholder" => "Paste your embed code here.",
+                    "info" => "You can use embled codes from e.g. Vimeo or YouTube. Since embed codes tend to change, you can paste your own here. WARNING: The HTML you put here will be placed on the website, unsanitized."
                 ],
                 "banner" => [
                     "name" => "Project banner",

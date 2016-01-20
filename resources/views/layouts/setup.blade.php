@@ -8,15 +8,17 @@
     </head>
     <body>
         <div class="container">
-            <nav class="navbar navbar-default">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href="/">{{ trans('setup.nav') }}</a>
+            <div class="row">
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="/">{{ trans('setup.nav') }}</a>
+                        </div>
+                        <div>
+                        </div>
                     </div>
-                    <div>
-                    </div>
-                </div>
-            </nav>
+                </nav>
+            </div>
             <div class="content">
                 @yield('content')
             </div>
