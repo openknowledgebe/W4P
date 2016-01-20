@@ -19,7 +19,7 @@
                         <div>
                             <ul class="nav navbar-nav">
                                 <li>
-                                    <a href="{{ URL::route('home') }}">{{ trans('core.project') }}</a>
+                                    <a href="{{ URL::route('home') }}">{{ $W4P_project->title }}</a>
                                 </li>
                                 <li>
                                     <a href="">{{ trans('core.howdoesitwork') }}</a>
