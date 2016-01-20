@@ -26,6 +26,33 @@ class HomeController extends Controller
         // Get the project
         $project = $request->project;
 
+        // Extract the video url
+        $videoId = "";
+
+        // Check the video provider
+        switch ($project->videoProvider) {
+            case "vimeo":
+                $array = explode("vimeo.com/", $project->videoUrl);
+                $string = last($array);
+                $array = explode("/", $string);
+                $string = $array[0];
+                // split on "vimeo.com/"
+                // and again on "/"
+                $videoId = $string;
+                break;
+            case "youtube":
+                $array = explode("watch?v=", $project->videoUrl);
+                $string = last($array);
+                $array = explode("&", $string);
+                $string = $array[0];
+                // split on "watch?v="
+                // and again on "&"
+                $videoId = $string;
+                break;
+            default:
+                break;
+        }
+
         // Get when the project runs out
         $ends_at = new Carbon($project->ends_at);
         $now = Carbon::now();
@@ -35,6 +62,7 @@ class HomeController extends Controller
         // Return the view with all the text
         return View::make('front.home')
             ->with("project", $project)
+            ->with("video_id", $videoId)
             ->with("data", Setting::getBeginsWith('organisation.'))
             ->with("tiers", Tier::all()->sortBy('pledge'))
             ->with("hoursleft", $leftHours)

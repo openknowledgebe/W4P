@@ -67,7 +67,7 @@ Route::group(['middleware' => ['web']], function () {
             Route::post('/tiers/{id}', ['as' => 'updateTier', 'uses' => 'AdminTierController@update']);
             Route::delete('/tiers/{id}', ['as' => 'deleteTier', 'uses' => 'AdminTierController@delete']);
             // Posts
-            Route::get('/posts', ['as' => 'managePosts', 'uses' => 'AdminPostController@index']);
+            Route::get('/posts', ['as' => 'posts', 'uses' => 'AdminPostController@index']);
             Route::get('/posts/create', ['as' => 'createPost', 'uses' => 'AdminPostController@create']);
             Route::post('/posts/create', ['as' => 'storePost', 'uses' => 'AdminPostController@store']);
             Route::get('/posts/{id}', ['as' => 'editPost', 'uses' => 'AdminPostController@edit']);

@@ -127,7 +127,7 @@
                             </label>
                             @if (file_exists(public_path() . "/project/banner.png"))
                                 <br/>
-                                <img class="banner" src="{{ URL::to("/project/banner.png") }}" height="150" />
+                                <img class="banner" src="{{ URL::to("/project/banner.png") }}" width="500" height="100" />
                                 <span id="helpBlock" class="help-block">{{ trans('backoffice.page.project.fields.banner.existing') }}</span>
                             @endif
                             <input type="file" class="form-control" name="projectBanner" id="projectBanner">
@@ -136,17 +136,38 @@
                     </span>
                         </div>
                         <div class="form-group">
-                            <label for="projectVideoEmbed">
-                                {{ trans('backoffice.page.project.fields.embed.name') }}
+                            <label for="projectVideoProvider">
+                                {{ trans('backoffice.page.project.fields.video.name') }}
                             </label>
-            <textarea class="form-control markdown" rows="4" name="projectVideoEmbed"
-                      placeholder="{{ trans('backoffice.page.project.fields.embed.placeholder') }}"><?php if (Request::old('projectVideoEmbed')) { echo Request::old('projectDescription');
-                } else if (isset($data["project"]->video_embed)) { echo $data["project"]->video_embed; } ?></textarea>
-                            <span id="helpBlock" class="help-block">{{ trans('backoffice.page.project.fields.embed.info') }}</span>
+                            <select class="form-control" name="projectVideoProvider">
+                                <option value="vimeo" @if ($data["project"]->videoProvider == "vimeo") selected @endif>Vimeo</option>
+                                <option value="youtube" @if ($data["project"]->videoProvider == "youtube") selected @endif>YouTube</option>
+                                <option value="null" @if ($data["project"]->videoProvider == null || $data["project"]->videoProvider == "null") selected @endif>No video</option>
+                            </select>
+            <span id="helpBlock" class="help-block">
+                        {{ trans('backoffice.page.project.fields.video.info') }}
+                    </span>
+                        </div>
+                        <div class="form-group">
+                            <label for="projectVideo">
+                                {{ trans('backoffice.page.project.fields.video-url.name') }}
+                            </label>
+                            <input type="text" class="form-control" name="projectVideo"
+                                   placeholder="{{ trans('backoffice.page.project.fields.video-url.placeholder') }}"
+                                   value=
+                                   "<?php
+                                   if (Request::old('projectVideo')) {
+                                       echo Request::old('projectVideo');
+                                   } else if (isset($data["project"]->videoUrl)){
+                                       echo $data["project"]->videoUrl;
+                                   }?>"
+                            >
+                    <span id="helpBlock" class="help-block">
+                        {{ trans('backoffice.page.project.fields.video-url.info') }}
+                    </span>
                         </div>
                     </div>
                 </div>
-
                 <hr/>
                 <button type="submit" class="btn btn-primary pull-right">{{ trans('backoffice.save') }}</button>
             </form>

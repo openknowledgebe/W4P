@@ -62,7 +62,8 @@ class AdminController extends Controller
                 'projectDescription' => 'min:4',
                 'projectLogo' => 'image',
                 'projectBanner' => 'image',
-                'projectVideoEmbed' => 'min:10',
+                'projectVideoProvider' => 'in:null,youtube,vimeo',
+                'projectVideo' => 'min:4',
                 'projectStartDate' => 'date',
                 'projectEndDate' => 'date'
             ]
@@ -109,9 +110,10 @@ class AdminController extends Controller
             $project = Project::get();
             $project->update([
                 'title' => Input::get('projectTitle'),
-                'brief' => Input::get('projectBrief'),
+                'brief' => Input::get('projectTitle'),
                 'description' => Input::get('projectDescription'),
-                'video_embed' => Input::get('projectVideoEmbed'),
+                'videoProvider' => Input::get('projectVideoProvider'),
+                'videoUrl' => Input::get('projectVideo'),
                 'starts_at' => Carbon::createFromFormat('Y-m-d H:i', Input::get('projectStartDate')),
                 'ends_at' => Carbon::createFromFormat('Y-m-d H:i', Input::get('projectEndDate')),
             ]);

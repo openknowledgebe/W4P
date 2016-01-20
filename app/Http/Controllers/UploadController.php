@@ -2,6 +2,7 @@
 
 namespace W4P\Http\Controllers;
 
+use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
@@ -33,6 +34,6 @@ class UploadController extends Controller
             $response['error'] = "You do not have permission to upload an attachment.\n" .
             "It is possible that your session has expired. Try logging in again.";
         }
-        return json_encode($response);
+        return response()->json($response);
     }
 }

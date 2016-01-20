@@ -28,7 +28,7 @@
                                             <a href="{{ URL::route('admin::tiers') }}">{{ trans('backoffice.tiers') }}</a>
                                         </li>
                                         <li>
-                                            <a href="#" class="disabled">{{ trans('backoffice.posts') }}</a>
+                                            <a href="{{ URL::route('admin::posts') }}">{{ trans('backoffice.posts') }}</a>
                                         </li>
                                         <li role="separator" class="divider"></li>
                                         <li class="separator">View</li>
