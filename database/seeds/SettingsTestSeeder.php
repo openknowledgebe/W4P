@@ -45,5 +45,7 @@ class SettingsTestSeeder extends Seeder
         Setting::set('email.from', 'test@mail.okfnbe');
         Setting::set('email.name', 'Test mail');
         Setting::set('email.valid', 'true');
+
+        Setting::set('setup.complete', 'done');
     }
 }

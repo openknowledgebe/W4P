@@ -18,7 +18,7 @@ return [
         'organisation' => "Organisation Setup",
         'project' => "Project Setup",
         'mail' => "Email Setup",
-        'finish' => "Get Started"
+        'finish' => "Finalize Setup"
     ],
 
     // Generic setup strings (like 'Next', 'Back', and 'Oops' (reused on multiple pages)
@@ -198,7 +198,9 @@ return [
 
         // Finish page
         'finish' => [
-            'title' => 'Get started'
+            'title' => 'Finalize Setup',
+            'paragraph' => "If you are happy with the current settings, please confirm that you would like to finalize the setup process. Once the setup is finalized, you will be taken to the website.
+            Use the administration link at the bottom of the page to log in and manage your project's information and more."
         ]
     ],
 

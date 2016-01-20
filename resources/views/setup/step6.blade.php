@@ -10,8 +10,19 @@
         <div class="col-md-6">
             <h1>{{ trans('setup.detail.finish.title') }}</h1>
             <hr/>
-            <a class="btn btn-primary btn-sm" href="{{ URL::route('setup::step', 5) }}">&larr; {{ trans('setup.generic.back') }}</a>
-            <a href="{{ URL::route('admin::login') }}" class="btn btn-primary btn-sm pull-right">{{ trans('setup.generic.finish') }} &rarr;</a>
+            <p>{{ trans('setup.detail.finish.paragraph') }}</p>
+            <form method="POST" action="{{ URL::route('setup::step', 6) }}">
+                <input name="_method" type="hidden" value="POST">
+                {{ csrf_field() }}
+                <hr/>
+                <a class="btn btn-primary btn-sm"
+                   href="{{ URL::route('setup::step', 5) }}">
+                    &larr; {{ trans('setup.generic.back') }}
+                </a>
+                <button type="submit" class="btn btn-primary btn-sm pull-right">
+                    {{ trans('setup.generic.finish') }} &rarr;
+                </button>
+            </form>
         </div>
     </div>
 @endsection

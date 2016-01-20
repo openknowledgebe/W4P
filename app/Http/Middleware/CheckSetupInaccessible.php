@@ -30,6 +30,7 @@ class CheckSetupInaccessible
             array_key_exists('platform.name', $settings) &&
             array_key_exists('email.valid', $settings) &&
             array_key_exists('organisation.valid', $settings) &&
+            array_key_exists('setup.complete', $settings) &&
             Project::valid($request->project)
         )
         {

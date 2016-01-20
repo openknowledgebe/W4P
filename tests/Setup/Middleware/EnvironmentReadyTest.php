@@ -15,7 +15,8 @@ class EnvironmentReadyTest extends TestCase
         // Environment is not ready, but request homepage
         $crawler = $this->call('GET', '/');
         // Assert we're being redirected
-        $this->assertRedirectedToRoute('setup::index');
+        // TODO: If all the setup steps are completed, this should redirect elsewhere (pwd is the only tested setting so far)
+        $this->assertRedirectedToRoute('setup::step', 2);
         // Follow the redirects
         $this->followRedirects();
         // Assert that the response is OK

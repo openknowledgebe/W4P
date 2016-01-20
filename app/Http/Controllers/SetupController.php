@@ -82,6 +82,7 @@ class SetupController extends Controller
                 ];
                 break;
             default:
+                $data = [];
                 break;
         }
         return View::make('setup.step' . $number)
@@ -93,6 +94,8 @@ class SetupController extends Controller
     private $errors;
     // Was the POST request successful?
     private $success;
+    // Is the wizard done?
+    private $done;
 
     /**
      * Handle the form input that was sent from a specific step.
@@ -105,6 +108,7 @@ class SetupController extends Controller
         $this->success = true;
         // Assume no errors (empty); each failed check adds a new error to this array
         $this->errors = [];
+        $this->done = false;
 
         switch ($number) {
             case 1:
@@ -122,8 +126,14 @@ class SetupController extends Controller
             case 5:
                 $this->handleEmailConfigValidation();
                 break;
+            case 6:
+                $this->finalizeSetupProcess();
+                break;
             default:
                 break;
+        }
+        if ($this->done) {
+            return Redirect::route('home');
         }
         if ($this->success) {
             return Redirect::route("setup::step", ($number + 1));
@@ -323,5 +333,11 @@ class SetupController extends Controller
             $this->success = false;
             $this->errors = $validator->messages();
         }
+    }
+
+    private function finalizeSetupProcess()
+    {
+        Setting::set('setup.complete', 'done');
+        $this->done = true;
     }
 }
