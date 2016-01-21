@@ -14,5 +14,7 @@ return [
     "rewards" => "Rewards",
     "of" => "of",
     "daysleft" => "days left",
-    "hoursleft" => "hours left"
+    "hoursleft" => "hours left",
+    "story" => "Our story",
+    "updates" => "Updates"
 ];

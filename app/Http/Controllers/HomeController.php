@@ -9,6 +9,7 @@ use W4P\Http\Controllers\Controller;
 
 use W4P\Models\Setting;
 use W4P\Models\Tier;
+use W4P\Models\Post;
 
 use Redirect;
 use View;
@@ -53,6 +54,8 @@ class HomeController extends Controller
                 break;
         }
 
+        $posts = Post::orderBy('created_at', 'DESC')->limit(5)->get();
+
         // Get when the project runs out
         $ends_at = new Carbon($project->ends_at);
         $now = Carbon::now();
@@ -62,6 +65,7 @@ class HomeController extends Controller
         // Return the view with all the text
         return View::make('front.home')
             ->with("project", $project)
+            ->with("posts", $posts)
             ->with("video_id", $videoId)
             ->with("data", Setting::getBeginsWith('organisation.'))
             ->with("tiers", Tier::all()->sortBy('pledge'))
