@@ -25,7 +25,8 @@ return [
      */
 
     "warnings" => [
-        "no_tiers" => "You have not created any tiers yet."
+        "no_tiers" => "You have not created any tiers yet.",
+        "no_posts" => "You have not created any posts yet."
     ],
 
     /**
@@ -72,6 +73,9 @@ return [
         ],
         "tiers" => [
             "about" => "You can manage your project's pledge tiers here."
+        ],
+        "posts" => [
+            "about" => "You can manage your project's posts here. Posts act as updates and people who have contributed will be messaged automatically if they chose to receive mails about this project."
         ]
     ],
 
@@ -99,4 +103,30 @@ return [
             "info" => "You can write about the rewards here. You cannot use Markdown here.",
         ]
     ],
+
+    /**
+     * EDIT/NEW POST
+     */
+
+    "create_post" => "Create a new post",
+    "new_post" => [
+        "title" => "Create a new post",
+        "about" => "You can create a new post here.",
+    ],
+    "edit_post" => [
+        "title" => "Edit a  post",
+        "about" => "You can edit an existing post here. Please note that people who have donated will not be notified about these changes.",
+    ],
+    "post_form" => [
+        "title" => [
+            "name" => "Title",
+            "placeholder" => "e.g. Update #1: This is an update!",
+            "info" => "The title of your post should be short but sweet.",
+        ],
+        "content" => [
+            "name" => "Content",
+            "placeholder" => "You can write the content of your post here.",
+            "info" => "You can use Markdown here and drag and drop images here if you want to include them in your post.",
+        ]
+    ]
 ];

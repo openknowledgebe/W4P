@@ -39,10 +39,10 @@
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="title">
-                        {{ trans('backoffice.post_form.value.name') }}
+                        {{ trans('backoffice.post_form.title.name') }}
                     </label>
                     <input type="text" class="form-control" name="title"
-                           placeholder="{{ trans('backoffice.post_form.value.placeholder') }}"
+                           placeholder="{{ trans('backoffice.post_form.title.placeholder') }}"
                            value=
                            "<?php
                            if (Request::old('title')) {
