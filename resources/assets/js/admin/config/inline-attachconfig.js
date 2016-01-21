@@ -1,10 +1,5 @@
 var options = {
     /**
-     * URL which handles the data
-     */
-    uploadUrl: '/inline-attach',
-
-    /**
      * Name of the POST field where the file will be sent.
      * Defaults to 'file'.
      */

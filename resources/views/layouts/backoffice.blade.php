@@ -42,8 +42,6 @@
                                 <li>
                                     <a href="{{ URL::route('admin::platform') }}">{{ trans('backoffice.platform') }}</a>
                                 </li>
-
-
                             </ul>
                         </div>
                         <div>
@@ -62,8 +60,9 @@
 
     <script>
         options.extraParams = {
-            "token": "{{ W4P\Models\Setting::get('token') }}"
+            "token": "{{ W4P\Models\Setting::get('token') }}",
         };
+        options.uploadUrl = "{{ URL::route('postAttachment') }}";
         $('textarea.allowsinline').inlineattachment(options);
         $('input.dtp').datetimepicker({
             format:'Y-m-d H:i',

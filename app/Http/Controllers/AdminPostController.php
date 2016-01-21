@@ -19,7 +19,7 @@ class AdminPostController extends Controller
     public function index()
     {
         // Get all tiers
-        $posts = Post::all()->sortBy('created_at');
+        $posts = Post::all()->sortByDesc('created_at');
         return View::make('backoffice.posts.index')->with('posts', $posts);
     }
 
