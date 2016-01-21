@@ -68,3 +68,28 @@
 .about {
     background-color: $color-gray;
 }
+
+$date-width: 100px;
+$date-icon-box-height: 75px;
+
+.updates{
+
+    .date-flag{
+        height: $date-icon-box-height;
+        position: relative;
+        display: inline-block;
+        margin-left: 50%;
+        top: 90px;
+
+        .date{
+            font-size: 0.8em;
+            color: $color-primary;
+            width: $date-width;
+            position: relative;
+            left: -($date-width / 2.6);
+            margin-top: 5px;
+        }
+    }
+}
+
+

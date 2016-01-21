@@ -121,18 +121,20 @@
                     </div>
                 </div>
             </div>
-            <div role="tabpanel" class="tab-pane" id="updates">
+            <div role="tabpanel" class="tab-pane updates" id="updates">
                 @if (count($posts) == 0)
                     <p>The project's makers have not posted any updates yet!</p>
                 @endif
                     <?php
                     $n = 0;
                     foreach($posts as $post): $n++;?>
+                    <div class="date-flag">
+                        <img src="{{ URL::to('img/icon_flag.png') }}" width="35"/>
+                        <p class="date">{{ $post->created_at->format("F j, Y") }}</p>
+                    </div>
                     <div class="row">
-                        <article class="<?php echo ($n%2) ? 'col-md-6' : 'col-md-push-6 col-md-6' ?>">
-                            <span>
-                                {{ $post->created_at->format("F j, Y") }}
-                            </span>
+                        <article class="<?php echo ($n%2) ? 'col-md-5' : 'col-md-push-7 col-md-5' ?>">
+
                             <h3>{{ $post->title }}</h3>
                             <div>
                                 {!! Markdown::convertToHtml( $post->content) !!}
