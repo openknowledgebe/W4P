@@ -25,15 +25,12 @@ class CheckSetupInaccessible
             $settings[$setting->key] = $setting->value;
         }
         // Check if the settings are valid
-        if (
-            array_key_exists('pwd', $settings) &&
+        if (array_key_exists('pwd', $settings) &&
             array_key_exists('platform.name', $settings) &&
             array_key_exists('email.valid', $settings) &&
             array_key_exists('organisation.valid', $settings) &&
             array_key_exists('setup.complete', $settings) &&
-            Project::valid($request->project)
-        )
-        {
+            Project::valid($request->project)) {
             // If the settings are valid, check if the URL isn't setup
             if (str_contains($request->route()->getName(), 'setup::')) {
                 return redirect()->route('home');

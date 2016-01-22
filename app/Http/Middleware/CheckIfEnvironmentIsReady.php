@@ -25,15 +25,13 @@ class CheckIfEnvironmentIsReady
             $settings[$setting->key] = $setting->value;
         }
         // Check if the settings are invalid
-        if (
-            !array_key_exists('pwd', $settings) ||
+        if (!array_key_exists('pwd', $settings) ||
             !array_key_exists('platform.name', $settings) ||
             !array_key_exists('email.valid', $settings) ||
             !array_key_exists('organisation.valid', $settings) ||
             !Project::valid($request->project) ||
             !array_key_exists('setup.complete', $settings)
-        )
-        {
+        ) {
             if (!array_key_exists('pwd', $settings)) {
                 return redirect()->route('setup::index');
             }
@@ -56,6 +54,5 @@ class CheckIfEnvironmentIsReady
             return redirect()->route('setup::index');
         }
         return $next($request);
-
     }
 }

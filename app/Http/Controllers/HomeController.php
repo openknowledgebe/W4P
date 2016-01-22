@@ -31,10 +31,10 @@ class HomeController extends Controller
         $videoId = "";
 
         $videoProvider = null;
-        if (strpos($project->videoUrl, 'watch?v=') !== FALSE) {
+        if (strpos($project->videoUrl, 'watch?v=') !== false) {
             $videoProvider = "youtube";
         }
-        if (strpos($project->videoUrl, 'vimeo.com/') !== FALSE) {
+        if (strpos($project->videoUrl, 'vimeo.com/') !== false) {
             $videoProvider = "vimeo";
         }
 

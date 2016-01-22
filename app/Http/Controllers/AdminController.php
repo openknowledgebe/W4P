@@ -69,13 +69,14 @@ class AdminController extends Controller
             ]
         );
 
-        $validator->after(function($validator) {
-            if (
-                // Check if the end date is earlier than the start date
-                date(Input::get('projectStartDate')) >
-                date(Input::get('projectEndDate'))
-            ) {
-                $validator->errors()->add('projectEndDate', 'The end date is set before the start date. It must be set after the start date.');
+        $validator->after(function ($validator) {
+            // Check if the end date is earlier than the start date
+            if (date(Input::get('projectStartDate')) > date(Input::get('projectEndDate'))) {
+                $validator->errors()->add(
+                    'projectEndDate',
+                    'The end date is set before the start date.' .
+                    'It must be set after the start date.'
+                );
             }
         });
 
@@ -83,24 +84,21 @@ class AdminController extends Controller
         if (!$validator->fails()) {
 
             $image = Input::file('projectLogo');
-            if ($image != null && $image->isValid())
-            {
+            if ($image != null && $image->isValid()) {
                 // Set the destination path for the platform logo
                 $destinationPath = public_path() . '/project/logo.png';
                 Image::make($image->getRealPath())->save($destinationPath);
             }
 
             $image = Input::file('projectBanner');
-            if ($image != null && $image->isValid())
-            {
+            if ($image != null && $image->isValid()) {
                 // Set the destination path for the platform logo
                 $destinationPath = public_path() . '/project/banner.png';
                 Image::make($image->getRealPath())->save($destinationPath);
             }
 
             $video = Input::file('projectVideo');
-            if ($video != null && $video->isValid())
-            {
+            if ($video != null && $video->isValid()) {
                 $destinationPath = public_path() . '/project/video.mp4';
                 // Move the video
                 $video->move($destinationPath);
@@ -173,8 +171,7 @@ class AdminController extends Controller
         // Check if the validator fails
         if (!$validator->fails()) {
             $image = Input::file('organisationLogo');
-            if ($image != null && $image->isValid())
-            {
+            if ($image != null && $image->isValid()) {
                 // Set the destination path for the platform logo
                 $destinationPath = public_path() . '/organisation/logo.png';
                 Image::make($image->getRealPath())->resize(400, 400)->save($destinationPath);
@@ -236,8 +233,7 @@ class AdminController extends Controller
         // Check if the validator fails
         if (!$validator->fails()) {
             $image = Input::file('platformOwnerLogo');
-            if ($image != null && $image->isValid())
-            {
+            if ($image != null && $image->isValid()) {
                 // Set the destination path for the platform logo
                 $destinationPath = public_path() . '/platform/logo.png';
                 Image::make($image->getRealPath())->resize(400, 400)->save($destinationPath);
@@ -307,7 +303,7 @@ class AdminController extends Controller
             Setting::set('email.name', Input::get('emailName'));
             // Test configuration
             try {
-                Mail::queue('mails.test', [], function($message) {
+                Mail::queue('mails.test', [], function ($message) {
                     $message->to(Input::get('emailFrom'), Input::get('emailName'))
                         ->subject(trans('setup.generic.mailSuccess'));
                 });

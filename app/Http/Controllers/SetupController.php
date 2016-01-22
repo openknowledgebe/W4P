@@ -199,8 +199,7 @@ class SetupController extends Controller
         // Check if the validator fails
         if (!$validator->fails()) {
             $image = Input::file('platformOwnerLogo');
-            if ($image != null && $image->isValid())
-            {
+            if ($image != null && $image->isValid()) {
                 // Set the destination path for the platform logo
                 $destinationPath = public_path() . '/platform/logo.png';
                 Image::make($image->getRealPath())->resize(400, 400)->save($destinationPath);
@@ -237,8 +236,7 @@ class SetupController extends Controller
         // Check if the validator fails
         if (!$validator->fails()) {
             $image = Input::file('organisationLogo');
-            if ($image != null && $image->isValid())
-            {
+            if ($image != null && $image->isValid()) {
                 // Set the destination path for the platform logo
                 $destinationPath = public_path() . '/organisation/logo.png';
                 Image::make($image->getRealPath())->resize(400, 400)->save($destinationPath);
@@ -316,7 +314,7 @@ class SetupController extends Controller
             Setting::set('email.name', Input::get('emailName'));
             // Test configuration
             try {
-                Mail::queue('mails.test', [], function($message) {
+                Mail::queue('mails.test', [], function ($message) {
                     $message->to(Input::get('emailFrom'), Input::get('emailName'))
                         ->subject(trans('setup.generic.mailSuccess'));
                 });

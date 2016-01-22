@@ -34,14 +34,18 @@ class AdminAuthController extends Controller
     {
         // Check if the credentials are correct, otherwise redirect back
         $password = Input::get('password');
+
         if (Hash::check($password, Setting::get('pwd'))) {
             // Generate a random token
             $token = str_random(50);
+
             // Set a random token in the session
             Session::put('token', $token);
             Setting::set('token', $token);
+
             // Redirect to the index (dashboard)
             return Redirect::route('admin::index');
+
         } else {
             return Redirect::back()->withErrors(["This password is incorrect."]);
         }
