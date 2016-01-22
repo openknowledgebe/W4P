@@ -12,7 +12,9 @@ use W4P\Models\DonationType;
 use W4P\Models\DonationKind; // fake model
 
 use View;
-
+use Validator;
+use Session;
+use Redirect;
 
 class AdminGoalController extends Controller
 {
@@ -53,16 +55,77 @@ class AdminGoalController extends Controller
 
     public function storeType($kind)
     {
-        dd(Input::all());
+        $success = true;
+        $errors = [];
+
+        // Validate
+        $validator = Validator::make(
+            Input::all(),
+            [
+                'name' => 'required|min:4',
+                'description' => 'required|min:4',
+                'unit_description' => 'required|min:4',
+                'required_amount' => 'required|min:1|numeric',
+            ]
+        );
+
+        // Check if the validator fails
+        if (!$validator->fails()) {
+            // Save the tier
+            $data = Input::all();
+            $data['kind'] = $kind;
+            DonationType::create($data);
+            Session::flash('info', trans('backoffice.flash.goalTypeSaved'));
+        } else {
+            // Validation has failed. Set success to false. Set validator messages
+            $success = false;
+            $errors = $validator->messages();
+        }
+
+        if ($success) {
+            return Redirect::route('admin::goalsDetail', $kind);
+        } else {
+            return Redirect::back()->withErrors($errors)->withInput(Input::all());
+        }
     }
 
     public function updateType($kind, $id)
     {
-        dd(Input::all());
+        $success = true;
+        $errors = [];
+
+        // Validate
+        $validator = Validator::make(
+            Input::all(),
+            [
+                'name' => 'required|min:4',
+                'description' => 'required|min:4',
+                'unit_description' => 'required|min:4',
+                'required_amount' => 'required|min:1|numeric',
+            ]
+        );
+
+        // Check if the validator fails
+        if (!$validator->fails()) {
+            // Save the tier
+            DonationType::find($id)->update(Input::all());
+            Session::flash('info', trans('backoffice.flash.goalTypeUpdated'));
+        } else {
+            // Validation has failed. Set success to false. Set validator messages
+            $success = false;
+            $errors = $validator->messages();
+        }
+
+        if ($success) {
+            return Redirect::route('admin::goalsDetail', $kind);
+        } else {
+            return Redirect::back()->withErrors($errors)->withInput(Input::all());
+        }
     }
 
     public function deleteType($kind, $id)
     {
-        dd($id);
+        DonationType::find($id)->delete();
+        return Redirect::route('admin::goalsDetail', $kind);
     }
 }
