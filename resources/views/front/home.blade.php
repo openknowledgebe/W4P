@@ -61,11 +61,11 @@
                 <section class="about-video">
                     <h2>{{ trans('home.aboutproject') }}</h2>
                     <br/>
-                    @if ($project->videoProvider == "vimeo")
+                    @if ($video_provider == "vimeo")
                         <iframe src="https://player.vimeo.com/video/{{ $video_id }}?color=FFFFFF"
                                 width="500" height="420" frameborder="0" webkitallowfullscreen  mozallowfullscreen allowfullscreen>
                         </iframe>
-                    @elseif ($project->videoProvider == "youtube")
+                    @elseif ($video_provider == "youtube")
                         <iframe width="500" height="420" frameborder="0" webkitallowfullscreen  mozallowfullscreen allowfullscreen
                                 src="http://www.youtube.com/embed/{{ $video_id }}?autoplay=0">
                         </iframe>

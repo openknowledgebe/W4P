@@ -17,6 +17,17 @@ Route::group(['middleware' => ['web']], function () {
 
     /*
     |--------------------------------------------------------------------------
+    | Posts
+    |--------------------------------------------------------------------------
+    */
+
+    Route::group(['prefix' => 'post', 'as' => 'post::'], function () {
+        Route::get('/', ['as' => 'index', 'uses' => 'PostController@index']);
+        Route::get('/{id}', ['as' => 'detail', 'uses' => 'PostController@detail']);
+    });
+
+    /*
+    |--------------------------------------------------------------------------
     | Setup routes
     |--------------------------------------------------------------------------
     | Routes for the application setup (on the first go).

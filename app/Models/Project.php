@@ -8,7 +8,7 @@ class Project extends Model
 {
     protected $table = "project";
     public $timestamps = true;
-    protected $fillable = ["title", "brief", "description", "videoProvider", "videoUrl", "starts_at", "ends_at"];
+    protected $fillable = ["title", "brief", "description", "videoUrl", "starts_at", "ends_at"];
     protected $dates = ['created_at', 'updated_at', 'deleted_at', 'starts_at', 'ends_at'];
 
     /**

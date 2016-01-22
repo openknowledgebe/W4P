@@ -30,25 +30,23 @@ class HomeController extends Controller
         // Extract the video url
         $videoId = "";
 
+        $videoProvider = null;
+        if (strpos($project->videoUrl, 'watch?v=') !== FALSE) {
+            $videoProvider = "youtube";
+        }
+        if (strpos($project->videoUrl, 'vimeo.com/') !== FALSE) {
+            $videoProvider = "vimeo";
+        }
+
         // Check the video provider
-        switch ($project->videoProvider) {
+        switch ($videoProvider) {
             case "vimeo":
                 $array = explode("vimeo.com/", $project->videoUrl);
-                $string = last($array);
-                $array = explode("/", $string);
-                $string = $array[0];
-                // split on "vimeo.com/"
-                // and again on "/"
-                $videoId = $string;
+                $videoId = explode("/", last($array))[0];
                 break;
             case "youtube":
                 $array = explode("watch?v=", $project->videoUrl);
-                $string = last($array);
-                $array = explode("&", $string);
-                $string = $array[0];
-                // split on "watch?v="
-                // and again on "&"
-                $videoId = $string;
+                $videoId = explode("&", last($array))[0];
                 break;
             default:
                 break;
@@ -67,6 +65,7 @@ class HomeController extends Controller
             ->with("project", $project)
             ->with("posts", $posts)
             ->with("video_id", $videoId)
+            ->with("video_provider", $videoProvider)
             ->with("data", Setting::getBeginsWith('organisation.'))
             ->with("tiers", Tier::all()->sortBy('pledge'))
             ->with("hoursleft", $leftHours)

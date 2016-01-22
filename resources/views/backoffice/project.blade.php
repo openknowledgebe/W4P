@@ -136,19 +136,6 @@
                     </span>
                         </div>
                         <div class="form-group">
-                            <label for="projectVideoProvider">
-                                {{ trans('backoffice.page.project.fields.video.name') }}
-                            </label>
-                            <select class="form-control" name="projectVideoProvider">
-                                <option value="vimeo" @if ($data["project"]->videoProvider == "vimeo") selected @endif>Vimeo</option>
-                                <option value="youtube" @if ($data["project"]->videoProvider == "youtube") selected @endif>YouTube</option>
-                                <option value="null" @if ($data["project"]->videoProvider == null || $data["project"]->videoProvider == "null") selected @endif>No video</option>
-                            </select>
-            <span id="helpBlock" class="help-block">
-                        {{ trans('backoffice.page.project.fields.video.info') }}
-                    </span>
-                        </div>
-                        <div class="form-group">
                             <label for="projectVideo">
                                 {{ trans('backoffice.page.project.fields.video-url.name') }}
                             </label>
