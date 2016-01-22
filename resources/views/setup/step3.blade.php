@@ -37,7 +37,7 @@
                                echo $data["organisationName"];
                            }
                            ?>"
-                    >
+                           maxlength="255">
                     <span id="helpBlock" class="help-block">
                         {{ trans('setup.detail.organisation.fields.name.info') }}
                     </span>
@@ -81,7 +81,7 @@
                                echo $data["organisationWebsite"];
                            }
                            ?>"
-                    >
+                           maxlength="255">
                     <span id="helpBlock" class="help-block">
                         {{ trans('setup.detail.organisation.fields.website.info') }}
                     </span>

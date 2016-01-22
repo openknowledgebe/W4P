@@ -41,7 +41,7 @@
                                echo $data["emailHost"];
                            }
                            ?>"
-                    >
+                           maxlength="255">
                     <span id="helpBlock" class="help-block">{{ trans('setup.detail.mail.fields.host.info') }}</span>
                 </div>
 
@@ -59,7 +59,7 @@
                                echo $data["emailPort"];
                            }
                            ?>"
-                    >
+                           maxlength="255">
                     <span id="helpBlock" class="help-block">{{ trans('setup.detail.mail.fields.port.info') }}</span>
                 </div>
 
@@ -77,7 +77,7 @@
                                echo $data["emailUsername"];
                            }
                            ?>"
-                    >
+                           maxlength="255">
                     <span id="helpBlock" class="help-block">{{ trans('setup.detail.mail.fields.username.info') }}</span>
                 </div>
 
@@ -95,7 +95,7 @@
                                echo $data["emailPassword"];
                            }
                            ?>"
-                    >
+                           maxlength="255">
                     <span id="helpBlock" class="help-block">{{ trans('setup.detail.mail.fields.password.info') }}</span>
                 </div>
 
@@ -144,7 +144,7 @@
                                echo $data["emailFrom"];
                            }
                            ?>"
-                    >
+                           maxlength="255">
                     <span id="helpBlock" class="help-block">{{ trans('setup.detail.mail.fields.from.info') }}</span>
                 </div>
 
@@ -162,7 +162,7 @@
                                echo $data["emailName"];
                            }
                            ?>"
-                    >
+                           maxlength="255">
                     <span id="helpBlock" class="help-block">{{ trans('setup.detail.mail.fields.name.info') }}</span>
                 </div>
 

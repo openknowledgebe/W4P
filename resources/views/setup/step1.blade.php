@@ -33,8 +33,8 @@
                     <label for="password">
                         {{ trans('setup.detail.admin.fields.password.name') }}
                     </label>
-                    <input type="password" class="form-control" id="password" name="password"
-                           placeholder="{{ trans('setup.detail.admin.fields.password.placeholder') }}">
+                    <input  type="password" class="form-control" id="password" name="password"
+                           placeholder="{{ trans('setup.detail.admin.fields.password.placeholder') }}" maxlength="255">
                     <span id="helpBlock" class="help-block">
                         {{ trans('setup.detail.admin.fields.password.info') }}
                     </span>
@@ -44,7 +44,7 @@
                         {{ trans('setup.detail.admin.fields.passwordConfirm.name') }}
                     </label>
                     <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm"
-                           placeholder="{{ trans('setup.detail.admin.fields.passwordConfirm.placeholder') }}">
+                           placeholder="{{ trans('setup.detail.admin.fields.passwordConfirm.placeholder') }}" maxlength="255">
                     <span id="helpBlock" class="help-block">
                         {{ trans('setup.detail.admin.fields.passwordConfirm.info') }}
                     </span>

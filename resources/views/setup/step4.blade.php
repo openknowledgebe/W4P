@@ -41,7 +41,7 @@
                                echo $data["projectTitle"];
                            }
                            ?>"
-                    >
+                           maxlength="255">
                     <span id="helpBlock" class="help-block">{{ trans('setup.detail.project.fields.title.info') }}</span>
                 </div>
                 <div class="form-group">
@@ -55,7 +55,7 @@
                            } else {
                                echo $data["projectBrief"];
                            }?>"
-                    >
+                           maxlength="255">
                     <span id="helpBlock" class="help-block">
                         {{ trans('setup.detail.project.fields.brief.info') }}
                     </span>

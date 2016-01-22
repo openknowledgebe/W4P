@@ -37,7 +37,7 @@
                                echo $data["platformOwnerName"];
                            }
                            ?>"
-                    >
+                           maxlength="255">
                     <span id="helpBlock" class="help-block">
                         {{ trans('setup.detail.platform.fields.owner.info') }}
                     </span>
@@ -68,7 +68,7 @@
                                echo $data["analyticsId"];
                            }
                            ?>"
-                    >
+                           maxlength="255">
                     <span id="helpBlock" class="help-block">
                         {{ trans('setup.detail.platform.fields.gaid.info') }}
                     </span>
@@ -84,7 +84,7 @@
                                echo $data["mollieApiKey"];
                            }
                            ?>"
-                    >
+                           maxlength="255">
                     <span id="helpBlock" class="help-block">
                         {{ trans('setup.detail.platform.fields.mollie.info') }}
                     </span>

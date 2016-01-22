@@ -43,7 +43,7 @@
                                        echo $data["project"]->title;
                                    }
                                    ?>"
-                            >
+                                   maxlength="255">
                             <span id="helpBlock" class="help-block">{{ trans('setup.detail.project.fields.title.info') }}</span>
                         </div>
                         <div class="form-group">
@@ -57,7 +57,7 @@
                                    } else if (isset($data["project"]->brief)){
                                        echo $data["project"]->brief;
                                    }?>"
-                            >
+                                   maxlength="255">
                     <span id="helpBlock" class="help-block">
                         {{ trans('setup.detail.project.fields.brief.info') }}
                     </span>
@@ -148,7 +148,7 @@
                                    } else if (isset($data["project"]->videoUrl)){
                                        echo $data["project"]->videoUrl;
                                    }?>"
-                            >
+                                   maxlength="255">
                     <span id="helpBlock" class="help-block">
                         {{ trans('backoffice.page.project.fields.video-url.info') }}
                     </span>

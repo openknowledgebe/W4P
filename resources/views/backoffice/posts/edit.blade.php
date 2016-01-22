@@ -51,7 +51,7 @@
                                echo $data["title"];
                            }
                            ?>"
-                    >
+                           maxlength="255">
                     <span id="helpBlock" class="help-block">
                         {{ trans('backoffice.post_form.title.info') }}
                     </span>
