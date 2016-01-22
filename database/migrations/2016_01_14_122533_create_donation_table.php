@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBackersTable extends Migration
+class CreateDonationTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,12 @@ class CreateBackersTable extends Migration
      */
     public function up()
     {
-        Schema::create('backer', function (Blueprint $table) {
+        Schema::create('donation', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('first_name');
+            $table->string('last_name');
             $table->string('email');
+            $table->decimal('currency');
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ class CreateBackersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('backer');
+        Schema::drop('donation');
     }
 }

@@ -145,8 +145,8 @@
                                    "<?php
                                    if (Request::old('projectVideo')) {
                                        echo Request::old('projectVideo');
-                                   } else if (isset($data["project"]->videoUrl)){
-                                       echo $data["project"]->videoUrl;
+                                   } else if (isset($data["project"]->video_url)){
+                                       echo $data["project"]->video_url;
                                    }?>"
                                    maxlength="255">
                     <span id="helpBlock" class="help-block">

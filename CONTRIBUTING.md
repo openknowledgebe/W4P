@@ -12,6 +12,10 @@ You can add a feature to W4P yourself, but it might be useful to discuss the top
 
 Remember, any additions or bug fixes **must have all tests passing**, with **new tests for new functionality**.
 
+## Code style
+
+PSR-2.
+
 ## Unit tests
 
 Of course, W4P contains unit tests. There are two test suites included in the application:

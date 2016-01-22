@@ -31,21 +31,21 @@ class HomeController extends Controller
         $videoId = "";
 
         $videoProvider = null;
-        if (strpos($project->videoUrl, 'watch?v=') !== false) {
+        if (strpos($project->video_url, 'watch?v=') !== false) {
             $videoProvider = "youtube";
         }
-        if (strpos($project->videoUrl, 'vimeo.com/') !== false) {
+        if (strpos($project->video_url, 'vimeo.com/') !== false) {
             $videoProvider = "vimeo";
         }
 
         // Check the video provider
         switch ($videoProvider) {
             case "vimeo":
-                $array = explode("vimeo.com/", $project->videoUrl);
+                $array = explode("vimeo.com/", $project->video_url);
                 $videoId = explode("/", last($array))[0];
                 break;
             case "youtube":
-                $array = explode("watch?v=", $project->videoUrl);
+                $array = explode("watch?v=", $project->video_url);
                 $videoId = explode("&", last($array))[0];
                 break;
             default:

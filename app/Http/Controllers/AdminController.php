@@ -110,8 +110,7 @@ class AdminController extends Controller
                 'title' => Input::get('projectTitle'),
                 'brief' => Input::get('projectTitle'),
                 'description' => Input::get('projectDescription'),
-                'videoProvider' => Input::get('projectVideoProvider'),
-                'videoUrl' => Input::get('projectVideo'),
+                'video_url' => Input::get('projectVideo'),
                 'starts_at' => Carbon::createFromFormat('Y-m-d H:i', Input::get('projectStartDate')),
                 'ends_at' => Carbon::createFromFormat('Y-m-d H:i', Input::get('projectEndDate')),
             ]);
