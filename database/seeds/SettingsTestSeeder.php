@@ -26,7 +26,7 @@ class SettingsTestSeeder extends Seeder
             'title' => "Test project",
             'brief' => "Test project description",
             'description' => "Long description",
-            'videoUrl' => "",
+            'video_url' => "",
             'starts_at' => Carbon::now(),
             'ends_at' => Carbon::now()->addMonth()
         ]);

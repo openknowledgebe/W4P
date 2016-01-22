@@ -14,4 +14,13 @@ class Donation extends Model
         "email",
         "currency"
     ];
+
+    public function donationItems()
+    {
+        return $this->hasMany(
+            'W4P\Models\DonationItem',
+            'donation_id',
+            'id'
+        );
+    }
 }

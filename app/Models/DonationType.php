@@ -15,4 +15,13 @@ class DonationType extends Model
         "required_amount",
         "kind"
     ];
+
+    public function donationItems()
+    {
+        return $this->hasMany(
+            'W4P\Models\DonationItem',
+            'donation_type_id',
+            'id'
+        );
+    }
 }

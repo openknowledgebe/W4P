@@ -12,4 +12,22 @@ class DonationItem extends Model
         "donation_id",
         "donation_type_id",
     ];
+
+    public function donation()
+    {
+        return $this->belongsTo(
+            'W4P\Models\Donation',
+            'id',
+            'donation_id'
+        );
+    }
+
+    public function donationType()
+    {
+        return $this->hasOne(
+            'W4P\Models\DonationType',
+            'id',
+            'donation_type_id'
+        );
+    }
 }
