@@ -117,7 +117,7 @@ class AdminController extends Controller
                 'starts_at' => Carbon::createFromFormat('Y-m-d H:i', Input::get('projectStartDate')),
                 'ends_at' => Carbon::createFromFormat('Y-m-d H:i', Input::get('projectEndDate')),
             ]);
-            Session::flash('info', "Your project's details were updated successfully.");
+            Session::flash('info', trans('backoffice.flash.project_update_success'));
         } else {
             // Validation has failed. Set success to false. Set validator messages
             $success = false;
@@ -183,7 +183,7 @@ class AdminController extends Controller
             Setting::set('organisation.description', Input::get('organisationDescription'));
             Setting::set('organisation.website', Input::get('organisationWebsite'));
             Setting::set('organisation.valid', 'true');
-            Session::flash('info', "Your organisation's details were updated successfully.");
+            Session::flash('info', trans('backoffice.flash.org_update_success'));
         } else {
             // Validation has failed. Set success to false. Set validator messages
             $success = false;
@@ -248,7 +248,7 @@ class AdminController extends Controller
             Setting::set('platform.analytics-id', Input::get('analyticsId'));
             // Save the Mollie API key
             Setting::set('platform.mollie-key', Input::get('mollieApiKey'));
-            Session::flash('info', "Your platform's details were updated successfully.");
+            Session::flash('info', trans('backoffice.flash.platform_update_success'));
         } else {
             // Validation has failed. Set success to false. Set validator messages
             $success = false;

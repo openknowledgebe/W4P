@@ -14,12 +14,12 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all()->sortByDesc('created_at');
-        return View::make('project.posts.index')->with('posts', $posts);
+        return View::make('front.posts.index')->with('posts', $posts);
     }
 
     public function detail($id)
     {
         $post = Post::find($id);
-        return View::make('project.posts.detail')->with('post', $post);
+        return View::make('front.posts.detail')->with('post', $post);
     }
 }

@@ -51,7 +51,7 @@ class AdminPostController extends Controller
                 'title' => Input::get('title'),
                 'content' => Input::get('content'),
             ]);
-            Session::flash('info', "A post was successfully created.");
+            Session::flash('info', trans('backoffice.flash.post_create_success'));
         } else {
             // Validation has failed. Set success to false. Set validator messages
             $success = false;
@@ -98,7 +98,7 @@ class AdminPostController extends Controller
                 "title" => Input::get('title'),
                 "content" => Input::get('content')
             ]);
-            Session::flash('info', "The post was successfully updated.");
+            Session::flash('info', trans('backoffice.flash.post_update_success'));
         } else {
             // Validation has failed. Set success to false. Set validator messages
             $success = false;

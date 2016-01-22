@@ -51,7 +51,7 @@ class AdminTierController extends Controller
                 'pledge' => Input::get('tierValue'),
                 'description' => Input::get('tierDescription'),
             ]);
-            Session::flash('info', "A tier was successfully created.");
+            Session::flash('info', trans('backoffice.flash.tier_create_success'));
         } else {
             // Validation has failed. Set success to false. Set validator messages
             $success = false;
@@ -100,7 +100,7 @@ class AdminTierController extends Controller
                 'pledge' => Input::get('tierValue'),
                 'description' => Input::get('tierDescription'),
             ]);
-            Session::flash('info', "The tier was successfully updated.");
+            Session::flash('info', trans('backoffice.flash.tier_update_success'));
         } else {
             // Validation has failed. Set success to false. Set validator messages
             $success = false;

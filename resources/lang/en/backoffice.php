@@ -30,6 +30,20 @@ return [
     ],
 
     /**
+     * FLASH MESSAGES
+     */
+
+    "flash" => [
+        "project_update_success" => "Your project's details were updated successfully.",
+        "org_update_success" => "Your organisation's details were updated successfully.",
+        "platform_update_success" => "Your platform's details were updated successfully.",
+        "post_create_success" => "A post was successfully created.",
+        "post_update_success" => "A post was successfully updated.",
+        "tier_create_success" => "A tier was successfully created.",
+        "tier_update_success" => "A post was successfully updated.",
+    ],
+
+    /**
      * PAGE TITLES & DESCRIPTIONS
      * (for pages that already have labels defined in setup translation file)
      */
