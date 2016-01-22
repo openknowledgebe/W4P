@@ -12,14 +12,27 @@ return [
     "organisation" => "Organisation",
     "platform" => "Platform",
     "posts" => "Posts",
+    "goals" => "Goals",
     "backers" => "Backers",
+    "donations" => "Donations",
     "dashboard" => "Dashboard",
+    "types" => 'type|types',
+    "goal_overview" => "Goal overview",
     "email" => "Email",
     "save" => "Save",
     "create" => "Create",
     "edit" => "Edit",
     "delete" => "Delete",
     "create_tier" => "Create a new tier",
+
+    /**
+     * KINDS OF TYPES
+     */
+
+    "manpower" => "People",
+    "material" => "Materials",
+    "coaching" => "Coaching",
+    "currency" => "Money",
 
     /**
      * WARNINGS
@@ -96,7 +109,16 @@ return [
         ],
         "email" => [
             "about" => "You can adjust your mailer configuration here. Please note that we will be sending a test mail to ensure that this configuration is correct."
-        ]
+        ],
+        "goals" => [
+            "about" => "You can manage your goals here.",
+            "desc" => "Description:",
+            "unit_desc" => "Unit description:",
+            "required_amount" => "Required units:"
+        ],
+        "goal_kind" => [
+            "about" => "You can manage all types of contributions that donors can do in this category. You can create new subcategories for this kind of contribution. (e.g. for people you can add 'cook')."
+        ],
     ],
 
     /**

@@ -87,6 +87,9 @@ Route::group(['middleware' => ['web']], function () {
             // Email
             Route::get('/email', ['as' => 'email', 'uses' => 'AdminController@email']);
             Route::post('/email', ['as' => 'email', 'uses' => 'AdminController@updateEmail']);
+            // Goals
+            Route::get('/goals', ['as' => 'goals', 'uses' => 'AdminGoalController@index']);
+            Route::get('/goals/{kind}', ['as' => 'goalsDetail', 'uses' => 'AdminGoalController@kind']);
         }
     );
 

@@ -16,6 +16,7 @@ class CreateDonationItemTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('donation_id');
             $table->unsignedInteger('donation_type_id');
+            $table->datetime('confirmed_at')->nullable()->default(null);
             $table->timestamps();
         });
     }

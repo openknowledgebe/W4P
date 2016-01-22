@@ -30,10 +30,16 @@
                                         <li>
                                             <a href="{{ URL::route('admin::posts') }}">{{ trans('backoffice.posts') }}</a>
                                         </li>
+                                        <li>
+                                            <a href="{{ URL::route('admin::goals') }}">{{ trans('backoffice.goals') }}</a>
+                                        </li>
                                         <li role="separator" class="divider"></li>
                                         <li class="separator">View</li>
                                         <li>
-                                            <a href="#" class="disabled">{{ trans('backoffice.backers') }}</a>
+                                            <a href="#" class="disabled">{{ trans('backoffice.goal_overview') }}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="disabled">{{ trans('backoffice.donations') }}</a>
                                         </li>
                                     </ul>
                                 <li>
