@@ -14,6 +14,7 @@ return [
     "posts" => "Posts",
     "backers" => "Backers",
     "dashboard" => "Dashboard",
+    "email" => "Email",
     "save" => "Save",
     "create" => "Create",
     "edit" => "Edit",
@@ -41,6 +42,8 @@ return [
         "post_update_success" => "A post was successfully updated.",
         "tier_create_success" => "A tier was successfully created.",
         "tier_update_success" => "A post was successfully updated.",
+        "mail_validation_failed" => "There was a problem sending a test message using this new configuration. Please check the configuration and try again.",
+        "mail_validation_success" => "Your new email configuration works!"
     ],
 
     /**
@@ -90,6 +93,9 @@ return [
         ],
         "posts" => [
             "about" => "You can manage your project's posts here. Posts act as updates and people who have contributed will be messaged automatically if they chose to receive mails about this project."
+        ],
+        "email" => [
+            "about" => "You can adjust your mailer configuration here. Please note that we will be sending a test mail to ensure that this configuration is correct."
         ]
     ],
 

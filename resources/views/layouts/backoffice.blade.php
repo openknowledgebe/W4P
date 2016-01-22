@@ -42,6 +42,9 @@
                                 <li>
                                     <a href="{{ URL::route('admin::platform') }}">{{ trans('backoffice.platform') }}</a>
                                 </li>
+                                <li>
+                                    <a href="{{ URL::route('admin::email') }}">{{ trans('backoffice.email') }}</a>
+                                </li>
                             </ul>
                         </div>
                         <div>

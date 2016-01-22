@@ -84,6 +84,9 @@ Route::group(['middleware' => ['web']], function () {
             Route::get('/posts/{id}', ['as' => 'editPost', 'uses' => 'AdminPostController@edit']);
             Route::post('/posts/{id}', ['as' => 'updatePost', 'uses' => 'AdminPostController@update']);
             Route::delete('/posts/{id}', ['as' => 'deletePost', 'uses' => 'AdminPostController@delete']);
+            // Email
+            Route::get('/email', ['as' => 'email', 'uses' => 'AdminController@email']);
+            Route::post('/email', ['as' => 'email', 'uses' => 'AdminController@updateEmail']);
         }
     );
 

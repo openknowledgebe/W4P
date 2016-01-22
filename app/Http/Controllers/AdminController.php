@@ -262,4 +262,74 @@ class AdminController extends Controller
         }
     }
 
+    public function email()
+    {
+        $data = [
+            "emailHost" => Setting::get('email.host'),
+            "emailPort" => Setting::get('email.port'),
+            "emailUsername" => Setting::get('email.username'),
+            "emailPassword" => Setting::get('email.password'),
+            "emailEncryption" => Setting::get('email.encryption'),
+            "emailFrom" => Setting::get('email.from'),
+            "emailName" => Setting::get('email.name'),
+        ];
+        return View::make('backoffice.email')
+            ->with('data', $data);
+    }
+
+    public function updateEmail()
+    {
+        $success = true;
+        $errors = [];
+
+        $validator = Validator::make(
+            Input::all(),
+            [
+                'emailHost' => 'required|min:3',
+                'emailPort' => 'required|min:1',
+                'emailFrom' => 'required|email|min:3',
+                'emailName' => 'required|min:3',
+                'emailEncryption' => 'required|in:tls,null',
+            ]
+        );
+        // Check if the validator fails
+        if (!$validator->fails()) {
+            Setting::set('email.host', Input::get('emailHost'));
+            Setting::set('email.port', Input::get('emailPort'));
+            Setting::set('email.username', Input::get('emailUsername'));
+            Setting::set('email.password', Input::get('emailPassword'));
+            $encryption = Input::get('emailEncryption');
+            if ($encryption == "null") {
+                $encryption = "";
+            }
+            Setting::set('email.encryption', $encryption);
+            Setting::set('email.from', Input::get('emailFrom'));
+            Setting::set('email.name', Input::get('emailName'));
+            // Test configuration
+            try {
+                Mail::queue('mails.test', [], function($message) {
+                    $message->to(Input::get('emailFrom'), Input::get('emailName'))
+                        ->subject(trans('setup.generic.mailSuccess'));
+                });
+                Session::flash('info', trans('backoffice.flash.mail_validation_success'));
+            } catch (\Exception $ex) {
+                $success = false;
+                $errors = [
+                    trans('backoffice.flash.mail_validation_failed')
+                ];
+            }
+
+        } else {
+            // Validation has failed. Set success to false. Set validator messages
+            $success = false;
+            $errors = $validator->messages();
+        }
+
+        if ($success) {
+            return Redirect::route('admin::email');
+        } else {
+            return Redirect::back()->withErrors($errors)->withInput(Input::all());
+        }
+    }
+
 }
