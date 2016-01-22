@@ -90,6 +90,32 @@ Route::group(['middleware' => ['web']], function () {
             // Goals
             Route::get('/goals', ['as' => 'goals', 'uses' => 'AdminGoalController@index']);
             Route::get('/goals/{kind}', ['as' => 'goalsDetail', 'uses' => 'AdminGoalController@kind']);
+
+            // Create a new goal type
+            Route::get(
+                '/goals/{kind}/new',
+                ['as' => 'goalsTypeCreate', 'uses' => 'AdminGoalController@createType']
+            );
+            Route::post(
+                '/goals/{kind}/new',
+                ['as' => 'goalsTypeCreate', 'uses' => 'AdminGoalController@storeType']
+            );
+
+            // Edit an existing goal type
+            Route::get(
+                '/goals/{kind}/{id}/edit',
+                ['as' => 'goalsTypeEdit', 'uses' => 'AdminGoalController@editType']
+            );
+            Route::post(
+                '/goals/{kind}/{id}/edit',
+                ['as' => 'goalsTypeEdit', 'uses' => 'AdminGoalController@updateType']
+            );
+
+            // Delete an existing goal type
+            Route::delete(
+                '/goals/{kind}/{id}/delete',
+                ['as' => 'goalsTypeDelete', 'uses' => 'AdminGoalController@deleteType']
+            );
         }
     );
 

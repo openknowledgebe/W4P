@@ -15,6 +15,8 @@
             <h1>{{ trans('backoffice.' . $kind) }}</h1>
             <p>{{ trans('backoffice.page.goal_kind.about') }}</p>
             <hr/>
+            <a href="{{ URL::route('admin::goalsTypeCreate', $kind) }}" class="btn-default btn btn-sm">{{ trans('backoffice.create') }}</a>
+            <hr/>
             <section>
                 @foreach ($donationTypes as $type)
                 <div class="panel panel-default">
@@ -22,7 +24,7 @@
                         <h3 class="panel-title">
                         {{ $type->name }}
                         </h3>
-                        <a href="#" class="pull-right btn-default btn btn-sm">Edit</a>
+                        <a href="{{ URL::route('admin::goalsTypeEdit', [$kind, $type->id]) }}" class="pull-right btn-default btn btn-sm">Edit</a>
                     </div>
                     <div class="panel-body">
                         <strong>{{ trans('backoffice.page.goals.desc') }}</strong>
