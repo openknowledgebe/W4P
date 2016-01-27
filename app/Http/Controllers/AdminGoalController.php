@@ -18,13 +18,14 @@ use Redirect;
 
 class AdminGoalController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $donationTypes = DonationType::all()->groupBy('kind');
         $donationKinds = DonationKind::all();
         return View::make('backoffice.goals.index')
             ->with('donationTypes', $donationTypes)
-            ->with('donationKinds', $donationKinds);
+            ->with('donationKinds', $donationKinds)
+            ->with('currency', $request->project->currency);
     }
 
     public function kind($kind)
@@ -127,5 +128,44 @@ class AdminGoalController extends Controller
     {
         DonationType::find($id)->delete();
         return Redirect::route('admin::goalsDetail', $kind);
+    }
+
+    public function currency(Request $request)
+    {
+        return View::make('backoffice.goals.currency')
+            ->with('currency', $request->project->currency);
+    }
+
+    public function updateCurrency(Request $request)
+    {
+        $success = true;
+        $errors = [];
+
+        $validator = Validator::make(
+            [
+                "currency" => Input::get('currency')
+            ],
+            [
+                "currency" => 'required|numeric',
+            ]
+        );
+
+        // Check if the validator fails
+        if (!$validator->fails()) {
+            // Save the tier
+            $request->project->update([
+                "currency" => Input::get('currency')
+            ]);
+        } else {
+            // Validation has failed. Set success to false. Set validator messages
+            $success = false;
+            $errors = $validator->messages();
+        }
+
+        if ($success) {
+            return Redirect::route('admin::goalsCurrency');
+        } else {
+            return Redirect::back()->withErrors($errors)->withInput(Input::all());
+        }
     }
 }

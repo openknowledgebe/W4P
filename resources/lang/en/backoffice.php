@@ -24,6 +24,7 @@ return [
     "edit" => "Edit",
     "delete" => "Delete",
     "create_tier" => "Create a new tier",
+    "assets" => "Uploaded images",
 
     /**
      * KINDS OF TYPES
@@ -145,6 +146,16 @@ return [
             "info" => "You can write about the rewards here. You cannot use Markdown here.",
         ]
     ],
+
+    /**
+     * GOALS
+     */
+
+    "currency_goal" => [
+        "title" => "Set money goal",
+        "about" => "You can set the desired amount of money you'd like to collect during the lifetime of the project."
+    ],
+
     "new_goalType" => [
         "title" => "Create a new goal",
         "about" => "You can create a new goal here."
@@ -174,6 +185,13 @@ return [
             "placeholder" => "e.g. 15",
             "info" => "How many units as described above are required.",
         ],
+    ],
+    "currency_form" => [
+        "value" => [
+            "name" => "Desired amount (€)",
+            "placeholder" => "e.g. 9000",
+            "info" => "Leave this at 0.0 if you do not want a money goal. If you want a monetary goal, enter a valid decimal number here."
+        ]
     ],
 
     /**

@@ -91,7 +91,13 @@ Route::group(['middleware' => ['web']], function () {
             Route::get('/goals', ['as' => 'goals', 'uses' => 'AdminGoalController@index']);
             Route::get('/goals/{kind}', ['as' => 'goalsDetail', 'uses' => 'AdminGoalController@kind']);
 
+            // Currency goal
             Route::get('/currency', ['as' => 'goalsCurrency', 'uses' => 'AdminGoalController@currency']);
+            Route::post('/currency', ['as' => 'goalsCurrency', 'uses' => 'AdminGoalController@updateCurrency']);
+
+            // Assets
+            Route::get('/assets', ['as' => 'assets', 'uses' => 'AdminController@assets']);
+            Route::get('/assets/{filename}/delete', ['as' => 'deleteAsset', 'uses' => 'AdminController@deleteAsset']);
 
             // Create a new goal type
             Route::get(

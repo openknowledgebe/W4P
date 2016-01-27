@@ -20,6 +20,7 @@ class CreateProjectTable extends Migration
                 $table->string('brief'); // Description in less than 255 characters
                 $table->text('description')->nullable(); // Longer description, initially nullable
                 $table->string('video_url')->nullable(); // Video URL
+                $table->decimal('currency')->default(0); // Currency
                 $table->dateTime('starts_at');
                 $table->dateTime('ends_at');
                 $table->timestamps();

@@ -257,6 +257,9 @@ class AdminController extends Controller
         }
     }
 
+    /**
+     * @return mixed
+     */
     public function email()
     {
         $data = [
@@ -272,6 +275,9 @@ class AdminController extends Controller
             ->with('data', $data);
     }
 
+    /**
+     * @return mixed
+     */
     public function updateEmail()
     {
         $success = true;
@@ -327,4 +333,16 @@ class AdminController extends Controller
         }
     }
 
+    public function assets()
+    {
+        $images = array_slice(scandir(public_path() . "/images"), 2);
+        return View::make('backoffice.assets')
+            ->with('images', $images);
+    }
+
+    public function deleteAsset($filename)
+    {
+        unlink(public_path() . "/images/" . $filename);
+        return Redirect::route('admin::assets');
+    }
 }

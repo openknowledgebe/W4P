@@ -22,27 +22,28 @@
                     {{$errors->first()}}
                 </div>
             @endif
-                    <form method="POST" action="{{ URL::route('admin::goalsCurrency', $kind) }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ URL::route('admin::goalsCurrency') }}" enctype="multipart/form-data">
                 <input name="_method" type="hidden" value="POST">
                 {{ csrf_field() }}
 
                         <div class="form-group">
                             <label for="name">
-                                {{ trans('backoffice.currency_form.name.name') }}
+                                {{ trans('backoffice.currency_form.value.name') }}
                             </label>
+                            <br/>
                             <input type="text" class="form-control" name="currency"
-                                   placeholder="{{ trans('backoffice.currency_form.name.placeholder') }}"
+                                   placeholder="{{ trans('backoffice.currency_form.value.placeholder') }}"
                                    value=
                                    "<?php
                                    if (Request::old('currency')) {
                                        echo Request::old('currency');
-                                   } else if (isset($data["currency"])) {
-                                       echo $data["currency"];
+                                   } else if (isset($currency)) {
+                                       echo $currency;
                                    }
                                    ?>"
                                    maxlength="255">
                             <span id="helpBlock" class="help-block">
-                                {{ trans('backoffice.currency_form.name.info') }}
+                                {{ trans('backoffice.currency_form.value.info') }}
                             </span>
                         </div>
 

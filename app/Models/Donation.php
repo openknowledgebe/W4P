@@ -15,6 +15,8 @@ class Donation extends Model
         "currency"
     ];
 
+    protected $dates = ['created_at', 'updated_at', 'deleted_at', 'secret_url', 'confirm_url'];
+
     public function donationItems()
     {
         return $this->hasMany(
