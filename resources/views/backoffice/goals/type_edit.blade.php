@@ -1,6 +1,6 @@
 @extends('layouts.backoffice')
 
-@section('title', '')
+@section('title', trans('backoffice.goals'))
 
 @section('content')
     <div class="row">
@@ -83,7 +83,7 @@
                                 {{ trans('backoffice.goalType_form.unit_description.name') }}
                             </label>
                             <input type="text" class="form-control" name="unit_description"
-                                   placeholder="{{ trans('backoffice.goalType_form.title.placeholder') }}"
+                                   placeholder="{{ trans('backoffice.goalType_form.unit_description.placeholder') }}"
                                    value=
                                    "<?php
                                    if (Request::old('unit_description')) {

@@ -1,6 +1,6 @@
 @extends('layouts.backoffice')
 
-@section('title', trans('setup.steps.platform') . " | " . trans('setup.generic.wizard'))
+@section('title', trans('backoffice.platform'))
 
 @section('content')
     <div class="row">

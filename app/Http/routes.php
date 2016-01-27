@@ -91,6 +91,8 @@ Route::group(['middleware' => ['web']], function () {
             Route::get('/goals', ['as' => 'goals', 'uses' => 'AdminGoalController@index']);
             Route::get('/goals/{kind}', ['as' => 'goalsDetail', 'uses' => 'AdminGoalController@kind']);
 
+            Route::get('/currency', ['as' => 'goalsCurrency', 'uses' => 'AdminGoalController@currency']);
+
             // Create a new goal type
             Route::get(
                 '/goals/{kind}/new',

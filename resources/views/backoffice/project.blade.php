@@ -1,6 +1,6 @@
 @extends('layouts.backoffice')
 
-@section('title', '')
+@section('title', trans('backoffice.project'))
 
 @section('content')
 

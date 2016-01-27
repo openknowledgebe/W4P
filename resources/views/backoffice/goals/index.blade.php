@@ -1,6 +1,6 @@
 @extends('layouts.backoffice')
 
-@section('title', '')
+@section('title', trans('backoffice.goals'))
 
 @section('content')
 
@@ -14,6 +14,11 @@
             <p>{{ trans('backoffice.page.goals.about') }}</p>
             <hr/>
             <ul>
+                <li>
+                    <a href="{{ URL::route('admin::goalsCurrency') }}">
+                        {{ trans("backoffice.currency") }}
+                    </a>
+                </li>
                 @foreach ($donationKinds as $kind)
                     @if ($kind != "currency")
                     <li>

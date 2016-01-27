@@ -145,6 +145,36 @@ return [
             "info" => "You can write about the rewards here. You cannot use Markdown here.",
         ]
     ],
+    "new_goalType" => [
+        "title" => "Create a new goal",
+        "about" => "You can create a new goal here."
+    ],
+    "edit_goalType" => [
+        "title" => "Edit an existing goal",
+        "about" => "You can edit an existing goal here."
+    ],
+    "goalType_form" => [
+        "name" => [
+            "name" => "Goal name",
+            "placeholder" => "e.g. Freelance cook",
+            "info" => "The name that appears in the list of possible contributions. If you're looking for a cook, you can type 'Cook' here.",
+        ],
+        "description" => [
+            "name" => "Goal description",
+            "placeholder" => "e.g. We're looking for a freelance cook capable of doing...",
+            "info" => "This description should contain more information about the goal.",
+        ],
+        "unit_description" => [
+            "name" => "Unit description",
+            "placeholder" => "e.g. A single day of cooking (7,6 hours)",
+            "info" => "Explain what a single unit consists of. For example, you might need a cook for 3 days. A unit can be 1 day of cooking, for instance, and you set the units required field to 3.",
+        ],
+        "required_amount" => [
+            "name" => "Units required",
+            "placeholder" => "e.g. 15",
+            "info" => "How many units as described above are required.",
+        ],
+    ],
 
     /**
      * EDIT/NEW POST
