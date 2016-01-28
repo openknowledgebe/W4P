@@ -4,10 +4,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-3">
-            @include('setup.progress')
-        </div>
-        <div class="col-md-6">
+        <div class="col-md-6 col-md-push-3">
             <h1>{{ trans('setup.detail.finish.title') }}</h1>
             <hr/>
             <p>{{ trans('setup.detail.finish.paragraph') }}</p>
@@ -15,11 +12,11 @@
                 <input name="_method" type="hidden" value="POST">
                 {{ csrf_field() }}
                 <hr/>
-                <a class="btn btn-primary btn-sm"
+                <a class="btn4"
                    href="{{ URL::route('setup::step', 5) }}">
                     &larr; {{ trans('setup.generic.back') }}
                 </a>
-                <button type="submit" class="btn btn-primary btn-sm pull-right">
+                <button type="submit" class="btn4 pull-right">
                     {{ trans('setup.generic.finish') }} &rarr;
                 </button>
             </form>

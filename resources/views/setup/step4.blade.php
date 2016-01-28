@@ -4,10 +4,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-3">
-            @include('setup.progress')
-        </div>
-        <div class="col-md-6">
+        <div class="col-md-6 col-md-push-3">
 
             <h1>
                 {{ trans('setup.detail.project.title') }}
@@ -62,8 +59,8 @@
                 </div>
             <hr/>
 
-            <a class="btn btn-primary btn-sm" href="{{ URL::route('setup::step', 3) }}">&larr; {{ trans('setup.generic.back') }}</a>
-            <button type="submit" class="btn btn-primary btn-sm pull-right">{{ trans('setup.generic.next') }} &rarr;</button>
+            <a class="btn4" href="{{ URL::route('setup::step', 3) }}">&larr; {{ trans('setup.generic.back') }}</a>
+            <button type="submit" class="btn4 pull-right">{{ trans('setup.generic.next') }} &rarr;</button>
             </form>
 
         </div>

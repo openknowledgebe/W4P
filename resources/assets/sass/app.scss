@@ -2,6 +2,7 @@
 @import "typo";
 @import "config";
 @import "colors";
+@import "setup";
 
 // Libraries
 @import "bootstrap";
@@ -12,6 +13,7 @@
 // Components
 @import "components/form";
 @import "components/topnav";
+@import "components/btn4";
 
 // 3rd party libs
 @import "components/lib/jquery.datetimepicker";

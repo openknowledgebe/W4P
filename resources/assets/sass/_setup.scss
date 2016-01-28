@@ -1,0 +1,41 @@
+.setup {
+    background-color: $color-gray;
+
+    .logo img{
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+
+    .content-wrapper {
+        padding-top: 25px;
+    }
+
+    .progress-wrapper {
+        background-color: #FFF;
+        border-bottom: 1px solid darken($color-gray, 5);
+        padding-bottom: 20px;
+        padding-top: 35px;
+    }
+
+    .setup-progress {
+        margin-top: 70px;
+        text-align: center;
+
+        ul {
+            display: inline-block;
+            margin-left: auto;
+            margin-right: auto;
+
+            li {
+                display: inline;
+                color: #CCC;
+                margin-right: 50px;
+            }
+
+            li.active {
+                color: #555;
+            }
+        }
+    }
+}

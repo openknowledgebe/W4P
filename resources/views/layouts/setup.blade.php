@@ -6,28 +6,20 @@
         <link rel="stylesheet" href="{{ elixir('css/app.css') }}">
         <link href='https://fonts.googleapis.com/css?family=Istok+Web:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
     </head>
-    <body>
-        <div class="container">
-            <div class="row">
-                <nav class="navbar navbar-default">
-                    <div class="container-fluid">
-                        <div class="navbar-header">
-                            <a class="navbar-brand" href="/">{{ trans('setup.nav') }}</a>
-                        </div>
-                        <div>
-                        </div>
-                    </div>
-                </nav>
+    <body class="setup">
+        <div class="setup progress-wrapper">
+            <div class="container">
+                <div class="logo">
+                    <img src="{{ URL::to('img/icon_w4p.png') }}" width="130" />
+                </div>
+                @include('setup.progress')
             </div>
-            <div class="content">
+        </div>
+        <div class="setup content-wrapper">
+            <div class="container">
                 @yield('content')
             </div>
         </div>
-        <footer class="footer">
-            <div class="container">
-                <p class="text-muted small">Powered by <img src="{{ URL::to('img/icon_w4p.png') }}" width="75" /></p>
-            </div>
-        </footer>
     </body>
     <script src="{{ elixir("js/core.js") }}"></script>
     <script src="{{ elixir("js/admin.js") }}"></script>

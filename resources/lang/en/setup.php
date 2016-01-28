@@ -13,12 +13,12 @@ return [
     // Steps of the progress bar
     'steps' => [
         'welcome' => "Welcome",
-        'admin' => "Administration Setup",
-        'platform' => "Platform Setup",
-        'organisation' => "Organisation Setup",
-        'project' => "Project Setup",
-        'mail' => "Email Setup",
-        'finish' => "Finalize Setup"
+        'admin' => "Administration",
+        'platform' => "Platform",
+        'organisation' => "Organisation",
+        'project' => "Project",
+        'mail' => "Email",
+        'finish' => "Finalize"
     ],
 
     // Generic setup strings (like 'Next', 'Back', and 'Oops' (reused on multiple pages)

@@ -1,0 +1,23 @@
+.btn4 {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 0.95em;
+    padding: 10px 20px;
+    border-radius: 100px;
+    border: 2px solid $color-orange;
+    color: $color-orange;
+    margin: 10px 0;
+    text-transform: uppercase;
+    background-color: transparent;
+
+    &:hover, &:active, &:visited {
+        text-decoration: none !important;
+        border: 2px solid darken($color-orange, 10);
+        color: darken($color-orange, 10);
+    }
+
+    .disabled {
+        border: 2px solid #AAA;
+        color: #AAA;
+    }
+}
