@@ -9,11 +9,12 @@
             <div class="home-banner" style="background-image: url('{{ URL::to("/project/banner.png") }}');"></div>
         @endif
         <!-- Goals -->
-        <div class="goals">
-            <!-- Goals left column (with progress) -->
-            <div class="col-md-7 meta-container">
-                <section class="meta">
-                    <h1>{{ $project->title }}</h1>
+        <div class="container">
+            <div class="row goals">
+                <!-- Goals left column (with progress) -->
+                <div class="col-md-7 meta-container">
+                    <section class="meta">
+                        <h1>{{ $project->title }}</h1>
                     <span>
                         <img src="{{ URL::to('/img/icon_user.png') }}" width="30" height="30"/>
                         {{ trans('home.projectby') }}
@@ -28,56 +29,53 @@
                             {{ $project->starts_at->format("F j, Y") }}
                         </strong>
                     </span>
-                    <hr/>
-                    <!-- Possible donation types -->
-                    <ul>
-                        @foreach ($donationKinds as $kind)
-                            @if ($kind != "currency" && isset($donationTypes[$kind]) && count($donationTypes[$kind]) > 0)
+                        <hr/>
+                        <!-- Possible donation types -->
+                        <ul>
+                            @foreach ($donationKinds as $kind)
+                                @if ($kind != "currency" && isset($donationTypes[$kind]) && count($donationTypes[$kind]) > 0)
+                                    <li>
+                                        {{ trans("backoffice." . $kind) }}
+                                    </li>
+                                @endif
+                            @endforeach
+                            @if ($project->currency > 0)
                                 <li>
-                                    {{ trans("backoffice." . $kind) }}
+                                    {{ trans("backoffice.currency") }}
                                 </li>
                             @endif
-                        @endforeach
-                        @if ($project->currency > 0)
-                            <li>
-                                {{ trans("backoffice.currency") }}
-                            </li>
-                        @endif
-                    </ul>
-                </section>
-            </div>
-            <!-- Goals right column (blue) -->
-            <div class="col-md-5 numbers-container">
-                <section class="numbers" >
-                    <!-- TODO: replace number of backers, percentage complete, link to pledge -->
-                    <div class="row">
-                        @if ($project->currency > 0)
-                            <div class="col-md-12">
-                                <span class="number-lg">€900</span><br/>
-                                <span class="number-sm">{{ trans('home.of') }} €{{ round($project->currency) }}</span>
-                            </div>
-                        @endif
-                        <div class="col-md-4">
-                            <span class="number-lg">19</span><br/>
-                            <span class="number-sm">{{ trans('home.backers') }}</span>
-                        </div>
-                        <div class="col-md-4">
-                            @if ($hoursleft < 24)
-                                <span class="number-lg">{{ $hoursleft }}</span><br/>
-                                <span class="number-sm">{{ trans('home.hoursleft') }}</span>
-                            @else
-                                <span class="number-lg">{{ $daysleft }}</span><br/>
-                                <span class="number-sm">{{ trans('home.daysleft') }}</span>
+                        </ul>
+                    </section>
+                </div>
+                <!-- Goals right column (blue) -->
+                <div class="col-md-5 numbers-container">
+                    <section class="numbers">
+                        <!-- TODO: replace number of backers, percentage complete, link to pledge -->
+                        <div class="row">
+                            @if ($project->currency > 0)
+                                <div class="col-md-12">
+                                    <span class="number-lg">€900</span><br/>
+                                    <span class="number-sm">{{ trans('home.of') }} €{{ round($project->currency) }}</span>
+                                </div>
                             @endif
+                            <div class="col-md-4">
+                                <span class="number-lg">19</span><br/>
+                                <span class="number-sm">{{ trans('home.backers') }}</span>
+                            </div>
+                            <div class="col-md-4">
+                                @if ($hoursleft < 24)
+                                    <span class="number-lg">{{ $hoursleft }}</span><br/>
+                                    <span class="number-sm">{{ trans('home.hoursleft') }}</span>
+                                @else
+                                    <span class="number-lg">{{ $daysleft }}</span><br/>
+                                    <span class="number-sm">{{ trans('home.daysleft') }}</span>
+                                @endif
+                            </div>
                         </div>
-                    </div>
-                    <a href="" class="btn-support">{{ trans('home.support') }}</a>
-                </section>
+                        <a href="" class="btn-support">{{ trans('home.support') }}</a>
+                    </section>
+                </div>
             </div>
-        </div>
-        <!-- Empty row as separator -->
-        <div class="container">
-            <div class="row"></div>
         </div>
         <!-- About this company -->
         <div class="about">
