@@ -27,17 +27,33 @@
                             {{ $project->starts_at->format("F j, Y") }}
                         </strong>
                     </span>
-                    <!-- TODO: Section for custom categories -->
+                    <hr/>
+                    <ul>
+                    @foreach ($donationKinds as $kind)
+                        @if ($kind != "currency" && isset($donationTypes[$kind]) && count($donationTypes[$kind]) > 0)
+                            <li>
+                                {{ trans("backoffice." . $kind) }}
+                            </li>
+                        @endif
+                    @endforeach
+                    @if ($project->currency > 0)
+                            <li>
+                                {{ trans("backoffice.currency") }}
+                            </li>
+                    @endif
+                    </ul>
                 </section>
             </div>
             <div class="col-md-5 numbers-container">
                 <section class="numbers">
                     <!-- TODO: replace number of backers, percentage complete, link to pledge -->
                     <div class="row">
+                        @if ($project->currency > 0)
                         <div class="col-md-12">
                             <span class="number-lg">€900</span><br/>
-                            <span class="number-sm">{{ trans('home.of') }} €2000</span>
+                            <span class="number-sm">{{ trans('home.of') }} €{{ round($project->currency) }}</span>
                         </div>
+                        @endif
                         <div class="col-md-4">
                             <span class="number-lg">19</span><br/>
                             <span class="number-sm">{{ trans('home.backers') }}</span>

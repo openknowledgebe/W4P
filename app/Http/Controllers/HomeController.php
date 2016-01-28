@@ -10,11 +10,14 @@ use W4P\Http\Controllers\Controller;
 use W4P\Models\Setting;
 use W4P\Models\Tier;
 use W4P\Models\Post;
+use W4P\Models\DonationType;
+use W4P\Models\DonationKind;
 
 use Redirect;
 use View;
 use W4P\Models\Project;
 use Carbon\Carbon;
+
 
 class HomeController extends Controller
 {
@@ -37,6 +40,9 @@ class HomeController extends Controller
         if (strpos($project->video_url, 'vimeo.com/') !== false) {
             $videoProvider = "vimeo";
         }
+
+        $donationTypes = DonationType::all()->groupBy('kind');
+        $donationKinds = DonationKind::all();
 
         // Check the video provider
         switch ($videoProvider) {
@@ -69,6 +75,8 @@ class HomeController extends Controller
             ->with("data", Setting::getBeginsWith('organisation.'))
             ->with("tiers", Tier::all()->sortBy('pledge'))
             ->with("hoursleft", $leftHours)
-            ->with("daysleft", $leftDays);
+            ->with("daysleft", $leftDays)
+            ->with('donationTypes', $donationTypes)
+            ->with('donationKinds', $donationKinds);
     }
 }
