@@ -17,7 +17,11 @@
             </div>
             <div class="col-md-4">
                 <span class="text-muted">
-                    {{ trans('footer.poweredby') }} <a href="https://github.com/openknowledgebe/W4P">W4P</a>.
+                    {{ trans('footer.poweredby') }}
+                    <br/>
+                    <a href="https://github.com/openknowledgebe/W4P">
+                        <img src="{{ URL::to('img/icon_w4p.png') }}" width="100" />
+                    </a>
                 </span>
             </div>
         </div>

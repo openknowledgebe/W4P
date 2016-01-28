@@ -16,5 +16,7 @@ return [
     "daysleft" => "days left",
     "hoursleft" => "hours left",
     "story" => "Our story",
-    "updates" => "Updates"
+    "updates" => "Updates",
+    "howdoesitwork" => "How does it work?",
+    "previousprojects" => "Previous projects"
 ];
