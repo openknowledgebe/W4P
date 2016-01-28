@@ -25,7 +25,7 @@
         </div>
         <footer class="footer">
             <div class="container">
-                <p class="text-muted small">Powered by W4P.</p>
+                <p class="text-muted small">Powered by <img src="{{ URL::to('img/icon_w4p.png') }}" width="75" /></p>
             </div>
         </footer>
     </body>

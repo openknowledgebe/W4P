@@ -1,3 +1,4 @@
+<br/>
 <ul>
     <li>
         @if (!isset($step))<strong>@endif
