@@ -13,6 +13,10 @@
 
 Route::group(['middleware' => ['web']], function () {
 
+    Route::get('/design', function(){
+        return View::make('design');
+    });
+
     Route::get('/', ['as' => 'home', 'middleware' => 'env.ready', 'uses' => 'HomeController@index']);
 
     /*
