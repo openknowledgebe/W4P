@@ -72,6 +72,9 @@ class HomeController extends Controller
         $donorCount = Donation::all()->groupBy('email')->count();
         $contributed = Donation::all()->sum('currency');
 
+        // Get percentages
+        $percentages = DonationKind::getAllPercentages();
+
         // Return the view with all the text
         return View::make('front.home')
             ->with("project", $project)
@@ -85,6 +88,7 @@ class HomeController extends Controller
             ->with('donationTypes', $donationTypes)
             ->with('donationKinds', $donationKinds)
             ->with('donorCount', $donorCount)
-            ->with('contributed', $contributed);
+            ->with('contributed', $contributed)
+            ->with('percentages', $percentages);
     }
 }

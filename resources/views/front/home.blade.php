@@ -36,6 +36,7 @@
                                     @if ($kind != "currency" && isset($donationTypes[$kind]) && count($donationTypes[$kind]) > 0)
                                         <li>
                                             {{ trans("backoffice." . $kind) }}
+                                            ({{ $percentages[$kind]["percentage"] }}% complete)
                                         </li>
                                     @endif
                                 @endforeach
