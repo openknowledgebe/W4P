@@ -29,6 +29,24 @@ If you want to locally develop on the platform, you can follow the instructions 
 
 You will want to replace some of the lines in the environment file with different values, depending on your setup.
 
+### Localization
+
+In order to localize the application, you must translate the existing strings in the /app/resources/lang folder and e.g. use your own language code (e.g. nl) as a folder.
+
+For example, you might want to translate this part of core.php:
+
+    return [
+        "project" => "Project",
+        "howdoesitwork" => "How does it work?"
+    ];
+
+You can do it like this:
+
+    return [
+        "project" => "Project",
+        "howdoesitwork" => "Hoe werkt het?"
+    ];
+
 ### ez-mode
 
 To set it all up in one go:

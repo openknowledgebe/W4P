@@ -18,7 +18,7 @@
                     <a href="{{ URL::route('admin::goalsCurrency') }}">
                         {{ trans("backoffice.currency") }}
                     </a>
-                    [Amount: € {{ $currency }}]
+                    [Amount: €{{ round($currency) }}]
                 </li>
                 @foreach ($donationKinds as $kind)
                     @if ($kind != "currency")
