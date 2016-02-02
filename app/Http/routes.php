@@ -13,9 +13,11 @@
 
 Route::group(['middleware' => ['web']], function () {
 
+    /*
     Route::get('/design', function(){
         return View::make('design');
     });
+    */
 
     Route::get('/', ['as' => 'home', 'middleware' => 'env.ready', 'uses' => 'HomeController@index']);
 
@@ -29,6 +31,27 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('/', ['as' => 'index', 'uses' => 'PostController@index']);
         Route::get('/{id}', ['as' => 'detail', 'uses' => 'PostController@detail']);
     });
+
+    /*
+    |--------------------------------------------------------------------------
+    | Backing
+    |--------------------------------------------------------------------------
+    */
+
+    Route::get('/donate', [
+        'as' => 'donate',
+        'uses' => 'DonationController@newDonation'
+    ]);
+
+    Route::post('/donate/details', [
+        'as' => 'donate',
+        'uses' => 'DonationController@continueDonation'
+    ]);
+
+    Route::post('/donate/confirm', [
+        'as' => 'donate::confirm',
+        'uses' => 'DonationController@confirmDonation',
+    ]);
 
     /*
     |--------------------------------------------------------------------------
@@ -52,8 +75,14 @@ Route::group(['middleware' => ['web']], function () {
     */
 
     // Login does not require auth middleware
-    Route::get('/admin/login', ['as' => 'admin::login', 'middleware' => 'env.ready', 'uses' => 'AdminAuthController@login']);
-    Route::post('/admin/login', ['as' => 'admin::login', 'middleware' => 'env.ready', 'uses' => 'AdminAuthController@doLogin']);
+    Route::get(
+        '/admin/login',
+        ['as' => 'admin::login', 'middleware' => 'env.ready', 'uses' => 'AdminAuthController@login']
+    );
+    Route::post(
+        '/admin/login',
+        ['as' => 'admin::login', 'middleware' => 'env.ready', 'uses' => 'AdminAuthController@doLogin']
+    );
 
     // All other admin routes require admin middleware
     Route::group(
