@@ -44,7 +44,7 @@ Route::group(['middleware' => ['web']], function () {
     ]);
 
     Route::post('/donate/details', [
-        'as' => 'donate',
+        'as' => 'donateDetails',
         'uses' => 'DonationController@continueDonation'
     ]);
 

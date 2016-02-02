@@ -54,12 +54,12 @@
                             <div class="row">
                                 @if ($project->currency > 0)
                                     <div class="col-md-12">
-                                        <span class="number-lg">€900</span><br/>
+                                        <span class="number-lg">€{{ $contributed }}</span><br/>
                                         <span class="number-sm">{{ trans('home.of') }} €{{ round($project->currency) }}</span>
                                     </div>
                                 @endif
                                 <div class="col-md-4">
-                                    <span class="number-lg">19</span><br/>
+                                    <span class="number-lg">{{ $donorCount }}</span><br/>
                                     <span class="number-sm">{{ trans('home.backers') }}</span>
                                 </div>
                                 <div class="col-md-4">

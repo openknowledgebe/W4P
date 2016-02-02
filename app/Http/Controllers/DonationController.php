@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Input;
 use W4P\Models\DonationType;
 use W4P\Models\DonationItem;
 use W4P\Models\DonationKind;
+use W4P\Models\Donation;
 
 use View;
 
@@ -61,6 +62,26 @@ class DonationController extends Controller
         $input = Input::all();
         $input['_pledge'] = json_decode(Input::get('_pledge'), 1);
 
-        dd($input);
+        $donation = Donation::create(
+            [
+                "first_name" => Input::get('firstName'),
+                "last_name" => Input::get('lastName'),
+                "email" => Input::get('email'),
+                "currency" => 0
+            ]
+        );
+
+        foreach ($input['_pledge'] as $pledge) {
+            for ($i = 0; $i < $pledge['amount']; $i++) {
+                DonationItem::create(
+                    [
+                        "donation_id" => $donation->id,
+                        "donation_type_id" => $pledge["id"]
+                    ]
+                );
+            }
+        }
+
+        return "Thanks for pledging!";
     }
 }

@@ -12,6 +12,7 @@ use W4P\Models\Tier;
 use W4P\Models\Post;
 use W4P\Models\DonationType;
 use W4P\Models\DonationKind;
+use W4P\Models\Donation;
 
 use Redirect;
 use View;
@@ -60,11 +61,16 @@ class HomeController extends Controller
 
         $posts = Post::orderBy('created_at', 'DESC')->limit(5)->get();
 
+
         // Get when the project runs out
         $ends_at = new Carbon($project->ends_at);
         $now = Carbon::now();
         $leftDays = $now->diffInDays($ends_at);
         $leftHours = $now->diffInHours($ends_at);
+
+        // Get how many contributors there are
+        $donorCount = Donation::all()->groupBy('email')->count();
+        $contributed = Donation::all()->sum('currency');
 
         // Return the view with all the text
         return View::make('front.home')
@@ -77,6 +83,8 @@ class HomeController extends Controller
             ->with("hoursleft", $leftHours)
             ->with("daysleft", $leftDays)
             ->with('donationTypes', $donationTypes)
-            ->with('donationKinds', $donationKinds);
+            ->with('donationKinds', $donationKinds)
+            ->with('donorCount', $donorCount)
+            ->with('contributed', $contributed);
     }
 }

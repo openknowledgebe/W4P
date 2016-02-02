@@ -18,7 +18,7 @@
                     <hr/>
                 </div>
                 <div class="col-md-6 col-md-push-3">
-                    <form method="POST" action="{{ URL::route('donate') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ URL::route('donateDetails') }}" enctype="multipart/form-data">
                         <input name="_method" type="hidden" value="POST">
                         {{ csrf_field() }}
 
