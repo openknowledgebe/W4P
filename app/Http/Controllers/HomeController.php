@@ -61,7 +61,6 @@ class HomeController extends Controller
 
         $posts = Post::orderBy('created_at', 'DESC')->limit(5)->get();
 
-
         // Get when the project runs out
         $ends_at = new Carbon($project->ends_at);
         $now = Carbon::now();
@@ -69,8 +68,8 @@ class HomeController extends Controller
         $leftHours = $now->diffInHours($ends_at);
 
         // Get how many contributors there are
-        $donorCount = Donation::all()->groupBy('email')->count();
-        $contributed = Donation::all()->sum('currency');
+        $donorCount = Donation::whereNotNull('confirmed')->get()->groupBy('email')->count();
+        $contributed = Donation::whereNotNull('confirmed')->get()->sum('currency');
 
         // Get percentages
         $percentages = DonationKind::getAllPercentages();

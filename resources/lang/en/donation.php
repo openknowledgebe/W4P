@@ -6,6 +6,13 @@ return array(
     "title" => "How do you want to support this project?",
     "description" => "You can support this project in a few ways. The following options below are available to pledge:",
 
+    // Confirmation page
+
+    "confirm" => [
+        "title" => "Confirm your information",
+        "description" => "We will need some additional information about you for our records. You will receive an email containing a confirmation link and a private backer link after donating."
+    ],
+
     // Form field
 
     "user" => [
