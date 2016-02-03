@@ -12,10 +12,14 @@ class Donation extends Model
         "first_name",
         "last_name",
         "email",
-        "currency"
+        "currency",
+        "secret_url",
+        "confirm_url",
+        "confirmed",
+        "message"
     ];
 
-    protected $dates = ['created_at', 'updated_at', 'deleted_at', 'secret_url', 'confirm_url'];
+    protected $dates = ['created_at', 'updated_at', 'deleted_at', 'confirmed'];
 
     public function donationItems()
     {

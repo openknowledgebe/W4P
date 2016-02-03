@@ -73,7 +73,7 @@
                                     @endif
                                 </div>
                             </div>
-                            <a href="{{ URL::route('donate') }}" class="btn-support">{{ trans('home.support') }}</a>
+                            <a href="{{ URL::route('donate::start') }}" class="btn-support">{{ trans('home.support') }}</a>
                         </section>
                     </div>
                 </div>

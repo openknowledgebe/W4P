@@ -13,7 +13,7 @@
                     <nav class="navbar navbar-default">
                         <div class="container-fluid">
                             <div class="navbar-header">
-                                <a class="navbar-brand" href="">
+                                <a class="navbar-brand" href="{{ URL::route('home') }}">
                                     <img src="{{ URL::to('/platform/logo.png') }}" class="navlogo" />
                                 </a>
                             </div>

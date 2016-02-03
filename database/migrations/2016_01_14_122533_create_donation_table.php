@@ -21,6 +21,7 @@ class CreateDonationTable extends Migration
             $table->string('secret_url');
             $table->string('confirm_url');
             $table->datetime('confirmed')->nullable();
+            $table->text('message')->nullable();
             $table->timestamps();
         });
     }

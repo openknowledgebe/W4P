@@ -8,6 +8,7 @@
         @if (file_exists(public_path() . "/project/banner.png"))
             <div class="home-banner" style="background-image: url('{{ URL::to("/project/banner.png") }}');"></div>
         @endif
+        @if (!$donationsDisabled)
         <!-- Donation page -->
         <div class="container">
             <div class="row">
@@ -18,7 +19,13 @@
                     <hr/>
                 </div>
                 <div class="col-md-6 col-md-push-3">
-                    <form method="POST" action="{{ URL::route('donateDetails') }}" enctype="multipart/form-data">
+                    @if($errors->any())
+                        <div class="alert alert-danger" role="alert">
+                            <strong>{{ trans('setup.generic.oops') }}</strong>
+                            {{$errors->first()}}
+                        </div>
+                    @endif
+                    <form method="POST" action="{{ URL::route('donate::details') }}" enctype="multipart/form-data">
                         <input name="_method" type="hidden" value="POST">
                         {{ csrf_field() }}
 
@@ -27,8 +34,8 @@
                             @foreach ($donationTypes as $donationType)
                                     <!-- Donation type -->
                             @foreach ($donationType as $option)
-                                <label for="password">
-                                    {{ $option['name'] }} ({{ $option['kind'] }})
+                                <label>
+                                    {{ $option['name'] }} ({{ trans('backoffice.' . $option['kind']) }})
                                 </label>
                                 <p>
                                     <strong>Description</strong>: {{ $option['description'] }}<br/>
@@ -46,5 +53,14 @@
                 </div>
             </div>
         </div>
+        @else
+            <div class="row">
+                <div class="col-md-6 col-md-push-3">
+                    <h1>{{ trans('donation.no_donation_options.title') }}</h1>
+                    <p>{{ trans('donation.no_donation_options.description') }}</p>
+                </div>
+            </div>
+        @endif
+
     </div>
 @endsection

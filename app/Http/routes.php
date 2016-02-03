@@ -27,7 +27,7 @@ Route::group(['middleware' => ['web']], function () {
     |--------------------------------------------------------------------------
     */
 
-    Route::group(['prefix' => 'post', 'as' => 'post::'], function () {
+    Route::group(['prefix' => 'post', 'as' => 'post::', 'middleware' => 'env.ready'], function () {
         Route::get('/', ['as' => 'index', 'uses' => 'PostController@index']);
         Route::get('/{id}', ['as' => 'detail', 'uses' => 'PostController@detail']);
     });
@@ -38,20 +38,24 @@ Route::group(['middleware' => ['web']], function () {
     |--------------------------------------------------------------------------
     */
 
-    Route::get('/donate', [
-        'as' => 'donate',
-        'uses' => 'DonationController@newDonation'
-    ]);
+    Route::group(['prefix' => 'donate', 'as' => 'donate::', 'middleware' => 'env.ready'], function () {
 
-    Route::post('/donate/details', [
-        'as' => 'donateDetails',
-        'uses' => 'DonationController@continueDonation'
-    ]);
+        Route::get('/', [
+            'as' => 'start',
+            'uses' => 'DonationController@newDonation'
+        ]);
+        Route::post('/details', [
+            'as' => 'details',
+            'uses' => 'DonationController@continueDonation'
+        ]);
+        Route::post('/details/confirm', [
+            'as' => 'confirm',
+            'uses' => 'DonationController@confirmDonation',
+        ]);
 
-    Route::post('/donate/confirm', [
-        'as' => 'donate::confirm',
-        'uses' => 'DonationController@confirmDonation',
-    ]);
+    });
+
+
 
     /*
     |--------------------------------------------------------------------------
