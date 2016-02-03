@@ -110,7 +110,7 @@ class AdminGoalController extends Controller
         if (!$validator->fails()) {
             // Save the tier
             DonationType::find($id)->update(Input::all());
-            Session::flash('info', trans('backoffice.flash.goalTypeUpdated'));
+
         } else {
             // Validation has failed. Set success to false. Set validator messages
             $success = false;
@@ -118,6 +118,7 @@ class AdminGoalController extends Controller
         }
 
         if ($success) {
+            Session::flash('info', trans('backoffice.flash.goal_update_success'));
             return Redirect::route('admin::goalsDetail', $kind);
         } else {
             return Redirect::back()->withErrors($errors)->withInput(Input::all());
@@ -163,6 +164,7 @@ class AdminGoalController extends Controller
         }
 
         if ($success) {
+            Session::flash('info', trans('backoffice.flash.currency_update_success'));
             return Redirect::route('admin::goalsCurrency');
         } else {
             return Redirect::back()->withErrors($errors)->withInput(Input::all());

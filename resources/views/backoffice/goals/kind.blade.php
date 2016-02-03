@@ -17,6 +17,11 @@
             <hr/>
             <a href="{{ URL::route('admin::goalsTypeCreate', $kind) }}" class="btn-default btn btn-sm">{{ trans('backoffice.create') }}</a>
             <hr/>
+            @if(Session::has('info'))
+                <div class="alert alert-info" role="alert">
+                    {{ Session::get('info') }}
+                </div>
+            @endif
             <section>
                 @foreach ($donationTypes as $type)
                 <div class="panel panel-default">
