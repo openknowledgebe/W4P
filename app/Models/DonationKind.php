@@ -16,13 +16,16 @@ class DonationKind
     public static function getAllPercentages()
     {
         $kinds = [];
+        $donationIds = Donation::whereNotNull('confirmed')->get()->pluck('id', null)->toArray();
         foreach (self::all() as $kind) {
             $subitems = [];
             // Get the types (created by admins)
             $types = DonationType::where('kind', $kind)->get();
             foreach ($types as $type) {
                 // Get the count of donation items provided by users
-                $total = DonationItem::where('donation_type_id', $type->id)->count();
+                $total = DonationItem::where('donation_type_id', $type->id)
+                    ->whereIn('donation_id', $donationIds)
+                    ->count();
                 $goal = (int)$type->required_amount;
                 $percentage = $total / $goal;
                 // Push subitems
