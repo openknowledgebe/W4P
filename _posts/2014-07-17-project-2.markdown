@@ -1,15 +1,15 @@
 ---
-title: Escape
-subtitle: Website Design
+title: Support Page
+subtitle: Showing types of commitment
 layout: default
 modal-id: 2
-date: 2014-07-17
-img: escape.png
-thumbnail: escape-thumbnail.png
+date: 2016-01-01
+img: Screen2.png
+thumbnail: Screen2-thumbnail.png
 alt: image-alt
-project-date: April 2014
-client: Start Bootstrap
-category: Web Development
-description: Lorem ipsum dolor sit amet, usu cu alterum nominavi lobortis. At duo novum diceret. Tantas apeirian vix et, usu sanctus postulant inciderint ut, populo diceret necessitatibus in vim. Cu eum dicam feugiat noluisse.
+project-date: February 2016
+client:
+category: Design
+description: After deciding to help out the project a user can choose how. They can provide a donation or reward-based funding, or volunteer, offer coaching or materials.
 
 ---

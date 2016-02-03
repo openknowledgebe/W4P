@@ -1,15 +1,15 @@
 ---
-title: Golden
-subtitle: Website Design
+title: Secondary pages
+subtitle: Extra information
 layout: default
 modal-id: 3
-date: 2014-07-16
-img: golden.png
-thumbnail: golden-thumbnail.png
+date: 2016-01-01
+img: Screen3.png
+thumbnail: Screen3-thumbnail.png
 alt: image-alt
-project-date: April 2014
-client: Start Bootstrap
-category: Web Development
-description: Lorem ipsum dolor sit amet, usu cu alterum nominavi lobortis. At duo novum diceret. Tantas apeirian vix et, usu sanctus postulant inciderint ut, populo diceret necessitatibus in vim. Cu eum dicam feugiat noluisse.
+project-date: February 2016
+client:
+category: Design
+description: Secondary pages are kept to a strict minimum to not distract end-users from the project page on the front. They are used to explain how the platform works or provide the necessary space for Terms of use and privacy policies, which are vital on any crowdsourcing platform.
 
 ---

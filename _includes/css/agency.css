@@ -335,9 +335,10 @@ section h3.section-subheading {
     margin-bottom: 75px;
     text-transform: none;
     font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 16px;
+    font-size: 18px;
     font-style: italic;
     font-weight: 400;
+    line-height: 1.58;
 }
 
 @media(min-width:768px) {
