@@ -1,11 +1,11 @@
-Agency Jekyll theme
-====================
+This one-pager is based on Agency Jekyll theme
+===============================================
 
 Agency theme based on [Agency bootstrap theme ](http://startbootstrap.com/templates/agency/)
 
-# How to use
+# How to use the template
 
-###Portfolio 
+###Portfolio
 
 Portfolio projects are in '/_posts'
 

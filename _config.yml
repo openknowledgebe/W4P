@@ -22,8 +22,6 @@ people:
       url: http://www.openknowledge.be/
     - title: twitter
       url: https://twitter.com/openknowledgebe
-    - title: github
-      url: http://github.com/OpenKnowledgeBE
     - title: envelope
       url: mailto:pieterjan@openknowledge.be
 
@@ -31,8 +29,8 @@ people:
   pic: 2
   position: Pilot lead
   social:
-    - title: twitter
-      url: https://twitter.com/idropslabs
+    - title: desktop
+      url: http://idrops.be/
     - title: twitter
       url: https://twitter.com/idropslabs
     - title: envelope
