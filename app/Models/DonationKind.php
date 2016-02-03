@@ -38,8 +38,7 @@ class DonationKind
 
             // Calculate the general percentage
             if (count($subitems) > 0) {
-                // Assume the weight is divided
-                // TODO: Separate weights for each type?
+                // Assume the weight is divided equally
                 $defaultWeight = (1 / (int)count($subitems));
                 $percentage = 0;
                 // Calculate the sum of all subitems' percentages

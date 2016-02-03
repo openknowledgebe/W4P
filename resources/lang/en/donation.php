@@ -6,6 +6,36 @@ return array(
     "title" => "How do you want to support this project?",
     "description" => "You can support this project in a few ways. The following options below are available to pledge:",
 
+    // Form field
+
+    "user" => [
+        "first_name" => [
+            "title" => "First name",
+            "placeholder" => "e.g. John",
+            "info" => "You must enter a first name."
+
+        ],
+        "last_name" => [
+            "title" => "Last name",
+            "placeholder" => "e.g. Doe",
+            "info" => "You must enter a last name."
+        ],
+        "email" => [
+            "title" => "Email",
+            "placeholder" => "e.g. johndoe@w4p.com",
+            "info" => "You must enter a valid email address."
+        ],
+        "message" => [
+            "title" => "Message for project creator",
+            "placeholder" => "You can leave an optional message to the project creator here.",
+            "info" => "This message is optional."
+        ],
+    ],
+
+    "buttons" => [
+        "confirm" => "Donate!"
+    ],
+
     // No donation options available
     "no_donation_options" => [
         "title" => "No donation options available",
@@ -27,5 +57,6 @@ return array(
     // Actual error messages for input
     "errors" => [
         "no_donations_made" => "You must pledge at least 1 unit or money (if this project has a monetary goal).",
+        "donations_invalid" => "You have entered an invalid number of donations. Please enter a correct count."
     ]
 );

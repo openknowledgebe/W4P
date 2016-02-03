@@ -40,6 +40,32 @@ class DonationController extends Controller
 
     public function continueDonation(Request $request)
     {
+        $validation = [];
+        // Set up validation rules for incoming request
+        $input = Input::all();
+        // Get the fields that start with pledge_
+        $fields = array_keys($input);
+        foreach ($fields as $field) {
+            // Check pledge fields: if the amount > 0
+            if (strpos($field, "pledge_") === 0 && $input[$field] != "") {
+                $validation[$field] = "numeric|min:0";
+            }
+        }
+
+        // Create validator
+        $validator = Validator::make(
+            Input::all(),
+            $validation
+        );
+
+        // If validation fails... return errors
+        if ($validator->fails()) {
+            $errors = [
+                trans('donation.errors.donations_invalid')
+            ];
+            return Redirect::back()->withErrors($errors);
+        }
+
         // Build an array of types (will contain count, name, etc)
         $types = [];
         // Get input from form
@@ -124,7 +150,8 @@ class DonationController extends Controller
                 }
             }
 
-            // TODO: Send an email to everyone (backer + project owner)
+            // TODO: Send an email to backer with confirmation link
+
 
         } else {
             $success = false;
