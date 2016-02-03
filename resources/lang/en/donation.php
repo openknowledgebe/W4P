@@ -19,6 +19,11 @@ return array(
         "description" => "Thank you for your donation. We have sent you an email. Unless you have donated money, you will still need to confirm this donation."
     ],
 
+    "confirmed" => [
+        "title" => "Thanks!",
+        "description" => "You have successfully confirmed your donation. The project creator may get in touch with you to organise some further details."
+    ],
+
     // Actual error messages for input
     "errors" => [
         "no_donations_made" => "You must pledge at least 1 unit or money (if this project has a monetary goal).",

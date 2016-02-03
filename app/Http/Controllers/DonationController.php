@@ -16,6 +16,7 @@ use W4P\Models\Donation;
 use Validator;
 use Redirect;
 use View;
+use Carbon\Carbon;
 
 class DonationController extends Controller
 {
@@ -140,5 +141,17 @@ class DonationController extends Controller
                 ->withErrors($errors)
                 ->withInput($input);
         }
+    }
+
+    public function emailConfirmation($code, $email)
+    {
+        // Check if a donation can be found with this code and email
+        $donation = Donation::where('confirm_url', $code)->where('email', $email)->first();
+        if ($donation != null && $donation->confirmed == null) {
+            $donation->confirmed = Carbon::now();
+            $donation->save();
+            return View::make('front.donation.confirmed');
+        }
+        return "This is not a valid confirmation mail or this was already confirmed.";
     }
 }

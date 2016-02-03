@@ -52,6 +52,10 @@ Route::group(['middleware' => ['web']], function () {
             'as' => 'confirm',
             'uses' => 'DonationController@confirmDonation',
         ]);
+        Route::get('/confirm/{code}/{email}', [
+            'as' => 'emailConfirm',
+            'uses' => 'DonationController@emailConfirmation',
+        ]);
 
     });
 
