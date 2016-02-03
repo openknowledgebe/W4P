@@ -68,11 +68,17 @@ class HomeController extends Controller
         $leftHours = $now->diffInHours($ends_at);
 
         // Get how many contributors there are
-        $donorCount = Donation::whereNotNull('confirmed')->get()->groupBy('email')->count();
-        $contributed = Donation::whereNotNull('confirmed')->get()->sum('currency');
+        $donorQuery = Donation::whereNotNull('confirmed')->get();
+        $donorCount = $donorQuery->groupBy('email')->count();
+        $contributed = $donorQuery->sum('currency');
+
+        $contributedPercentage = 0;
+        if ($project->currency > 0) {
+            $contributedPercentage = round(($contributed / $project->currency) * 100, 1);
+        }
 
         // Get percentages
-        $percentages = DonationKind::getAllPercentages();
+        $percentages = DonationKind::getAllPercentages($donorQuery);
 
         // Return the view with all the text
         return View::make('front.home')
@@ -88,6 +94,7 @@ class HomeController extends Controller
             ->with('donationKinds', $donationKinds)
             ->with('donorCount', $donorCount)
             ->with('contributed', $contributed)
+            ->with('contributedPercentage', $contributedPercentage)
             ->with('percentages', $percentages);
     }
 }

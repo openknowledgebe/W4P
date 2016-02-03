@@ -36,13 +36,13 @@
                                     @if ($kind != "currency" && isset($donationTypes[$kind]) && count($donationTypes[$kind]) > 0)
                                         <li>
                                             {{ trans("backoffice." . $kind) }}
-                                            ({{ $percentages[$kind]["percentage"] }}% complete)
+                                            ({{ $percentages[$kind]["percentage"] }}% {{ trans('home.complete') }})
                                         </li>
                                     @endif
                                 @endforeach
                                 @if ($project->currency > 0)
                                     <li>
-                                        {{ trans("backoffice.currency") }}
+                                        {{ trans("backoffice.currency") }} ({{$contributedPercentage}}% {{ trans('home.complete') }})
                                     </li>
                                 @endif
                             </ul>

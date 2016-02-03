@@ -8,6 +8,7 @@ return array(
 
     // Info about money
     "money_pledge" => "You're donating the following amount:",
+    "you_pledged" => "You're pledging:",
 
     // Confirmation page
 

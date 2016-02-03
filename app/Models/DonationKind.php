@@ -13,10 +13,13 @@ class DonationKind
      * Get all percentages (Based on DonationKind string)
      * @return array
      */
-    public static function getAllPercentages()
+    public static function getAllPercentages($donationQuery = null)
     {
+        if ($donationQuery == null) {
+            $donationQuery = Donation::whereNotNull('confirmed')->get();
+        }
         $kinds = [];
-        $donationIds = Donation::whereNotNull('confirmed')->get()->pluck('id', null)->toArray();
+        $donationIds = $donationQuery->pluck('id', null)->toArray();
         foreach (self::all() as $kind) {
             $subitems = [];
             // Get the types (created by admins)

@@ -15,10 +15,8 @@
             <hr/>
             <ul>
                 <li>
-                    <a href="{{ URL::route('admin::goalsCurrency') }}">
-                        {{ trans("backoffice.currency") }}
-                    </a>
-                    [Amount: €{{ round($currency) }}]
+                    <a href="{{ URL::route('admin::goalsCurrency') }}">{{ trans("backoffice.currency") }}</a>
+                     [Amount: €{{ round($currency) }}]
                 </li>
                 @foreach ($donationKinds as $kind)
                     @if ($kind != "currency")
@@ -26,9 +24,9 @@
                         <a href="{{ URL::route('admin::goalsDetail', $kind) }}">{{ trans("backoffice." . $kind) }}</a>
                         @if (isset($donationTypes[$kind]))
                             [{{ count($donationTypes[$kind]) }}
-                            {{ Lang::choice('backoffice.types', count($donationTypes[$kind])) }}]
+                            {{ Lang::choice('backoffice.subcategories', count($donationTypes[$kind])) }}]
                         @else
-                            [0 {{ Lang::choice('backoffice.types', 0) }}]
+                            [0 {{ Lang::choice('backoffice.subcategories', 0) }}]
                         @endif
                     </li>
                     @endif

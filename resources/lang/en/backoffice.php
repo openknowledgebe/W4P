@@ -16,7 +16,7 @@ return [
     "backers" => "Backers",
     "donations" => "Donations",
     "dashboard" => "Dashboard",
-    "types" => 'type|types',
+    "subcategories" => 'subcategory|subcategories',
     "goal_overview" => "Goal overview",
     "email" => "Email",
     "save" => "Save",

@@ -18,5 +18,6 @@ return [
     "story" => "Our story",
     "updates" => "Updates",
     "howdoesitwork" => "How does it work?",
-    "previousprojects" => "Previous projects"
+    "previousprojects" => "Previous projects",
+    "complete" => "complete"
 ];

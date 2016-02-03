@@ -20,7 +20,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6 col-md-push-3">
-                    <p>{{ trans('pledged.item') }}</p>
+                    <p>{{ trans('donation.you_pledged') }}</p>
                     @foreach ($types as $type)
                         @if (is_array($type))
                         <strong>{{ trans('backoffice.' . $type['kind']) }}</strong><br/>

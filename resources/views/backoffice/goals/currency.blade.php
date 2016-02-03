@@ -5,6 +5,13 @@
 @section('content')
     <div class="row">
         <div class="col-md-push-3 col-md-6">
+            <br/>
+            <ol class="breadcrumb">
+                <li><a href="{{ URL::route('admin::goals') }}">{{ trans('backoffice.goals') }}</a></li>
+                <li class="active">
+                    {{ trans("backoffice.currency") }}
+                </li>
+            </ol>
 
             <h1>{{ trans('backoffice.currency_goal.title') }}</h1>
             <p>{{ trans('backoffice.currency_goal.about') }}</p>

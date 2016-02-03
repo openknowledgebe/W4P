@@ -5,6 +5,14 @@
 @section('content')
     <div class="row">
         <div class="col-md-push-3 col-md-6">
+            <br/>
+            <ol class="breadcrumb">
+                <li><a href="{{ URL::route('admin::goals') }}">{{ trans('backoffice.goals') }}</a></li>
+                <li><a href="{{ URL::route('admin::goalsDetail', [$kind]) }}">{{ trans('backoffice.' . $kind) }}</a></li>
+                <li class="active">
+                    @if ($new) New Goal @else {{ $data['name'] }} @endif
+                </li>
+            </ol>
 
             @if ($new)
                 <h1>{{ trans('backoffice.new_goalType.title') }}</h1>
