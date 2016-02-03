@@ -150,6 +150,22 @@
             /*@editable*/ text-decoration:underline;
         }
 
+        .btn4 {
+            display: inline-block !important;
+            text-decoration: none !important;
+            font-size: 0.95em;
+            padding: 10px 20px;
+            border-radius: 100px;
+            border: 2px solid #d6673e !important;
+            color: #d6673e !important;
+            text-transform: uppercase;
+            background-color: transparent;
+        }
+        .btn4:hover {
+            border: 2px solid #d62828 !important;
+            color: #d62828 !important;
+        }
+
         #headerImage{
             height:auto;
             max-width:600px;

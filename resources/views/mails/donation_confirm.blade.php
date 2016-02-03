@@ -24,5 +24,5 @@
     @endif
     <hr/>
     <p>{{ trans('mails.donation_confirm.content.confirm') }}</p>
-    <a href="{{ URL::route('donate::emailConfirm', [$confirm_url, $email]) }}">{{ trans('mails.donation_confirm.content.confirm_action') }}</a>
+    <a class="btn4" href="{{ URL::route('donate::emailConfirm', [$confirm_url, $email]) }}">{{ trans('mails.donation_confirm.content.confirm_action') }}</a>
 @endsection

@@ -200,6 +200,7 @@ class DonationController extends Controller
         if ($donation != null && $donation->confirmed == null) {
             $donation->confirmed = Carbon::now();
             $donation->save();
+
             // Send an email
             $data = [
                 "email" => $email,
@@ -214,6 +215,10 @@ class DonationController extends Controller
                 $message->to($data['email'], $data['name'])
                     ->subject(trans('mails.donation_success.subject') . " — " . $data['projectTitle']);
             });
+
+            // Notify the administrator
+            // TODO: Notify the admin; collect the new pledge information
+
             // Return view
             return View::make('front.donation.confirmed');
         }
