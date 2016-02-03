@@ -6,6 +6,9 @@ return array(
     "title" => "How do you want to support this project?",
     "description" => "You can support this project in a few ways. The following options below are available to pledge:",
 
+    // Info about money
+    "money_pledge" => "You're donating the following amount:",
+
     // Confirmation page
 
     "confirm" => [

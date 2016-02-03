@@ -29,6 +29,18 @@
                         <input name="_method" type="hidden" value="POST">
                         {{ csrf_field() }}
 
+                        @if ($project->currency > 0)
+                        <div class="form-group">
+                            <label>
+                                {{ trans('backoffice.currency') }}
+                            </label>
+                            <input type="number" step="any"
+                                   class="form-control" id="currency" name="currency"
+                                   placeholder="Pledge amount" min="0">
+                        </div>
+                        <hr/>
+                        @endif
+
                         <div class="form-group">
                             <!-- Donation options -->
                             @foreach ($donationTypes as $donationType)
@@ -47,8 +59,8 @@
                             </p>
                             @endforeach
                             @endforeach
-                            <button type="submit" class="btn4 pull-right">{{ trans('setup.generic.next') }} &rarr;</button>
                         </div>
+                        <button type="submit" class="btn4 pull-right">{{ trans('setup.generic.next') }} &rarr;</button>
                     </form>
                 </div>
             </div>

@@ -20,11 +20,16 @@
             </div>
             <div class="row">
                 <div class="col-md-6 col-md-push-3">
-                    <p>{{ trans('You pledged:') }}</p>
+                    <p>{{ trans('pledged.item') }}</p>
                     @foreach ($types as $type)
+                        @if (is_array($type))
                         <strong>{{ trans('backoffice.' . $type['kind']) }}</strong><br/>
                         {{ $type['amount'] }}x {{ $type['name'] }}<br/>
+                        @endif
                     @endforeach
+                    @if (isset($types['currency']))
+                        <p>{{ trans('donation.money_pledge') }} €{{ $types['currency'] }}</p>
+                    @endif
                     <hr/>
                 </div>
             </div>

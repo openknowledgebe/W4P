@@ -13,6 +13,7 @@ use W4P\Models\DonationItem;
 use W4P\Models\DonationKind;
 use W4P\Models\Donation;
 
+use Mail;
 use Validator;
 use Redirect;
 use View;
@@ -35,7 +36,8 @@ class DonationController extends Controller
         return View::make('front.donation.start')
             ->with('currency', $currency)
             ->with('donationTypes', $donationTypes)
-            ->with('donationsDisabled', $disabled);
+            ->with('donationsDisabled', $disabled)
+            ->with('project', $request->project);
     }
 
     public function continueDonation(Request $request)
@@ -43,11 +45,12 @@ class DonationController extends Controller
         $validation = [];
         // Set up validation rules for incoming request
         $input = Input::all();
+
         // Get the fields that start with pledge_
         $fields = array_keys($input);
         foreach ($fields as $field) {
             // Check pledge fields: if the amount > 0
-            if (strpos($field, "pledge_") === 0 && $input[$field] != "") {
+            if (strpos($field, "pledge_") === 0 && $input[$field] != "" && $input[$field] != 0) {
                 $validation[$field] = "numeric|min:0";
             }
         }
@@ -74,7 +77,7 @@ class DonationController extends Controller
         $fields = array_keys($input);
         foreach ($fields as $field) {
             // Check pledge fields: if the amount > 0
-            if (strpos($field, "pledge_") === 0 && $input[$field] != "") {
+            if (strpos($field, "pledge_") === 0 && $input[$field] != "" && $input[$field] != 0) {
                 $id = explode("pledge_", $field)[1];
                 $donationType = DonationType::find($id);
                 // Build an array with information
@@ -86,6 +89,9 @@ class DonationController extends Controller
                 ];
                 array_push($types, $type);
             }
+        }
+        if (Input::get('currency') != "") {
+            $types["currency"] = Input::get('currency');
         }
         if (count($types) == 0) {
             // Fail validation
@@ -108,7 +114,10 @@ class DonationController extends Controller
         // Decode the pledge information
         $input['_pledge'] = json_decode(Input::get('_pledge'), 1);
 
-        // TODO: Extract pledge information about payment
+        $currency = 0;
+        if (array_key_exists("currency", $input["_pledge"])) {
+            $currency = $input["_pledge"]["currency"];
+        }
 
         // Validate the fields: name and email are required
         $validator = Validator::make(
@@ -131,7 +140,7 @@ class DonationController extends Controller
                     "first_name" => Input::get('firstName'),
                     "last_name" => Input::get('lastName'),
                     "email" => Input::get('email'),
-                    "currency" => 0,
+                    "currency" => $currency,
                     "secret_url" => $secret_url,
                     "confirm_url" => $confirm_url,
                     "confirmed" => null,
@@ -140,18 +149,32 @@ class DonationController extends Controller
             );
 
             foreach ($input['_pledge'] as $pledge) {
-                for ($i = 0; $i < $pledge['amount']; $i++) {
-                    DonationItem::create(
-                        [
-                            "donation_id" => $donation->id,
-                            "donation_type_id" => $pledge["id"]
-                        ]
-                    );
+                if (is_array($pledge)) {
+                    for ($i = 0; $i < $pledge['amount']; $i++) {
+                        DonationItem::create(
+                            [
+                                "donation_id" => $donation->id,
+                                "donation_type_id" => $pledge["id"]
+                            ]
+                        );
+                    }
                 }
             }
 
-            // TODO: Send an email to backer with confirmation link
+            $data = [
+                "email" => Input::get('email'),
+                "firstName" => Input::get('firstName'),
+                "lastName" => Input::get('lastName'),
+                "name" => Input::get('firstName') . " " . Input::get('lastName'),
+                "projectTitle" => $request->project->title,
+                "types" => $input['_pledge'],
+                "confirm_url" => $donation->confirm_url
+            ];
 
+            Mail::queue('mails.donation_confirm', $data, function ($message) use ($data) {
+                $message->to($data['email'], $data['name'])
+                    ->subject(trans('mails.donation_confirm.subject') . " — " . $data['projectTitle']);
+            });
 
         } else {
             $success = false;
@@ -170,13 +193,28 @@ class DonationController extends Controller
         }
     }
 
-    public function emailConfirmation($code, $email)
+    public function emailConfirmation(Request $request, $code, $email)
     {
         // Check if a donation can be found with this code and email
         $donation = Donation::where('confirm_url', $code)->where('email', $email)->first();
         if ($donation != null && $donation->confirmed == null) {
             $donation->confirmed = Carbon::now();
             $donation->save();
+            // Send an email
+            $data = [
+                "email" => $email,
+                "firstName" => $donation->first_name,
+                "lastName" => $donation->last_name,
+                "name" => $donation->first_name . " " . $donation->last_name,
+                "projectTitle" => $request->project->title,
+                "secret_url" => $donation->secret_url
+            ];
+
+            Mail::queue('mails.donation_success', $data, function ($message) use ($data) {
+                $message->to($data['email'], $data['name'])
+                    ->subject(trans('mails.donation_success.subject') . " — " . $data['projectTitle']);
+            });
+            // Return view
             return View::make('front.donation.confirmed');
         }
         return "This is not a valid confirmation mail or this was already confirmed.";
