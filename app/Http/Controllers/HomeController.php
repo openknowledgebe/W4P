@@ -14,11 +14,12 @@ use W4P\Models\DonationType;
 use W4P\Models\DonationKind;
 use W4P\Models\Donation;
 
+// use W4P\Facades\Mollie;
+
 use Redirect;
 use View;
 use W4P\Models\Project;
 use Carbon\Carbon;
-
 
 class HomeController extends Controller
 {
@@ -28,6 +29,8 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
+        // Mollie::initialize();
+
         // Get the project
         $project = $request->project;
 

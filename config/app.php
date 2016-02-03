@@ -155,6 +155,7 @@ return [
         W4P\Providers\AuthServiceProvider::class,
         W4P\Providers\EventServiceProvider::class,
         W4P\Providers\RouteServiceProvider::class,
+        W4P\Providers\PaymentServiceProvider::class,
 
         /*
          * Third Party Service Providers
@@ -208,9 +209,16 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
+
+        /* W4P aliases */
+
+        'Mollie'    => W4P\Facades\Mollie::class,
+
+        /* Custom aliases */
+
         'Image'     => Intervention\Image\Facades\Image::class,
         'Markdown'  => GrahamCampbell\Markdown\Facades\Markdown::class,
-        'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'Debugbar'  => Barryvdh\Debugbar\Facade::class,
 
     ],
 
