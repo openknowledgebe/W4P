@@ -9,7 +9,7 @@
     <body>
         <div class="container">
             <div class="row">
-                <nav class="navbar navbar-default">
+                <nav class="navbar navbar-inverse">
                     <div class="container-fluid">
                         <div class="navbar-header">
                             <a class="navbar-brand" href="/">{{ \W4P\Models\Setting::get('platform.name') }}</a>

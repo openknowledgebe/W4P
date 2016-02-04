@@ -22,7 +22,14 @@
                     <td>{{ $donation->id }}</td>
                     <td>{{ $donation->first_name }} {{ $donation->last_name }}</td>
                     <td>{{ $donation->email }}</td>
-                    <td></td>
+                    <td>
+                        @foreach ($donation->donationContents() as $kind => $kindContent)
+                            <strong>{{ trans('backoffice.' . $kind) }}</strong><br/>
+                            @foreach ($kindContent as $item)
+                                {{ $item["count"] }}x {{ $item["name"] }}<br/>
+                            @endforeach
+                        @endforeach
+                    </td>
                     <td>{{ $donation->payment_id }}</td>
                     <td>
                         @if ($donation->currency > 0)
