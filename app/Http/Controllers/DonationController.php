@@ -252,7 +252,7 @@ class DonationController extends Controller
             });
             return View::make('front.donation.thanks')->with('paid', true);
         } else {
-            return Redirect::route('donate::payment_status');
+            return Redirect::route('donate::payment_status', ['donation_id', $donation_id]);
         }
     }
 
