@@ -34,7 +34,6 @@ class Mollie
         if ($donation != null && $donation->confirmed == null && $donation->currency > 0) {
             try {
                 $redirectUrl = URL::route('donate::payment_complete', ["donation_id" => $donation_id]);
-                dd($redirectUrl);
                 // Create a new payment
                 $payment = $this->client->payments->create([
                     "amount" => $donation->currency,
