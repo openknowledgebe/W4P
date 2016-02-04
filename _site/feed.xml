@@ -3,10 +3,10 @@
   <channel>
     <title>W4P Crowdsourcing platform</title>
     <description>W4P is a crowdsourcingplatform that you can host yourself. Boost local / social / open innovation today!</description>
-    <link>https://openknowledgebe.github.io/W4P//</link>
-    <atom:link href="https://openknowledgebe.github.io/W4P//feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 03 Feb 2016 20:33:43 +0100</pubDate>
-    <lastBuildDate>Wed, 03 Feb 2016 20:33:43 +0100</lastBuildDate>
+    <link>https://openknowledgebe.github.io/W4P/</link>
+    <atom:link href="https://openknowledgebe.github.io/W4P/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Thu, 04 Feb 2016 09:59:29 +0100</pubDate>
+    <lastBuildDate>Thu, 04 Feb 2016 09:59:29 +0100</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -14,8 +14,8 @@
         <description>
 </description>
         <pubDate>Fri, 01 Jan 2016 00:00:00 +0100</pubDate>
-        <link>https://openknowledgebe.github.io/W4P//design/2016/01/01/project-3/</link>
-        <guid isPermaLink="true">https://openknowledgebe.github.io/W4P//design/2016/01/01/project-3/</guid>
+        <link>https://openknowledgebe.github.io/W4P/design/2016/01/01/project-3/</link>
+        <guid isPermaLink="true">https://openknowledgebe.github.io/W4P/design/2016/01/01/project-3/</guid>
         
         
         <category>design</category>
@@ -27,8 +27,8 @@
         <description>
 </description>
         <pubDate>Fri, 01 Jan 2016 00:00:00 +0100</pubDate>
-        <link>https://openknowledgebe.github.io/W4P//design/2016/01/01/project-2/</link>
-        <guid isPermaLink="true">https://openknowledgebe.github.io/W4P//design/2016/01/01/project-2/</guid>
+        <link>https://openknowledgebe.github.io/W4P/design/2016/01/01/project-2/</link>
+        <guid isPermaLink="true">https://openknowledgebe.github.io/W4P/design/2016/01/01/project-2/</guid>
         
         
         <category>design</category>
@@ -40,8 +40,8 @@
         <description>
 </description>
         <pubDate>Fri, 01 Jan 2016 00:00:00 +0100</pubDate>
-        <link>https://openknowledgebe.github.io/W4P//design/2016/01/01/project-1/</link>
-        <guid isPermaLink="true">https://openknowledgebe.github.io/W4P//design/2016/01/01/project-1/</guid>
+        <link>https://openknowledgebe.github.io/W4P/design/2016/01/01/project-1/</link>
+        <guid isPermaLink="true">https://openknowledgebe.github.io/W4P/design/2016/01/01/project-1/</guid>
         
         
         <category>design</category>
