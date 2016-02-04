@@ -37,7 +37,7 @@ class Mollie
                 // Create a new payment
                 $payment = $this->client->payments->create([
                     "amount" => $donation->currency,
-                    "description" => Project::first()->title . " | Donation #" . $donation_id,
+                    "description" => trans('donation.donation_for') . " " . Project::first()->title,
                     "redirectUrl" => URL::route('donate::payment_status', ["donation_id" => $donation_id]),
                     "webhookUrl" => URL::route('payment_webhook', ["donation_id" => $donation_id]),
                     "metadata" => [

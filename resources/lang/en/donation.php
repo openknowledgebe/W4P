@@ -6,6 +6,9 @@ return array(
     "title" => "How do you want to support this project?",
     "description" => "You can support this project in a few ways. The following options below are available to pledge:",
 
+    // Mollie: about
+    "donation_for" => "Donation for",
+
     // Info about money
     "money_pledge" => "You're donating the following amount:",
     "you_pledged" => "You're pledging:",
@@ -56,8 +59,10 @@ return array(
     // Donation thank you message
 
     "thanks" => [
-        "title" => "Thanks!",
-        "description" => "Thank you for your donation. We have sent you an email. Unless you have donated money, you will still need to confirm this donation."
+        "title" => "Thank you for your donation!",
+        "title_paid" => "Thank you for your payment!",
+        "description" => "<p>Thank you for your donation. We have sent you an email about the status of your donation.</p><p>There's two scenarios here:</p>
+    <ul><li>If you have paid for your donation, and your payment was accepted, you will receive an email with your donation link. You do not need to do anything else. The project creator might get in touch with you to organise further details if you also pledged other resources.</li><li>If you <strong>did not</strong> pay any money and you pledged other resources (time, coaching, etc.) you still have to confirm your donation by clicking the link in the email you received.</li></ul>"
     ],
 
     "confirmed" => [

@@ -29,8 +29,6 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        // Mollie::initialize();
-
         // Get the project
         $project = $request->project;
 
@@ -45,6 +43,7 @@ class HomeController extends Controller
             $videoProvider = "vimeo";
         }
 
+        // Get all donation types & kinds
         $donationTypes = DonationType::all()->groupBy('kind');
         $donationKinds = DonationKind::all();
 
@@ -62,6 +61,7 @@ class HomeController extends Controller
                 break;
         }
 
+        // Get the last 5 posts
         $posts = Post::orderBy('created_at', 'DESC')->limit(5)->get();
 
         // Get when the project runs out
@@ -75,15 +75,16 @@ class HomeController extends Controller
         $donorCount = $donorQuery->groupBy('email')->count();
         $contributed = $donorQuery->sum('currency');
 
+        // Calculate the contributed percentage of the total amount of money
         $contributedPercentage = 0;
         if ($project->currency > 0) {
             $contributedPercentage = round(($contributed / $project->currency) * 100, 1);
         }
 
-        // Get percentages
+        // Get percentages from donations (for 4 kinds -> manpower, coaching, etc.)
         $percentages = DonationKind::getAllPercentages($donorQuery);
 
-        // Return the view with all the text
+        // Return the view with all the data
         return View::make('front.home')
             ->with("project", $project)
             ->with("posts", $posts)

@@ -11,14 +11,21 @@
         <!-- Donation page -->
         <div class="container">
             <div class="row">
+
                 <div class="col-md-12">
                     <!-- Donation header block -->
-                    <h1>{{ trans('donation.thanks.title') }}</h1>
+                    @if (isset($paid) && $paid == true)
+                        <h1>{{ trans('donation.thanks.title') }}</h1>
+                    @else
+                        <h1>{{ trans('donation.thanks.title_paid') }}</h1>
+                    @endif
                     <hr/>
                 </div>
+
                 <div class="col-md-12">
-                    <p>{{ trans('donation.thanks.description') }}</p>
+                    {!! trans('donation.thanks.description') !!}  }}
                 </div>
+
             </div>
         </div>
     </div>

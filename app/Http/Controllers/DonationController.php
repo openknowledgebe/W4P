@@ -248,9 +248,9 @@ class DonationController extends Controller
                 $message->to($data['email'], $data['name'])
                     ->subject(trans('mails.donation_money_success.subject') . " — " . $data['projectTitle']);
             });
-            return "Your payment has been successfully completed.";
+            return View::make('front.donation.thanks')->with('paid', true);
         } else {
-            return "Your payment has the following status:" . $donation->payment_status;
+            return View::make('front.donation.payment_status')->with('paymentStatus', $donation->payment_status);
         }
     }
 
