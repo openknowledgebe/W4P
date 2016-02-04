@@ -20,7 +20,8 @@ return array(
         "refunded" => "Refunded",
         "chargedback" => "Chargeback",
         "cancelled" => "Cancelled",
-        "expired" => "Expired"
+        "expired" => "Expired",
+        "completed" => "Completed"
     ],
     "payment_status_page" => [
         "title" => "Your payment",
