@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Input;
 
 use W4P\Models\DonationType;
 use W4P\Models\DonationKind; // fake model
+use W4P\Models\Setting;
 
 use View;
 use Validator;
@@ -133,8 +134,15 @@ class AdminGoalController extends Controller
 
     public function currency(Request $request)
     {
+        $errors = [];
+        if (Setting::get('platform.mollie-key') == "" || Setting::get('platform.mollie-key') == null) {
+            $errors = [
+                "Your have not set up a Mollie API key, so payments will NOT work until you set up an API key."
+            ];
+        }
         return View::make('backoffice.goals.currency')
-            ->with('currency', $request->project->currency);
+            ->with('currency', $request->project->currency)
+            ->withErrors($errors);
     }
 
     public function updateCurrency(Request $request)

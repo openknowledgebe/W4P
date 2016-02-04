@@ -28,7 +28,7 @@ class DonationController extends Controller
         $donationTypes = DonationType::all()->groupBy('kind')->toArray();
         // Count the donationTypes; if none are available, show an error
         $disabled = false;
-        if (count($donationTypes) < 1) {
+        if (count($donationTypes) < 1 && $request->project->currency == 0) {
             $disabled = true;
         }
         // We also need to check if monetary contributions are allowed
