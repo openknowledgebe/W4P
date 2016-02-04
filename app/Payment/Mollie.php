@@ -48,8 +48,7 @@ class Mollie
                 $donation->payment_id = $payment->id;
                 $donation->save();
 
-                // Redirect the user
-                return Redirect::to($payment->getPaymentUrl());
+                return $payment->getPaymentUrl();
 
             } catch (\Mollie_API_Exception $e) {
                 echo "API call failed: " . htmlspecialchars($e->getMessage());

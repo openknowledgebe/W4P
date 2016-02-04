@@ -163,7 +163,9 @@ class DonationController extends Controller
             }
 
             if ($currency > 0) {
-                Mollie::createPayment($donation->id);
+                $redirectUrl = Mollie::createPayment($donation->id);
+                // Redirect the user
+                return Redirect::to($redirectUrl);
             }
 
             $data = [
