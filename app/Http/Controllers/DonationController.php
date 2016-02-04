@@ -259,7 +259,7 @@ class DonationController extends Controller
     public function paymentStatus($donation_id)
     {
         $donation = Donation::find($donation_id);
-        return View::make('front.donation.payment_status', ['donation_id', $donation_id])
+        return View::make('front.donation.payment_status')
             ->with('paymentStatus', $donation->payment_status);
     }
 

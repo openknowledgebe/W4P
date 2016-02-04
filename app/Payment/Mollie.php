@@ -33,12 +33,13 @@ class Mollie
         // Check if the donation wasn't paid
         if ($donation != null && $donation->confirmed == null && $donation->currency > 0) {
             try {
-
+                $redirectUrl = URL::route('donate::payment_complete', ["donation_id" => $donation_id]);
+                dd($redirectUrl);
                 // Create a new payment
                 $payment = $this->client->payments->create([
                     "amount" => $donation->currency,
                     "description" => trans('donation.donation_for') . " " . Project::first()->title,
-                    "redirectUrl" => URL::route('donate::payment_complete', ["donation_id" => $donation_id]),
+                    "redirectUrl" => $redirectUrl,
                     "webhookUrl" => URL::route('payment_webhook', ["donation_id" => $donation_id]),
                     "metadata" => [
                         "donation_id" => $donation_id
