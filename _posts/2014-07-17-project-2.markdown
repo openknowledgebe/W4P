@@ -1,15 +1,15 @@
 ---
-title: Support Page
-subtitle: Showing types of commitment
+title: Project commitment page
+subtitle: Showing types of support actions
 layout: default
 modal-id: 2
 date: 2016-01-01
 img: Screen2.png
 thumbnail: Screen2-thumbnail.png
 alt: image-alt
-project-date: February 2016
-client:
-category: Design
-description: After deciding to help out the project a user can choose how. They can provide a donation or reward-based funding, or volunteer, offer coaching or materials.
+project-date: 2015-2016
+client: Yungpanda
+category: CHEST
+description: After being convinced about the impact of the project an end-user can choose how they want to support it. They can provide it with donations or reward-based funding, or become a volunteer, offer coaching or donate materials.
 
 ---

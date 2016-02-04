@@ -1,15 +1,15 @@
 ---
-title: Project page
-subtitle: Front page design
+title: Main page
+subtitle: Project landing page
 layout: default
 modal-id: 1
 date: 2016-01-01
 img: Screen1.png
 thumbnail: Screen1-thumbnail.png
 alt: image-alt
-project-date: February 2016
-client:
-category: Design
-description: The front page is the one-stop shop for all end users. It contains the information about the project in a single glance. No need to find the right project or maintaining project curation.
+project-date: 2015-2016
+client: Yungpanda
+category: CHEST
+description: The front page is the one-stop shop for most end-users. It contains all the information about the project in a single glance. No hassle finding the right project or maintaining project curation.
 
 ---

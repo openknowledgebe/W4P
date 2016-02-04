@@ -1,15 +1,15 @@
 ---
 title: Secondary pages
-subtitle: Extra information
+subtitle: Providing extra information
 layout: default
 modal-id: 3
 date: 2016-01-01
 img: Screen3.png
 thumbnail: Screen3-thumbnail.png
 alt: image-alt
-project-date: February 2016
-client:
-category: Design
-description: Secondary pages are kept to a strict minimum to not distract end-users from the project page on the front. They are used to explain how the platform works or provide the necessary space for Terms of use and privacy policies, which are vital on any crowdsourcing platform.
+project-date: 2015-2016
+client: Yungpanda
+category: CHEST
+description: Secondary pages are kept to a strict minimum so that we do not distract end-users from the main project page on. These secondary pages are used to explain how the platform works or provide the necessary space for Terms of use and privacy policies, which are vital on any crowdsourcing platform.
 
 ---
