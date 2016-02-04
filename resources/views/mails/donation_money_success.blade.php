@@ -10,6 +10,6 @@
 
 @section('content')
     <h1>{{ trans('mails.donation_money_success.content.header') }}</h1>
-    <p>{!! trans('mails.donation_money_success.content.intro', ['name' => $name, 'project' => $projectTitle]) !!}</p>
+    <p>{!! trans('mails.donation_money_success.content.intro', ['name' => $name, 'project' => $projectTitle, 'amount' => $amount]) !!}</p>
     <a href="#" class="btn4">{{ trans('mails.donation_money_success.content.confirm_action') }}</a>
 @endsection

@@ -244,7 +244,8 @@ class DonationController extends Controller
                 "lastName" => $donation->last_name,
                 "name" => $donation->first_name . " " . $donation->last_name,
                 "projectTitle" => $request->project->title,
-                "secret_url" => $donation->secret_url
+                "secret_url" => $donation->secret_url,
+                "amount" => $donation->currency
             ];
             Mail::queue('mails.donation_money_success', $data, function ($message) use ($data) {
                 $message->to($data['email'], $data['name'])
