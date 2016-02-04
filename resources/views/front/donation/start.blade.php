@@ -5,9 +5,9 @@
 @section('content')
     <div class="project">
         <!-- Banner -->
-        @if (file_exists(public_path() . "/project/banner.png"))
-            <div class="home-banner" style="background-image: url('{{ URL::to("/project/banner.png") }}');"></div>
-        @endif
+        <div class="home-banner"
+             @if (file_exists(public_path() . "/project/banner.png")) style="background-image: url('{{ URL::to("/project/banner.png") }}');" @endif>
+        </div>
         @if (!$donationsDisabled)
         <!-- Donation page -->
         <div class="container">

@@ -30,7 +30,7 @@
                             <div>
                                 <ul class="nav navbar-nav navbar-right">
                                     <li>
-                                        <a href="#">Language</a>
+
                                     </li>
                                 </ul>
                             </div>

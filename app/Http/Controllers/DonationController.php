@@ -232,9 +232,26 @@ class DonationController extends Controller
         return "This is not a valid confirmation mail or this was already confirmed.";
     }
 
-    public function paymentStatus($donation_id)
+    public function paymentStatus(Request $request, $donation_id)
     {
-        return Donation::find($donation_id)->toArray();
+        $donation = Donation::find($donation_id);
+        if ($donation->payment_status == "paid") {
+            $data = [
+                "email" => $donation->email,
+                "firstName" => $donation->first_name,
+                "lastName" => $donation->last_name,
+                "name" => $donation->first_name . " " . $donation->last_name,
+                "projectTitle" => $request->project->title,
+                "secret_url" => $donation->secret_url
+            ];
+            Mail::queue('mails.donation_money_success', $data, function ($message) use ($data) {
+                $message->to($data['email'], $data['name'])
+                    ->subject(trans('mails.donation_money_success.subject') . " — " . $data['projectTitle']);
+            });
+            return "Your payment has been successfully completed.";
+        } else {
+            return "Your payment has the following status:" . $donation->payment_status;
+        }
     }
 
     public function paymentWebhook($donation_id)

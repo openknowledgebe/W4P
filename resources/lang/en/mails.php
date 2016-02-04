@@ -20,6 +20,16 @@ return [
             "confirm" => "In order to view your pledge and your rewards, you can click the following link below:",
             "confirm_action" => "View my pledge"
         ],
-    ]
+    ],
 
+    "donation_money_success" => [
+        "subject" => "Paid for donation!",
+        "teaser" => "Your payment has been completed.",
+        "content" => [
+            "header" => "Thank your for your donation!",
+            "intro" => "Hello there, :name.<br/>We have successfully received your donation payment for <strong>:project</strong>.",
+            "confirm" => "In order to view your pledge and your rewards, you can click the following link below:",
+            "confirm_action" => "View my pledge"
+        ],
+    ]
 ];

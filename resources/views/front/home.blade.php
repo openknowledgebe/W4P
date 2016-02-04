@@ -5,10 +5,10 @@
 @section('content')
     <div class="project">
         <!-- Banner -->
-        @if (file_exists(public_path() . "/project/banner.png"))
-            <div class="home-banner" style="background-image: url('{{ URL::to("/project/banner.png") }}');"></div>
-            @endif
-                    <!-- Goals -->
+        <div class="home-banner"
+             @if (file_exists(public_path() . "/project/banner.png")) style="background-image: url('{{ URL::to("/project/banner.png") }}');" @endif>
+        </div>
+        <!-- Goals -->
             <div class="container">
                 <div class="row goals">
                     <!-- Goals left column (with progress) -->

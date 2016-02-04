@@ -71,14 +71,36 @@ class Mollie
         // Get the payment
         $payment = $this->client->payments->get($donation->payment_id);
 
-        // Check if payment is paid
+        /** Pending or paid */
         if ($payment->isPaid()) {
-            // If the payment is paid, set paid_at
+            // If the payment is paid, set payment_status
+            $donation->payment_status = "paid";
             $donation->confirmed = Carbon::now();
             $donation->save();
-            // TODO: Send a confirmation email
-        } elseif (! $payment->isOpen()) {
-            // TODO: Mark payment as closed
         }
+        if ($payment->isPending()) {
+            $donation->payment_status = "pending";
+            $donation->save();
+        }
+        /** Failed payments, expired, refunded */
+        if ($payment->isRefunded()) {
+            $donation->payment_status = "refunded";
+            $donation->confirmed = null;
+            $donation->save();
+        }
+        if ($payment->isChargedBack()) {
+            $donation->payment_status = "chargedback";
+            $donation->confirmed = null;
+            $donation->save();
+        }
+        if ($payment->isCancelled()) {
+            $donation->payment_status = "cancelled";
+            $donation->save();
+        }
+        if ($payment->isExpired()) {
+            $donation->payment_status = "expired";
+            $donation->save();
+        }
+
     }
 }
