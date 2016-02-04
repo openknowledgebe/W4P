@@ -53,7 +53,7 @@ class DonationKind
                 $percentage = 0;
             }
             $kinds[$kind] = [
-                "percentage" => $percentage * 100,
+                "percentage" => round($percentage * 100, 2),
                 "items" => $subitems
             ];
         }
