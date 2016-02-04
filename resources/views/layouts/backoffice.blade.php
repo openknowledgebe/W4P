@@ -39,7 +39,7 @@
                                             <a href="#" class="disabled">{{ trans('backoffice.goal_overview') }}</a>
                                         </li>
                                         <li>
-                                            <a href="#" class="disabled">{{ trans('backoffice.donations') }}</a>
+                                            <a href="{{ URL::route('admin::donations') }}">{{ trans('backoffice.donations') }}</a>
                                         </li>
                                     </ul>
                                 <li>

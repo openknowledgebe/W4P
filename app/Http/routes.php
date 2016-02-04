@@ -143,6 +143,9 @@ Route::group(['middleware' => ['web']], function () {
             Route::get('/assets', ['as' => 'assets', 'uses' => 'AdminController@assets']);
             Route::get('/assets/{filename}/delete', ['as' => 'deleteAsset', 'uses' => 'AdminController@deleteAsset']);
 
+            // Donations
+            Route::get('/donations', ['as' => 'donations', 'uses' => 'AdminController@donations']);
+
             // Create a new goal type
             Route::get(
                 '/goals/{kind}/new',

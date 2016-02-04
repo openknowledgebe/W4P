@@ -12,6 +12,7 @@ use W4P\Http\Controllers\Controller;
 
 use W4P\Models\Setting;
 use W4P\Models\Project;
+use W4P\Models\Donation;
 
 use View;
 use Redirect;
@@ -338,6 +339,12 @@ class AdminController extends Controller
         $images = array_slice(scandir(public_path() . "/images"), 2);
         return View::make('backoffice.assets')
             ->with('images', $images);
+    }
+
+    public function donations()
+    {
+        $donations = Donation::all();
+        return View::make('backoffice.donations')->with('donations', $donations);
     }
 
     public function deleteAsset($filename)
