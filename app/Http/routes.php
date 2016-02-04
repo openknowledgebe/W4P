@@ -52,6 +52,11 @@ Route::group(['middleware' => ['web']], function () {
         ]);
 
         // Payment status page (Mollie redirects to this)
+        Route::get('/details/{donation_id}/payment_complete', [
+            'as' => 'payment_complete',
+            'uses' => 'DonationController@paymentComplete',
+        ]);
+
         Route::get('/details/{donation_id}/payment_status', [
             'as' => 'payment_status',
             'uses' => 'DonationController@paymentStatus',

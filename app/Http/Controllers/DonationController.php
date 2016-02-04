@@ -163,6 +163,8 @@ class DonationController extends Controller
             }
 
             if ($currency > 0) {
+                $donation->payment_status = "pending";
+                $donation->save();
                 $redirectUrl = Mollie::createPayment($donation->id);
                 // Redirect the user
                 return Redirect::to($redirectUrl);
@@ -232,7 +234,7 @@ class DonationController extends Controller
         return "This is not a valid confirmation mail or this was already confirmed.";
     }
 
-    public function paymentStatus(Request $request, $donation_id)
+    public function paymentComplete(Request $request, $donation_id)
     {
         $donation = Donation::find($donation_id);
         if ($donation->payment_status == "paid") {
@@ -250,8 +252,15 @@ class DonationController extends Controller
             });
             return View::make('front.donation.thanks')->with('paid', true);
         } else {
-            return View::make('front.donation.payment_status')->with('paymentStatus', $donation->payment_status);
+            return Redirect::route('donate::payment_status');
         }
+    }
+
+    public function paymentStatus($donation_id)
+    {
+        $donation = Donation::find($donation_id);
+        return View::make('front.donation.payment_status')
+            ->with('paymentStatus', $donation->payment_status);
     }
 
     public function paymentWebhook($donation_id)

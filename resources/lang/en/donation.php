@@ -13,15 +13,27 @@ return array(
     "money_pledge" => "You're donating the following amount:",
     "you_pledged" => "You're pledging:",
 
-    // Confirmation page
+    // Payment statuses
+    "payment_status" => [
+        "paid" => "Paid",
+        "pending" => "Pending",
+        "refunded" => "Refunded",
+        "chargedback" => "Chargeback",
+        "cancelled" => "Cancelled",
+        "expired" => "Expired"
+    ],
+    "payment_status_page" => [
+        "title" => "Your payment",
+        "description" => "Your payment's current status is: <strong>:status</strong>.",
+    ],
 
+    // Confirmation page
     "confirm" => [
         "title" => "Confirm your information",
         "description" => "We will need some additional information about you for our records. You will receive an email containing a confirmation link and a private backer link after donating."
     ],
 
     // Form field
-
     "user" => [
         "first_name" => [
             "title" => "First name",
