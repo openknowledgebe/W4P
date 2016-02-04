@@ -77,7 +77,7 @@ class AdminGoalController extends Controller
             $data = Input::all();
             $data['kind'] = $kind;
             DonationType::create($data);
-            Session::flash('info', trans('backoffice.flash.goalTypeSaved'));
+            Session::flash('info', trans('backoffice.flash.goal_save_success'));
         } else {
             // Validation has failed. Set success to false. Set validator messages
             $success = false;

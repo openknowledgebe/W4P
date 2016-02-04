@@ -58,6 +58,7 @@ return [
         "tier_update_success" => "A post was successfully updated.",
         "mail_validation_failed" => "There was a problem sending a test message using this new configuration. Please check the configuration and try again.",
         "mail_validation_success" => "Your new email configuration works!",
+        "goal_save_success" => "Your new goal has been successfully saved!",
         "goal_update_success" => "Your goal has been successfully updated!",
         "currency_update_success" => "Your money goal has been successfully updated!",
     ],
