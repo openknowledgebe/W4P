@@ -163,7 +163,7 @@ class DonationController extends Controller
             }
 
             if ($currency > 0) {
-                Mollie::createPayment($donation);
+                Mollie::createPayment($donation->id);
             }
 
             $data = [

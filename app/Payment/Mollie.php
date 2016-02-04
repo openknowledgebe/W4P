@@ -8,6 +8,7 @@ use W4P\Models\Donation;
 use W4P\Models\Project;
 use W4P\Models\Setting;
 use Carbon\Carbon;
+use URL;
 
 class Mollie
 {
