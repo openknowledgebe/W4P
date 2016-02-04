@@ -18,6 +18,7 @@ use Validator;
 use Redirect;
 use View;
 use Carbon\Carbon;
+use Mollie;
 
 class DonationController extends Controller
 {
@@ -161,6 +162,10 @@ class DonationController extends Controller
                 }
             }
 
+            if ($currency > 0) {
+                Mollie::createPayment($donation);
+            }
+
             $data = [
                 "email" => Input::get('email'),
                 "firstName" => Input::get('firstName'),
@@ -224,4 +229,16 @@ class DonationController extends Controller
         }
         return "This is not a valid confirmation mail or this was already confirmed.";
     }
+
+    public function paymentStatus($donation_id)
+    {
+        return Donation::find($donation_id)->toArray();
+    }
+
+    public function paymentWebhook($donation_id)
+    {
+        Mollie::checkPayment($donation_id);
+    }
+
 }
+

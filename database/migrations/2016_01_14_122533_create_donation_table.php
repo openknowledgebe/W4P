@@ -18,6 +18,7 @@ class CreateDonationTable extends Migration
             $table->string('last_name');
             $table->string('email');
             $table->decimal('currency');
+            $table->string('payment_id')->nullable();
             $table->string('secret_url');
             $table->string('confirm_url');
             $table->datetime('confirmed')->nullable();

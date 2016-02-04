@@ -13,12 +13,6 @@
 
 Route::group(['middleware' => ['web']], function () {
 
-    /*
-    Route::get('/design', function(){
-        return View::make('design');
-    });
-    */
-
     Route::get('/', ['as' => 'home', 'middleware' => 'env.ready', 'uses' => 'HomeController@index']);
 
     /*
@@ -57,9 +51,13 @@ Route::group(['middleware' => ['web']], function () {
             'uses' => 'DonationController@emailConfirmation',
         ]);
 
+        // Payment status page (Mollie redirects to this)
+        Route::get('/details/{donation_id}/payment_status', [
+            'as' => 'payment_status',
+            'uses' => 'DonationController@paymentStatus',
+        ]);
+
     });
-
-
 
     /*
     |--------------------------------------------------------------------------
@@ -177,4 +175,24 @@ Route::group(['middleware' => ['web']], function () {
 |
 */
 
-Route::post('inline-attach', ['uses' => 'UploadController@inlineAttach', 'as' => 'postAttachment']);
+Route::post(
+    'inline-attach',
+    [
+        'uses' => 'UploadController@inlineAttach',
+        'as' => 'postAttachment'
+    ]
+);
+
+/*
+|--------------------------------------------------------------------------
+| Mollie payment hook
+|--------------------------------------------------------------------------
+*/
+
+Route::post(
+    '/{donation_id}/validate_payment',
+    [
+        'uses' => 'DonationController@paymentWebhook',
+        'as' => 'payment_webhook',
+    ]
+);
