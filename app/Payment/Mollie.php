@@ -75,6 +75,7 @@ class Mollie
         if ($payment->isPaid()) {
             // If the payment is paid, set paid_at
             $donation->confirmed = Carbon::now();
+            $donation->save();
             // TODO: Send a confirmation email
         } elseif (! $payment->isOpen()) {
             // TODO: Mark payment as closed
