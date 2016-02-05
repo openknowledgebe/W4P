@@ -25,9 +25,9 @@
     @endforeach
     @endif
     <hr/>
-    @if ($message != null && $message != "")
-        {{ trans('mails.notification_donation_confirmed.content.message', ['name' => $name]) }}:
-        {!! nl2br(htmlspecialchars($message)) !!}
+    @if ($userMessage != null && $userMessage != "")
+        {{ trans('mails.notification_donation_confirmed.content.message', ['name' => $name]) }}:<br/>
+        {!! nl2br(htmlspecialchars($userMessage)) !!}
     @endif
     <p> {{ trans('mails.notification_donation_confirmed.content.closing', ['name' => $name]) }}: <a href="mailto:{{$email}}">{{ $email }}</a>.</p>
 @endsection

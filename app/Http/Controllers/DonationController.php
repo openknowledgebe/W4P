@@ -221,7 +221,7 @@ class DonationController extends Controller
                 "projectTitle" => $request->project->title,
                 "secretUrl" => $donation->secret_url,
                 "amount" => $donation->currency,
-                "message" => $donation->message,
+                "userMessage" => $donation->message,
                 "donationContents" => $donation->donationContents()
             ];
 
@@ -255,7 +255,7 @@ class DonationController extends Controller
                 "projectTitle" => $request->project->title,
                 "secretUrl" => $donation->secret_url,
                 "amount" => $donation->currency,
-                "message" => $donation->message,
+                "userMessage" => $donation->message,
                 "donationContents" => $donation->donationContents()
             ];
 
@@ -306,7 +306,7 @@ class DonationController extends Controller
                 ->with("projectTitle", $request->project->title)
                 ->with("secretUrl", $donation->secret_url)
                 ->with("amount", $donation->currency)
-                ->with("message", $donation->message)
+                ->with("userMessage", $donation->message)
                 ->with("donationContents", $donation->donationContents());
 
         } else {

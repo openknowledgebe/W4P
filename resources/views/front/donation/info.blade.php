@@ -37,7 +37,7 @@
                     @endif
                     <hr/>
                     <h4>{{ trans('donation.message') }}</h4>
-                    {!! nl2br(htmlspecialchars($message)) !!}
+                    {!! nl2br(htmlspecialchars($userMessage)) !!}
                 </div>
             </div>
         </div>
