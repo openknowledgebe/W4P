@@ -36,9 +36,6 @@
                                         <li role="separator" class="divider"></li>
                                         <li class="separator">View</li>
                                         <li>
-                                            <a href="#" class="disabled">{{ trans('backoffice.goal_overview') }}</a>
-                                        </li>
-                                        <li>
                                             <a href="{{ URL::route('admin::donations') }}">{{ trans('backoffice.donations') }}</a>
                                         </li>
                                     </ul>

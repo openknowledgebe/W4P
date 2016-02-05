@@ -59,6 +59,11 @@
             <h3>Goal progress</h3>
             <hr/>
             <ul>
+                @if ($project->currency > 0)
+                    <li>
+                        <strong>{{ trans("backoffice.currency") }}</strong> ({{$contributedPercentage}}% {{ trans('home.complete') }})
+                    </li>
+                @endif
                 @foreach ($donationKinds as $kind)
                     @if ($kind != "currency" && isset($donationTypes[$kind]) && count($donationTypes[$kind]) > 0)
                         <li>
@@ -75,11 +80,6 @@
                         </li>
                     @endif
                 @endforeach
-                @if ($project->currency > 0)
-                    <li>
-                        <strong>{{ trans("backoffice.currency") }}</strong> ({{$contributedPercentage}}% {{ trans('home.complete') }})
-                    </li>
-                @endif
             </ul>
         </div>
 
