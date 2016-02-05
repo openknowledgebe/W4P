@@ -13,6 +13,8 @@ use W4P\Http\Controllers\Controller;
 use W4P\Models\Setting;
 use W4P\Models\Project;
 use W4P\Models\Donation;
+use W4P\Models\DonationKind;
+use W4P\Models\DonationType;
 
 use View;
 use Redirect;
@@ -30,7 +32,47 @@ class AdminController extends Controller
      */
     public function dashboard()
     {
-        return View::make('backoffice.dashboard');
+        // Get the project
+        $project = Project::first();
+
+        // Get all donation types & kinds
+        $donationTypes = DonationType::all()->groupBy('kind');
+        $donationKinds = DonationKind::all();
+
+        // Get when the project runs out
+        $ends_at = new Carbon($project->ends_at);
+        $now = Carbon::now();
+        $leftDays = $now->diffInDays($ends_at);
+        $leftHours = $now->diffInHours($ends_at);
+
+        // Get how many contributors there are
+        $donorQuery = Donation::whereNotNull('confirmed')->get();
+        $donorCount = $donorQuery->groupBy('email')->count();
+        $contributed = $donorQuery->sum('currency');
+
+        // Calculate the contributed percentage of the total amount of money
+        $contributedPercentage = 0;
+        if ($project->currency > 0) {
+            $contributedPercentage = round(($contributed / $project->currency) * 100, 1);
+        }
+
+        // Get percentages from donations (for 4 kinds -> manpower, coaching, etc.)
+        $percentages = DonationKind::getAllPercentages($donorQuery);
+
+        // Get latest donations
+        $donations = Donation::limit(5)->orderBy('id', 'DESC')->get();
+
+        return View::make('backoffice.dashboard')
+            ->with("project", $project)
+            ->with("hoursleft", $leftHours)
+            ->with("daysleft", $leftDays)
+            ->with('donationTypes', $donationTypes)
+            ->with('donationKinds', $donationKinds)
+            ->with('donorCount', $donorCount)
+            ->with('contributed', $contributed)
+            ->with('contributedPercentage', $contributedPercentage)
+            ->with('percentages', $percentages)
+            ->with('donations', $donations);
     }
 
     /**
@@ -343,7 +385,7 @@ class AdminController extends Controller
 
     public function donations()
     {
-        $donations = Donation::all();
+        $donations = Donation::orderBy('id', 'DESC')->get();
         return View::make('backoffice.donations')->with('donations', $donations);
     }
 
