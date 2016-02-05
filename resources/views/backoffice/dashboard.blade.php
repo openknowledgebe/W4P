@@ -7,11 +7,6 @@
     <hr/>
     <div class="row">
         <div class="col-md-9">
-
-            <pre>
-                {{ var_dump($percentages) }}
-            </pre>
-
             <h3>Latest 5 donations</h3>
             <hr/>
             <table class="table table-responsive">
