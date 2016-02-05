@@ -21,7 +21,9 @@
                 @foreach ($donations as $donation)
                     <tr>
                         <td>{{ $donation->id }}</td>
-                        <td>{{ $donation->first_name }} {{ $donation->last_name }}</td>
+                        <td>{{ $donation->first_name }} {{ $donation->last_name }}<br/>
+                            {{ $donation->email }}
+                        </td>
                         <td>
                             @foreach ($donation->donationContents() as $kind => $kindContent)
                                 <strong>{{ trans('backoffice.' . $kind) }}</strong><br/>
