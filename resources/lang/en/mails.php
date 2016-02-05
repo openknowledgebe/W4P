@@ -28,6 +28,8 @@ return [
         "content" => [
             "header" => "Thank your for your donation!",
             "intro" => "Hello there, :name.<br/>We have successfully received your donation payment (€:amount) for <strong>:project</strong>.",
+            "additional_pledge" => "In addition to this, you have also pledged the following:",
+            "additional_pledge_disclaimer" => "Since you already paid for your donation, your pledge was automatically confirmed. The project creator might get in touch with you regarding the items above.",
             "confirm" => "In order to view your pledge and your rewards, you can click the following link below:",
             "confirm_action" => "View my pledge"
         ],

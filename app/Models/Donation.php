@@ -32,6 +32,9 @@ class Donation extends Model
         );
     }
 
+    /**
+     * @return array
+     */
     public function donationContents()
     {
         $donationItemsGroups = DonationItem::where('donation_id', $this->id)
