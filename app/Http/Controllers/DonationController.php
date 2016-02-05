@@ -133,8 +133,8 @@ class DonationController extends Controller
         if (!$validator->fails()) {
 
             // Create a new donation
-            $secret_url = str_random(40);
-            $confirm_url = str_random(40);
+            $secret_url = md5(microtime()) . str_random(10);
+            $confirm_url = md5(microtime()) . str_random(10);
 
             $donation = Donation::create(
                 [
