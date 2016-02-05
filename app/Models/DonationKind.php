@@ -33,6 +33,7 @@ class DonationKind
                 $percentage = $total / $goal;
                 // Push subitems
                 array_push($subitems, [
+                    "type" => $type->name,
                     "total" => $total,
                     "goal" => $goal,
                     "reached" => $percentage // total = 1, 100% = 1
