@@ -1,5 +1,10 @@
 <?php
 return [
+
+    /**
+     * Emails for users
+     */
+
     "donation_confirm" => [
         "subject" => "Confirm your donation",
         "teaser" => "Your donation has been registered, but it has not been confirmed yet.",
@@ -33,5 +38,20 @@ return [
             "confirm" => "In order to view your pledge and your rewards, you can click the following link below:",
             "confirm_action" => "View my pledge"
         ],
+    ],
+
+    /**
+     * Emails for project administrator
+     */
+
+    "notification_donation_confirmed" => [
+        "subject" => "New donation confirmed",
+        "teaser" => "A new donation for your project has been confirmed!",
+        "content" => [
+            "header" => "Congrats!",
+            "intro" => "<p>Hello there, project owner.</p><p>You have successfully received a new donation for <strong>:project</strong>. The following was donated:</p>",
+            "closing" => "You can get in touch with :name by sending an email to this address"
+        ],
     ]
+
 ];

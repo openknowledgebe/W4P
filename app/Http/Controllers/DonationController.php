@@ -13,6 +13,8 @@ use W4P\Models\DonationItem;
 use W4P\Models\DonationKind;
 use W4P\Models\Donation;
 
+use W4P\Models\Setting;
+
 use Mail;
 use Validator;
 use Redirect;
@@ -217,16 +219,22 @@ class DonationController extends Controller
                 "lastName" => $donation->last_name,
                 "name" => $donation->first_name . " " . $donation->last_name,
                 "projectTitle" => $request->project->title,
-                "secret_url" => $donation->secret_url
+                "secret_url" => $donation->secret_url,
+                "amount" => $donation->currency,
+                "donationContents" => $donation->donationContents()
             ];
 
+            // Queue an email on donation confirmation success to the owner of the donation
             Mail::queue('mails.donation_success', $data, function ($message) use ($data) {
                 $message->to($data['email'], $data['name'])
                     ->subject(trans('mails.donation_success.subject') . " — " . $data['projectTitle']);
             });
 
-            // Notify the administrator
-            // TODO: Notify the admin; collect the new pledge information
+            // Queue an email on donation confirmation success to the owner of the project
+            Mail::queue('mails.notification.donation_confirmed', $data, function ($message) use ($data) {
+                $message->to(Setting::get('email.from'), Setting::get('email.name'))
+                    ->subject(trans('mails.notification_donation_confirmed.subject') . " — " . $data['projectTitle']);
+            });
 
             // Return view
             return View::make('front.donation.confirmed');
@@ -248,11 +256,21 @@ class DonationController extends Controller
                 "amount" => $donation->currency,
                 "donationContents" => $donation->donationContents()
             ];
+
+            // Queue an email on donation payment success to the owner of the donation
             Mail::queue('mails.donation_money_success', $data, function ($message) use ($data) {
                 $message->to($data['email'], $data['name'])
                     ->subject(trans('mails.donation_money_success.subject') . " — " . $data['projectTitle']);
             });
+
+            // Queue an email on donation payment success to the owner of the project
+            Mail::queue('mails.notification.donation_confirmed', $data, function ($message) use ($data) {
+                $message->to(Setting::get('email.from'), Setting::get('email.name'))
+                    ->subject(trans('mails.notification_donation_confirmed.subject') . " — " . $data['projectTitle']);
+            });
+
             return View::make('front.donation.thanks')->with('paid', true);
+
         } else {
             return Redirect::route('donate::payment_status', $donation_id);
         }
