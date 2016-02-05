@@ -219,8 +219,9 @@ class DonationController extends Controller
                 "lastName" => $donation->last_name,
                 "name" => $donation->first_name . " " . $donation->last_name,
                 "projectTitle" => $request->project->title,
-                "secret_url" => $donation->secret_url,
+                "secretUrl" => $donation->secret_url,
                 "amount" => $donation->currency,
+                "message" => $donation->message,
                 "donationContents" => $donation->donationContents()
             ];
 
@@ -252,8 +253,9 @@ class DonationController extends Controller
                 "lastName" => $donation->last_name,
                 "name" => $donation->first_name . " " . $donation->last_name,
                 "projectTitle" => $request->project->title,
-                "secret_url" => $donation->secret_url,
+                "secretUrl" => $donation->secret_url,
                 "amount" => $donation->currency,
+                "message" => $donation->message,
                 "donationContents" => $donation->donationContents()
             ];
 
@@ -288,5 +290,28 @@ class DonationController extends Controller
         Mollie::checkPayment($donation_id);
     }
 
+    public function donationInfoPage(Request $request, $code, $email)
+    {
+        // Find the personal URL
+        $donation = Donation::where('secret_url', $code)->where('email', $email)->first();
+
+        // Check if the donation has been confirmed
+        if ($donation != null && $donation->confirmed != null) {
+
+            return View::make('front.donation.info')
+                ->with("email", $donation->email)
+                ->with("firstName", $donation->first_name)
+                ->with("lastName", $donation->last_name)
+                ->with("name", $donation->first_name . " " . $donation->last_name)
+                ->with("projectTitle", $request->project->title)
+                ->with("secretUrl", $donation->secret_url)
+                ->with("amount", $donation->currency)
+                ->with("message", $donation->message)
+                ->with("donationContents", $donation->donationContents());
+
+        } else {
+            return "This donation has not been confirmed yet, so you cannot see its status.";
+        }
+    }
 }
 

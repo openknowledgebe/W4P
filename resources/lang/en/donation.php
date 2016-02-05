@@ -6,6 +6,12 @@ return array(
     "title" => "How do you want to support this project?",
     "description" => "You can support this project in a few ways. The following options below are available to pledge:",
 
+    // Donation info page
+    "your_donation" => "Your donation",
+    "personal_data" => "Personal data",
+    "your_details" => "Your details",
+    "message" => "Your message",
+
     // Mollie: about
     "donation_for" => "Donation for",
 

@@ -1,9 +1,17 @@
 .home-banner {
-    height: 300px;
+    height: $banner-height;
     background-color: $color-primary-contrast;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+
+    .banner-text{
+        padding-top: ($banner-height / 2) - 20px;
+        display: block;
+        text-align: center;
+        font-size: 2.9em;
+        color: #FFF;
+    }
 }
 
 .support-panel{

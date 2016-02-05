@@ -24,5 +24,5 @@
     <p> {{ trans('mails.donation_money_success.content.additional_pledge_disclaimer') }} </p>
     @endif
     <p> {{ trans('mails.donation_money_success.content.confirm') }}</p>
-    <a href="#" class="btn4">{{ trans('mails.donation_money_success.content.confirm_action') }}</a>
+    <a href="{{ URL::route('donate::info', ['code' => $secretUrl, 'email' => $email]) }}" class="btn4">{{ trans('mails.donation_money_success.content.confirm_action') }}</a>
 @endsection

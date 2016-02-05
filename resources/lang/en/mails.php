@@ -50,6 +50,7 @@ return [
         "content" => [
             "header" => "Congrats!",
             "intro" => "<p>Hello there, project owner.</p><p>You have successfully received a new donation for <strong>:project</strong>. The following was donated:</p>",
+            "message" => ":name has also left a message for you",
             "closing" => "You can get in touch with :name by sending an email to this address"
         ],
     ]

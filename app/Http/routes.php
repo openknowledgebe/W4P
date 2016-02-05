@@ -57,9 +57,16 @@ Route::group(['middleware' => ['web']], function () {
             'uses' => 'DonationController@paymentComplete',
         ]);
 
+        // Payment status page (if case payment is cancelled, or not done yet)
         Route::get('/details/{donation_id}/payment_status', [
             'as' => 'payment_status',
             'uses' => 'DonationController@paymentStatus',
+        ]);
+
+        // Donation information page
+        Route::get('/info/{code}/{email}', [
+            'as' => 'info',
+            'uses' => 'DonationController@donationInfoPage',
         ]);
 
     });
