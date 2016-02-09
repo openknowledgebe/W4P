@@ -16,6 +16,8 @@
                 <th>Amount pledged</th>
                 <th>Transaction Status</th>
                 <th>Confirmed</th>
+                <th>Message</th>
+                <th></th>
             </tr>
             @foreach ($donations as $donation)
                 <tr>
@@ -47,6 +49,14 @@
                     </td>
                     <td>
                         {{ $donation->confirmed }}
+                    </td>
+                    <td>
+                        @if ($donation->message != null)
+                            ✓
+                        @endif
+                    </td>
+                    <td>
+                        <a class="btn btn-default btn-sm" href="{{ URL::route('donate::info', ['code' => $donation->secret_url, 'email' => $donation->email]) }}">Go to page</a>
                     </td>
                 </tr>
             @endforeach
