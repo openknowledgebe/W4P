@@ -13,6 +13,7 @@ class Donation extends Model
         "last_name",
         "email",
         "currency",
+        "tier_id",
         "payment_id",
         "payment_status",
         "secret_url",

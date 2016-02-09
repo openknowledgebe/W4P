@@ -144,7 +144,7 @@
                                                          ]) }}
                                                     </strong>
                                                 </span><br/>
-                                                <span class="backer-count">X {{ trans('home.backers') }}</span><br/>
+                                                <span class="backer-count">{{ $tierCounts[$tier->id] }} {{ trans('home.backers') }}</span><br/>
                                                 <div class="description">
                                                     {!! nl2br(htmlspecialchars($tier->description)) !!}
                                                 </div>

@@ -84,6 +84,9 @@ class HomeController extends Controller
         // Get percentages from donations (for 4 kinds -> manpower, coaching, etc.)
         $percentages = DonationKind::getAllPercentages($donorQuery);
 
+        // Get tier counts
+        $tierCounts = Tier::getCounts();
+
         // Return the view with all the data
         return View::make('front.home')
             ->with("project", $project)
@@ -99,6 +102,7 @@ class HomeController extends Controller
             ->with('donorCount', $donorCount)
             ->with('contributed', $contributed)
             ->with('contributedPercentage', $contributedPercentage)
-            ->with('percentages', $percentages);
+            ->with('percentages', $percentages)
+            ->with('tierCounts', $tierCounts);
     }
 }

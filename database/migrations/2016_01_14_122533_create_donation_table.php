@@ -23,6 +23,7 @@ class CreateDonationTable extends Migration
             $table->string('secret_url')->unique();
             $table->string('confirm_url')->unique();
             $table->datetime('confirmed')->nullable();
+            $table->unsignedInteger('tier_id')->nullable();
             $table->text('message')->nullable();
             $table->timestamps();
         });
