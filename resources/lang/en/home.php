@@ -19,5 +19,6 @@ return [
     "updates" => "Updates",
     "howdoesitwork" => "How does it work?",
     "previousprojects" => "Previous projects",
-    "complete" => "complete"
+    "complete" => "complete",
+    "share" => "Share",
 ];

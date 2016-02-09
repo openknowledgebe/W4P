@@ -99,14 +99,27 @@
                         </div>
                         <div class="col-md-6">
                             <section class="about-organisation">
-                                <h2>{{ $data['organisation.name'] }}</h2>
+                                <h3>{{ $data['organisation.name'] }}</h3>
                                 <p>{!! nl2br($data['organisation.description']) !!}</p>
                                 <a href="{{ $data['organisation.website'] }}">
                                     Website
                                 </a>
                             </section>
                             <section class="custom">
-                                <!-- Allow for some more custom html for e.g. sponsors -->
+                            <!-- Allow for some more custom html for e.g. sponsors -->
+                            </section>
+                            <!-- Share dialogs -->
+                            <section class="share">
+                                <h3>{{ trans('home.share') }}</h3>
+                                <a class="share-btn share-fb" href="https://www.facebook.com/sharer/sharer.php?u={{URL::route('home')}}" target="_blank" title="Share on Facebook">
+                                    <img src="img/share_fb@2x.png" />
+                                </a>
+                                <a class="share-btn share-gp" href="https://plus.google.com/share?url={{URL::route('home')}}" target="_blank" title="Share on Google+">
+                                    <img src="img/share_gp@2x.png" />
+                                </a>
+                                <a class="share-btn share-tw" href="http://twitter.com/share?text=Check out this project&url={{URL::route('home')}}" target="_blank" title="Share on Twitter">
+                                    <img src="img/share_tw@2x.png" />
+                                </a>
                             </section>
                         </div>
                     </div>
