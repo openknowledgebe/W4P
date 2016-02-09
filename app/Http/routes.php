@@ -14,7 +14,7 @@
 Route::group(['middleware' => ['web']], function () {
 
     Route::get('/', ['as' => 'home', 'middleware' => 'env.ready', 'uses' => 'HomeController@index']);
-    
+
     /*
     |--------------------------------------------------------------------------
     | Posts
@@ -177,6 +177,11 @@ Route::group(['middleware' => ['web']], function () {
             Route::delete(
                 '/goals/{kind}/{id}/delete',
                 ['as' => 'goalsTypeDelete', 'uses' => 'AdminGoalController@deleteType']
+            );
+            // Export users list
+            Route::get(
+                '/users/export',
+                ['as' => 'userExport', 'uses' => 'AdminController@exportUsers']
             );
         }
     );

@@ -64,7 +64,9 @@
             <h4>{{ trans('backoffice.dashboard_page.total_donors') }}</h4>
             <ul>
                 <li>{{ $donorCount }} {{ trans('backoffice.dashboard_page.unique_donors') }}</li>
+                <li><a href="{{ URL::route('admin::userExport') }}" class="btn btn-default btn-sm">Download CSV</a></li>
             </ul>
+
             <h4>{{ trans('backoffice.dashboard_page.total_contributed') }}</h4>
             <ul>
                 <li>

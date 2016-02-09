@@ -394,4 +394,20 @@ class AdminController extends Controller
         unlink(public_path() . "/images/" . $filename);
         return Redirect::route('admin::assets');
     }
+
+    public function exportUsers()
+    {
+        header('Content-Type: text/csv; charset=utf-8');
+        header('Content-Disposition: attachment; filename=donors.csv');
+        $users = Donation::whereNotNull('confirmed')->get()->groupBy('email');
+        $output = fopen('php://output', 'w');
+        fputcsv($output, array('name', 'email'));
+        foreach ($users as $key => $user) {
+            fputcsv($output, [
+                $user[0]->first_name . " " . $user[0]->last_name,
+                $key
+            ]);
+        }
+        exit();
+    }
 }
