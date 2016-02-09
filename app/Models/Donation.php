@@ -88,7 +88,7 @@ class Donation extends Model
      */
     public function assignToTier()
     {
-        $tiers = Tier::all()->sortBy('pledge');
+        $tiers = Tier::all()->sortBy('pledge')->values();
         self::assignTier($this, $tiers);
     }
 
@@ -97,7 +97,7 @@ class Donation extends Model
      */
     public static function reassignAllTiers()
     {
-        $tiers = Tier::all()->sortBy('pledge');
+        $tiers = Tier::all()->sortBy('pledge')->values();
         $donations = Donation::all();
 
         foreach ($donations as $donation) {
