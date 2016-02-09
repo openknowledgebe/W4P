@@ -7,16 +7,16 @@
     <hr/>
     <div class="row">
         <div class="col-md-9">
-            <h3>Latest 5 donations</h3>
+            <h3>{{ trans('backoffice.dashboard_page.latest_donations') }}</h3>
             <hr/>
             <table class="table table-responsive">
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Name</th>
-                    <th>Units pledged</th>
-                    <th>Amount pledged</th>
-                    <th>Confirmed</th>
+                    <th>{{ trans('backoffice.dashboard_page.name') }}</th>
+                    <th>{{ trans('backoffice.dashboard_page.units_donated') }}</th>
+                    <th>{{ trans('backoffice.dashboard_page.amount_donated') }}</th>
+                    <th>{{ trans('backoffice.dashboard_page.confirmed') }}</th>
                 </tr>
                 @foreach ($donations as $donation)
                     <tr>
@@ -46,17 +46,17 @@
                 @endforeach
                 </thead>
             </table>
-            <a class="btn btn-default" href="{{ URL::route('admin::donations') }}">Show all donations</a>
+            <a class="btn btn-default" href="{{ URL::route('admin::donations') }}">{{ trans('backoffice.dashboard_page.show_all_donations') }}</a>
         </div>
         <div class="col-md-3">
-            <h3>Total € contributed</h3>
+            <h3>{{ trans('backoffice.dashboard_page.total_contributed') }}</h3>
             <hr/>
             <ul>
                 <li>
-                    €{{ $contributed }} (with a goal of €{{ $project->currency }})
+                    €{{ $contributed }} ({{ trans('backoffice.dashboard_page.with_goal_of') }} €{{ $project->currency }})
                 </li>
             </ul>
-            <h3>Goal progress</h3>
+            <h3>{{ trans('backoffice.dashboard_page.goal_progress') }}</h3>
             <hr/>
             <ul>
                 @if ($project->currency > 0)

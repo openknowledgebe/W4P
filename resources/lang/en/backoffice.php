@@ -221,5 +221,18 @@ return [
             "placeholder" => "You can write the content of your post here.",
             "info" => "You can use Markdown here and drag and drop images here if you want to include them in your post.",
         ]
-    ]
+    ],
+
+    "dashboard_page" => [
+        "latest_donations" => "Latest 5 donations",
+        "show_all_donations" => "Show all donations",
+        "total_contributed" => "Total € contributed",
+        "with_goal_of" => "with a goal of",
+        "goal_progress" => "Goal progress",
+        "name" => "Name",
+        "units_donated" => "Units",
+        "amount_donated" => "Amount",
+        "confirmed" => "Confirmed",
+    ],
+
 ];
