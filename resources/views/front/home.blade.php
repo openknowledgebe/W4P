@@ -51,7 +51,6 @@
                     <!-- Goals right column (blue) -->
                     <div class="col-md-5 numbers-container">
                         <section class="numbers">
-                            <!-- TODO: replace number of backers, percentage complete, link to pledge -->
                             <div class="row">
                                 @if ($project->currency > 0)
                                     <div class="col-md-12">
@@ -61,7 +60,7 @@
                                 @endif
                                 <div class="col-md-4">
                                     <span class="number-lg">{{ $donorCount }}</span><br/>
-                                    <span class="number-sm">{{ trans('home.backers') }}</span>
+                                    <span class="number-sm">{{ trans('home.donors') }}</span>
                                 </div>
                                 <div class="col-md-4">
                                     @if ($hoursleft < 24)

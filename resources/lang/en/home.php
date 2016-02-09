@@ -21,4 +21,5 @@ return [
     "previousprojects" => "Previous projects",
     "complete" => "complete",
     "share" => "Share",
+    "donors" => "donors",
 ];

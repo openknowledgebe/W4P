@@ -5,6 +5,12 @@
         <title>@yield('title')</title>
         <link rel="stylesheet" href="{{ elixir('css/app.css') }}">
         <link href='https://fonts.googleapis.com/css?family=Istok+Web:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+        @if (isset($project))
+        <meta property="og:url" content="{{ Request::url() }}" />
+        <meta property="og:type" content="product" />
+        <meta property="og:title" content="{{ $project->title }}" />
+        <meta property="og:description" content="{{ $project->brief }}" />
+        @endif
     </head>
     <body>
         <div class="wrapper">
