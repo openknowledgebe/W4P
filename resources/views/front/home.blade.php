@@ -200,21 +200,33 @@
                     <!-- Tabs per extra category (coaching, etc) -->
                     <ul class="nav nav-tabs" role="tablist">
                         <!-- Generate a tab for each -->
-                        @foreach ($donationKinds as $kind)
+                        @foreach ($donationKinds as $count => $kind)
                             @if ($kind != "currency" && isset($donationTypes[$kind]) && count($donationTypes[$kind]) > 0)
-                                <li role="presentation">
-                                    <a href="#{{ $kind }}" aria-controls="{{ $kind }}" role="tab" data-toggle="tab">{{ trans("backoffice." . $kind) }}</a>
+                                <li role="presentation" @if ($count == 0) class="active" @endif>
+                                    <a href="#{{ $kind }}" aria-controls="{{ $kind }}" role="tab" data-toggle="tab">
+                                        {{ trans("backoffice." . $kind) }}
+                                    </a>
                                 </li>
                             @endif
                         @endforeach
                     </ul>
                     <!-- Tab panes for extra categories -->
                     <div class="tab-content">
-                        @foreach ($donationKinds as $kind)
+                        @foreach ($donationKinds as $count => $kind)
                             @if ($kind != "currency" && isset($donationTypes[$kind]) && count($donationTypes[$kind]) > 0)
                             <!-- Generate a tab for each -->
-                            <div role="tabpanel" class="tab-pane" id="{{ $kind }}">
-                                <!-- TODO: List how many of each we still need -->
+                            <div role="tabpanel" class="tab-pane-donation tab-pane @if ($count == 0) active @endif tab-{{ $kind }}" id="{{ $kind }}">
+                                <h1>What we need</h1>
+                                <div class="row">
+                                    @foreach ($donationTypes[$kind] as $key => $donation_item)
+                                    <div class="col-md-2">
+                                        {{ $donation_item->required_amount }} x<br/>
+                                        <h3>{{ $donation_item->name }}</h3>
+                                        {{ $percentages[$kind]["items"][$key]['required'] }} more required
+                                    </div>
+                                    @endforeach
+                                </div>
+                                <a href="#">Support this project</a>
                             </div>
                             @endif
                         @endforeach

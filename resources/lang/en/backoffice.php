@@ -25,6 +25,9 @@ return [
     "delete" => "Delete",
     "create_tier" => "Create a new tier",
     "assets" => "Uploaded images",
+    "download" => "Download",
+    "download_donors" => "Unique donors (CSV)",
+    "download_tiers" => "Tiers and donors (CSV)",
 
     /**
      * KINDS OF TYPES

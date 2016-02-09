@@ -31,12 +31,17 @@ class DonationKind
                     ->count();
                 $goal = (int)$type->required_amount;
                 $percentage = $total / $goal;
+                $required = $total - $goal;
+                if ($required < 0) {
+                    $required = 0;
+                }
                 // Push subitems
                 array_push($subitems, [
                     "type" => $type->name,
                     "total" => $total,
                     "goal" => $goal,
-                    "reached" => $percentage // total = 1, 100% = 1
+                    "reached" => $percentage, // total = 1, 100% = 1
+                    "required" => $required
                 ]);
             }
 

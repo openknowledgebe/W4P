@@ -38,6 +38,13 @@
                                         <li>
                                             <a href="{{ URL::route('admin::donations') }}">{{ trans('backoffice.donations') }}</a>
                                         </li>
+                                        <li role="separator" class="divider"></li>
+                                        <li class="separator">{{ trans('backoffice.download') }}</li>
+                                        <li>
+                                            <a href="{{ URL::route('admin::userExport') }}">
+                                                {{ trans('backoffice.download_donors') }}
+                                            </a>
+                                        </li>
                                     </ul>
                                 <li>
                                     <a href="{{ URL::route('admin::organisation') }}">{{ trans('backoffice.organisation') }}</a>
