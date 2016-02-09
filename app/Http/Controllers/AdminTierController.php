@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Input;
 
 use W4P\Http\Requests;
 use W4P\Http\Controllers\Controller;
+use W4P\Models\Donation;
 use W4P\Models\Tier;
 
 use Session;
@@ -59,6 +60,7 @@ class AdminTierController extends Controller
         }
 
         if ($success) {
+            Donation::reassignAllTiers();
             return Redirect::route('admin::tiers');
         } else {
             return Redirect::back()->withErrors($errors)->withInput(Input::all());
@@ -108,6 +110,7 @@ class AdminTierController extends Controller
         }
 
         if ($success) {
+            Donation::reassignAllTiers();
             return Redirect::route('admin::tiers');
         } else {
             return Redirect::back()->withErrors($errors)->withInput(Input::all());
@@ -117,6 +120,7 @@ class AdminTierController extends Controller
     public function delete($id)
     {
         Tier::find($id)->delete();
+        Donation::reassignAllTiers();
         // TODO: Add flash message
         return Redirect::route('admin::tiers');
     }

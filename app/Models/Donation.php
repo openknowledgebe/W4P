@@ -78,4 +78,48 @@ class Donation extends Model
 
         return $donationCounts;
     }
+
+    /**
+     * Automatically assigns this donation to the
+     * correct and relevant tier
+     * For performance reasons, recommended use is
+     * when a _single_ donation needs assignment
+     * Otherwise, use :reassignAllTiers()
+     */
+    public function assignToTier()
+    {
+        $tiers = Tier::all()->sortBy('pledge');
+        self::assignTier($this, $tiers);
+    }
+
+    /**
+     * Automatically reassigns all tiers
+     */
+    public static function reassignAllTiers()
+    {
+        $tiers = Tier::all()->sortBy('pledge');
+        $donations = Donation::all();
+
+        foreach ($donations as $donation) {
+            self::assignTier($donation, $tiers);
+        }
+    }
+
+    /**
+     * Assigns a donation to the appropriate tier
+     * @param $donation
+     * @param $tiers
+     */
+    private static function assignTier($donation, $tiers)
+    {
+        $donation->tier_id = null;
+        if (count($tiers) > 0) {
+            for ($i = 0; $i < count($tiers); $i++) {
+                if ($tiers[$i]->pledge <= $donation->currency) {
+                    $donation->tier_id = $tiers[$i]->id;
+                }
+            }
+        }
+        $donation->save();
+    }
 }

@@ -165,6 +165,7 @@ class DonationController extends Controller
             }
 
             if ($currency > 0) {
+                $donation->assignToTier();
                 $donation->payment_status = "pending";
                 $donation->save();
                 $redirectUrl = Mollie::createPayment($donation->id);
