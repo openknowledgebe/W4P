@@ -24,9 +24,9 @@
                     </span>
                     <span>
                         <img src="{{ URL::to('/img/icon_calendar.png') }}" width="30" height="30" />
-                        {{ trans('home.startedon') }}
+                        {{ trans('home.ends_at') }}
                         <strong>
-                            {{ $project->starts_at->format("F j, Y") }}
+                            {{ $project->ends_at->format("F j, Y") }}
                         </strong>
                     </span>
                             <hr/>
@@ -144,7 +144,7 @@
                                                          ]) }}
                                                     </strong>
                                                 </span><br/>
-                                                <span class="backer-count">{{ $tierCounts[$tier->id] }} {{ trans('home.backers') }}</span><br/>
+                                                <span class="backer-count">{{ $tierCounts[$tier->id] }} {{ trans('home.donations') }}</span><br/>
                                                 <div class="description">
                                                     {!! nl2br(htmlspecialchars($tier->description)) !!}
                                                 </div>

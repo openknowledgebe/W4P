@@ -2,8 +2,8 @@
 
 return [
     "projectby" => "Project by",
-    "startedon" => "Started on",
-    "backers" => "backers",
+    "ends_at" => "Ends on",
+    "donations" => "donations",
     "funded" => "funded",
     "support" => "Support this project",
     "timeleft" => "There is :left the project ends.",
