@@ -113,6 +113,7 @@ class Donation extends Model
     private static function assignTier($donation, $tiers)
     {
         $donation->tier_id = null;
+        $donation->save();
         if (count($tiers) > 0) {
             for ($i = 0; $i < count($tiers); $i++) {
                 if ($tiers[$i]->pledge <= $donation->currency) {
@@ -120,6 +121,8 @@ class Donation extends Model
                 }
             }
         }
-        $donation->save();
+        if ($donation->confirmed != null) {
+            $donation->save();
+        }
     }
 }
