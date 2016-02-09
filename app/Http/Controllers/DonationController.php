@@ -12,6 +12,7 @@ use W4P\Models\DonationType;
 use W4P\Models\DonationItem;
 use W4P\Models\DonationKind;
 use W4P\Models\Donation;
+use W4P\Models\Tier;
 
 use W4P\Models\Setting;
 
@@ -299,6 +300,11 @@ class DonationController extends Controller
         // Check if the donation has been confirmed
         if ($donation != null && $donation->confirmed != null) {
 
+            $tier = null;
+            if ($donation->tier_id != null) {
+                $tier = Tier::find($donation->tier_id);
+            }
+
             return View::make('front.donation.info')
                 ->with("email", $donation->email)
                 ->with("firstName", $donation->first_name)
@@ -308,7 +314,8 @@ class DonationController extends Controller
                 ->with("secretUrl", $donation->secret_url)
                 ->with("amount", $donation->currency)
                 ->with("userMessage", $donation->message)
-                ->with("donationContents", $donation->donationContents());
+                ->with("donationContents", $donation->donationContents())
+                ->with("tier", $tier);
 
         } else {
             return "This donation has not been confirmed yet, so you cannot see its status.";

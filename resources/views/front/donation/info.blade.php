@@ -11,9 +11,19 @@
         <!-- Donation page -->
         <div class="container">
             <div class="row">
-                <div class="col-md-6 col-md-push-3">
+                @if ($tier != null || $userMessage != "")
+                <div class="col-md-8 col-md-push-2">
                     <h1>{{ trans('donation.your_donation') }}</h1>
                     <hr/>
+                </div>
+            </div>
+            @endif
+            <div class="row">
+                <div class="col-md-4 @if ($tier == null && $userMessage == "") col-md-push-4 @else col-md-push-2 @endif">
+                    @if ($tier == null && $userMessage == "")
+                        <h1>{{ trans('donation.your_donation') }}</h1>
+                        <hr/>
+                    @endif
                     <h4>{{ trans('donation.personal_data') }}</h4>
                     <hr/>
                     <p>
@@ -35,11 +45,36 @@
                             @endforeach
                         @endforeach
                     @endif
-                    <hr/>
-                    <h4>{{ trans('donation.message') }}</h4>
-                    {!! nl2br(htmlspecialchars($userMessage)) !!}
                 </div>
+                @if ($tier != null || $userMessage != "")
+                <div class="col-md-4 col-md-push-2">
+                    @if ($tier != null)
+                        <h4>{{ trans('donation.tier') }}</h4>
+                        <hr/>
+                        <div class="panel panel-default">
+                            <div class="panel-body support-panel">
+                                <span>
+                                                    <strong>
+                                                        {{ trans('home.tier.pledge', [
+                                                         "currency" => "€",
+                                                         "pledgeAmount" => $tier->pledge
+                                                         ]) }}
+                                                    </strong>
+                                                </span><br/>
+                                <div class="description">
+                                    {!! nl2br(htmlspecialchars($tier->description)) !!}
+                                </div>
+                            </div>
+                        </div>
+                        <hr/>
+                    @endif
+                    @if ($userMessage != "")
+                    <h4>{{ trans('donation.message') }}</h4>
+                    <hr/>
+                    <pre>{!! nl2br(htmlspecialchars($userMessage)) !!}</pre>
+                    @endif
+                </div>
+                @endif
             </div>
         </div>
-    </div>
 @endsection

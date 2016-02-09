@@ -11,6 +11,7 @@ return array(
     "personal_data" => "Personal data",
     "your_details" => "Your details",
     "message" => "Your message",
+    "tier" => "Your donation tier",
 
     // Mollie: about
     "donation_for" => "Donation for",
