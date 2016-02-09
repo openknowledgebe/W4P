@@ -29,6 +29,8 @@ class DonationTest extends TestCase
             "last_name" => "Doe",
             "email" => "john.doe@w4p.be",
             "currency" => 0,
+            "secret_url" => "URL1",
+            "confirm_url" => "URL2"
         ]);
 
         // Create a donation item
