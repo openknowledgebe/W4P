@@ -273,7 +273,7 @@ class DonationController extends Controller
                     ->subject(trans('mails.notification_donation_confirmed.subject') . " — " . $data['projectTitle']);
             });
 
-            return View::make('front.donation.thanks')->with('paid', true);
+            return View::make('front.donation.confirmed');
 
         } else {
             return Redirect::route('donate::payment_status', $donation_id);

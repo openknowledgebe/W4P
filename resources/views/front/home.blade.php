@@ -116,7 +116,7 @@
                                 <a class="share-btn share-gp" href="https://plus.google.com/share?url={{URL::route('home')}}" target="_blank" title="Share on Google+">
                                     <img src='{{ URL::to('img/share_gp@2x.png') }}' />
                                 </a>
-                                <a class="share-btn share-tw" href="http://twitter.com/share?text=Check out this project&url={{URL::route('home')}}" target="_blank" title="Share on Twitter">
+                                <a class="share-btn share-tw" href="http://twitter.com/share?text=I just donated to this fundraising campaign&url={{URL::route('home')}}" target="_blank" title="Share on Twitter">
                                     <img src='{{ URL::to('img/share_tw@2x.png') }}' />
                                 </a>
                             </section>

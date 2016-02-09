@@ -81,8 +81,8 @@ return array(
     "thanks" => [
         "title" => "Thank you for your donation!",
         "title_paid" => "Thank you for your payment!",
-        "description" => "<p>Thank you for your donation. We have sent you an email about the status of your donation.</p><p>There's two scenarios here:</p>
-    <ul><li>If you have paid for your donation, and your payment was accepted, you will receive an email with your donation link. You do not need to do anything else. The project creator might get in touch with you to organise further details if you also pledged other resources.</li><li>If you <strong>did not</strong> pay any money and you pledged other resources (time, coaching, etc.) you still have to confirm your donation by clicking the link in the email you received.</li></ul>"
+        "description" => "<p>Thank you for your donation. We have sent you an email about the status of your donation.</p>
+    <p>You will receive an email with your donation link. You still have to confirm your donation by clicking the link in the email you received before anything is final.</p>"
     ],
 
     "confirmed" => [

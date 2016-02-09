@@ -13,11 +13,7 @@
             <div class="row">
                 <div class="col-md-6 col-md-push-3">
                     <!-- Donation header block -->
-                    @if (isset($paid) && $paid)
-                        <h1>{{ trans('donation.thanks.title_paid') }}</h1>
-                    @else
-                        <h1>{{ trans('donation.thanks.title') }}</h1>
-                    @endif
+                    <h1>{{ trans('donation.thanks.title') }}</h1>
                     <hr/>
                     {!! trans('donation.thanks.description') !!}
                 </div>
