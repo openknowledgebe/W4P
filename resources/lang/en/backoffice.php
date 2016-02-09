@@ -233,6 +233,10 @@ return [
         "units_donated" => "Units",
         "amount_donated" => "Amount",
         "confirmed" => "Confirmed",
+        "has_message" => "Message",
+        "total_donors" => "Total donors",
+        "unique_donors" => "unique donors",
+        "order_page" => "Secret page"
     ],
 
 ];

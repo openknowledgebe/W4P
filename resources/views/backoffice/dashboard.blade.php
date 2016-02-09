@@ -17,6 +17,8 @@
                     <th>{{ trans('backoffice.dashboard_page.units_donated') }}</th>
                     <th>{{ trans('backoffice.dashboard_page.amount_donated') }}</th>
                     <th>{{ trans('backoffice.dashboard_page.confirmed') }}</th>
+                    <th>{{ trans('backoffice.dashboard_page.has_message') }}</th>
+                    <th></th>
                 </tr>
                 @foreach ($donations as $donation)
                     <tr>
@@ -40,7 +42,17 @@
                             @endif
                         </td>
                         <td>
-                            {{ $donation->confirmed }}
+                            @if ($donation->confirmed != null)
+                                ✓
+                            @endif
+                        </td>
+                        <td>
+                            @if ($donation->message != null)
+                                ✓
+                            @endif
+                        </td>
+                        <td>
+                            <a class="btn btn-default btn-sm" href="{{ URL::route('donate::info', ['code' => $donation->secret_url, 'email' => $donation->email]) }}">Go to page</a>
                         </td>
                     </tr>
                 @endforeach
@@ -49,15 +61,17 @@
             <a class="btn btn-default" href="{{ URL::route('admin::donations') }}">{{ trans('backoffice.dashboard_page.show_all_donations') }}</a>
         </div>
         <div class="col-md-3">
-            <h3>{{ trans('backoffice.dashboard_page.total_contributed') }}</h3>
-            <hr/>
+            <h4>{{ trans('backoffice.dashboard_page.total_donors') }}</h4>
+            <ul>
+                <li>{{ $donorCount }} {{ trans('backoffice.dashboard_page.unique_donors') }}</li>
+            </ul>
+            <h4>{{ trans('backoffice.dashboard_page.total_contributed') }}</h4>
             <ul>
                 <li>
                     €{{ $contributed }} ({{ trans('backoffice.dashboard_page.with_goal_of') }} €{{ $project->currency }})
                 </li>
             </ul>
-            <h3>{{ trans('backoffice.dashboard_page.goal_progress') }}</h3>
-            <hr/>
+            <h4>{{ trans('backoffice.dashboard_page.goal_progress') }}</h4>
             <ul>
                 @if ($project->currency > 0)
                     <li>
