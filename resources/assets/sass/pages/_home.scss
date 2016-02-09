@@ -91,10 +91,32 @@
 }
 
 .tab-pane-donation{
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 25px;
     background-image: url('/img/donate_bg.jpg');
     background-size: cover;
+
+    .donor-box {
+        background-color: #FFF;
+        padding: 25px;
+        margin-left: 15px;
+    }
+
+    h3 {
+        color: white;
+    }
+
+    h4 {
+        margin: 0;
+        padding: 0;
+        margin-bottom: 10px;
+    }
+
+    .orange {
+        margin-top: 15px;
+        color: #FB5B42;
+        font-size: 0.8em;
+        text-transform: uppercase;
+    }
 }
 
 $date-width: 100px;

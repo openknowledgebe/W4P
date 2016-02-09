@@ -216,17 +216,19 @@
                             @if ($kind != "currency" && isset($donationTypes[$kind]) && count($donationTypes[$kind]) > 0)
                             <!-- Generate a tab for each -->
                             <div role="tabpanel" class="tab-pane-donation tab-pane @if ($count == 0) active @endif tab-{{ $kind }}" id="{{ $kind }}">
-                                <h1>What we need</h1>
+                                <h3>What we need</h3>
                                 <div class="row">
                                     @foreach ($donationTypes[$kind] as $key => $donation_item)
-                                    <div class="col-md-2">
+                                    <div class="col-md-3 donor-box">
                                         {{ $donation_item->required_amount }} x<br/>
-                                        <h3>{{ $donation_item->name }}</h3>
-                                        {{ $percentages[$kind]["items"][$key]['required'] }} more required
+                                        <h4>{{ $donation_item->name }}</h4>
+                                        <span class="orange">
+                                            {{ $percentages[$kind]["items"][$key]['required'] }} more required
+                                        </span>
                                     </div>
                                     @endforeach
                                 </div>
-                                <a href="#">Support this project</a>
+                                <a href="#" class="btn4 white center">Support this project</a>
                             </div>
                             @endif
                         @endforeach

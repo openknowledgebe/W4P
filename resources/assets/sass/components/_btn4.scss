@@ -20,4 +20,22 @@
         border: 2px solid #AAA;
         color: #AAA;
     }
+
+    &.white {
+        border: 2px solid #FFF;
+        color: #FFF;
+
+        &:hover, &:active, &:visited {
+            text-decoration: none !important;
+            border: 2px solid darken(#FFF, 10);
+            color: darken(#FFF, 10);
+        }
+    }
+
+    &.center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 230px;
+    }
 }
