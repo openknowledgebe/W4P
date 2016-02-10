@@ -134,7 +134,7 @@
                         <!-- Second tab control -->
                         <li role="presentation"><a href="#updates" aria-controls="updates" role="tab" data-toggle="tab">
                                 <i class="icon icon-updates"></i>
-                                {{ trans("home.updates") }}
+                                {{ trans("home.updates") }} (<strong>{{ count($posts) }}</strong>)
                             </a></li>
                     </ul>
                     <!-- Tab panes -->

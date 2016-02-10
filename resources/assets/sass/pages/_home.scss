@@ -131,6 +131,7 @@ $date-icon-box-height: 75px;
 
             h3 {
                 font-size: 22px;
+                line-height: 1.5em;
             }
 
             img {
@@ -167,7 +168,7 @@ $date-icon-box-height: 75px;
     .date-flag{
         height: $date-icon-box-height;
         position: relative;
-        top: 15px;
+        top: 20px;
         display: inline-block;
 
         .date{
