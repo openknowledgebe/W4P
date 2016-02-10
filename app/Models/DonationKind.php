@@ -73,4 +73,36 @@ class DonationKind
         }
         return $kinds;
     }
+
+    /**
+     * @param $percentages: Result of getAllPercentages
+     * @param $currencyPercentage: Current currency percentage, if applied; leave null if no percentage
+     */
+    public static function getTotalPercentage($categoryPercentages, $currencyPercentage)
+    {
+        $totalCategories = 0;
+
+        $total = 0;
+        foreach ($categoryPercentages as $category) {
+            if (count($category["items"]) > 0) {
+                $totalCategories++;
+            }
+        }
+        if ($currencyPercentage != null) {
+            $totalCategories++;
+            $total = $total + ($currencyPercentage / $totalCategories);
+        }
+
+        // Total is amount of categories tops
+        if ($totalCategories > 0) {
+            foreach ($categoryPercentages as $category) {
+                if (count($category["items"]) > 0) {
+                    $total = $total + ($category["percentage"] / $totalCategories);
+                }
+            }
+            return $total;
+        } else {
+            return 0;
+        }
+    }
 }

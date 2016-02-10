@@ -79,10 +79,19 @@ class HomeController extends Controller
         $contributedPercentage = 0;
         if ($project->currency > 0) {
             $contributedPercentage = round(($contributed / $project->currency) * 100, 1);
+            if ($contributedPercentage > 100) {
+                $currencyPercentage = 100;
+            } else {
+                $currencyPercentage = $contributedPercentage;
+            }
+
+        } else {
+            $currencyPercentage = null;
         }
 
         // Get percentages from donations (for 4 kinds -> manpower, coaching, etc.)
         $percentages = DonationKind::getAllPercentages($donorQuery);
+        $totalPercentage = DonationKind::getTotalPercentage($percentages, $currencyPercentage);
 
         // Get tier counts
         $tierCounts = Tier::getCounts();
@@ -103,6 +112,7 @@ class HomeController extends Controller
             ->with('contributed', $contributed)
             ->with('contributedPercentage', $contributedPercentage)
             ->with('percentages', $percentages)
-            ->with('tierCounts', $tierCounts);
+            ->with('tierCounts', $tierCounts)
+            ->with('totalPercentage', $totalPercentage);
     }
 }

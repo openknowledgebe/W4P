@@ -15,42 +15,49 @@
                     <div class="col-md-7 meta-container">
                         <section class="meta">
                             <h1>{{ $project->title }}</h1>
-                    <span>
-                        <i class="icon icon-person icon-align-text"></i>
-                        {{ trans('home.projectby') }}
-                        <strong>
-                            {{ $data['organisation.name'] }}
-                        </strong>
-                    </span>
-                    <span>
-                        <i class="icon icon-calendar icon-align-text"></i>
-                        {{ trans('home.ends_at') }}
-                        <strong>
-                            {{ $project->ends_at->format("F j, Y") }}
-                        </strong>
-                    </span>
+                            <span>
+                                <i class="icon icon-person icon-align-text"></i>
+                                {{ trans('home.projectby') }}
+                                <strong>
+                                    {{ $data['organisation.name'] }}
+                                </strong>
+                            </span>
+                            <span>
+                                <i class="icon icon-calendar icon-align-text"></i>
+                                {{ trans('home.ends_at') }}
+                                <strong>
+                                    {{ $project->ends_at->format("F j, Y") }}
+                                </strong>
+                            </span>
                             <hr/>
-                            <div class="wrap">
-                            <!-- Possible donation types -->
-                                @if ($project->currency > 0)
-                                        <div class="progress-radial @if($contributedPercentage > 100) progress-100 @else progress-{{round($contributedPercentage)}} @endif">
-                                            <div class="overlay">
-                                                <i class="icon icon-progress-currency icon-lg"></i><br/>
-                                                <span class="about">{{ trans("backoffice.currency") }}</span>
+                            <div class="row">
+                                <div class="col-md-3"><div class="percentage">
+                                <span class="number">{{$totalPercentage}}</span><span class="percent">%</span><br/><span class="reached">reached</span></div></div>
+                                <div class="col-md-9">
+                                    <div class="wrap">
+                                        @if ($project->currency > 0)
+                                            <div class="progress-radial @if($contributedPercentage > 100) progress-100 @else progress-{{round($contributedPercentage)}} @endif">
+                                                <div class="overlay">
+                                                    <i class="icon icon-progress-currency icon-lg"></i><br/>
+                                                    <span class="about">{{ trans("backoffice.currency") }}</span>
+                                                </div>
                                             </div>
-                                        </div>
-                                @endif
-                                @foreach ($donationKinds as $kind)
-                                    @if ($kind != "currency" && isset($donationTypes[$kind]) && count($donationTypes[$kind]) > 0)
-                                        <div class="progress-radial progress-{{ round($percentages[$kind]["percentage"]) }}">
-                                            <div class="overlay">
-                                                <i class="icon icon-progress-{{$kind}} icon-lg"></i><br/>
-                                                <span class="about">{{ trans("backoffice." . $kind) }}</span>
-                                            </div>
-                                        </div>
-                                    @endif
-                                @endforeach
+                                        @endif
+                                        @foreach ($donationKinds as $kind)
+                                            @if ($kind != "currency" && isset($donationTypes[$kind]) && count($donationTypes[$kind]) > 0)
+                                                <div class="progress-radial progress-{{ round($percentages[$kind]["percentage"]) }}">
+                                                    <div class="overlay">
+                                                        <i class="icon icon-progress-{{$kind}} icon-lg"></i><br/>
+                                                        <span class="about">{{ trans("backoffice." . $kind) }}</span>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
                             </div>
+
+
                         </section>
                     </div>
                     <!-- Goals right column (blue) -->

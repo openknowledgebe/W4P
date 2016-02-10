@@ -5,7 +5,7 @@
     background-size: cover;
     background-repeat: no-repeat;
 
-    .banner-text{
+    .banner-text {
         padding-top: ($banner-height / 2) - 20px;
         display: block;
         text-align: center;
@@ -14,7 +14,32 @@
     }
 }
 
-.support-panel{
+.meta {
+    .percentage {
+        display: inline-block;
+        width: 200px;
+
+        .number{
+            font-size: 4em;
+            font-weight: bold;
+        }
+
+        .percent {
+            font-size: 1.2em;
+        }
+
+        .reached {
+            position: relative;
+            top: -20px;
+            left: 10px;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            color: $color-primary;
+        }
+    }
+}
+
+.support-panel {
     .backer-count{
         margin-top: 5px;
         font-size: 0.9em;
