@@ -31,6 +31,9 @@ class DonationKind
                     ->count();
                 $goal = (int)$type->required_amount;
                 $percentage = $total / $goal;
+                if ($percentage > 100) {
+                    $percentage = 100;
+                }
                 $required = $goal - $total;
                 if ($required < 0) {
                     $required = 0;
