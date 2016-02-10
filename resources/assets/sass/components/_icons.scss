@@ -43,6 +43,22 @@ i.icon {
         background-image: url('../../assets/icons/icon_material_inactive@2x.png');
     }
 
+    &.icon-progress-currency {
+        background-image: url('../../assets/icons/icon_progress_currency@2x.png');
+    }
+
+    &.icon-progress-manpower {
+        background-image: url('../../assets/icons/icon_progress_manpower@2x.png');
+    }
+
+    &.icon-progress-material {
+        background-image: url('../../assets/icons/icon_progress_material@2x.png');
+    }
+
+    &.icon-progress-coaching {
+        background-image: url('../../assets/icons/icon_progress_coaching@2x.png');
+    }
+
     &.icon-flag {
         width: 34px;
         height: 34px;
@@ -50,12 +66,9 @@ i.icon {
     }
 
     &.icon-lg{
-        width:40px;
-        height:40px;
-    }
-
-    &.icon-progress{
-        margin-top: 8px;
+        width:30px;
+        height:30px;
+        margin-top: 13px;
     }
 }
 

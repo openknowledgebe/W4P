@@ -35,7 +35,7 @@
                                 @if ($project->currency > 0)
                                         <div class="progress-radial @if($contributedPercentage > 100) progress-100 @else progress-{{round($contributedPercentage)}} @endif">
                                             <div class="overlay">
-                                                <i class="icon icon-currency icon-lg icon-progress"></i><br/>
+                                                <i class="icon icon-progress-currency icon-lg"></i><br/>
                                                 <span class="about">{{ trans("backoffice.currency") }}</span>
                                             </div>
                                         </div>
@@ -44,7 +44,7 @@
                                     @if ($kind != "currency" && isset($donationTypes[$kind]) && count($donationTypes[$kind]) > 0)
                                         <div class="progress-radial progress-{{ round($percentages[$kind]["percentage"]) }}">
                                             <div class="overlay">
-                                                <i class="icon icon-{{$kind}} icon-lg icon-progress"></i><br/>
+                                                <i class="icon icon-progress-{{$kind}} icon-lg"></i><br/>
                                                 <span class="about">{{ trans("backoffice." . $kind) }}</span>
                                             </div>
                                         </div>
