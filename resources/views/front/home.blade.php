@@ -30,22 +30,27 @@
                         </strong>
                     </span>
                             <hr/>
+                            <div class="wrap">
                             <!-- Possible donation types -->
-                            <ul>
+                                @if ($project->currency > 0)
+                                        <div class="progress-radial progress-{{ round($contributedPercentage) }}">
+                                            <div class="overlay">
+                                                <i class="icon icon-currency icon-lg icon-progress"></i><br/>
+                                                <span class="about">{{ trans("backoffice.currency") }}</span>
+                                            </div>
+                                        </div>
+                                @endif
                                 @foreach ($donationKinds as $kind)
                                     @if ($kind != "currency" && isset($donationTypes[$kind]) && count($donationTypes[$kind]) > 0)
-                                        <li>
-                                            {{ trans("backoffice." . $kind) }}
-                                            ({{ $percentages[$kind]["percentage"] }}% {{ trans('home.complete') }})
-                                        </li>
+                                        <div class="progress-radial progress-{{ round($percentages[$kind]["percentage"]) }}">
+                                            <div class="overlay">
+                                                <i class="icon icon-{{$kind}} icon-lg icon-progress"></i><br/>
+                                                <span class="about">{{ trans("backoffice." . $kind) }}</span>
+                                            </div>
+                                        </div>
                                     @endif
                                 @endforeach
-                                @if ($project->currency > 0)
-                                    <li>
-                                        {{ trans("backoffice.currency") }} ({{$contributedPercentage}}% {{ trans('home.complete') }})
-                                    </li>
-                                @endif
-                            </ul>
+                            </div>
                         </section>
                     </div>
                     <!-- Goals right column (blue) -->

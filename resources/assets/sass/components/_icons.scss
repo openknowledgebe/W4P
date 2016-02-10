@@ -48,6 +48,15 @@ i.icon {
         height: 34px;
         background-image: url('../../assets/icons/icon_flag@2x.png');
     }
+
+    &.icon-lg{
+        width:40px;
+        height:40px;
+    }
+
+    &.icon-progress{
+        margin-top: 8px;
+    }
 }
 
 // Align with text & fix position for tab
