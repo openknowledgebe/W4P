@@ -64,3 +64,25 @@ To set it all up in one go:
 If you do not want to go through the wizard, you can use the SettingsTestSeeder to seed default data. (This is the data that is also used by the unit tests.)
 
     php artisan db:seed --class=SettingsTestSeeder
+
+### Write access
+
+The following directories need to be writable (and if they do not exist, create them with `mkdir`):
+
+* /public/images
+* /public/organisation
+* /public/project
+* /public/platform
+* /database
+* /storage
+
+Terminal commands:
+
+    cd public
+    chmod -R a+w images
+    chmod -R a+w organisation
+    chmod -R a+w project
+    chmod -R a+w platform
+    cd ..
+    chmod -R a+w database
+    chmod -R a+w storage
