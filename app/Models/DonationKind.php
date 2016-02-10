@@ -58,8 +58,13 @@ class DonationKind
                 // If no subitems, assume 0% complete since there is no goal
                 $percentage = 0;
             }
+
+            $percentage = round($percentage * 100, 2);
+            if ($percentage > 100) {
+                $percentage = 100;
+            }
             $kinds[$kind] = [
-                "percentage" => round($percentage * 100, 2),
+                "percentage" => $percentage,
                 "items" => $subitems
             ];
         }
