@@ -33,7 +33,7 @@
                             <div class="wrap">
                             <!-- Possible donation types -->
                                 @if ($project->currency > 0)
-                                        <div class="progress-radial progress-{{ round($contributedPercentage) }}">
+                                        <div class="progress-radial @if($contributedPercentage > 100) progress-100 @else progress-{{round($contributedPercentage)}} @endif">
                                             <div class="overlay">
                                                 <i class="icon icon-currency icon-lg icon-progress"></i><br/>
                                                 <span class="about">{{ trans("backoffice.currency") }}</span>
