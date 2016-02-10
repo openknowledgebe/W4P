@@ -26,6 +26,12 @@ i.icon {
     &.icon-calendar {
         background-image: url('../../assets/icons/icon_calendar@2x.png');
     }
+
+    &.icon-flag {
+        width: 34px;
+        height: 34px;
+        background-image: url('../../assets/icons/icon_flag@2x.png');
+    }
 }
 
 // Align with text & fix position for tab

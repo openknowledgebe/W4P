@@ -124,6 +124,11 @@ $date-icon-box-height: 75px;
 
 .updates{
 
+    .list{
+        padding-bottom: 25px;
+        padding-top: 5px;
+    }
+
     .no-updates {
         padding: 20px;
 
@@ -138,16 +143,19 @@ $date-icon-box-height: 75px;
     .date-flag{
         height: $date-icon-box-height;
         position: relative;
+        top: 25px;
         display: inline-block;
-        margin-left: 50%;
-        top: 90px;
+
         .date{
             font-size: 0.8em;
             color: $color-primary;
             width: $date-width;
-            position: relative;
-            left: -($date-width / 2.6);
             margin-top: 5px;
+            text-align: center;
+        }
+
+        i{
+            margin-left: 35px;
         }
     }
 }

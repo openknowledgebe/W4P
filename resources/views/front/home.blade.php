@@ -176,25 +176,35 @@
                                 <div class="no-updates">
                                     <p>The project's makers have not posted any updates yet!</p>
                                 </div>
-                            @endif
-                            <?php
-                            $n = 0;
-                            foreach($posts as $post): $n++;?>
-                            <div class="date-flag">
-                                <img src="{{ URL::to('img/icon_flag.png') }}" width="35"/>
-                                <p class="date">{{ $post->created_at->format("F j, Y") }}</p>
-                            </div>
-                            <div class="row">
-                                <article class="<?php echo ($n%2) ? 'col-md-5' : 'col-md-push-7 col-md-5' ?>">
-
-                                    <h3>{{ $post->title }}</h3>
-                                    <div>
-                                        {!! Markdown::convertToHtml( $post->content) !!}
+                            @else
+                            <div class="list">
+                                <?php
+                                $n = 0;
+                                foreach($posts as $post): $n++;?>
+                                <div class="row">
+                                    @if ($n%2 == false)
+                                        <div class="col-md-offset-5 col-md-2 date-flag hidden-xs hidden-sm">
+                                            <i class="icon icon-flag"></i>
+                                            <p class="date">{{ $post->created_at->format("F j, Y") }}</p>
+                                        </div>
+                                    @endif
+                                    <div class="col-md-5">
+                                        <h3>{{ $post->title }}</h3>
+                                        <div>
+                                            {!! Markdown::convertToHtml( $post->content) !!}
+                                        </div>
+                                        <a href="#">Read more</a>
                                     </div>
-                                    <a href="#">Read more</a>
-                                </article>
+                                    @if ($n%2 == true)
+                                        <div class="col-md-2 date-flag hidden-xs hidden-sm">
+                                            <i class="icon icon-flag"></i>
+                                            <p class="date">{{ $post->created_at->format("F j, Y") }}</p>
+                                        </div>
+                                    @endif
+                                </div>
+                                <?php endforeach;?>
                             </div>
-                            <?php endforeach;?>
+                            @endif
                         </div>
                     </div>
                 </div>
