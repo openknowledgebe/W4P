@@ -10,7 +10,7 @@
         <div class="setup progress-wrapper">
             <div class="container">
                 <div class="logo">
-                    <img src="{{ URL::to('img/icon_w4p.png') }}" width="130" />
+                    <img src="{{ URL::to('assets/logo/icon_w4p.png') }}" width="130" />
                 </div>
                 @include('setup.progress')
             </div>

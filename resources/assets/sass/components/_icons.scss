@@ -1,0 +1,48 @@
+// Default icons
+// Usage: <i class="icon icon-story">
+i.icon {
+    width: 24px;
+    height: 24px;
+    background-size: contain;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    line-height: 1.5em;
+
+    &.icon-story {
+        background-image: url('../../assets/icons/icon_story_inactive@2x.png');
+    }
+
+    &.icon-updates {
+        background-image: url('../../assets/icons/icon_updates_inactive@2x.png');
+    }
+
+    &.icon-person {
+        background-image: url('../../assets/icons/icon_person@2x.png');
+    }
+
+    &.icon-calendar {
+        background-image: url('../../assets/icons/icon_calendar@2x.png');
+    }
+}
+
+// Align with text & fix position for tab
+.icon-align-text,
+.nav-tabs li a i.icon
+{
+    position: relative;
+    top: 5px;
+}
+
+// Colored image when active
+li.active a i.icon{
+    &.icon-story {
+        background-image: url('../../assets/icons/icon_story_active@2x.png');
+    }
+
+    &.icon-updates {
+        background-image: url('../../assets/icons/icon_updates_active@2x.png');
+    }
+}

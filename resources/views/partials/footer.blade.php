@@ -20,7 +20,7 @@
                     {{ trans('footer.poweredby') }}
                     <br/>
                     <a href="https://github.com/openknowledgebe/W4P">
-                        <img src="{{ URL::to('img/icon_w4p.png') }}" width="100" />
+                        <img src="{{ URL::to('assets/logo/logo_w4p_small.png') }}" width="100" />
                     </a>
                 </span>
             </div>

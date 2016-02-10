@@ -25,6 +25,14 @@ If you want to locally develop on the platform, you can follow the instructions 
     # Use --production flag for minified files
     gulp watch --production
 
+### A note on Gulp
+
+Gulp/Elixir is responsible for:
+
+    * Minification and concatenation of SASS files
+    * Copying assets to the correct directory
+    * CSS/JS versioning
+
 ### Setting up environment
 
 You will want to replace some of the lines in the environment file with different values, depending on your setup.

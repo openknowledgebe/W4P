@@ -3,9 +3,25 @@
 .share-btn:active,
 .share-btn:visited {
     text-decoration: none !important;
+    width: 39px;
+    height: 39px;
+    background-size: contain;
+    display: inline-block;
 
-    img{
-        width: 39px;
-        height: 39px;
+    &:hover {
+        -webkit-filter: hue-rotate(180deg);
+        filter: hue-rotate(180deg);
+    }
+
+    &.share-fb {
+        background-image: url('../../assets/icons/icon_share_fb@2x.png');
+    }
+
+    &.share-gp {
+        background-image: url('../../assets/icons/icon_share_gp@2x.png');
+    }
+
+    &.share-tw {
+        background-image: url('../../assets/icons/icon_share_tw@2x.png');
     }
 }

@@ -16,14 +16,14 @@
                         <section class="meta">
                             <h1>{{ $project->title }}</h1>
                     <span>
-                        <img src="{{ URL::to('/img/icon_user.png') }}" width="30" height="30"/>
+                        <i class="icon icon-person icon-align-text"></i>
                         {{ trans('home.projectby') }}
                         <strong>
                             {{ $data['organisation.name'] }}
                         </strong>
                     </span>
                     <span>
-                        <img src="{{ URL::to('/img/icon_calendar.png') }}" width="30" height="30" />
+                        <i class="icon icon-calendar icon-align-text"></i>
                         {{ trans('home.ends_at') }}
                         <strong>
                             {{ $project->ends_at->format("F j, Y") }}
@@ -111,13 +111,10 @@
                             <section class="share">
                                 <h3>{{ trans('home.share') }}</h3>
                                 <a class="share-btn share-fb" href="https://www.facebook.com/sharer/sharer.php?u={{URL::route('home')}}" target="_blank" title="Share on Facebook">
-                                    <img src='{{ URL::to('img/share_fb@2x.png') }}' />
                                 </a>
                                 <a class="share-btn share-gp" href="https://plus.google.com/share?url={{URL::route('home')}}" target="_blank" title="Share on Google+">
-                                    <img src='{{ URL::to('img/share_gp@2x.png') }}' />
                                 </a>
                                 <a class="share-btn share-tw" href="http://twitter.com/share?text=I just donated to this fundraising campaign&url={{URL::route('home')}}" target="_blank" title="Share on Twitter">
-                                    <img src='{{ URL::to('img/share_tw@2x.png') }}' />
                                 </a>
                             </section>
                         </div>
@@ -130,9 +127,15 @@
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs" role="tablist">
                         <!-- First tab control -->
-                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">{{ trans("home.story") }}</a></li>
+                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">
+                                <i class="icon icon-story"></i>
+                                {{ trans("home.story") }}
+                            </a></li>
                         <!-- Second tab control -->
-                        <li role="presentation"><a href="#updates" aria-controls="updates" role="tab" data-toggle="tab">{{ trans("home.updates") }}</a></li>
+                        <li role="presentation"><a href="#updates" aria-controls="updates" role="tab" data-toggle="tab">
+                                <i class="icon icon-updates"></i>
+                                {{ trans("home.updates") }}
+                            </a></li>
                     </ul>
                     <!-- Tab panes -->
                     <div class="tab-content">
@@ -170,7 +173,9 @@
                         <!-- Second tab with updates -->
                         <div role="tabpanel" class="tab-pane updates" id="updates">
                             @if (count($posts) == 0)
-                                <p>The project's makers have not posted any updates yet!</p>
+                                <div class="no-updates">
+                                    <p>The project's makers have not posted any updates yet!</p>
+                                </div>
                             @endif
                             <?php
                             $n = 0;
@@ -203,7 +208,7 @@
                         @foreach ($donationKinds as $count => $kind)
                             @if ($kind != "currency" && isset($donationTypes[$kind]) && count($donationTypes[$kind]) > 0)
                                 <li role="presentation" @if ($count == 0) class="active" @endif>
-                                    <a href="#{{ $kind }}" aria-controls="{{ $kind }}" role="tab" data-toggle="tab">
+                                    <a href="#{{ $kind }}" aria-controls="{{ $kind }}" role="tab" data-toggle="tab" class="no-icon">
                                         {{ trans("backoffice." . $kind) }}
                                     </a>
                                 </li>
