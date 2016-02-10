@@ -218,7 +218,8 @@
                         @foreach ($donationKinds as $count => $kind)
                             @if ($kind != "currency" && isset($donationTypes[$kind]) && count($donationTypes[$kind]) > 0)
                                 <li role="presentation" @if ($count == 0) class="active" @endif>
-                                    <a href="#{{ $kind }}" aria-controls="{{ $kind }}" role="tab" data-toggle="tab" class="no-icon">
+                                    <a href="#{{ $kind }}" aria-controls="{{ $kind }}" role="tab" data-toggle="tab">
+                                        <i class="icon icon-{{$kind}}"></i>
                                         {{ trans("backoffice." . $kind) }}
                                     </a>
                                 </li>

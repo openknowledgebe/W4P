@@ -27,6 +27,22 @@ i.icon {
         background-image: url('../../assets/icons/icon_calendar@2x.png');
     }
 
+    &.icon-coaching {
+        background-image: url('../../assets/icons/icon_coaching_inactive@2x.png');
+    }
+
+    &.icon-manpower {
+        background-image: url('../../assets/icons/icon_manpower_inactive@2x.png');
+    }
+
+    &.icon-currency {
+        background-image: url('../../assets/icons/icon_currency_inactive@2x.png');
+    }
+
+    &.icon-material {
+        background-image: url('../../assets/icons/icon_material_inactive@2x.png');
+    }
+
     &.icon-flag {
         width: 34px;
         height: 34px;
@@ -50,5 +66,21 @@ li.active a i.icon{
 
     &.icon-updates {
         background-image: url('../../assets/icons/icon_updates_active@2x.png');
+    }
+
+    &.icon-coaching {
+        background-image: url('../../assets/icons/icon_coaching_active@2x.png');
+    }
+
+    &.icon-manpower {
+        background-image: url('../../assets/icons/icon_manpower_active@2x.png');
+    }
+
+    &.icon-currency {
+        background-image: url('../../assets/icons/icon_currency_active@2x.png');
+    }
+
+    &.icon-material {
+        background-image: url('../../assets/icons/icon_material_active@2x.png');
     }
 }
