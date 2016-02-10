@@ -56,8 +56,6 @@
                                     </div>
                                 </div>
                             </div>
-
-
                         </section>
                     </div>
                     <!-- Goals right column (blue) -->
