@@ -185,10 +185,10 @@
                                     @if ($n%2 == false)
                                         <div class="col-md-offset-5 col-md-2 date-flag hidden-xs hidden-sm">
                                             <i class="icon icon-flag"></i>
-                                            <p class="date">{{ $post->created_at->format("F j, Y") }}</p>
+                                            <p class="date">{{ $post->created_at->format("d/m/Y") }}</p>
                                         </div>
                                     @endif
-                                    <div class="col-md-5">
+                                    <div class="col-md-5 post">
                                         <h3>{{ $post->title }}</h3>
                                         <div>
                                             {!! Markdown::convertToHtml( $post->content) !!}
@@ -198,7 +198,7 @@
                                     @if ($n%2 == true)
                                         <div class="col-md-2 date-flag hidden-xs hidden-sm">
                                             <i class="icon icon-flag"></i>
-                                            <p class="date">{{ $post->created_at->format("F j, Y") }}</p>
+                                            <p class="date">{{ $post->created_at->format("d/m/Y") }}</p>
                                         </div>
                                     @endif
                                 </div>

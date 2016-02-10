@@ -87,7 +87,6 @@
     background-color: $color-gray;
     padding-top: 40px;
     padding-bottom: 40px;
-    margin-bottom: 15px;
 }
 
 .tab-pane-donation{
@@ -127,6 +126,31 @@ $date-icon-box-height: 75px;
     .list{
         padding-bottom: 25px;
         padding-top: 5px;
+
+        .post {
+
+            h3 {
+                font-size: 22px;
+            }
+
+            img {
+                max-width: 100%;
+                margin-bottom: 15px;
+                margin-top: 15px;
+            }
+
+            p {
+                font-size: 18px;
+                color: #676767;
+                line-height: 1.8em;
+            }
+
+            a {
+                font-size: 12px;
+                text-transform: uppercase;
+                color: #42CFD2;
+            }
+        }
     }
 
     .no-updates {
@@ -143,14 +167,15 @@ $date-icon-box-height: 75px;
     .date-flag{
         height: $date-icon-box-height;
         position: relative;
-        top: 25px;
+        top: 15px;
         display: inline-block;
 
         .date{
             font-size: 0.8em;
             color: $color-primary;
             width: $date-width;
-            margin-top: 5px;
+            font-weight: 700;
+            margin-top: 0px;
             text-align: center;
         }
 
