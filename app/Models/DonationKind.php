@@ -31,8 +31,8 @@ class DonationKind
                     ->count();
                 $goal = (int)$type->required_amount;
                 $percentage = $total / $goal;
-                if ($percentage > 100) {
-                    $percentage = 100;
+                if ($percentage > 1) {
+                    $percentage = 1;
                 }
                 $required = $goal - $total;
                 if ($required < 0) {
@@ -40,6 +40,7 @@ class DonationKind
                 }
                 // Push subitems
                 array_push($subitems, [
+                    "id" => $type->id,
                     "type" => $type->name,
                     "total" => $total,
                     "goal" => $goal,

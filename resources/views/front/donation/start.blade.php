@@ -25,45 +25,53 @@
                             {{$errors->first()}}
                         </div>
                     @endif
-                    <form method="POST" action="{{ URL::route('donate::details') }}" enctype="multipart/form-data">
+                </div>
+            </div>
+            <form method="POST" action="{{ URL::route('donate::details') }}" enctype="multipart/form-data">
                         <input name="_method" type="hidden" value="POST">
                         {{ csrf_field() }}
 
-                        @if ($project->currency > 0)
-                        <div class="form-group">
+                @if ($project->currency > 0)
+                    <div class="row">
+                        <div class="col-md-2">
+                            <p>Radial progress</p>
+                        </div>
+                        <div class="col-md-2">
                             <label>
                                 {{ trans('backoffice.currency') }}
                             </label>
-                            <input type="number" step="any"
-                                   class="form-control" id="currency" name="currency"
-                                   placeholder="Pledge amount" min="0">
                         </div>
-                        <hr/>
-                        @endif
+                        <div class="col-md-8">
+                            <div class="form-group">
 
-                        <div class="form-group">
-                            <!-- Donation options -->
-                            @foreach ($donationTypes as $donationType)
-                                    <!-- Donation type -->
+                                <input type="number" step="any"
+                                       class="form-control" id="currency" name="currency"
+                                       placeholder="Pledge amount" min="0">
+                            </div>
+                        </div>
+                    </div>
+                @endif
+                @foreach ($donationTypes as $donationKind => $donationType)
+                    <div class="row">
+                        <div class="col-md-2">
+                            <p>Radial progress</p>
+                        </div>
+                        <div class="col-md-10">
                             @foreach ($donationType as $option)
-                                <label>
-                                    {{ $option['name'] }} ({{ trans('backoffice.' . $option['kind']) }})
-                                </label>
-                                <p>
-                                    <strong>Description</strong>: {{ $option['description'] }}<br/>
-                                </p>
-                                I am able to provide <input type="number" class="form-control" id="pledge_{{str_slug($option['id'])}}" name="pledge_{{str_slug($option['id'])}}"
-                                        placeholder="Pledge amount" min="0"> units.
-                            <p>
-                                <strong>1 unit</strong>: {{ $option['unit_description'] }}
-                            </p>
-                            @endforeach
+                                <div class="about">
+                                    Description: <i>{{ $option['description'] }}</i><br/>
+                                    1x unit: <i>{{ $option['unit_description'] }}</i>
+                                </div>
+                                <div class="checkboxes_pledge_{{str_slug($option['id'])}}">
+
+                                </div>
+                                <input type="hidden" id="pledge_{{str_slug($option['id'])}}" name="pledge_{{str_slug($option['id'])}}">
                             @endforeach
                         </div>
-                        <button type="submit" class="btn4 pull-right">{{ trans('setup.generic.next') }} &rarr;</button>
-                    </form>
-                </div>
-            </div>
+                    </div>
+                @endforeach
+                <button type="submit" class="btn4 pull-right">{{ trans('setup.generic.next') }} &rarr;</button>
+            </form>
         </div>
         @else
             <div class="row">
