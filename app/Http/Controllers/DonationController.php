@@ -29,19 +29,26 @@ class DonationController extends Controller
     {
         // For a new donation we need to fetch all donation types
         $donationTypes = DonationType::all()->groupBy('kind')->toArray();
+
         // Count the donationTypes; if none are available, show an error
         $disabled = false;
         if (count($donationTypes) < 1 && $request->project->currency == 0) {
             $disabled = true;
         }
+
         // We also need to check if monetary contributions are allowed
         $currency = $request->project->currency;
+
+        // Get counts
+        $percentages = DonationKind::getAllPercentages();
+
         // Return view
         return View::make('front.donation.start')
             ->with('currency', $currency)
             ->with('donationTypes', $donationTypes)
             ->with('donationsDisabled', $disabled)
-            ->with('project', $request->project);
+            ->with('project', $request->project)
+            ->with('percentages', $percentages);
     }
 
     public function continueDonation(Request $request)

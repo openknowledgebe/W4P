@@ -51,4 +51,7 @@
         @include('partials.footer')
     </body>
     <script src="{{ elixir("js/core.js") }}"></script>
+    @if (Request::is('donate'))
+        <script src="{{ elixir("js/pledge.js") }}"></script>
+    @endif
 </html>

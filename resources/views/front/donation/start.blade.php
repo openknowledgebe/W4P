@@ -74,4 +74,7 @@
             </div>
         @endif
     </div>
+    <script>
+        var donationOptions = {!! json_encode($percentages) !!};
+    </script>
 @endsection
