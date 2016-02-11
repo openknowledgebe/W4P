@@ -1,0 +1,16 @@
+.checkbox {
+    width: 37px;
+    height: 37px;
+    background-image: url('../../assets/icons/icon_checkmark_unchecked@2x.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+
+    &.checked {
+        background-image: url('../../assets/icons/icon_checkmark_checked@2x.png');
+    }
+
+    &.disabled {
+        background-image: url('../../assets/icons/icon_checkmark@2x.png');
+    }
+}

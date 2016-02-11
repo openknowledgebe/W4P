@@ -15,11 +15,11 @@ elixir(function(mix) {
     mix.sass('app.scss');
     mix.scriptsIn("resources/assets/js/core", "public/js/core.js");
     mix.scriptsIn("resources/assets/js/admin", "public/js/admin.js");
-    mix.scriptsIn("resources/assets/js/pledge", "public/js/pledge.js");
     // use the --production flag with gulp to minify
 });
 
 elixir(function(mix) {
+    mix.copy('resources/assets/js/pledge/pledge.js', 'public/js/pledge.js');
     mix.version([
         "js/core.js",
         "js/pledge.js",

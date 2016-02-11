@@ -57,14 +57,20 @@
                             <p>Radial progress</p>
                         </div>
                         <div class="col-md-10">
-                            @foreach ($donationType as $option)
+                            @foreach ($donationType as $key => $option)
                                 <div class="about">
                                     Description: <i>{{ $option['description'] }}</i><br/>
                                     1x unit: <i>{{ $option['unit_description'] }}</i>
                                 </div>
                                 <div class="checkboxes_pledge_{{str_slug($option['id'])}}">
-
+                                    @for ($i = 0; $i < $option["required_amount"]; $i++)
+                                        @if ($i >= $percentages[$donationKind]["items"][$key]["total"] )
+                                            <div class="checkbox"></div>@else<div class="checkbox disabled"></div>
+                                        @endif
+                                    @endfor
                                 </div>
+                                <a href="#" class="btn btn-default plus" data-key="{{ $option['id'] }}">+</a>
+                                <a href="#" class="btn btn-default minus" data-key="{{ $option['id'] }}">-</a>
                                 <input type="hidden" id="pledge_{{str_slug($option['id'])}}" name="pledge_{{str_slug($option['id'])}}">
                             @endforeach
                         </div>
@@ -82,7 +88,10 @@
             </div>
         @endif
     </div>
+@endsection
+@section('scripts')
     <script>
-        var donationOptions = {!! json_encode($percentages) !!};
+        var categories = {!! json_encode($percentages) !!};
     </script>
+    <script src="{{ elixir("js/pledge.js") }}"></script>
 @endsection
