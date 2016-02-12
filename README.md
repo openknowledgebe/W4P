@@ -1,4 +1,4 @@
-![W4P logo](public/img/icon_w4p.png)
+![W4P logo](public/assets/logo/logo_w4p.png)
 
 W4P is an easy-to-implement crowdsourcing platform.
 
