@@ -265,14 +265,18 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <a href="#" class="btn-light">
-                            {{ trans('home.howdoesitwork') }}
-                        </a>
+                        <div class="padded-panel">
+                            <a href="#" class="btn4 main center">
+                                {{ trans('home.howdoesitwork') }}
+                            </a>
+                        </div>
                     </div>
                     <div class="col-md-6">
-                        <a href="#" class="btn-light">
+                        <div class="padded-panel">
+                        <a href="#" class="btn4 main center">
                             {{ trans('home.previousprojects') }}
                         </a>
+                        </div>
                     </div>
                 </div>
             </div>
