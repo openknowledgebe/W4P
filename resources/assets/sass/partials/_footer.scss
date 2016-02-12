@@ -1,0 +1,32 @@
+footer {
+
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+    ul {
+        list-style: none;
+
+        li a, li {
+            color: #8A8A8A;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        li.subtitle{
+            color: #000;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        margin-bottom: 30px;
+    }
+
+    .gray {
+        color: #8A8A8A;
+    }
+}
+

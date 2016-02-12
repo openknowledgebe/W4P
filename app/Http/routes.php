@@ -14,6 +14,11 @@
 Route::group(['middleware' => ['web']], function () {
 
     Route::get('/', ['as' => 'home', 'middleware' => 'env.ready', 'uses' => 'HomeController@index']);
+    Route::get('/how-it-works', ['as' => 'how', 'middleware' => 'env.ready', 'uses' => 'HomeController@how']);
+    Route::get('/previous-projects', ['as' => 'previous', 'middleware' => 'env.ready', 'uses' => 'HomeController@previous']);
+    Route::get('/press', ['as' => 'press', 'middleware' => 'env.ready', 'uses' => 'HomeController@press']);
+    Route::get('/terms-of-use', ['as' => 'terms', 'middleware' => 'env.ready', 'uses' => 'HomeController@terms']);
+    Route::get('/privacy-policy', ['as' => 'privacy', 'middleware' => 'env.ready', 'uses' => 'HomeController@privacy']);
 
     /*
     |--------------------------------------------------------------------------

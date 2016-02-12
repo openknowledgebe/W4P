@@ -115,4 +115,50 @@ class HomeController extends Controller
             ->with('tierCounts', $tierCounts)
             ->with('totalPercentage', $totalPercentage);
     }
+
+    /**
+     * How does it work page
+     * @return mixed
+     */
+    public function how()
+    {
+        return View::make('front.how');
+    }
+
+    /**
+     * Previous projects page
+     * @return mixed
+     */
+    public function previous()
+    {
+        // TODO: Get previous projects
+        return View::make('front.previous')->with('previous', []);
+    }
+
+    /**
+     * Press page
+     * @return mixed
+     */
+    public function press()
+    {
+        return View::make('front.press');
+    }
+
+    /**
+     * Terms of use page
+     * @return mixed
+     */
+    public function terms()
+    {
+        return View::make('front.terms');
+    }
+
+    /**
+     * Privacy policy page
+     * @return mixed
+     */
+    public function privacy()
+    {
+        return View::make('front.privacy');
+    }
 }
