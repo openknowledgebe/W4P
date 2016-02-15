@@ -176,7 +176,18 @@ class DonationController extends Controller
                 $donation->assignToTier();
                 $donation->payment_status = "pending";
                 $donation->save();
-                $redirectUrl = Mollie::createPayment($donation->id);
+                $paymentCreation = Mollie::createPayment($donation->id);
+                if (is_array($paymentCreation)) {
+                    // TODO: Redirect the user to an error page to tell them something has gone wrong
+                    abort(
+                        500,
+                        'There was an issue with the payment provider. Please let us know: '
+                        . Setting::get('email.from')
+                        . "; also provide this reference: #"
+                        . $donation->id
+                    );
+                }
+                $redirectUrl = $paymentCreation;
                 // Redirect the user
                 return Redirect::to($redirectUrl);
             }

@@ -23,7 +23,6 @@ class AdminAuthController extends Controller
      */
     public function login()
     {
-        // TODO: Make view for login form and return it here
         return View::make('backoffice.login');
     }
 

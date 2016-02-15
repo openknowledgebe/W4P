@@ -4,13 +4,18 @@ namespace W4P\Models;
 
 class DonationKind
 {
+    /**
+     * Predefined 'categories'
+     * @return array
+     */
     public static function all()
     {
         return ['manpower', 'material', 'coaching', 'currency'];
     }
 
     /**
-     * Get all percentages (Based on DonationKind string)
+     * Get all percentages (Based on predefined 'categories')
+     * @param $donationQuery: An existing query. If this is not supplied, an extra query will be done.
      * @return array
      */
     public static function getAllPercentages($donationQuery = null)
@@ -76,10 +81,12 @@ class DonationKind
     }
 
     /**
-     * @param $percentages: Result of getAllPercentages
-     * @param $currencyPercentage: Current currency percentage, if applied; leave null if no percentage
+     * Get the total percentage
+     * @param $categoryPercentages: Result of getAllPercentages
+     * @param $currencyPercentage: Current currency percentage if applied
+     * @return int Total percentage for the current project
      */
-    public static function getTotalPercentage($categoryPercentages, $currencyPercentage)
+    public static function getTotalPercentage($categoryPercentages, $currencyPercentage = null)
     {
         $totalCategories = 0;
 
