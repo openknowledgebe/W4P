@@ -10,3 +10,7 @@
 Homestead.yaml
 Homestead.json
 .env
+/vagrant/Vagrantfile
+/vagrant/.vagrant
+/vagrant/puphpet
+/vagrant/html
