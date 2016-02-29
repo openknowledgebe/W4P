@@ -89,13 +89,18 @@ class SetupController extends Controller
                 false
             );
         } else {
+            $notWritableString = "<ul>";
+            foreach ($not_writable as $folder) {
+                $notWritableString .= "<li>" . $folder . "</li>";
+            }
+            $notWritableString = "</ul>";
             $prerequisites[] = SetupPrerequisite::create(
                 trans('setup.preq.titles.writable'),
-                trans('setup.preq.errors.writable'),
+                "<p>" . trans('setup.preq.errors.writable') . "</p>" . $notWritableString,
                 true
             );
         }
-        
+
         // Based on count
         $failuresCount = 0;
         foreach ($prerequisites as $preq) {
