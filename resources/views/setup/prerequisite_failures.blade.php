@@ -18,7 +18,7 @@
                     <tr @if ($preq->fails) class="danger" @else class="success" @endif>
                         <td><strong>{{ $preq->title }}</strong></td>
                         <td>
-                            {{ $preq->description }}
+                            {!! $preq->description !!}
                         </td>
                     </tr>
                 @endforeach

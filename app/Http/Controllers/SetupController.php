@@ -93,7 +93,7 @@ class SetupController extends Controller
             foreach ($not_writable as $folder) {
                 $notWritableString .= "<li>" . $folder . "</li>";
             }
-            $notWritableString = "</ul>";
+            $notWritableString .= "</ul>";
             $prerequisites[] = SetupPrerequisite::create(
                 trans('setup.preq.titles.writable'),
                 "<p>" . trans('setup.preq.errors.writable') . "</p>" . $notWritableString,
