@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 
 use W4P\Http\Requests;
 use W4P\Http\Controllers\Controller;
+use W4P\Models\SetupPrerequisite;
 use W4P\Models\Setting;
 use W4P\Models\Project;
 use Carbon\Carbon;
@@ -17,6 +18,7 @@ use Validator;
 use Request;
 use Image;
 use Mail;
+use DB;
 
 class SetupController extends Controller
 {
@@ -26,7 +28,90 @@ class SetupController extends Controller
      */
     public function index()
     {
-        return View::make('setup.welcome');
+        // Check prerequisites
+        $prerequisites = [];
+
+        // Laravel prerequisite
+        $prerequisites[] = SetupPrerequisite::create(
+            trans('setup.preq.titles.laravel_installation'),
+            trans('setup.preq.checkmark'),
+            false
+        );
+
+        // Check if node_modules folder exists
+        if (file_exists(public_path() . "/../node_modules")) {
+            $prerequisites[] = SetupPrerequisite::create(
+                trans('setup.preq.titles.npm_modules'),
+                trans('setup.preq.checkmark'),
+                false
+            );
+        } else {
+            $prerequisites[] = SetupPrerequisite::create(
+                trans('setup.preq.titles.npm_modules'),
+                trans('setup.preq.errors.npm_modules'),
+                true
+            );
+        }
+
+        // Check if the database connection is OK
+        if (DB::connection()->getDatabaseName()) {
+            $prerequisites[] = SetupPrerequisite::create(
+                trans('setup.preq.titles.database_connection'),
+                trans('setup.preq.checkmark'),
+                false
+            );
+        } else {
+            $prerequisites[] = SetupPrerequisite::create(
+                trans('setup.preq.titles.database_connection'),
+                trans('setup.preq.errors.database_connection'),
+                true
+            );
+        }
+
+        // Check if the correct folders are writable
+        $writable = true;
+
+        $folders = ["/images", "/organisation", "/project", "/platform", "/../database", "/../storage"];
+        $not_writable = [];
+
+        foreach ($folders as $folder) {
+            $folder = public_path() . $folder;
+            if (!is_writeable($folder)) {
+                $writable = false;
+                $not_writable[] = $folder;
+            }
+        }
+
+        if ($writable) {
+            $prerequisites[] = SetupPrerequisite::create(
+                trans('setup.preq.titles.writable'),
+                trans('setup.preq.checkmark'),
+                false
+            );
+        } else {
+            $prerequisites[] = SetupPrerequisite::create(
+                trans('setup.preq.titles.writable'),
+                trans('setup.preq.errors.writable'),
+                true
+            );
+        }
+        
+        // Based on count
+        $failuresCount = 0;
+        foreach ($prerequisites as $preq) {
+            if ($preq->fails) {
+                $failuresCount++;
+            }
+        }
+
+        // Loop through all prerequisite checks
+        if ($failuresCount == 0) {
+            return View::make('setup.welcome');
+        } else {
+            return View::make('setup.prerequisite_failures')
+                ->with('preqs', $prerequisites);
+        }
+
     }
 
     /**
@@ -99,6 +184,8 @@ class SetupController extends Controller
 
     /**
      * Handle the form input that was sent from a specific step.
+     * Sets $this->success & $this->errors depending on input
+     *
      * @param int $number Step of the submitted data
      * @return Redirect
      */
@@ -144,7 +231,6 @@ class SetupController extends Controller
 
     /**
      * Handle master password validation
-     * Sets $this->success & $this->errors depending on input.
      */
     private function handleMasterPasswordValidation()
     {
@@ -180,7 +266,6 @@ class SetupController extends Controller
 
     /**
      * Handle organisation validation
-     * Sets $this->success & $this->errors depending on input.
      */
     private function handleOrganisationValidation()
     {
@@ -217,6 +302,9 @@ class SetupController extends Controller
         }
     }
 
+    /**
+     * Validate organisation fields
+     */
     private function handleOrganisationStep2Validation()
     {
         // Depending on whether a logo exists already, change the validation rule for the logo upload
@@ -255,6 +343,9 @@ class SetupController extends Controller
         }
     }
 
+    /**
+     * Validate project fields
+     */
     private function handleProjectValidation()
     {
         $validator = Validator::make(
@@ -287,6 +378,9 @@ class SetupController extends Controller
         }
     }
 
+    /**
+     * Validate email fields
+     */
     private function handleEmailConfigValidation()
     {
         $validator = Validator::make(
@@ -333,6 +427,9 @@ class SetupController extends Controller
         }
     }
 
+    /**
+     * Finalize the setup process by setting setup.complete
+     */
     private function finalizeSetupProcess()
     {
         Setting::set('setup.complete', 'done');

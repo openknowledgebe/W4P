@@ -19,6 +19,11 @@ use Redirect;
 
 class AdminGoalController extends Controller
 {
+    /**
+     * Get a list of all categories and a count of subcategories
+     * @param Request $request
+     * @return mixed
+     */
     public function index(Request $request)
     {
         $donationTypes = DonationType::all()->groupBy('kind');
@@ -29,6 +34,11 @@ class AdminGoalController extends Controller
             ->with('currency', $request->project->currency);
     }
 
+    /**
+     * Get an overview of all subcategories for a particular kind of category
+     * @param $kind
+     * @return mixed
+     */
     public function kind($kind)
     {
         $donationTypes = DonationType::where('kind', $kind)->get();
@@ -37,7 +47,11 @@ class AdminGoalController extends Controller
             ->with('kind', $kind);
     }
 
-
+    /**
+     * Create a new type (subcategory)
+     * @param $kind
+     * @return mixed
+     */
     public function createType($kind)
     {
         return View::make('backoffice.goals.type_edit')
@@ -45,6 +59,12 @@ class AdminGoalController extends Controller
             ->with('kind', $kind);
     }
 
+    /**
+     * Edit an existing type (subcategory)
+     * @param $kind
+     * @param $id
+     * @return mixed
+     */
     public function editType($kind, $id)
     {
         $donationType = DonationType::where('kind', $kind)->where('id', $id)->first();
@@ -55,6 +75,11 @@ class AdminGoalController extends Controller
             ->with('data', $donationType->toArray());
     }
 
+    /**
+     * Store a type (subcategory)
+     * @param $kind
+     * @return mixed
+     */
     public function storeType($kind)
     {
         $success = true;
@@ -91,6 +116,12 @@ class AdminGoalController extends Controller
         }
     }
 
+    /**
+     * Update an existing type (subcategory)
+     * @param $kind
+     * @param $id
+     * @return mixed
+     */
     public function updateType($kind, $id)
     {
         $success = true;
@@ -126,12 +157,23 @@ class AdminGoalController extends Controller
         }
     }
 
+    /**
+     * Delete an existing type (subcategory)
+     * @param $kind
+     * @param $id
+     * @return mixed
+     */
     public function deleteType($kind, $id)
     {
         DonationType::find($id)->delete();
         return Redirect::route('admin::goalsDetail', $kind);
     }
 
+    /**
+     * Go to the currency page to set up the goals
+     * @param Request $request
+     * @return mixed
+     */
     public function currency(Request $request)
     {
         $errors = [];
@@ -145,6 +187,11 @@ class AdminGoalController extends Controller
             ->withErrors($errors);
     }
 
+    /**
+     * Save the currency page
+     * @param Request $request
+     * @return mixed
+     */
     public function updateCurrency(Request $request)
     {
         $success = true;

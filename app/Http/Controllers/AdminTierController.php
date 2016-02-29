@@ -17,6 +17,10 @@ use View;
 
 class AdminTierController extends Controller
 {
+    /**
+     * Get all tiers
+     * @return mixed
+     */
     public function index()
     {
         // Get all tiers
@@ -24,6 +28,10 @@ class AdminTierController extends Controller
         return View::make('backoffice.tiers.index')->with('tiers', $tiers);
     }
 
+    /**
+     * Create a new tier
+     * @return mixed
+     */
     public function create()
     {
         return View::make('backoffice.tiers.edit')
@@ -31,6 +39,10 @@ class AdminTierController extends Controller
             ->with('new', true);
     }
 
+    /**
+     * Save a tier
+     * @return mixed
+     */
     public function store()
     {
         $success = true;
@@ -67,6 +79,11 @@ class AdminTierController extends Controller
         }
     }
 
+    /**
+     * Edit an existing tier
+     * @param $id
+     * @return mixed
+     */
     public function edit($id)
     {
         $tier = Tier::find($id);
@@ -79,6 +96,11 @@ class AdminTierController extends Controller
             ->with('new', false);
     }
 
+    /**
+     * Update an existing tier
+     * @param $id
+     * @return mixed
+     */
     public function update($id)
     {
         $success = true;
@@ -117,6 +139,11 @@ class AdminTierController extends Controller
         }
     }
 
+    /**
+     * Delete an existing tier
+     * @param $id
+     * @return mixed
+     */
     public function delete($id)
     {
         Tier::find($id)->delete();

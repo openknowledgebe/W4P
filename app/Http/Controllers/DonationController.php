@@ -25,6 +25,11 @@ use Mollie;
 
 class DonationController extends Controller
 {
+    /**
+     * Start a new donation (1/3)
+     * @param Request $request
+     * @return mixed
+     */
     public function newDonation(Request $request)
     {
         // For a new donation we need to fetch all donation types
@@ -51,6 +56,11 @@ class DonationController extends Controller
             ->with('percentages', $percentages);
     }
 
+    /**
+     * Validate incoming data and show second page (2/3)
+     * @param Request $request
+     * @return mixed
+     */
     public function continueDonation(Request $request)
     {
         $validation = [];
@@ -114,6 +124,11 @@ class DonationController extends Controller
         return View::make('front.donation.user')->with('types', $types);
     }
 
+    /**
+     * Validate incoming user data and show third page (3/3)
+     * @param Request $request
+     * @return mixed
+     */
     public function confirmDonation(Request $request)
     {
         // Default outcome for this request
@@ -224,6 +239,13 @@ class DonationController extends Controller
         }
     }
 
+    /**
+     * Validate an email confirmation link click (extra step for non-payment backers)
+     * @param Request $request
+     * @param $code
+     * @param $email
+     * @return string
+     */
     public function emailConfirmation(Request $request, $code, $email)
     {
         // Check if a donation can be found with this code and email
@@ -263,6 +285,13 @@ class DonationController extends Controller
         return "This is not a valid confirmation mail or this was already confirmed.";
     }
 
+    /**
+     * Payment is done (redirected to this via Mollie)
+     * Validate whether the payment is finished (paid) or not and show a page depending on this info.
+     * @param Request $request
+     * @param $donation_id
+     * @return mixed
+     */
     public function paymentComplete(Request $request, $donation_id)
     {
         $donation = Donation::find($donation_id);
@@ -298,6 +327,11 @@ class DonationController extends Controller
         }
     }
 
+    /**
+     * Get the payment status for this donation
+     * @param $donation_id
+     * @return mixed
+     */
     public function paymentStatus($donation_id)
     {
         $donation = Donation::find($donation_id);
@@ -305,11 +339,22 @@ class DonationController extends Controller
             ->with('paymentStatus', $donation->payment_status);
     }
 
+    /**
+     * Incoming Mollie webhook; check the payment
+     * @param $donation_id
+     */
     public function paymentWebhook($donation_id)
     {
         Mollie::checkPayment($donation_id);
     }
 
+    /**
+     * Show the donation info page for a specific donation (with a donation secret URL)
+     * @param Request $request
+     * @param $code
+     * @param $email
+     * @return string
+     */
     public function donationInfoPage(Request $request, $code, $email)
     {
         // Find the personal URL

@@ -16,6 +16,10 @@ use View;
 
 class AdminPostController extends Controller
 {
+    /**
+     * Get all posts
+     * @return mixed
+     */
     public function index()
     {
         // Get all tiers
@@ -23,6 +27,10 @@ class AdminPostController extends Controller
         return View::make('backoffice.posts.index')->with('posts', $posts);
     }
 
+    /**
+     * Create an new post
+     * @return mixed
+     */
     public function create()
     {
         return View::make('backoffice.posts.edit')
@@ -30,6 +38,10 @@ class AdminPostController extends Controller
             ->with('new', true);
     }
 
+    /**
+     * Save a post
+     * @return mixed
+     */
     public function store()
     {
         $success = true;
@@ -65,6 +77,11 @@ class AdminPostController extends Controller
         }
     }
 
+    /**
+     * Edit an existing post
+     * @param $id
+     * @return mixed
+     */
     public function edit($id)
     {
         $post = Post::find($id);
@@ -77,6 +94,11 @@ class AdminPostController extends Controller
             ->with('new', false);
     }
 
+    /**
+     * Update an existing post
+     * @param $id
+     * @return mixed
+     */
     public function update($id)
     {
         $success = true;
@@ -112,6 +134,11 @@ class AdminPostController extends Controller
         }
     }
 
+    /**
+     * Delete an existing post
+     * @param $id
+     * @return mixed
+     */
     public function delete($id)
     {
         Post::find($id)->delete();

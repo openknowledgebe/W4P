@@ -12,7 +12,6 @@
                 <div class="logo">
                     <img src="{{ URL::to('assets/logo/logo_w4p.png') }}" width="130" />
                 </div>
-                @include('setup.progress')
             </div>
         </div>
         <div class="setup content-wrapper">

@@ -201,6 +201,7 @@ class AdminController extends Controller
         if (file_exists(public_path() . "/organisation/logo.png")) {
             $logoValidationRule = 'image';
         }
+
         $validator = Validator::make(
             Input::all(),
             [
@@ -210,6 +211,7 @@ class AdminController extends Controller
                 'organisationLogo' => $logoValidationRule
             ]
         );
+
         // Check if the validator fails
         if (!$validator->fails()) {
             $image = Input::file('organisationLogo');
@@ -265,6 +267,7 @@ class AdminController extends Controller
         if (file_exists(public_path() . "/platform/logo.png")) {
             $logoValidationRule = 'image';
         }
+
         $validator = Validator::make(
             Input::all(),
             [
@@ -272,6 +275,7 @@ class AdminController extends Controller
                 'platformOwnerLogo' => $logoValidationRule
             ]
         );
+
         // Check if the validator fails
         if (!$validator->fails()) {
             $image = Input::file('platformOwnerLogo');
@@ -301,6 +305,7 @@ class AdminController extends Controller
     }
 
     /**
+     * Get email settings form
      * @return mixed
      */
     public function email()
@@ -319,6 +324,7 @@ class AdminController extends Controller
     }
 
     /**
+     * Update existing email settings
      * @return mixed
      */
     public function updateEmail()
@@ -376,6 +382,10 @@ class AdminController extends Controller
         }
     }
 
+    /**
+     * Get all assets from the /images folder (uploads) and return the view that displays them.
+     * @return mixed: Shows the assets page
+     */
     public function assets()
     {
         $images = array_slice(scandir(public_path() . "/images"), 2);
@@ -383,22 +393,38 @@ class AdminController extends Controller
             ->with('images', $images);
     }
 
-    public function donations()
-    {
-        $donations = Donation::orderBy('id', 'DESC')->get();
-        return View::make('backoffice.donations')->with('donations', $donations);
-    }
-
+    /**
+     * Delete an asset with a particular filename.
+     * @param $filename: Filename of the file you want to delete.
+     * @return mixed: Redirects back to the assets page
+     */
     public function deleteAsset($filename)
     {
         unlink(public_path() . "/images/" . $filename);
         return Redirect::route('admin::assets');
     }
 
+    /**
+     * Get all donations ordered by ID
+     * @return mixed
+     */
+    public function donations()
+    {
+        $donations = Donation::orderBy('id', 'DESC')->get();
+        return View::make('backoffice.donations')->with('donations', $donations);
+    }
+
+    /**
+     * Export all users to UTF-8 encoded csv
+     * Opens a stream and closes it (first_name, last_name)
+     */
     public function exportUsers()
     {
+        // Set headers
         header('Content-Type: text/csv; charset=utf-8');
         header('Content-Disposition: attachment; filename=donors.csv');
+
+        // Get all users (unique)
         $users = Donation::whereNotNull('confirmed')->get()->groupBy('email');
         $output = fopen('php://output', 'w');
         fputcsv($output, array('name', 'email'));
@@ -408,6 +434,8 @@ class AdminController extends Controller
                 $key
             ]);
         }
+
+        // Exit file stream
         exit();
     }
 }

@@ -204,6 +204,25 @@ return [
         ]
     ],
 
+    'preq' => [
+        "prerequisite_page_title" => "Prerequisites",
+        "prerequisite_page_description" => "Below you can find a list of successful and failed prerequisites.",
+        "prerequisite" => "Prerequisite",
+        "status" => "Status",
+        "titles" => [
+            "npm_modules" => "npm modules",
+            "database_connection" => "Database connection",
+            "laravel_installation" => "Laravel installation",
+            "writable" => "Writeable folders"
+        ],
+        "errors" => [
+            "npm_modules" => "The node_modules folder seems to be missing.",
+            "database_connection" => "There seems to be an issue with the database connection.",
+            "writable" => "One or more of the prerequisite folders that must be writable are not writable."
+        ],
+        "checkmark" => "✓",
+    ],
+
     'environment' => [
         'isready' => "Your environment is ready."
     ]

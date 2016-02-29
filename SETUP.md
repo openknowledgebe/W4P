@@ -23,7 +23,7 @@ If you want to locally develop on the platform, you can follow the instructions 
 
     # Gulp
     # Use --production flag for minified files
-    gulp watch --production
+    gulp --production
 
 ### A note on Gulp
 

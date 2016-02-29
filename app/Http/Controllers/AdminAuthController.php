@@ -20,6 +20,7 @@ class AdminAuthController extends Controller
 {
     /**
      * GET
+     * Shows login page
      */
     public function login()
     {
@@ -28,6 +29,7 @@ class AdminAuthController extends Controller
 
     /**
      * POST
+     * Logs the user in
      */
     public function doLogin()
     {
