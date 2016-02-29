@@ -76,6 +76,9 @@ echo ""
 echo "COPYING ENV FILE"
 echo ""
 
+# Create public images
+mkdir public/images/
+
 # Copy the environment file
 cp .env.example .env
 
@@ -101,6 +104,7 @@ echo -e "${Gre}Migrations performed. OK.${RCol}"
 
 # Install repreqs
 sudo npm install
+
 # Install gulp globally so it can be run via cli
 sudo npm install -g gulp
 
@@ -108,6 +112,12 @@ echo -e "${Gre}Installed node packages. OK.${RCol}"
 
 hash gulp 2>/dev/null || { echo -e >&2 "${On_Red}I require gulp but it's not installed. npm must have failed the installation... Aborting.${RCol}"; exit 1; }
 
+# Run gulp (for production)
 gulp --production
 
 echo -e "${Gre}Gulp script ran. OK.${RCol}"
+
+# Generate new key
+php artisan key:generate
+
+echo -e "${Gre}New key generated. OK.${RCol}"
