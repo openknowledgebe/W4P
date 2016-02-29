@@ -31,7 +31,7 @@ if [ -d "W4P" ]; then
   echo    # (optional) move to a new line
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
-      rm -rf "W4P"
+      rm -rf "W4P/"
   else
       echo -e "${On_Red}Folder will not be removed. Aborting.${RCol}"
   fi
@@ -99,7 +99,10 @@ php artisan migrate
 
 echo -e "${Gre}Migrations performed. OK.${RCol}"
 
-npm install
+# Install repreqs
+sudo npm install
+# Install gulp globally so it can be run via cli
+sudo npm install -g gulp
 
 echo -e "${Gre}Installed node packages. OK.${RCol}"
 
