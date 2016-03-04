@@ -18,12 +18,17 @@ If you want to locally develop on the platform, you can follow the instructions 
     # Environment file
     cp .env.example .env
 
+    # Generate a new key
+    php artisan key:generate
+
     # Install Elixir dependencies
     sudo npm install
 
     # Gulp
     # Use --production flag for minified files
     gulp --production
+
+
 
 ### A note on Gulp
 
