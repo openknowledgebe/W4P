@@ -421,7 +421,7 @@ class SetupController extends Controller
             } catch (\Exception $ex) {
                 $this->success = false;
                 $this->errors = [
-                    trans('setup.generic.mailFail')
+                    trans('setup.generic.mailFail') . " Exception message: " . $ex->getMessage(),
                 ];
             }
 
