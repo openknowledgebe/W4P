@@ -110,6 +110,15 @@
                         }
                         ?>
                             >TLS</option>
+                        <option value="ssl"
+                        <?php
+                                if (Request::old('emailEncryption')) {
+                                    if (Request::old('emailEncryption') == "ssl") { echo "selected"; };
+                                } else {
+                                    if ($data["emailEncryption"] == "ssl") { echo "selected"; };
+                                }
+                                ?>
+                        >SSL</option>
                         <option value="null"
                         <?php
                         if (Request::old('emailEncryption')) {

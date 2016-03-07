@@ -395,7 +395,7 @@ class SetupController extends Controller
                 'emailPort' => 'required|min:1',
                 'emailFrom' => 'required|email|min:3',
                 'emailName' => 'required|min:3',
-                'emailEncryption' => 'required|in:tls,null',
+                'emailEncryption' => 'required|in:tls,ssl,null',
             ]
         );
         // Check if the validator fails
