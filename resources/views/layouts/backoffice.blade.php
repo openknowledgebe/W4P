@@ -13,14 +13,26 @@
                     <div class="container-fluid">
                         <div class="navbar-header">
                             <a class="navbar-brand" href="/">{{ \W4P\Models\Setting::get('platform.name') }}</a>
-                            <ul class="nav navbar-nav">
+                            <  <l class="nav navbar-nav">
                                 <li>
                                     <a href="{{ URL::route('admin::index') }}">{{ trans('backoffice.dashboard') }}</a>
                                 </li>
+
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ trans('backoffice.project') }} <span class="caret"></span></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        {{ trans('backoffice.manage') }} <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
-                                        <li class="separator">Manage</li>
+                                        <li>
+                                            <a href="{{ URL::route('admin::password') }}">{{ trans('backoffice.change_password') }}</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        {{ trans('backoffice.project') }} <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li class="separator">{{ trans('backoffice.manage') }}</li>
                                         <li>
                                             <a href="{{ URL::route('admin::project') }}">{{ trans('backoffice.project') }}</a>
                                         </li>
@@ -34,7 +46,7 @@
                                             <a href="{{ URL::route('admin::goals') }}">{{ trans('backoffice.goals') }}</a>
                                         </li>
                                         <li role="separator" class="divider"></li>
-                                        <li class="separator">View</li>
+                                        <li class="separator">{{ trans('backoffice.view') }}</li>
                                         <li>
                                             <a href="{{ URL::route('admin::donations') }}">{{ trans('backoffice.donations') }}</a>
                                         </li>
@@ -46,6 +58,8 @@
                                             </a>
                                         </li>
                                     </ul>
+                                </li>
+
                                 <li>
                                     <a href="{{ URL::route('admin::organisation') }}">{{ trans('backoffice.organisation') }}</a>
                                 </li>

@@ -20,9 +20,11 @@
                     <label for="pwd">Password</label>
                     <input type="password" class="form-control" id="password" name="password">
                 </div>
+                <!--
                 <div class="checkbox">
                     <label><input type="checkbox" name="remember"> Remember me</label>
                 </div>
+                -->
                 <hr/>
                 <button type="submit" class="btn btn-lg btn-primary btn-block">Sign In</button>
             </form>

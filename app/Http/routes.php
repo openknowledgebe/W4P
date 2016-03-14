@@ -117,6 +117,9 @@ Route::group(['middleware' => ['web']], function () {
         function () {
             // Dashboard
             Route::get('/', ['as' => 'index', 'uses' => 'AdminController@dashboard']);
+            // Password reset
+            Route::get('/password', ['as' => 'password', 'uses' => 'AdminController@password']);
+            Route::post('/password', ['as' => 'password', 'uses' => 'AdminController@updatePassword']);
             // Project
             Route::get('/project', ['as' => 'project', 'uses' => 'AdminController@project']);
             Route::post('/project', ['as' => 'project', 'uses' => 'AdminController@updateProject']);

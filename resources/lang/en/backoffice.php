@@ -16,6 +16,7 @@ return [
     "backers" => "Backers",
     "donations" => "Donations",
     "dashboard" => "Dashboard",
+    "pw_reset" => "Password change",
     "subcategories" => 'subcategory|subcategories',
     "goal_overview" => "Goal overview",
     "email" => "Email",
@@ -28,6 +29,9 @@ return [
     "download" => "Download",
     "download_donors" => "Unique donors (CSV)",
     "download_tiers" => "Tiers and donors (CSV)",
+    "manage" => "Manage",
+    "view" => "View",
+    "change_password" => "Change admin password",
 
     /**
      * KINDS OF TYPES
@@ -64,6 +68,7 @@ return [
         "goal_save_success" => "Your new goal has been successfully saved!",
         "goal_update_success" => "Your goal has been successfully updated!",
         "currency_update_success" => "Your money goal has been successfully updated!",
+        "password_change_success" => "Your password has been successfully updated! From now on, you must use this new password to sign in.",
     ],
 
     /**
@@ -72,6 +77,9 @@ return [
      */
 
     "page" => [
+        "pw_reset" => [
+            "about" => "You can change your existing password here."
+        ],
         "project" => [
             "about" => "You can edit your campaign here.",
             "fields" => [

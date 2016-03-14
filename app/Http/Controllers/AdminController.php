@@ -383,6 +383,61 @@ class AdminController extends Controller
     }
 
     /**
+     * Show password reset form
+     */
+    public function password()
+    {
+        return View::make('backoffice.pw_reset');
+    }
+
+    /**
+     * Actually reset the password
+     */
+    public function updatePassword()
+    {
+        $success = true;
+        $errors = [];
+
+        // Check if the old password matches
+        if (!Hash::check(Input::get('passwordOld'), Setting::get('pwd'))) {
+            array_push($errors, trans('setup.detail.admin.validation.old_pw_incorrect'));
+            $success = false;
+        }
+
+        // Check if the passwords match
+        if (Input::get('password') != Input::get('passwordConfirm')) {
+            array_push($errors, trans('setup.detail.admin.validation.nomatch'));
+            $success = false;
+        }
+        // Check if the password is 6 characters or longer
+        if (strlen(Input::get('password')) <= 5) {
+            array_push($this->errors, trans('setup.detail.admin.validation.length'));
+            $success = false;
+        }
+        if ($success) {
+            // Hash the password
+            $hashedPassword = Hash::make(Input::get('password'));
+            // Depending on whether the password exists, update or create a new setting
+            if (Setting::exists('pwd')) {
+                $this->success = Setting::updateKeyValuePair('pwd', $hashedPassword);
+            } else {
+                $this->success = Setting::createKeyValuePair('pwd', $hashedPassword);
+            }
+            if (!$this->success) {
+                array_push($errors, trans('setup.detail.admin.validation.generic'));
+            }
+        }
+
+        // Check if new passwords match
+        if ($success) {
+            Session::flash('info', trans('backoffice.flash.password_change_success'));
+            return Redirect::back();
+        } else {
+            return Redirect::back()->withErrors($errors)->withInput(Input::all());
+        }
+    }
+
+    /**
      * Get all assets from the /images folder (uploads) and return the view that displays them.
      * @return mixed: Shows the assets page
      */

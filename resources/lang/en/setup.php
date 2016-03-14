@@ -26,6 +26,7 @@ return [
         'back' => 'Back',
         'next' => 'Next',
         'finish' => 'Finish',
+        'change' => 'Change',
         'oops' => 'Oops!',
         'wizard' => 'Wizard',
         'mailFail' => 'There was an issue sending your mail message. Please check the configuration and try again.',
@@ -56,11 +57,17 @@ return [
                     'name' => 'Confirm password',
                     'placeholder' => 'Password (again)',
                     'info' => "Repeat the same password as above."
+                ],
+                'passwordOld' => [
+                    'name' => 'Current password',
+                    'placeholder' => 'Your current password',
+                    'info' => "Enter your current password here. It will be replaced by the password below."
                 ]
             ],
             'validation' => [
                 'nomatch' => "The passwords do not match.",
                 'length' => "Your password must be 6 characters or longer.",
+                "old_pw_incorrect" => "Your current password is incorrect.",
                 'generic' => "Something went wrong saving the password in the database."
             ],
             'warnings' => [
