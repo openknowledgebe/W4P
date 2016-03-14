@@ -27,7 +27,7 @@
                 <meta name="twitter:player:stream" content="{{ $project->video_url }}">
                 <meta name="twitter:player:stream:content_type" content="video/mp4">
                 <!-- Google Structured Data -->
-                <div itemscope itemtype="http://schema.org/VideoObject">
+                <div itemscope itemtype="http://schema.org/VideoObject" class="hidden">
                     <span itemprop="name">{{ $project->title }}</span>
                     <span itemprop="description">{{ $project->brief }}</span>
                     <img itemprop="thumbnailUrl" src="{{ URL::to('project/banner.jpg') }}" alt=""/>
