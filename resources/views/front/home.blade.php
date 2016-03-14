@@ -35,7 +35,7 @@
                                 <span class="number">{{$totalPercentage}}</span><span class="percent">%</span><br/><span class="reached">reached</span></div></div>
                                 <div class="col-md-9">
                                     <div class="wrap">
-                                        @if ($project->currency > 0)
+                                        @if ($project->currency > 0 && count($donationTypes) > 0)
                                             <div class="progress-radial @if($contributedPercentage > 100) progress-100 @else progress-{{round($contributedPercentage)}} @endif">
                                                 <div class="overlay">
                                                     <i class="icon icon-progress-currency icon-lg"></i><br/>
