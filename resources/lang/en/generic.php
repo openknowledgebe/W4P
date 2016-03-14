@@ -7,5 +7,7 @@
 */
 
 return [
-    "homepage" => "Homepage"
+    "project" => "Project",
+    "homepage" => "Homepage",
+    "how_does_it_work" => "How does it work?"
 ];

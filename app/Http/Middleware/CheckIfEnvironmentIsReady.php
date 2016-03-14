@@ -73,10 +73,18 @@ class CheckIfEnvironmentIsReady
         if (!array_key_exists('organisation.name', $settings)) {
             $settings["organisation.name"] = "";
         }
+        if (!array_key_exists('organisation.twitter', $settings)) {
+            $settings["organisation.twitter"] = "";
+        }
+        if (!array_key_exists('organisation.twitter_message', $settings)) {
+            $settings["organisation.twitter_message"] = "";
+        }
 
         $public_settings = [
             "copyright" => $settings["platform.copyright"],
-            "org" => $settings["organisation.name"]
+            "org" => $settings["organisation.name"],
+            "twitter" => $settings["organisation.twitter"],
+            "twitter_message" => $settings["organisation.twitter_message"],
         ];
 
         View::share('settings', $public_settings);

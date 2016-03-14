@@ -6,10 +6,26 @@
         <link rel="stylesheet" href="{{ elixir('css/app.css') }}">
         <link href='https://fonts.googleapis.com/css?family=Istok+Web:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
         @if (isset($project))
-        <meta property="og:url" content="{{ Request::url() }}" />
-        <meta property="og:type" content="product" />
-        <meta property="og:title" content="{{ $project->title }}" />
-        <meta property="og:description" content="{{ $project->brief }}" />
+            <!-- FB OG -->
+            <meta property="og:url" content="{{ Request::url() }}" />
+            <meta property="og:type" content="product" />
+            <meta property="og:title" content="{{ $project->title }}" />
+            <meta property="og:description" content="{{ $project->brief }}" />
+            <!-- Twitter cards -->
+            <meta name="twitter:card" content="player">
+            <meta name="twitter:site" content="{{ $settings['twitter'] }}">
+            <meta name="twitter:title" content="{{ $project->title }}">
+            <meta name="twitter:description" content="{{ $settings['twitter_message'] }}">
+            <!-- TODO: replace with correct info -->
+            <meta name="twitter:image" content="{{ URL::to('project/banner.jpg') }}">
+            <meta name="twitter:player:width" content="1280">
+            <meta name="twitter:player:height" content="720">
+            <meta name="twitter:player:stream" content="">
+            <meta name="twitter:player:stream:content_type" content="video/mp4">
+            <!-- Dublin Core -->
+            <link rel="schema.dcterms" href="http://purl.org/dc/terms/">
+            <meta name="dcterms.language" content="en">
+            <meta name="dcterms.title" content="{{ $project->title }}" />
         @endif
     </head>
     <body>
@@ -29,7 +45,7 @@
                                         <a href="{{ URL::route('home') }}">{{ $W4P_project->title }}</a>
                                     </li>
                                     <li>
-                                        <a href="">{{ trans('core.howdoesitwork') }}</a>
+                                        <a href="">{{ trans('generic.how_does_it_work') }}</a>
                                     </li>
                                 </ul>
                             </div>
