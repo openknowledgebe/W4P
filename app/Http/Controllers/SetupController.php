@@ -19,6 +19,8 @@ use Request;
 use Image;
 use Mail;
 use DB;
+use Config;
+use EmailConfig;
 
 class SetupController extends Controller
 {
@@ -408,7 +410,11 @@ class SetupController extends Controller
             Setting::set('email.encryption', $encryption);
             Setting::set('email.from', Input::get('emailFrom'));
             Setting::set('email.name', Input::get('emailName'));
-            // Test configuration
+
+            // Override the email config with the one from the DB
+            EmailConfig::loadFromDb();
+
+            // Test new configuration
             try {
                 Mail::queue('mails.test', [], function ($message) {
                     $message->to(Input::get('emailFrom'), Input::get('emailName'))

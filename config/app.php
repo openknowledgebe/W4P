@@ -212,7 +212,8 @@ return [
 
         /* W4P aliases */
 
-        'Mollie'    => W4P\Facades\Mollie::class,
+        'Mollie'        => W4P\Facades\Mollie::class,
+        'EmailConfig'   => W4P\Facades\EmailConfig::class,
 
         /* Custom aliases */
 
