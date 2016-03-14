@@ -3,7 +3,12 @@
 /public/css
 /public/js
 /public/build
-/public/images
+/public/images/*.png
+/public/images/*.gif
+/public/images/*.jpeg
+/public/images/*.jpg
+/public/images/*.jpg
+/public/images/*.tiff
 /public/platform
 /public/organisation
 /public/project
