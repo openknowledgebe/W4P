@@ -330,15 +330,12 @@ class SetupController extends Controller
         if (!$validator->fails()) {
             $image = Input::file('organisationLogo');
             if ($image != null && $image->isValid()) {
-                // Set the destination path for the platform logo
+                // Set the destination path for the organisation logo
                 $destinationPath = public_path() . '/organisation/logo.png';
                 Image::make($image->getRealPath())->resize(400, 400)->save($destinationPath);
             }
-            // Save the platform name
             Setting::set('organisation.name', Input::get('organisationName'));
-            // Save the Google Analytics ID
             Setting::set('organisation.description', Input::get('organisationDescription'));
-            // Save the Mollie API key
             Setting::set('organisation.website', Input::get('organisationWebsite'));
             Setting::set('organisation.valid', 'true');
         } else {

@@ -29,7 +29,6 @@ If you want to locally develop on the platform, you can follow the instructions 
     gulp --production
 
 
-
 ### A note on Gulp
 
 Gulp/Elixir is responsible for:
