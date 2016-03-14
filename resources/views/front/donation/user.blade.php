@@ -1,6 +1,6 @@
 @extends('layouts.core')
 
-@section('title', trans('generic.homepage'))
+@section('title', trans('generic.donation_detail'))
 
 @section('content')
     <div class="project">
