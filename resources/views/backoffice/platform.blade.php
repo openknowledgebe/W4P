@@ -59,6 +59,22 @@
                     </span>
                 </div>
                 <div class="form-group">
+                    <label for="platformCopyright">{{ trans('setup.detail.platform.fields.copyright.name') }}</label>
+                    <input type="text" class="form-control" name="platformCopyright"
+                           placeholder="{{ trans('setup.detail.platform.fields.copyright.placeholder') }}"
+                           value="<?php
+                           if (Request::old('platformCopyright')) {
+                               echo Request::old('platformCopyright');
+                           } else {
+                               echo $data["platformCopyright"];
+                           }
+                           ?>"
+                           maxlength="255">
+                    <span id="helpBlock" class="help-block">
+                        {{ trans('setup.detail.platform.fields.copyright.info') }}
+                    </span>
+                </div>
+                <div class="form-group">
                     <label for="GAID">{{ trans('setup.detail.platform.fields.gaid.name') }}</label>
                     <input type="text" class="form-control" name="analyticsId"
                            placeholder="{{ trans('setup.detail.platform.fields.gaid.placeholder') }}"

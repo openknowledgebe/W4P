@@ -6,6 +6,7 @@ use W4P\Models\Setting;
 use W4P\Models\Project;
 
 use Closure;
+use View;
 
 class CheckIfEnvironmentIsReady
 {
@@ -19,12 +20,20 @@ class CheckIfEnvironmentIsReady
      */
     public function handle($request, Closure $next)
     {
+        /*================
+        * GET SETTINGS
+        *===============*/
+
         $settings = [];
         $allSettings = Setting::all();
         foreach ($allSettings as $setting) {
             $settings[$setting->key] = $setting->value;
         }
-        // Check if the settings are invalid
+
+        /*================
+        * CHECK VALID CONF
+        *===============*/
+
         if (!array_key_exists('pwd', $settings) ||
             !array_key_exists('platform.name', $settings) ||
             !array_key_exists('email.valid', $settings) ||
@@ -53,6 +62,29 @@ class CheckIfEnvironmentIsReady
             // If the settings are invalid or incomplete, redirect to setup
             return redirect()->route('setup::index');
         }
+
+        /*================
+         * PUBLIC SETTINGS
+         *===============*/
+
+        if (!array_key_exists('platform.copyright', $settings)) {
+            $settings["platform.copyright"] = "";
+        }
+        if (!array_key_exists('organisation.name', $settings)) {
+            $settings["organisation.name"] = "";
+        }
+
+        $public_settings = [
+            "copyright" => $settings["platform.copyright"],
+            "org" => $settings["organisation.name"]
+        ];
+
+        View::share('settings', $public_settings);
+
+        /*================
+        * PASS REQUEST
+        *===============*/
+
         return $next($request);
     }
 }

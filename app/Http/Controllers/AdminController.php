@@ -246,6 +246,7 @@ class AdminController extends Controller
     {
         $data = [
             "platformOwnerName" => Setting::get('platform.name'),
+            "platformCopyright" => Setting::get('platform.copyright'),
             "analyticsId" => Setting::get('platform.analytics-id'),
             "mollieApiKey" => Setting::get('platform.mollie-key'),
         ];
@@ -285,6 +286,7 @@ class AdminController extends Controller
                 Image::make($image->getRealPath())->resize(400, 400)->save($destinationPath);
             }
             // Save the platform name
+            Setting::set('platform.copyright', Input::get('platformCopyright'));
             Setting::set('platform.name', Input::get('platformOwnerName'));
             // Save the Google Analytics ID
             Setting::set('platform.analytics-id', Input::get('analyticsId'));

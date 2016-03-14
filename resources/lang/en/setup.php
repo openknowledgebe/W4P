@@ -99,6 +99,11 @@ return [
                     'name' => "Mollie API key",
                     'placeholder' => "XXXX_XXXXXXXXXXXXXXXXXXX",
                     'info' => "If you are going to accept payments, you will need to request a Mollie API key.",
+                ],
+                'copyright' => [
+                    'name' => "Footer copyright",
+                    'placeholder' => 'Enter your full copyright message here',
+                    'info' => "This will replace the complete message. By default, your organisation's name and the year are shown."
                 ]
             ]
         ],
