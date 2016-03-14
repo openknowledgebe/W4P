@@ -32,34 +32,9 @@ class HomeController extends Controller
         // Get the project
         $project = $request->project;
 
-        // Extract the video url
-        $videoId = "";
-
-        $videoProvider = null;
-        if (strpos($project->video_url, 'watch?v=') !== false) {
-            $videoProvider = "youtube";
-        }
-        if (strpos($project->video_url, 'vimeo.com/') !== false) {
-            $videoProvider = "vimeo";
-        }
-
         // Get all donation types & kinds
         $donationTypes = DonationType::all()->groupBy('kind');
         $donationKinds = DonationKind::all();
-
-        // Check the video provider
-        switch ($videoProvider) {
-            case "vimeo":
-                $array = explode("vimeo.com/", $project->video_url);
-                $videoId = explode("/", last($array))[0];
-                break;
-            case "youtube":
-                $array = explode("watch?v=", $project->video_url);
-                $videoId = explode("&", last($array))[0];
-                break;
-            default:
-                break;
-        }
 
         // Get the last 5 posts
         $posts = Post::orderBy('created_at', 'DESC')->limit(5)->get();
@@ -102,8 +77,6 @@ class HomeController extends Controller
         return View::make('front.home')
             ->with("project", $project)
             ->with("posts", $posts)
-            ->with("video_id", $videoId)
-            ->with("video_provider", $videoProvider)
             ->with("data", Setting::getBeginsWith('organisation.'))
             ->with("tiers", Tier::all()->sortBy('pledge'))
             ->with("hoursleft", $leftHours)
