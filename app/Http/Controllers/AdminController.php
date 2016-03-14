@@ -151,7 +151,7 @@ class AdminController extends Controller
             $project = Project::get();
             $project->update([
                 'title' => Input::get('projectTitle'),
-                'brief' => Input::get('projectTitle'),
+                'brief' => Input::get('projectBrief'),
                 'description' => Input::get('projectDescription'),
                 'video_url' => Input::get('projectVideo'),
                 'starts_at' => Carbon::createFromFormat('Y-m-d H:i', Input::get('projectStartDate')),
