@@ -15,6 +15,7 @@ use W4P\Models\Project;
 use W4P\Models\Donation;
 use W4P\Models\DonationKind;
 use W4P\Models\DonationType;
+use W4P\Models\Tier;
 
 use View;
 use Redirect;
@@ -472,7 +473,7 @@ class AdminController extends Controller
     }
 
     /**
-     * Export all users to UTF-8 encoded csv
+     * Export all users to UTF-8 encoded CSV
      * Opens a stream and closes it (first_name, last_name)
      */
     public function exportUsers()
@@ -490,6 +491,44 @@ class AdminController extends Controller
                 $user[0]->first_name . " " . $user[0]->last_name,
                 $key
             ]);
+        }
+
+        // Exit file stream
+        exit();
+    }
+
+    /**
+     * Export all users to UTF-8 encoded CSV
+     * Sorted by selected tier
+     */
+    public function exportUsersPerTier()
+    {
+        // Set headers
+        header('Content-Type: text/csv; charset=utf-8');
+        header('Content-Disposition: attachment; filename=donors.csv');
+
+        // Get all tiers
+        $tiers = [];
+        foreach (Tier::all() as $tier) {
+            $tiers[$tier->id] = $tier;
+        }
+
+        // Get all users, grouped by tier_id
+        $tierIds = Donation::whereNotNull('confirmed')->orderBy('tier_id', 'ASC')->get()->groupBy('tier_id');
+
+        $output = fopen('php://output', 'w');
+        fputcsv($output, array('tier_id', 'min', 'pledged', 'name', 'email'));
+        foreach ($tierIds as $tierId => $tierData) {
+            $tier = $tiers[$tierId];
+            foreach ($tierData as $user) {
+                fputcsv($output, [
+                    $tier->id,
+                    "€" . $tier->pledge,
+                    "€" . $user->currency,
+                    $user->first_name . " " . $user->last_name,
+                    $user->email
+                ]);
+            }
         }
 
         // Exit file stream

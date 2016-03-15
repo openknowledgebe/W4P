@@ -35,6 +35,7 @@ return [
     "view" => "View",
     "change_password" => "Change admin password",
     "administration" => "Administration",
+    "socialmedia" => "Social media",
 
     /**
      * KINDS OF TYPES

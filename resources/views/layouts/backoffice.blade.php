@@ -13,7 +13,7 @@
                     <div class="container-fluid">
                         <div class="navbar-header">
                             <a class="navbar-brand" href="/">{{ \W4P\Models\Setting::get('platform.name') }}</a>
-                            <  <l class="nav navbar-nav">
+                            <ul class="nav navbar-nav">
                                 <li>
                                     <a href="{{ URL::route('admin::index') }}">{{ trans('backoffice.dashboard') }}</a>
                                 </li>
@@ -63,6 +63,11 @@
                                         <li>
                                             <a href="{{ URL::route('admin::userExport') }}">
                                                 {{ trans('backoffice.download_donors') }}
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ URL::route('admin::userExportTiers') }}">
+                                                {{ trans('backoffice.download_tiers') }}
                                             </a>
                                         </li>
                                     </ul>
