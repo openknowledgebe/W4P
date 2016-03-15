@@ -16,7 +16,7 @@ class Setting extends Model
      * @param string $key
      * @return string | null
      */
-    static function get($key) {
+    public static function get($key) {
         $setting = Setting::where('key', $key)->first();
         if ($setting != null) {
             return $setting->value;
@@ -31,7 +31,7 @@ class Setting extends Model
      * @param string $value Value to save
      * @return boolean
      */
-    static function set($key, $value)
+    public static function set($key, $value)
     {
         if (Setting::exists($key)) {
             return Setting::updateKeyValuePair($key, $value);
@@ -45,7 +45,7 @@ class Setting extends Model
      * @param string $key The name of the key that needs to be checked.
      * @return bool
      */
-    static function exists($key)
+    public static function exists($key)
     {
         if (Setting::where('key', $key)->first() != null) {
             return true;
@@ -97,7 +97,8 @@ class Setting extends Model
      * @param $string
      * @return array
      */
-    public static function getBeginsWith($string) {
+    public static function getBeginsWith($string)
+    {
         $values = Setting::where('key', 'LIKE', "%$string%")->get()->toArray();
         $settings = [];
         foreach ($values as $kvp) {
