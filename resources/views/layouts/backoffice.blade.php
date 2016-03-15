@@ -25,7 +25,7 @@
                                     <ul class="dropdown-menu">
                                         <li class="separator">{{ trans('backoffice.social') }}</li>
                                         <li>
-                                            <a href="{{ URL::route('admin::password') }}">{{ trans('backoffice.social_settings') }}</a>
+                                            <a href="{{ URL::route('admin::social') }}">{{ trans('backoffice.social_settings') }}</a>
                                         </li>
                                         <li role="separator" class="divider"></li>
                                         <li class="separator">{{ trans('backoffice.administration') }}</li>

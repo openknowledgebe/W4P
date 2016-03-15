@@ -16,7 +16,8 @@ class Setting extends Model
      * @param string $key
      * @return string | null
      */
-    public static function get($key) {
+    public static function get($key)
+    {
         $setting = Setting::where('key', $key)->first();
         if ($setting != null) {
             return $setting->value;

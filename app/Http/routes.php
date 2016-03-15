@@ -117,18 +117,23 @@ Route::group(['middleware' => ['web']], function () {
         function () {
             // Dashboard
             Route::get('/', ['as' => 'index', 'uses' => 'AdminController@dashboard']);
+
             // Password reset
             Route::get('/password', ['as' => 'password', 'uses' => 'AdminController@password']);
             Route::post('/password', ['as' => 'password', 'uses' => 'AdminController@updatePassword']);
+
             // Project
             Route::get('/project', ['as' => 'project', 'uses' => 'AdminController@project']);
             Route::post('/project', ['as' => 'project', 'uses' => 'AdminController@updateProject']);
+
             // Organisation
             Route::get('/organisation', ['as' => 'organisation', 'uses' => 'AdminController@organisation']);
             Route::post('/organisation', ['as' => 'organisation', 'uses' => 'AdminController@updateOrganisation']);
+
             // Platform
             Route::get('/platform', ['as' => 'platform', 'uses' => 'AdminController@platform']);
             Route::post('/platform', ['as' => 'platform', 'uses' => 'AdminController@updatePlatform']);
+
             // Tiers
             Route::get('/tiers', ['as' => 'tiers', 'uses' => 'AdminTierController@index']);
             Route::get('/tiers/create', ['as' => 'createTier', 'uses' => 'AdminTierController@create']);
@@ -136,6 +141,7 @@ Route::group(['middleware' => ['web']], function () {
             Route::get('/tiers/{id}', ['as' => 'editTier', 'uses' => 'AdminTierController@edit']);
             Route::post('/tiers/{id}', ['as' => 'updateTier', 'uses' => 'AdminTierController@update']);
             Route::delete('/tiers/{id}', ['as' => 'deleteTier', 'uses' => 'AdminTierController@delete']);
+
             // Posts
             Route::get('/posts', ['as' => 'posts', 'uses' => 'AdminPostController@index']);
             Route::get('/posts/create', ['as' => 'createPost', 'uses' => 'AdminPostController@create']);
@@ -143,9 +149,11 @@ Route::group(['middleware' => ['web']], function () {
             Route::get('/posts/{id}', ['as' => 'editPost', 'uses' => 'AdminPostController@edit']);
             Route::post('/posts/{id}', ['as' => 'updatePost', 'uses' => 'AdminPostController@update']);
             Route::delete('/posts/{id}', ['as' => 'deletePost', 'uses' => 'AdminPostController@delete']);
+
             // Email
             Route::get('/email', ['as' => 'email', 'uses' => 'AdminController@email']);
             Route::post('/email', ['as' => 'email', 'uses' => 'AdminController@updateEmail']);
+
             // Goals
             Route::get('/goals', ['as' => 'goals', 'uses' => 'AdminGoalController@index']);
             Route::get('/goals/{kind}', ['as' => 'goalsDetail', 'uses' => 'AdminGoalController@kind']);
@@ -187,12 +195,20 @@ Route::group(['middleware' => ['web']], function () {
                 ['as' => 'goalsTypeDelete', 'uses' => 'AdminGoalController@deleteType']
             );
 
-            // Export users list
+            Route::get(
+                '/socialmedia',
+                ['as' => 'social', 'uses' => 'AdminController@social']
+            );
+            Route::post(
+                '/socialmedia',
+                ['as' => 'social', 'uses' => 'AdminController@updateSocial']
+            );
+
+            // Export users/tiers list
             Route::get(
                 '/export/users',
                 ['as' => 'userExport', 'uses' => 'AdminController@exportUsers']
             );
-            // Export users list
             Route::get(
                 '/export/tiers',
                 ['as' => 'userExportTiers', 'uses' => 'AdminController@exportUsersPerTier']

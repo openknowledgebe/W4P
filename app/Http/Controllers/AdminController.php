@@ -473,6 +473,50 @@ class AdminController extends Controller
     }
 
     /**
+     * Get the social media form
+     */
+    public function social()
+    {
+        $social = Setting::getBeginsWith('social.');
+        return View::make('backoffice.socialmedia')->with('data', $social);
+    }
+
+    /**
+     * Update the social media stuff
+     */
+    public function updateSocial()
+    {
+        $success = true;
+        $errors = [];
+
+        $validator = Validator::make(
+            Input::all(),
+            [
+            ]
+        );
+        // Check if the validator fails
+        if (!$validator->fails()) {
+            Setting::set('social.twitter_handle', Input::get('social_twitter_handle'));
+            Setting::set('social.twitter_message', Input::get('social_twitter_message'));
+            Setting::set('social.facebook_page_url', Input::get('social_facebook_page_url'));
+            Setting::set('social.facebook_message', Input::get('social_facebook_message'));
+            Setting::set('social.seo_title', Input::get('social_seo_title'));
+            Setting::set('social.seo_description', Input::get('social_seo_description'));
+            Setting::set('social.seo_image', Input::get('social_seo_image'));
+        } else {
+            // Validation has failed. Set success to false. Set validator messages
+            $success = false;
+            $errors = $validator->messages();
+        }
+
+        if ($success) {
+            return Redirect::route('admin::social');
+        } else {
+            return Redirect::back()->withErrors($errors)->withInput(Input::all());
+        }
+    }
+
+    /**
      * Export all users to UTF-8 encoded CSV
      * Opens a stream and closes it (first_name, last_name)
      */

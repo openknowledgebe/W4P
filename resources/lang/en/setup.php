@@ -213,6 +213,46 @@ return [
             'title' => 'Finalize Setup',
             'paragraph' => "If you are happy with the current settings, please confirm that you would like to finalize the setup process. Once the setup is finalized, you will be taken to the website.
             Use the administration link at the bottom of the page to log in and manage your project's information and more."
+        ],
+
+        'social' => [
+            'fields' => [
+                'twitter_handle' => [
+                    'name' => "Twitter handle",
+                    'placeholder' => "@someone",
+                    'info' => "Enter the Twitter username you wish to associate with this campaign."
+                ],
+                'twitter_message' => [
+                    'name' => "Default Twitter share message",
+                    'placeholder' => "Come check out this project!",
+                    'info' => "This is the message this is shared by default if the visitor uses the Twitter share widget."
+                ],
+                'facebook_page_url' => [
+                    'name' => "Facebook Page URL",
+                    'placeholder' => "https://facebook.com/pages/my_favorite_page",
+                    'info' => "This is the Facebook page that visitors can come check out about this project.",
+                ],
+                'facebook_message' => [
+                    'name' => "Default Facebook share message",
+                    'placeholder' => "Come check our cool project!",
+                    'info' => "This is the message that is shared by default when using the Facebook share widget."
+                ],
+                'seo_title' => [
+                    'name' => 'SEO title (advanced)',
+                    'placeholder' => 'This Amazing Project',
+                    'info' => "This is the title that is used for the homepage. The default is usually based on the name of your project, but for SEO optimization you can set up your own title."
+                ],
+                'seo_description' => [
+                    'name' => 'SEO description (advanced)',
+                    'placeholder' => 'Enter your brief SEO friendly description here',
+                    'info' => "This is the description that is used for the homepage. The default is usually based on the name of your project, but for SEO optimization you can set up your own description."
+                ],
+                'seo_image' => [
+                    'name' => 'SEO image url (advanced)',
+                    'placeholder' => 'http://...',
+                    'info' => "This is the image URL that is used for sharing on social networks (meta tag). The default is usually based on one of the uploaded assets of your project, but for SEO optimization you can set up your own image URL."
+                ]
+            ]
         ]
     ],
 
