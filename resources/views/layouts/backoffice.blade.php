@@ -18,16 +18,24 @@
                                     <a href="{{ URL::route('admin::index') }}">{{ trans('backoffice.dashboard') }}</a>
                                 </li>
 
+                                {{-- First dropdown --}}
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                         {{ trans('backoffice.manage') }} <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
+                                        <li class="separator">{{ trans('backoffice.social') }}</li>
+                                        <li>
+                                            <a href="{{ URL::route('admin::password') }}">{{ trans('backoffice.social_settings') }}</a>
+                                        </li>
+                                        <li role="separator" class="divider"></li>
+                                        <li class="separator">{{ trans('backoffice.administration') }}</li>
                                         <li>
                                             <a href="{{ URL::route('admin::password') }}">{{ trans('backoffice.change_password') }}</a>
                                         </li>
                                     </ul>
                                 </li>
 
+                                {{-- Second dropdown --}}
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                         {{ trans('backoffice.project') }} <span class="caret"></span></a>

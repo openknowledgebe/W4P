@@ -4,14 +4,14 @@
 
 @section('content')
     <div class="project">
-        <!-- Banner -->
+        {{-- Banner --}}
         <div class="home-banner"
              @if (file_exists(public_path() . "/project/banner.png")) style="background-image: url('{{ URL::to("/project/banner.png") }}');" @endif>
         </div>
-        <!-- Goals -->
+        {{-- Goals --}}
             <div class="container">
                 <div class="row goals">
-                    <!-- Goals left column (with progress) -->
+                    {{-- Goals left column (with progress) --}}
                     <div class="col-md-7 meta-container">
                         <section class="meta">
                             <h1>{{ $project->title }}</h1>
@@ -58,7 +58,7 @@
                             </div>
                         </section>
                     </div>
-                    <!-- Goals right column (blue) -->
+                    {{-- Goals right column --}}
                     <div class="col-md-5 numbers-container">
                         <section class="numbers">
                             <div class="row">
@@ -87,26 +87,31 @@
                     </div>
                 </div>
             </div>
-            <!-- About this company -->
+            {{-- About this company --}}
             <div class="about">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-7">
+                            {{-- About video --}}
                             <section class="about-video">
                                 <h2>{{ trans('home.aboutproject') }}</h2>
                                 <br/>
+                                {{-- Based on the provider, the output differs --}}
                                 @if ($video_provider == "vimeo")
-                                    <iframe src="https://player.vimeo.com/video/{{ $video_id }}?color=FFFFFF"
-                                            width="500" height="420" frameborder="0" webkitallowfullscreen  mozallowfullscreen allowfullscreen>
+                                    {{-- VIMEO --}}
+                                    <iframe src="https://player.vimeo.com/video/{{ $video_id }}?color=FFFFFF&title=0&byline=0&portrait=0"
+                                            width="585" height="329" frameborder="0" webkitallowfullscreen  mozallowfullscreen allowfullscreen>
                                     </iframe>
                                 @elseif ($video_provider == "youtube")
-                                    <iframe width="500" height="420" frameborder="0" webkitallowfullscreen  mozallowfullscreen allowfullscreen
+                                    {{-- YOUTUBE --}}
+                                    <iframe width="585" height="329" frameborder="0" webkitallowfullscreen  mozallowfullscreen allowfullscreen
                                             src="http://www.youtube.com/embed/{{ $video_id }}?autoplay=0">
                                     </iframe>
                                 @endif
                             </section>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-5">
+                            {{-- About organisation --}}
                             <section class="about-organisation">
                                 <h3>{{ $data['organisation.name'] }}</h3>
                                 <p>{!! nl2br($data['organisation.description']) !!}</p>
@@ -114,16 +119,19 @@
                                     Website
                                 </a>
                             </section>
+                            {{-- Custom HTML support --}}
                             <section class="custom">
-                            <!-- Allow for some more custom html for e.g. sponsors -->
                             </section>
-                            <!-- Share dialogs -->
+                            {{-- Share options (buttons) --}}
                             <section class="share">
                                 <h3>{{ trans('home.share') }}</h3>
+                                {{-- Facebook share button --}}
                                 <a class="share-btn share-fb" href="https://www.facebook.com/sharer/sharer.php?u={{URL::route('home')}}" target="_blank" title="Share on Facebook">
                                 </a>
+                                {{-- G+ share button --}}
                                 <a class="share-btn share-gp" href="https://plus.google.com/share?url={{URL::route('home')}}" target="_blank" title="Share on Google+">
                                 </a>
+                                {{-- Twitter share button --}}
                                 <a class="share-btn share-tw" href="http://twitter.com/share?text=I just donated to this fundraising campaign&url={{URL::route('home')}}" target="_blank" title="Share on Twitter">
                                 </a>
                             </section>
@@ -131,31 +139,37 @@
                     </div>
                 </div>
             </div>
-            <!-- Story & updates -->
+            {{-- Story and updates --}}
             <div class="story">
                 <div class="container">
-                    <!-- Nav tabs -->
+                    {{-- Navigation: multiple tabs --}}
                     <ul class="nav nav-tabs" role="tablist">
-                        <!-- First tab control -->
+                        {{-- Story tab --}}
                         <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">
                                 <i class="icon icon-story"></i>
                                 {{ trans("home.story") }}
                             </a></li>
-                        <!-- Second tab control -->
+                        {{-- Updates tab --}}
                         <li role="presentation"><a href="#updates" aria-controls="updates" role="tab" data-toggle="tab">
                                 <i class="icon icon-updates"></i>
                                 {{ trans("home.updates") }} (<strong>{{ count($posts) }}</strong>)
                             </a></li>
                     </ul>
-                    <!-- Tab panes -->
+                    {{-- Actual tab panes --}}
                     <div class="tab-content">
-                        <!-- First tab with information about the project -->
+                        {{-- Story tab page; this tab pane contains Markdown transformed to HTML. --}}
                         <div role="tabpanel" class="tab-pane active" id="home">
                             <div class="row">
+                                {{-- Left column (9/12): MARKDOWN STORY --}}
                                 <div class="col-md-9">
                                     {!! Markdown::convertToHtml($project->description) !!}
                                 </div>
-                                @if ($project->currency > 0)
+                                {{--
+                                Right column (3/12): REWARD TIERS
+                                (Only visible if there is a monetary goal and if there are any tiers that have
+                                been configured.)
+                                --}}
+                                @if ($project->currency > 0 && count($tiers) > 0)
                                 <div class="col-md-3">
                                     <h2>{{ trans('home.rewards') }}</h2>
                                     @foreach ($tiers as $tier)
@@ -177,21 +191,26 @@
                                         </div>
                                     @endforeach
                                 </div>
+                                {{-- END OF REWARD TIERS --}}
                                 @endif
                             </div>
                         </div>
-                        <!-- Second tab with updates -->
+                        {{-- Second tab page; this one contains the updates left by the project creators --}}
                         <div role="tabpanel" class="tab-pane updates" id="updates">
+                            {{-- Check if there are 0 posts --}}
                             @if (count($posts) == 0)
                                 <div class="no-updates">
                                     <p>The project's makers have not posted any updates yet!</p>
                                 </div>
                             @else
+                            {{-- If posts have been created, list them here --}}
                             <div class="list">
                                 <?php
                                 $n = 0;
                                 foreach($posts as $post): $n++;?>
                                 <div class="row">
+                                    {{-- Depending on the result of this modulo, the flag will be on the left
+                                         or on the right.--}}
                                     @if ($n%2 == false)
                                         <div class="col-md-offset-5 col-md-2 date-flag hidden-xs hidden-sm">
                                             <i class="icon icon-flag"></i>
@@ -219,12 +238,12 @@
                     </div>
                 </div>
             </div>
-            <!-- Extra tabs for donation kinds (manpower, coaching, etc) -->
+            {{-- Extra tabs for donation kinds (manpower, coaching, etc) --}}
             <div class="tabanddonations">
                 <div class="container">
-                    <!-- Tabs per extra category (coaching, etc) -->
+                    {{-- Tabs per extra category (coaching, etc) --}}
                     <ul class="nav nav-tabs" role="tablist">
-                        <!-- Generate a tab for each -->
+                        {{-- Generate a tab for each --}}
                         @foreach ($donationKinds as $count => $kind)
                             @if ($kind != "currency" && isset($donationTypes[$kind]) && count($donationTypes[$kind]) > 0)
                                 <li role="presentation" @if ($count == 0) class="active" @endif>
@@ -236,11 +255,11 @@
                             @endif
                         @endforeach
                     </ul>
-                    <!-- Tab panes for extra categories -->
+                    {{-- Tab panes for extra categories --}}
                     <div class="tab-content">
                         @foreach ($donationKinds as $count => $kind)
                             @if ($kind != "currency" && isset($donationTypes[$kind]) && count($donationTypes[$kind]) > 0)
-                            <!-- Generate a tab for each -->
+                            {{-- Generate a tab for each --}}
                             <div role="tabpanel" class="tab-pane-donation tab-pane @if ($count == 0) active @endif tab-{{ $kind }}" id="{{ $kind }}">
                                 <h3>What we need</h3>
                                 <div class="row">
@@ -261,7 +280,7 @@
                     </div>
                 </div>
             </div>
-            <!-- How does it work & previous projects -->
+            {{-- How does it work & Previous projects buttons --}}
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">

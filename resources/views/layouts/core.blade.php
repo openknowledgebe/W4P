@@ -3,18 +3,25 @@
     <head>
         <meta charset="utf-8">
         <title>@yield('title')</title>
+        {{-- Elixir is responsible for the versioned css so you'll need npm :) --}}
         <link rel="stylesheet" href="{{ elixir('css/app.css') }}">
+        {{-- Google Web Fonts are inserted here --}}
         <link href='https://fonts.googleapis.com/css?family=Istok+Web:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+        {{-- Check if the meta section exists --}}
         @if (array_key_exists('meta', View::getSections()))
+            {{-- If the meta section exists, it is rendered here --}}
             @yield('meta')
         @else
+            {{-- Otherwise, use the default meta partial --}}
             @include('partials.meta.default')
         @endif
     </head>
     <body>
+        {{-- WRAPPER --}}
         <div class="wrapper">
             <div class="container">
                 <div class="row">
+                    {{-- NAVIGATION --}}
                     <nav class="navbar navbar-default">
                         <div class="container-fluid">
                             <div class="navbar-header">
@@ -35,7 +42,7 @@
                             <div>
                                 <ul class="nav navbar-nav navbar-right">
                                     <li>
-
+                                        {{-- For now, the navbar on the right remains empty --}}
                                     </li>
                                 </ul>
                             </div>
@@ -43,6 +50,7 @@
                     </nav>
                 </div>
             </div>
+            {{-- MAIN CONTENT --}}
             <div class="content">
                 @yield('content')
             </div>

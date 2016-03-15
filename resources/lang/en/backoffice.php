@@ -16,6 +16,8 @@ return [
     "backers" => "Backers",
     "donations" => "Donations",
     "dashboard" => "Dashboard",
+    "social" => "Social",
+    "social_settings" => "Share settings",
     "pw_reset" => "Password change",
     "subcategories" => 'subcategory|subcategories',
     "goal_overview" => "Goal overview",
@@ -32,6 +34,7 @@ return [
     "manage" => "Manage",
     "view" => "View",
     "change_password" => "Change admin password",
+    "administration" => "Administration",
 
     /**
      * KINDS OF TYPES
