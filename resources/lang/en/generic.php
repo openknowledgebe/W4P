@@ -10,8 +10,11 @@ return [
     "project" => "Project",
     "homepage" => "Homepage",
     "how_does_it_work" => "How does it work?",
+    "press_materials" => "Press materials",
+    "terms_of_use" => "Terms of use",
+    "privacy_policy" => "Privacy policy",
     "donate" => "Donate",
     "payment_status" => "Payment status",
     "donation_thanks" => "Thank you for your donation",
-    "donation_detail" => "Your donation"
+    "donation_detail" => "Your donation",
 ];
