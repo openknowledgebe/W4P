@@ -29,11 +29,13 @@ class PassProject
         $videoId = "";
 
         $videoProvider = null;
-        if (strpos($project->video_url, 'watch?v=') !== false) {
-            $videoProvider = "youtube";
-        }
-        if (strpos($project->video_url, 'vimeo.com/') !== false) {
-            $videoProvider = "vimeo";
+        if (property_exists($project, 'video_url')) {
+            if (strpos($project->video_url, 'watch?v=') !== false) {
+                $videoProvider = "youtube";
+            }
+            if (strpos($project->video_url, 'vimeo.com/') !== false) {
+                $videoProvider = "vimeo";
+            }
         }
 
         // Check the video provider
@@ -47,6 +49,7 @@ class PassProject
                 $videoId = explode("&", last($array))[0];
                 break;
             default:
+                $videoId = null;
                 break;
         }
 
