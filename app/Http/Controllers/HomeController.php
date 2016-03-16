@@ -13,6 +13,7 @@ use W4P\Models\Post;
 use W4P\Models\DonationType;
 use W4P\Models\DonationKind;
 use W4P\Models\Donation;
+use W4P\Models\Page;
 
 // use W4P\Facades\Mollie;
 
@@ -92,15 +93,6 @@ class HomeController extends Controller
     }
 
     /**
-     * How does it work page
-     * @return mixed
-     */
-    public function how()
-    {
-        return View::make('front.how');
-    }
-
-    /**
      * Previous projects page
      * @return mixed
      */
@@ -111,12 +103,23 @@ class HomeController extends Controller
     }
 
     /**
+     * How does it work page
+     * @return mixed
+     */
+    public function how()
+    {
+        $page = Page::where('slug', 'how_it_works')->first();
+        return View::make('front.pages.detail')->with('page', $page);
+    }
+
+    /**
      * Press page
      * @return mixed
      */
     public function press()
     {
-        return View::make('front.press');
+        $page = Page::where('slug', 'press')->first();
+        return View::make('front.pages.detail')->with('page', $page);
     }
 
     /**
@@ -125,7 +128,8 @@ class HomeController extends Controller
      */
     public function terms()
     {
-        return View::make('front.terms');
+        $page = Page::where('slug', 'terms_of_use')->first();
+        return View::make('front.pages.detail')->with('page', $page);
     }
 
     /**
@@ -134,6 +138,7 @@ class HomeController extends Controller
      */
     public function privacy()
     {
-        return View::make('front.privacy');
+        $page = Page::where('slug', 'privacy_policy')->first();
+        return View::make('front.pages.detail')->with('page', $page);
     }
 }

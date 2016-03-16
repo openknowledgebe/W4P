@@ -23,6 +23,20 @@
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                         {{ trans('backoffice.manage') }} <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
+                                        <li class="separator">{{ trans('backoffice.manage_pages') }}</li>
+                                        <li>
+                                            <a href="#">{{ trans('generic.how_does_it_work') }}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{ trans('generic.press_materials') }}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{ trans('generic.terms_of_use') }}</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">{{ trans('generic.privacy_policy') }}</a>
+                                        </li>
+                                        <li role="separator" class="divider"></li>
                                         <li class="separator">{{ trans('backoffice.social') }}</li>
                                         <li>
                                             <a href="{{ URL::route('admin::social') }}">{{ trans('backoffice.social_settings') }}</a>

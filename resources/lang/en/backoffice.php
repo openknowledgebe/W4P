@@ -8,6 +8,7 @@ return [
 
     "project" => "Project",
     "manageproject" => "Manage project",
+    "manage_pages" => "Manage pages",
     "tiers" => "Reward tiers",
     "organisation" => "Organisation",
     "platform" => "Platform",
@@ -17,7 +18,8 @@ return [
     "donations" => "Donations",
     "dashboard" => "Dashboard",
     "social" => "Social",
-    "social_settings" => "Share settings",
+    "socialmedia" => "Social media",
+    "social_settings" => "Social media settings",
     "pw_reset" => "Password change",
     "subcategories" => 'subcategory|subcategories',
     "goal_overview" => "Goal overview",
@@ -35,7 +37,6 @@ return [
     "view" => "View",
     "change_password" => "Change admin password",
     "administration" => "Administration",
-    "socialmedia" => "Social media",
 
     /**
      * KINDS OF TYPES

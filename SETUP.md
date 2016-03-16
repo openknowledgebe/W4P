@@ -13,7 +13,7 @@ If you want to locally develop on the platform, you can follow the instructions 
     touch database/database.sqlite
 
     # Migrations
-    php artisan migrate
+    php artisan migrate && php artisan seed
 
     # Environment file
     cp .env.example .env

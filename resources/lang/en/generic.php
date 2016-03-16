@@ -9,6 +9,7 @@
 return [
     "project" => "Project",
     "homepage" => "Homepage",
+    "pages" => "Pages",
     "how_does_it_work" => "How does it work?",
     "press_materials" => "Press materials",
     "terms_of_use" => "Terms of use",

@@ -9,9 +9,9 @@
                     <li class="subtitle">About</li>
                     <li><a href="{{ URL::route('home') }}">{{ trans('footer.homepage') }}</a></li>
                     <li><a href="{{ URL::route('how') }}">{{ trans('footer.howdoesitwork') }}</a></li>
-                    <li><a href="">{{ trans('footer.press') }}</a></li>
-                    <li><a href="">{{ trans('footer.termsofuse') }}</a></li>
-                    <li><a href="">{{ trans('footer.privacypolicy') }}</a></li>
+                    <li><a href="{{ URL::route('press') }}">{{ trans('footer.press') }}</a></li>
+                    <li><a href="{{ URL::route('terms') }}">{{ trans('footer.termsofuse') }}</a></li>
+                    <li><a href="{{ URL::route('privacy') }}">{{ trans('footer.privacypolicy') }}</a></li>
                 </ul>
             </div>
             <div class="col-md-3">
