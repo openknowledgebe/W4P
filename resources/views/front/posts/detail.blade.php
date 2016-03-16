@@ -2,6 +2,10 @@
 
 @section('title', $post->title)
 
+@section('meta')
+    @include('partials.meta.post')
+@endsection
+
 @section('content')
 
     <div class="project">

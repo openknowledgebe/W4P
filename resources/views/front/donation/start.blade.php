@@ -2,10 +2,6 @@
 
 @section('title', trans('generic.donate'))
 
-@section('meta')
-    @include('partials.meta.donate')
-@endsection
-
 @section('content')
     <div class="project">
         <!-- Banner -->

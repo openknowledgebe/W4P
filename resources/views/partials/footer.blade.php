@@ -39,12 +39,11 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                @if ($settings["copyright"] == "")
-                    <p class="gray">&copy; {{ date('Y') }} {{ $settings["org"] }}</p>
+                @if ($settings->copyright == null)
+                    <p class="gray">&copy; {{ date('Y') }} {{ $settings->org }}</p>
                 @else
-                    {{ $settings["copyright"] }}
+                    {{ $settings->copyright }}
                 @endif
-
             </div>
         </div>
     </div>

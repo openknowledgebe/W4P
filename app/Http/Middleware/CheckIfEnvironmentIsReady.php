@@ -65,29 +65,38 @@ class CheckIfEnvironmentIsReady
 
         /*================
          * PUBLIC SETTINGS
+         * (freely accessible)
          *===============*/
 
-        if (!array_key_exists('platform.copyright', $settings)) {
-            $settings["platform.copyright"] = "";
-        }
-        if (!array_key_exists('organisation.name', $settings)) {
-            $settings["organisation.name"] = "";
-        }
-        if (!array_key_exists('organisation.twitter', $settings)) {
-            $settings["organisation.twitter"] = "";
-        }
-        if (!array_key_exists('organisation.twitter_message', $settings)) {
-            $settings["organisation.twitter_message"] = "";
+        $keys = ["platform.copyright", "organisation.name", "social.twitter_handle",
+            "social.twitter_message", "social.facebook_page_url", "social.facebook_message",
+            "social.seo_title", "social.seo_description", "social.seo_image"];
+
+        foreach ($keys as $key) {
+            if (!array_key_exists($key, $settings)) {
+                $settings[$key] = null;
+            } else {
+                if ($settings[$key] == "") {
+                    $settings[$key] = null;
+                }
+            }
         }
 
         $public_settings = [
             "copyright" => $settings["platform.copyright"],
             "org" => $settings["organisation.name"],
-            "twitter" => $settings["organisation.twitter"],
-            "twitter_message" => $settings["organisation.twitter_message"],
+            "social" => (object)[
+                "twitter_handle" => $settings["social.twitter_handle"],
+                "twitter_message" => $settings["social.twitter_message"],
+                "facebook_page_url" => $settings["social.facebook_page_url"],
+                "facebook_message" => $settings["social.facebook_message"],
+                "seo_title" => $settings["social.seo_title"],
+                "seo_description" => $settings["social.seo_description"],
+                "seo_image" => $settings["social.seo_image"]
+            ]
         ];
 
-        View::share('settings', $public_settings);
+        View::share('settings', (object)$public_settings);
 
         /*================
         * PASS REQUEST
