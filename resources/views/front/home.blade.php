@@ -1,6 +1,11 @@
 @extends('layouts.core')
 
-@section('title', trans('generic.homepage'))
+@if ($settings->social->seo_title)
+    {{-- Use SEO title --}}
+    @section('title', $settings->social->seo_title)
+@else
+    @section('title', trans('generic.homepage'))
+@endif
 
 @section('content')
     <div class="project">
