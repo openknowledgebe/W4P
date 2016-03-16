@@ -4,7 +4,7 @@
     {{-- Use SEO title --}}
     @section('title', $settings->social->seo_title)
 @else
-    @section('title', trans('generic.homepage'))
+    @section('title', $project->title)
 @endif
 
 @section('content')
