@@ -99,8 +99,9 @@ echo ""
 
 # Perform migrations
 php artisan migrate
+php artisan db:seed
 
-echo -e "${Gre}Migrations performed. OK.${RCol}"
+echo -e "${Gre}Migrations performed & seeded default data. OK.${RCol}"
 
 # Install repreqs
 sudo npm install

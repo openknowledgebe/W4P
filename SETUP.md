@@ -2,6 +2,14 @@
 
 ## Setup instructions for developers
 
+### A note on newer builds
+
+Whenever you are pulling a newer version of W4P, you should probably run:
+
+    composer dump && gulp
+
+If this is your first time setting up the project, you can use the script or follow the instructions below.
+
 ### Without script
 
 If you want to locally develop on the platform, you can follow the instructions above using the script to configure the application. However, you can also perform these operations manually:
