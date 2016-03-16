@@ -31,7 +31,7 @@
             <a class="btn btn-primary btn-lg" href="{{ URL::route('admin::createPost') }}">{{ trans('backoffice.create_post') }}</a>
             <hr/>
             @foreach ($posts as $post)
-                <div class="panel panel-default">
+                <div class="panel panel-default post-brief">
                     <div class="panel-body support-panel">
                             <a href="{{ URL::route('admin::editPost', $post->id) }}" class="btn btn-default btn-sm pull-right">
                                 {{ trans('backoffice.edit') }}

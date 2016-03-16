@@ -8,6 +8,7 @@ use W4P\Http\Requests;
 use W4P\Http\Controllers\Controller;
 
 use W4P\Models\Post;
+use View;
 
 class PostController extends Controller
 {

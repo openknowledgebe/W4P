@@ -200,7 +200,7 @@
                             {{-- Check if there are 0 posts --}}
                             @if (count($posts) == 0)
                                 <div class="no-updates">
-                                    <p>The project's makers have not posted any updates yet!</p>
+                                    <p>{{ trans('generic.no_updates') }}</p>
                                 </div>
                             @else
                             {{-- If posts have been created, list them here --}}
@@ -220,9 +220,9 @@
                                     <div class="col-md-5 post">
                                         <h3>{{ $post->title }}</h3>
                                         <div>
-                                            {!! Markdown::convertToHtml( $post->content) !!}
+                                            {!! $post->markdownBrief() !!}
                                         </div>
-                                        <a href="#">Read more</a>
+                                        <a href="{{ URL::route('post::detail', $post->id) }}">{{ trans('generic.read_more') }}</a>
                                     </div>
                                     @if ($n%2 == true)
                                         <div class="col-md-2 date-flag hidden-xs hidden-sm">
