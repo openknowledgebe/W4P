@@ -4,6 +4,7 @@ namespace W4P\Http\Middleware;
 
 use W4P\Models\Setting;
 use W4P\Models\Project;
+use DB;
 
 use Closure;
 use View;
@@ -20,7 +21,11 @@ class PassProject
      */
     public function handle($request, Closure $next)
     {
+        // Put project in request
         $request->project = Project::first();
+
+        // Archived count
+        View::share('archived_count', DB::table('archivedproject')->count());
 
         // Get the project
         $project = $request->project;

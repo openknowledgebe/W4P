@@ -17,7 +17,9 @@
             <div class="col-md-3">
                 <ul>
                     <li class="subtitle">Projects</li>
+                    @if ($archived_count > 0)
                     <li>Previous projects</li>
+                    @endif
                     <li><a href="{{ URL::route('admin::index') }}">{{ trans('footer.administration') }}</a></li>
                 </ul>
             </div>

@@ -283,13 +283,14 @@
             {{-- How does it work & Previous projects buttons --}}
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div @if ($archived_count > 0) class="col-md-6" @else class="col-md-12" @endif >
                         <div class="padded-panel">
                             <a href="{{ URL::route('how') }}" class="btn4 main center">
                                 {{ trans('home.howdoesitwork') }}
                             </a>
                         </div>
                     </div>
+                    @if ($archived_count > 0)
                     <div class="col-md-6">
                         <div class="padded-panel">
                         <a href="#" class="btn4 main center">
@@ -297,6 +298,7 @@
                         </a>
                         </div>
                     </div>
+                    @endif
                 </div>
             </div>
     </div>
