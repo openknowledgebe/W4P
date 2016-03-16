@@ -25,16 +25,16 @@
                                     <ul class="dropdown-menu">
                                         <li class="separator">{{ trans('backoffice.manage_pages') }}</li>
                                         <li>
-                                            <a href="#">{{ trans('generic.how_does_it_work') }}</a>
+                                            <a href="{{ URL::route('admin::editPage', 'how_it_works') }}">{{ trans('generic.how_does_it_work') }}</a>
                                         </li>
                                         <li>
-                                            <a href="#">{{ trans('generic.press_materials') }}</a>
+                                            <a href="{{ URL::route('admin::editPage', 'press') }}">{{ trans('generic.press_materials') }}</a>
                                         </li>
                                         <li>
-                                            <a href="#">{{ trans('generic.terms_of_use') }}</a>
+                                            <a href="{{ URL::route('admin::editPage', 'terms_of_use') }}">{{ trans('generic.terms_of_use') }}</a>
                                         </li>
                                         <li>
-                                            <a href="#">{{ trans('generic.privacy_policy') }}</a>
+                                            <a href="{{ URL::route('admin::editPage', 'privacy_policy') }}">{{ trans('generic.privacy_policy') }}</a>
                                         </li>
                                         <li role="separator" class="divider"></li>
                                         <li class="separator">{{ trans('backoffice.social') }}</li>

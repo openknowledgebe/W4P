@@ -273,7 +273,7 @@
                                     </div>
                                     @endforeach
                                 </div>
-                                <a href="#" class="btn4 white center">Support this project</a>
+                                <a href="{{ URL::route('donate::start') }}" class="btn4 white center">Support this project</a>
                             </div>
                             @endif
                         @endforeach
@@ -285,7 +285,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="padded-panel">
-                            <a href="#" class="btn4 main center">
+                            <a href="{{ URL::route('how') }}" class="btn4 main center">
                                 {{ trans('home.howdoesitwork') }}
                             </a>
                         </div>

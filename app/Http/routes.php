@@ -151,6 +151,10 @@ Route::group(['middleware' => ['web']], function () {
             Route::post('/posts/{id}', ['as' => 'updatePost', 'uses' => 'AdminPostController@update']);
             Route::delete('/posts/{id}', ['as' => 'deletePost', 'uses' => 'AdminPostController@delete']);
 
+            // Pages
+            Route::get('/pages/edit/{slug}', ['as' => 'editPage', 'uses' => 'AdminPageController@edit']);
+            Route::post('/pages/edit/{slug}', ['as' => 'updatePage', 'uses' => 'AdminPageController@update']);
+
             // Email
             Route::get('/email', ['as' => 'email', 'uses' => 'AdminController@email']);
             Route::post('/email', ['as' => 'email', 'uses' => 'AdminController@updateEmail']);

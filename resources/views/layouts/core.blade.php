@@ -34,8 +34,8 @@
                                     <li @if (Request::is('/')) class="active" @endif>
                                         <a href="{{ URL::route('home') }}">{{ $W4P_project->title }}</a>
                                     </li>
-                                    <li>
-                                        <a href="">{{ trans('generic.how_does_it_work') }}</a>
+                                    <li @if (Request::is('how-it-works')) class="active" @endif>
+                                        <a href="{{ URL::route('how') }}">{{ trans('generic.how_does_it_work') }}</a>
                                     </li>
                                 </ul>
                             </div>

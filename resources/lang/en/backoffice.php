@@ -64,6 +64,7 @@ return [
         "project_update_success" => "Your project's details were updated successfully.",
         "org_update_success" => "Your organisation's details were updated successfully.",
         "platform_update_success" => "Your platform's details were updated successfully.",
+        "page_update_success" => "A page was successfully saved.",
         "post_create_success" => "A post was successfully created.",
         "post_update_success" => "A post was successfully updated.",
         "tier_create_success" => "A tier was successfully created.",
@@ -235,6 +236,25 @@ return [
         "content" => [
             "name" => "Content",
             "placeholder" => "You can write the content of your post here.",
+            "info" => "You can use Markdown here and drag and drop images here if you want to include them in your post.",
+        ]
+    ],
+
+    "edit_page" => [
+        "title" => "Edit a page",
+
+        "about" => "You can edit your page below."
+    ],
+    "page_form" => [
+        "title" => [
+            "name" => "Title",
+            "placeholder" => "e.g. My page title",
+            "info" => "The title of your title should be short but sweet.",
+            "why_fixed" => "This is a special pre-defined page. You cannot edit this title. ",
+        ],
+        "content" => [
+            "name" => "Content",
+            "placeholder" => "You can write the content of your page here.",
             "info" => "You can use Markdown here and drag and drop images here if you want to include them in your post.",
         ]
     ],

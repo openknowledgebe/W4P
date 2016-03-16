@@ -26,6 +26,7 @@ class HomeController extends Controller
 {
     /**
      * Start point for the application
+     * @param $request
      * @return string
      */
     public function index(Request $request)
