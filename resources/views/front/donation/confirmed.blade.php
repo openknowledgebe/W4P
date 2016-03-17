@@ -25,8 +25,22 @@
                         </a>
                         <a class="share-btn share-gp" href="https://plus.google.com/share?url={{URL::route('home')}}" target="_blank" title="Share on Google+">
                         </a>
-                        <a class="share-btn share-tw" href="http://twitter.com/share?text=I just donated to this fundraising campaign&url={{URL::route('home')}}" target="_blank" title="Share on Twitter">
-                        </a>
+                        {{-- Twitter share button --}}
+                        @if ($settings->social->twitter_message)
+                            {{-- Custom message --}}
+                            <a class="share-btn share-tw" href="
+                                    <?php echo 'http://www.twitter.com/share?' .
+                                    http_build_query
+                                    (array(
+                                            'url' => URL::route('home'),
+                                            'text' => $settings->social->twitter_message
+                                    ));
+                            ?>" target="_blank" title="Share on Twitter">
+                            </a>
+                        @else
+                            <a class="share-btn share-tw" href="http://twitter.com/share?text=I just donated to this fundraising campaign&url={{URL::route('home')}}" target="_blank" title="Share on Twitter">
+                            </a>
+                        @endif
                     </section>
                 </div>
             </div>
