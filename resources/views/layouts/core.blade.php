@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>@yield('title')</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         {{-- Elixir is responsible for the versioned css so you'll need npm :) --}}
         <link rel="stylesheet" href="{{ elixir('css/app.css') }}">
         {{-- Google Web Fonts are inserted here --}}

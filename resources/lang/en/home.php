@@ -9,7 +9,7 @@ return [
     "timeleft" => "There is :left the project ends.",
     "aboutproject" => "About this project",
     "tier" => [
-        "pledge" => "Support us with a minimum of :currency:pledgeAmount"
+        "pledge" => ":currency:pledgeAmount"
     ],
     "rewards" => "Rewards",
     "of" => "of",

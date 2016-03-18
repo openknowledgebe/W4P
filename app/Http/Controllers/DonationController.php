@@ -47,12 +47,17 @@ class DonationController extends Controller
         // Get counts
         $percentages = DonationKind::getAllPercentages();
 
+        // Get tier counts
+        $tierCounts = Tier::getCounts();
+
         // Return view
         return View::make('front.donation.start')
             ->with('currency', $currency)
             ->with('donationTypes', $donationTypes)
             ->with('donationsDisabled', $disabled)
             ->with('project', $request->project)
+            ->with("tiers", Tier::all()->sortBy('pledge'))
+            ->with('tierCounts', $tierCounts)
             ->with('percentages', $percentages);
     }
 

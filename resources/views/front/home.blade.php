@@ -101,6 +101,7 @@
                             <section class="about-video">
                                 <h2>{{ trans('home.aboutproject') }}</h2>
                                 <br/>
+                                <div class="video-container">
                                 {{-- Based on the provider, the output differs --}}
                                 @if ($video_provider == "vimeo")
                                     {{-- VIMEO --}}
@@ -113,6 +114,7 @@
                                             src="http://www.youtube.com/embed/{{ $video_id }}?autoplay=0">
                                     </iframe>
                                 @endif
+                                </div>
                             </section>
                         </div>
                         <div class="col-md-5">
