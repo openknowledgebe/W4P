@@ -61,7 +61,6 @@ class HomeController extends Controller
             } else {
                 $currencyPercentage = $contributedPercentage;
             }
-
         } else {
             $currencyPercentage = null;
         }

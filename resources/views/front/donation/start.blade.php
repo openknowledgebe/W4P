@@ -78,6 +78,7 @@
                         @foreach ($donationTypes as $donationKind => $donationType)
                             <div class="row">
                                 <div class="col-md-2">
+                                    {{-- Radial progress --}}
                                     @if ($donationKind != "currency" && isset($donationTypes[$donationKind]) && count($donationTypes[$donationKind]) > 0)
                                         <div class="progress-radial progress-{{ round($percentages[$donationKind]["percentage"]) }}">
                                             <div class="overlay">
@@ -86,6 +87,7 @@
                                             </div>
                                         </div>
                                     @endif
+                                    {{-- End radial progress --}}
                                 </div>
                                 <div class="col-md-10">
                                     @foreach ($donationType as $key => $option)
