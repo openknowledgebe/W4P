@@ -27,57 +27,74 @@
                     @endif
                 </div>
             </div>
-            <form method="POST" action="{{ URL::route('donate::details') }}" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-md-12">
+                    <form method="POST" action="{{ URL::route('donate::details') }}" enctype="multipart/form-data">
                         <input name="_method" type="hidden" value="POST">
                         {{ csrf_field() }}
 
-                @if ($project->currency > 0)
-                    <div class="row">
-                        <div class="col-md-2">
-                            <p>Radial progress</p>
-                        </div>
-                        <div class="col-md-2">
-                            <label>
-                                {{ trans('backoffice.currency') }}
-                            </label>
-                        </div>
-                        <div class="col-md-8">
-                            <div class="form-group">
-
-                                <input type="number" step="any"
-                                       class="form-control" id="currency" name="currency"
-                                       placeholder="Pledge amount" min="0">
+                        @if ($project->currency > 0)
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <p>Radial progress</p>
+                                </div>
+                                <div class="col-md-9">
+                                    {{-- Start of reward tiers --}}
+                                    <p>Select your reward tier</p>
+                                    @if ($project->currency > 0 && count($tiers) > 0)
+                                        <div class="list-group">
+                                        @foreach ($tiers as $tier)
+                                                <a href="#" class="list-group-item donation-tier-item" data-tier="{{ $tier->pledge }}">
+                                                    <strong>
+                                                        {{ trans('home.tier.pledge', [
+                                                         "currency" => "€",
+                                                         "pledgeAmount" => $tier->pledge
+                                                         ]) }}
+                                                    </strong><br/>
+                                                    {!! nl2br(htmlspecialchars($tier->description)) !!}
+                                                </a>
+                                        @endforeach
+                                        </div>
+                                    {{-- End of reward tiers --}}
+                                    @endif
+                                            <p>or enter a custom amount:</p>
+                                            <div class="form-group">
+                                                <input type="number" step="any"
+                                                       class="form-control" id="currency" name="currency"
+                                                       placeholder="Pledge amount" min="0">
+                                            </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                @endif
-                @foreach ($donationTypes as $donationKind => $donationType)
-                    <div class="row">
-                        <div class="col-md-2">
-                            <p>Radial progress</p>
-                        </div>
-                        <div class="col-md-10">
-                            @foreach ($donationType as $key => $option)
-                                <div class="about">
-                                    Description: <i>{{ $option['description'] }}</i><br/>
-                                    1x unit: <i>{{ $option['unit_description'] }}</i>
+                        @endif
+                        @foreach ($donationTypes as $donationKind => $donationType)
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <p>Radial progress</p>
                                 </div>
-                                <div class="checkboxes_pledge_{{str_slug($option['id'])}}">
-                                    @for ($i = 0; $i < $option["required_amount"]; $i++)
-                                        @if ($i >= $percentages[$donationKind]["items"][$key]["total"] )
-                                            <div class="checkbox"></div>@else<div class="checkbox disabled"></div>
-                                        @endif
-                                    @endfor
+                                <div class="col-md-9">
+                                    @foreach ($donationType as $key => $option)
+                                        <div class="about">
+                                            Description: <i>{{ $option['description'] }}</i><br/>
+                                            1x unit: <i>{{ $option['unit_description'] }}</i>
+                                        </div>
+                                        <div class="checkboxes_pledge_{{str_slug($option['id'])}}">
+                                            @for ($i = 0; $i < $option["required_amount"]; $i++)
+                                                @if ($i >= $percentages[$donationKind]["items"][$key]["total"] )
+                                                    <div class="checkbox"></div>@else<div class="checkbox disabled"></div>
+                                                @endif
+                                            @endfor
+                                        </div>
+                                        <a href="#" class="btn btn-default plus" data-key="{{ $option['id'] }}">+</a>
+                                        <a href="#" class="btn btn-default minus" data-key="{{ $option['id'] }}">-</a>
+                                        <input type="hidden" id="pledge_{{str_slug($option['id'])}}" name="pledge_{{str_slug($option['id'])}}">
+                                    @endforeach
                                 </div>
-                                <a href="#" class="btn btn-default plus" data-key="{{ $option['id'] }}">+</a>
-                                <a href="#" class="btn btn-default minus" data-key="{{ $option['id'] }}">-</a>
-                                <input type="hidden" id="pledge_{{str_slug($option['id'])}}" name="pledge_{{str_slug($option['id'])}}">
-                            @endforeach
-                        </div>
-                    </div>
-                @endforeach
-                <button type="submit" class="btn4 pull-right">{{ trans('setup.generic.next') }} &rarr;</button>
-            </form>
+                            </div>
+                        @endforeach
+                        <button type="submit" class="btn4 pull-right">{{ trans('setup.generic.next') }} &rarr;</button>
+                    </form>
+                </div>
+            </div>
         </div>
         @else
             <div class="row">

@@ -7,14 +7,38 @@ $(document).ready(function() {
     // Get all categories
     // categories
 
-    $('.plus').click(function() {
+    $('.plus').click(function(ev) {
+        ev.preventDefault();
         var key = $(this).attr('data-key');
         increase(key);
     });
 
-    $('.minus').click(function() {
+    $('.minus').click(function(ev) {
+        ev.preventDefault();
         var key = $(this).attr('data-key');
         decrease(key);
+    });
+
+    $('.donation-tier-item').click(function(ev) {
+        ev.preventDefault();
+        $('.donation-tier-item').removeClass('active');
+        $(this).addClass('active');
+        var money = $(this).attr('data-tier');
+        console.log(money);
+        $("#currency").val(money);
+    })
+
+    $("#currency").keyup(function(){
+        console.log('firin');
+        var currency = $("#currency").val();
+        $('.donation-tier-item').removeClass('active');
+        $('.donation-tier-item').each(function(index) {
+            var tierCurrency = $(this).attr('data-tier');
+            if (Number(tierCurrency) <= Number(currency)) {
+                $('.donation-tier-item').removeClass('active');
+                $(this).addClass('active');
+            }
+        });
     });
 
     function increase(id) {
@@ -43,5 +67,11 @@ $(document).ready(function() {
         var checkboxContainer = $('.checkboxes_pledge_' + id);
         var found = checkboxContainer.find('.checkbox.checked');
         $('#pledge_' + id).val(found.length);
+    }
+
+    function selectTier(sender, amount) {
+        return false;
+        $('.donation-tier-item').removeClass('active');
+        sender.addClass('active');
     }
 });
