@@ -35,10 +35,19 @@
 
                         @if ($project->currency > 0)
                             <div class="row">
-                                <div class="col-md-3">
-                                    <p>Radial progress</p>
+                                <div class="col-md-2">
+                                    {{-- Radial progress currency --}}
+                                    @if ($project->currency > 0 && count($donationTypes) > 0)
+                                        <div class="progress-radial @if($contributedPercentage > 100) progress-100 @else progress-{{round($contributedPercentage)}} @endif">
+                                            <div class="overlay">
+                                                <i class="icon icon-progress-currency icon-lg"></i><br/>
+                                                <span class="about">{{ trans("backoffice.currency") }}</span>
+                                            </div>
+                                        </div>
+                                    @endif
+                                    {{-- End radial progress currency --}}
                                 </div>
-                                <div class="col-md-9">
+                                <div class="col-md-10">
                                     {{-- Start of reward tiers --}}
                                     <p>Select your reward tier</p>
                                     @if ($project->currency > 0 && count($tiers) > 0)
@@ -68,10 +77,17 @@
                         @endif
                         @foreach ($donationTypes as $donationKind => $donationType)
                             <div class="row">
-                                <div class="col-md-3">
-                                    <p>Radial progress</p>
+                                <div class="col-md-2">
+                                    @if ($donationKind != "currency" && isset($donationTypes[$donationKind]) && count($donationTypes[$donationKind]) > 0)
+                                        <div class="progress-radial progress-{{ round($percentages[$donationKind]["percentage"]) }}">
+                                            <div class="overlay">
+                                                <i class="icon icon-progress-{{$donationKind}} icon-lg"></i><br/>
+                                                <span class="about">{{ trans("backoffice." . $donationKind) }}</span>
+                                            </div>
+                                        </div>
+                                    @endif
                                 </div>
-                                <div class="col-md-9">
+                                <div class="col-md-10">
                                     @foreach ($donationType as $key => $option)
                                         <div class="about">
                                             Description: <i>{{ $option['description'] }}</i><br/>

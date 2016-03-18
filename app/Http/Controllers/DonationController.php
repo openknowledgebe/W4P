@@ -44,11 +44,32 @@ class DonationController extends Controller
         // We also need to check if monetary contributions are allowed
         $currency = $request->project->currency;
 
-        // Get counts
-        $percentages = DonationKind::getAllPercentages();
-
         // Get tier counts
         $tierCounts = Tier::getCounts();
+
+        // Get how many contributors there are
+        $donorQuery = Donation::whereNotNull('confirmed')->get();
+        $donorCount = $donorQuery->groupBy('email')->count();
+        $contributed = $donorQuery->sum('currency');
+
+        // Calculate the contributed percentage of the total amount of money
+        $contributedPercentage = 0;
+        if ($request->project->currency > 0) {
+            $contributedPercentage = round(($contributed / $request->project->currency) * 100, 1);
+            if ($contributedPercentage > 100) {
+                $currencyPercentage = 100;
+            } else {
+                $currencyPercentage = $contributedPercentage;
+            }
+        } else {
+            $currencyPercentage = null;
+        }
+
+        // Get percentages from donations (for 4 kinds -> manpower, coaching, etc.)
+        $percentages = DonationKind::getAllPercentages($donorQuery);
+        $totalPercentage = round(
+            DonationKind::getTotalPercentage($percentages, $currencyPercentage)
+        );
 
         // Return view
         return View::make('front.donation.start')
@@ -58,7 +79,9 @@ class DonationController extends Controller
             ->with('project', $request->project)
             ->with("tiers", Tier::all()->sortBy('pledge'))
             ->with('tierCounts', $tierCounts)
-            ->with('percentages', $percentages);
+            ->with('percentages', $percentages)
+            ->with('contributed', $contributed)
+            ->with('contributedPercentage', $contributedPercentage);
     }
 
     /**
