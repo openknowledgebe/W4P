@@ -1,6 +1,10 @@
 .setup {
     background-color: $color-gray;
 
+    p{
+        color: $color-grey-text;
+    }
+
     .logo img{
         margin-left: auto;
         margin-right: auto;
@@ -18,6 +22,12 @@
         padding-top: 35px;
     }
 
+    @media (max-width: 992px){
+        .setup-progress {
+            display: none;
+        }
+    }
+
     .setup-progress {
         margin-top: 70px;
         text-align: center;
@@ -26,15 +36,67 @@
             display: inline-block;
             margin-left: auto;
             margin-right: auto;
+            font-size: 0;
 
             li {
                 display: inline;
                 color: #CCC;
-                margin-right: 50px;
-            }
+                padding: 0 25px;
+                position: relative;
+                counter-increment: setupProgressStep;
+                font-size: 16px;
 
-            li.active {
-                color: #555;
+                &.active{
+                    color: #555;
+
+                    &:before{
+                        width: 30px;
+                        height: 30px;
+                        top: -35px;
+                        background-color: $color-primary;
+                        color: #fff;
+                        font-size: 15px;
+                        line-height: 26px;
+                    }
+                }
+
+                &:before{
+                    position: absolute;
+                    z-index: 100;
+                    content:counter(setupProgressStep);
+                    background-color: #fff;
+                    border-radius: 20px;
+                    border: 3px solid $color-primary;
+                    color: $color-primary-light;
+                    font-weight: 300;
+                    font-size: 10px;
+                    width: 20px;
+                    height: 20px;
+                    left: 50%;
+                    text-align: center;
+                    line-height: 14px;
+                    margin-left: -10px;
+                    top: -30px;
+                }
+
+                &:after{
+                    position: absolute;
+                    z-index: 99;
+                    content: '';
+                    background-color: $color-primary;
+                    width: 100%;
+                    left: 0;
+                    height: 2px;
+                    top: -20px;
+                }
+
+                &:first-child:after{
+                    left: 50%;
+                }
+
+                &:last-child:after{
+                    width: 50%;
+                }
             }
         }
     }

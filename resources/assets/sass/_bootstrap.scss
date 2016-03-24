@@ -54,3 +54,23 @@
 // Utility classes
 @import "bootstrap/utilities";
 @import "bootstrap/responsive-utilities";
+
+.alert-danger {
+    background-color: $color-orange;
+    border-color: $color-orange;
+    color: #fff;
+
+    p{
+        color: #fff;
+    }
+}
+
+.alert-info {
+    background-color: $color-primary;
+    border-color: $color-primary;
+    color: #fff;
+
+    p{
+        color: #fff;
+    }
+}

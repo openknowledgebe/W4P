@@ -2,3 +2,31 @@ textarea.markdown
 {
     font-family: monospace;
 }
+
+
+.form-control{
+    outline: none !important;
+    box-shadow: none !important;
+
+    &:focus, &:active{
+        border-color: $color-primary !important;
+    }
+}
+
+input.form-control{
+    padding: 22px 14px;
+    border-radius: 11px;
+}
+
+input[type=file]{
+    padding: 0px;
+    background: none;
+    border: 0px none;
+}
+
+.form-group{
+    label{
+        font-size: 14px;
+        font-weight: normal;
+    }
+}

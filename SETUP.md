@@ -21,7 +21,7 @@ If you want to locally develop on the platform, you can follow the instructions 
     touch database/database.sqlite
 
     # Migrations
-    php artisan migrate && php artisan seed
+    php artisan migrate && php artisan db:seed
 
     # Environment file
     cp .env.example .env
@@ -30,7 +30,7 @@ If you want to locally develop on the platform, you can follow the instructions 
     php artisan key:generate
 
     # Install Elixir dependencies
-    sudo npm install
+    npm install
 
     # Gulp
     # Use --production flag for minified files
@@ -71,7 +71,7 @@ You can do it like this:
 
 To set it all up in one go:
 
-    composer install && touch database/database.sqlite && php artisan migrate && cp .env.example .env
+    touch database/database.sqlite && composer install && php artisan migrate && php artisan db:seed && php artisan key:generate && cp .env.example .env
 
 If you do not want to go through the wizard, you can use the SettingsTestSeeder to seed default data. (This is the data that is also used by the unit tests.)
 
