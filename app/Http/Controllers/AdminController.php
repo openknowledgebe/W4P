@@ -470,8 +470,36 @@ class AdminController extends Controller
      */
     public function donations()
     {
-        $donations = Donation::orderBy('id', 'DESC')->get();
+        $donations = Donation::withTrashed()->orderBy('id', 'DESC')->get();
         return View::make('backoffice.donations')->with('donations', $donations);
+    }
+
+    public function deleteDonation($id)
+    {
+        $donation = Donation::find($id);
+        if ($donation) {
+            $donation->deleted_at = Carbon::now();
+            $donation->save();
+            return Redirect::route('admin::donations');
+        } else {
+            // Flash message
+            Session::flash('message', 'This donation was not deleted.');
+            return Redirect::route('admin::donations');
+        }
+    }
+
+    public function undeleteDonation($id)
+    {
+        $donation = Donation::withTrashed()->find($id);
+        if ($donation) {
+            $donation->deleted_at = null;
+            $donation->save();
+            return Redirect::route('admin::donations');
+        } else {
+            // Flash message
+            Session::flash('message', 'This donation was not deleted.');
+            return Redirect::route('admin::donations');
+        }
     }
 
     /**

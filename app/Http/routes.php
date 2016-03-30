@@ -173,6 +173,9 @@ Route::group(['middleware' => ['web']], function () {
 
             // Donations
             Route::get('/donations', ['as' => 'donations', 'uses' => 'AdminController@donations']);
+            Route::get('/donations/delete/{id}', ['as' => 'donations::delete', 'uses' => 'AdminController@deleteDonation']);
+            Route::get('/donations/undelete/{id}', ['as' => 'donations::undelete', 'uses' => 'AdminController@undeleteDonation']);
+
 
             // Create a new goal type
             Route::get(
@@ -227,6 +230,16 @@ Route::group(['middleware' => ['web']], function () {
             Route::get(
                 '/previous/import',
                 ['as' => 'importProject', 'uses' => 'AdminPreviousProjectsController@showImportForm']
+            );
+
+            Route::post(
+                '/previous/import',
+                ['as' => 'importProject', 'uses' => 'AdminPreviousProjectsController@doImport']
+            );
+
+            Route::get(
+                '/previous/delete/{id}',
+                ['as' => 'previousDelete', 'uses' => 'AdminPreviousProjectsController@delete']
             );
         }
     );

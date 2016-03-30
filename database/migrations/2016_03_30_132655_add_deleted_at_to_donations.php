@@ -12,7 +12,7 @@ class AddDeletedAtToDonations extends Migration
      */
     public function up()
     {
-        Schema::table('archivedproject', function ($table) {
+        Schema::table('donation', function ($table) {
             $table->timestamp('deleted_at')->nullable()->default(null);
         });
     }
@@ -24,7 +24,7 @@ class AddDeletedAtToDonations extends Migration
      */
     public function down()
     {
-        Schema::table('archivedproject', function ($table) {
+        Schema::table('donation', function ($table) {
             $table->dropColumn('deleted_at');
         });
     }

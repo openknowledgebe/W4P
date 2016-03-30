@@ -3,9 +3,12 @@
 namespace W4P\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Donation extends Model
 {
+    use SoftDeletes;
+
     protected $table = "donation";
     public $timestamps = true;
     protected $fillable = [

@@ -39,6 +39,7 @@ return [
     "administration" => "Administration",
     "previous_projects" => "Previous projects",
     "import_previous_project" => "Import previous project",
+    "do_import" => "Import",
 
     /**
      * KINDS OF TYPES
@@ -87,7 +88,7 @@ return [
 
     "page" => [
         "previous_projects" => [
-            "about" => "You can import previous projects here by providing their URL. These projects then show up on the 'Previous Projects' page."
+            "about" => "You can import previous projects here by providing their URL. These projects then show up on the 'Previous Projects' page.",
         ],
         "pw_reset" => [
             "about" => "You can change your existing password here."
@@ -264,6 +265,26 @@ return [
             "info" => "You can use Markdown here and drag and drop images here if you want to include them in your post.",
         ]
     ],
+
+    /**
+     * IMPORT
+     */
+
+    "import" => [
+        "title" => "Import a project",
+        "about" => "You can import a previous project by entering an URL below.",
+    ],
+    "import_form" => [
+        "url" => [
+            "name" => "URL (of a W4P project)",
+            "placeholder" => "http://your-url-here.url",
+            "info" => "You must enter the main URL here. Please be patient after pressing the 'Import' button, W4P needs to get a bunch of information from this other W4P installation."
+        ]
+    ],
+
+    /**
+     * DASHBOARD
+     */
 
     "dashboard_page" => [
         "latest_donations" => "Latest 5 donations",

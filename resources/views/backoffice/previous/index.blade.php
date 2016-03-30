@@ -31,20 +31,18 @@
             <a class="btn btn-primary btn-lg" href="{{ URL::route('admin::importProject') }}">{{ trans('backoffice.import_previous_project') }}</a>
             <hr/>
             @foreach ($archived as $archived)
-                    {{ $post->title }}
-                <!--
                 <div class="panel panel-default post-brief">
                     <div class="panel-body support-panel">
-                            <a href="{{ URL::route('admin::editPost', $post->id) }}" class="btn btn-default btn-sm pull-right">
-                                {{ trans('backoffice.edit') }}
+                            <a href="{{ URL::route('admin::previousDelete', $archived->id) }}" class="btn btn-danger btn-sm pull-right">
+                                {{ trans('backoffice.delete') }}
                             </a>
-                        <h2>{{ $post->title }}</h2>
+                        <h4>{{ $archived->title }}</h4>
                         <div class="description">
-                            {!! Markdown::convertToHtml($post->content) !!}
+                            {{ $archived->description }}
                         </div>
+                        <div>Completed: @if ($archived->success) YES @else NO @endif</div>
                     </div>
                 </div>
-                -->
             @endforeach
         </div>
     </div>

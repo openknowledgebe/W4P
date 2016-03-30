@@ -20,7 +20,7 @@
                 <th></th>
             </tr>
             @foreach ($donations as $donation)
-                <tr>
+                <tr @if ($donation->deleted_at) class="danger" @endif>
                     <td>{{ $donation->id }}</td>
                     <td>{{ $donation->first_name }} {{ $donation->last_name }}</td>
                     <td>{{ $donation->email }}</td>
@@ -57,6 +57,11 @@
                     </td>
                     <td>
                         <a class="btn btn-default btn-sm" href="{{ URL::route('donate::info', ['code' => $donation->secret_url, 'email' => $donation->email]) }}">Go to page</a>
+                        @if ($donation->deleted_at)
+                            <a class="btn btn-warning btn-sm" href="{{ URL::route('admin::donations::undelete', ['id' => $donation->id]) }}">Unhide</a>
+                        @else
+                        <a class="btn btn-danger btn-sm" href="{{ URL::route('admin::donations::delete', ['id' => $donation->id]) }}">Hide</a>
+                        @endif
                     </td>
                 </tr>
             @endforeach
