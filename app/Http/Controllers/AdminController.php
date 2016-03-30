@@ -16,6 +16,7 @@ use W4P\Models\Donation;
 use W4P\Models\DonationKind;
 use W4P\Models\DonationType;
 use W4P\Models\Tier;
+use W4P\Models\Post;
 
 use View;
 use Redirect;
@@ -24,6 +25,7 @@ use Request;
 use Image;
 use Mail;
 use Session;
+use Response;
 
 class AdminController extends Controller
 {
@@ -514,6 +516,60 @@ class AdminController extends Controller
         } else {
             return Redirect::back()->withErrors($errors)->withInput(Input::all());
         }
+    }
+
+    public function getJson()
+    {
+        $project = Project::first();
+
+        // Get all donation types & kinds
+        $donationTypes = DonationType::all()->groupBy('kind');
+        // $donationKinds = DonationKind::all();
+
+        // Get when the project runs out
+        $ends_at = new Carbon($project->ends_at);
+        $now = Carbon::now();
+
+        // Get how many contributors there are
+        $donorQuery = Donation::whereNotNull('confirmed')->get();
+        $donorCount = $donorQuery->groupBy('email')->count();
+        $contributed = $donorQuery->sum('currency');
+
+        // Calculate the contributed percentage of the total amount of money
+        $contributedPercentage = 0;
+        if ($project->currency > 0) {
+            $contributedPercentage = round(($contributed / $project->currency) * 100, 1);
+            if ($contributedPercentage > 100) {
+                $currencyPercentage = 100;
+            } else {
+                $currencyPercentage = $contributedPercentage;
+            }
+        } else {
+            $currencyPercentage = null;
+        }
+
+        // Get percentages from donations (for 4 kinds -> manpower, coaching, etc.)
+        $percentages = DonationKind::getAllPercentages($donorQuery);
+        $totalPercentage = round(
+            DonationKind::getTotalPercentage($percentages, $currencyPercentage)
+        );
+
+        // Get tier counts
+        $tierCounts = Tier::getCounts();
+
+        return Response::json(
+            [
+                "project" => $project,
+                "meta" => [
+                    "version" => "1.0-pre",
+                    "donation_types" => $donationTypes,
+                    "percentages" => $percentages,
+                    "total_percentage" => $totalPercentage,
+                    "total_donors" => $donorCount,
+                    "contributed" => $contributed
+                ]
+            ]
+        );
     }
 
     /**

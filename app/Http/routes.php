@@ -238,6 +238,14 @@ Route::post(
     ]
 );
 
+Route::get(
+    'details.json',
+    [
+        'uses' => 'AdminController@getJson',
+        'as' => 'detailjson',
+    ]
+);
+
 /*
 |--------------------------------------------------------------------------
 | Mollie payment hook
