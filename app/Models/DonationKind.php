@@ -96,7 +96,8 @@ class DonationKind
                 $totalCategories++;
             }
         }
-        if ($currencyPercentage != null) {
+
+        if ($currencyPercentage !== null) {
             $totalCategories++;
             $total = $total + ($currencyPercentage / $totalCategories);
         }
