@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use W4P\Http\Requests;
 use W4P\Http\Controllers\Controller;
 
+use W4P\Models\ArchivedProject;
 use W4P\Models\Setting;
 use W4P\Models\Tier;
 use W4P\Models\Post;
@@ -96,10 +97,10 @@ class HomeController extends Controller
      * Previous projects page
      * @return mixed
      */
-    public function previous()
+    public function showPrevious()
     {
-        // TODO: Get previous projects
-        return View::make('front.previous')->with('previous', []);
+        $previous = ArchivedProject::all();
+        return View::make('front.pages.previous')->with('previous', $previous);
     }
 
     /**

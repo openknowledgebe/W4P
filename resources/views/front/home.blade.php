@@ -313,7 +313,7 @@
                     @if ($archived_count > 0)
                     <div class="col-md-6">
                         <div class="padded-panel">
-                        <a href="#" class="btn4 main center">
+                        <a href="{{ URL::route('previous') }}" class="btn4 main center">
                             {{ trans('home.previousprojects') }}
                         </a>
                         </div>

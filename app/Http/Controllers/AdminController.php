@@ -589,7 +589,13 @@ class AdminController extends Controller
             [
                 "project" => $project,
                 "meta" => [
-                    "version" => "1.0-pre",
+                    "version" => "1.0-pre2",
+                    "organisation" =>
+                    [
+                        "name" => Setting::get('organisation.name'),
+                        "description" => Setting::get('organisation.description'),
+                        "website" => Setting::get('organisation.website'),
+                    ],
                     "donation_types" => $donationTypes,
                     "percentages" => $percentages,
                     "total_percentage" => $totalPercentage,

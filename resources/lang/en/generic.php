@@ -20,5 +20,6 @@ return [
     "donation_detail" => "Your donation",
     "posted_on" => "Posted on",
     "read_more" => "Read more",
-    "no_updates" => "The project's makers have not posted any updates yet!"
+    "no_updates" => "The project's makers have not posted any updates yet!",
+    "previous" => "Previous projects",
 ];

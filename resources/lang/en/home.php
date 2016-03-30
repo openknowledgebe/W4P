@@ -3,6 +3,7 @@
 return [
     "projectby" => "Project by",
     "ends_at" => "Ends on",
+    "ended_at" => "Ended on",
     "donations" => "donations",
     "funded" => "funded",
     "support" => "Support this project",
