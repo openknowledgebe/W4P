@@ -218,6 +218,16 @@ Route::group(['middleware' => ['web']], function () {
                 '/export/tiers',
                 ['as' => 'userExportTiers', 'uses' => 'AdminController@exportUsersPerTier']
             );
+
+            Route::get(
+                '/previous',
+                ['as' => 'previous', 'uses' => 'AdminPreviousProjectsController@index']
+            );
+
+            Route::get(
+                '/previous/import',
+                ['as' => 'importProject', 'uses' => 'AdminPreviousProjectsController@showImportForm']
+            );
         }
     );
 

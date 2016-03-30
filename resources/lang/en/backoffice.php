@@ -37,6 +37,8 @@ return [
     "view" => "View",
     "change_password" => "Change admin password",
     "administration" => "Administration",
+    "previous_projects" => "Previous projects",
+    "import_previous_project" => "Import previous project",
 
     /**
      * KINDS OF TYPES
@@ -53,7 +55,8 @@ return [
 
     "warnings" => [
         "no_tiers" => "You have not created any tiers yet.",
-        "no_posts" => "You have not created any posts yet."
+        "no_posts" => "You have not created any posts yet.",
+        "no_archived" => "You have not imported any previous projects yet."
     ],
 
     /**
@@ -83,6 +86,9 @@ return [
      */
 
     "page" => [
+        "previous_projects" => [
+            "about" => "You can import previous projects here by providing their URL. These projects then show up on the 'Previous Projects' page."
+        ],
         "pw_reset" => [
             "about" => "You can change your existing password here."
         ],

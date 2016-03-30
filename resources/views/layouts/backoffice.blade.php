@@ -47,6 +47,9 @@
                                         <li>
                                             <a href="{{ URL::route('admin::password') }}">{{ trans('backoffice.change_password') }}</a>
                                         </li>
+                                        <li>
+                                            <a href="{{ URL::route('admin::previous') }}">{{ trans('backoffice.previous_projects') }}</a>
+                                        </li>
                                     </ul>
                                 </li>
 
