@@ -27,7 +27,7 @@
                     $available_partials = scandir(base_path() . '/resources/views/partials/previous/');
                 ?>
                 @if (in_array($version . ".blade.php", $available_partials))
-                    @include('partials.previous.' . $version);
+                    @include('partials.previous.' . $version)
                 @endif
             @endforeach
         </div>
