@@ -552,7 +552,7 @@ class AdminController extends Controller
 
         // Get all donation types & kinds
         $donationTypes = DonationType::all()->groupBy('kind');
-        // $donationKinds = DonationKind::all();
+        $tiers = Tier::all();
 
         // Get when the project runs out
         $ends_at = new Carbon($project->ends_at);
@@ -597,6 +597,7 @@ class AdminController extends Controller
                         "website" => Setting::get('organisation.website'),
                     ],
                     "donation_types" => $donationTypes,
+                    "tiers" => $tiers,
                     "percentages" => $percentages,
                     "total_percentage" => $totalPercentage,
                     "total_donors" => $donorCount,
