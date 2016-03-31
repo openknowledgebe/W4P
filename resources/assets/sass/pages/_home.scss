@@ -151,6 +151,17 @@
 $date-width: 100px;
 $date-icon-box-height: 75px;
 
+.no-updates {
+    padding: 20px;
+
+    p{
+        margin-top: 10px;
+        font-size: 1.2em;
+        color: $color-primary-contrast;
+        text-align: center;
+    }
+}
+
 .updates{
 
     .list{
@@ -187,17 +198,6 @@ $date-icon-box-height: 75px;
                 text-transform: uppercase;
                 color: #42CFD2;
             }
-        }
-    }
-
-    .no-updates {
-        padding: 20px;
-
-        p{
-            margin-top: 10px;
-            font-size: 1.2em;
-            color: $color-primary-contrast;
-            text-align: center;
         }
     }
 

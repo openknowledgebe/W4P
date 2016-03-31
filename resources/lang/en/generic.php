@@ -21,5 +21,10 @@ return [
     "posted_on" => "Posted on",
     "read_more" => "Read more",
     "no_updates" => "The project's makers have not posted any updates yet!",
+    "no_tiers" => "This project does not have any reward tiers.",
+    "no_story" => "The project's makers have not posted a story yet!",
     "previous" => "Previous projects",
+    "reached" => "reached",
+    "donors" => "donors",
+    "raised" => "total raised"
 ];

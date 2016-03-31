@@ -3,9 +3,12 @@
 namespace W4P\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use W4P\Http\Traits\CanGetVideoInformation;
 
 class Project extends Model
 {
+    use CanGetVideoInformation;
+
     protected $table = "project";
     public $timestamps = true;
     protected $fillable = ["title", "brief", "description", "video_url", "starts_at", "ends_at", "currency"];

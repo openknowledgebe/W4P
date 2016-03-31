@@ -180,10 +180,18 @@
                         {{-- Story tab page; this tab pane contains Markdown transformed to HTML. --}}
                         <div role="tabpanel" class="tab-pane active" id="home">
                             <div class="row">
+                                @if ($project->description != null || $project->description != "")
                                 {{-- Left column (9/12): MARKDOWN STORY --}}
                                 <div class="col-md-9">
                                     {!! Markdown::convertToHtml($project->description) !!}
                                 </div>
+                                @else
+                                <div class="col-md-9">
+                                    <div class="no-updates">
+                                        <p>{{ trans('generic.no_story') }}</p>
+                                    </div>
+                                </div>
+                                @endif
                                 {{--
                                 Right column (3/12): REWARD TIERS
                                 (Only visible if there is a monetary goal and if there are any tiers that have
@@ -212,6 +220,13 @@
                                     @endforeach
                                 </div>
                                 {{-- END OF REWARD TIERS --}}
+                                @else
+                                <div class="col-md-3">
+                                    <br/>
+                                    <p>
+                                        {{ trans('generic.no_tiers') }}
+                                    </p>
+                                </div>
                                 @endif
                             </div>
                         </div>

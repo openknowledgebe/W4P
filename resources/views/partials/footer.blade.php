@@ -18,7 +18,7 @@
                 <ul>
                     <li class="subtitle">Projects</li>
                     @if ($archived_count > 0)
-                    <li>Previous projects</li>
+                    <li><a href="{{ URL::route('previous') }}">Previous projects</a></li>
                     @endif
                     <li><a href="{{ URL::route('admin::index') }}">{{ trans('footer.administration') }}</a></li>
                 </ul>
@@ -31,9 +31,7 @@
                         </a></li>
                 </ul>
                 <span class="text-muted">
-
                     <br/>
-
                 </span>
             </div>
         </div>

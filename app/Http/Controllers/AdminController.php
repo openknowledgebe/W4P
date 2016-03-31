@@ -589,7 +589,7 @@ class AdminController extends Controller
             [
                 "project" => $project,
                 "meta" => [
-                    "version" => "1.0-pre2",
+                    "version" => "v2016_03",
                     "organisation" =>
                     [
                         "name" => Setting::get('organisation.name'),
@@ -600,7 +600,8 @@ class AdminController extends Controller
                     "percentages" => $percentages,
                     "total_percentage" => $totalPercentage,
                     "total_donors" => $donorCount,
-                    "contributed" => $contributed
+                    "contributed" => $contributed,
+                    "goal" => $project->currency,
                 ]
             ]
         );
