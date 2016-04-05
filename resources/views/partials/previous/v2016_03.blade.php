@@ -1,6 +1,11 @@
 {{-- Template for projects exported with version 2016.3 --}}
 
 <div class="row">
+    <div class="col-md-12">
+        <h2>{{ $project->title }}</h2>
+    </div>
+</div>
+<div class="row">
     <div class="col-md-5">
         {{-- About video --}}
         <section class="about-video">
@@ -26,21 +31,22 @@
         </section>
     </div>
     <div class="col-md-7">
-        <h2>{{ $project->title }}</h2>
-                     <span>
-                         <i class="icon icon-person icon-align-text"></i>
-                         {{ trans('home.projectby') }}
-                         <strong>
-                             {{ json_decode($project->meta)->organisation->name }}
-                         </strong>
-                     </span>
-                    <span class="pull-right">
-                        <i class="icon icon-calendar icon-align-text"></i>
-                        {{ trans('home.ended_at') }}
-                        <strong>
-                            {{ $project->ends_at->format("F j, Y") }}
-                        </strong>
-                    </span>
+        <div class="project-about">
+            <span>
+                <i class="icon icon-person icon-align-text"></i>
+                {{ trans('home.projectby') }}
+                <strong>
+                    {{ json_decode($project->meta)->organisation->name }}
+                </strong>
+            </span>
+            <span>
+                <i class="icon icon-calendar icon-align-text"></i>
+                {{ trans('home.ended_at') }}
+                <strong>
+                    {{ $project->ends_at->format("F j, Y") }}
+                </strong>
+            </span>
+        </div>
 
         <?php
         $donationTypes = json_decode($project->meta)->donation_types;
@@ -48,10 +54,7 @@
         $donationKinds = \W4P\Models\DonationKind::all();
         $meta = json_decode($project->meta);
         ?>
-
-        <hr/>
-
-        <div class="container">
+        <div class="radials">
             <div class="row">
                 @if ($meta->goal > 0)
                     <div class="progress-radial progress-{{ round($percentages->currency->percentage) }}">
@@ -73,23 +76,21 @@
                 @endforeach
             </div>
         </div>
-
         <br/>
-        <hr/>
-
-        <div class="row">
-            <div class="col-md-4">
-                <strong>{{ $meta->total_percentage }}% {{ trans('generic.reached') }}</strong>
-            </div>
-            <div class="col-md-4">
-                <strong>{{ $meta->total_donors }} {{ trans('generic.donors') }}</strong>
-            </div>
-            <div class="col-md-4">
-                <strong>€ {{ $meta->contributed }} / € {{ $meta->goal }} {{ trans('generic.raised') }}</strong>
+        <div class="stats">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="stat">
+                        {{ $meta->total_percentage }}% {{ trans('generic.reached') }}
+                    </div>
+                    <div class="stat">
+                        {{ $meta->total_donors }} {{ trans('generic.donors') }}
+                    </div>
+                    <div class="stat">
+                        € {{ $meta->contributed }} / € {{ $meta->goal }} {{ trans('generic.raised') }}
+                    </div>
+                </div>
             </div>
         </div>
-
-        <hr/>
-
     </div>
 </div>

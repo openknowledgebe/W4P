@@ -1,0 +1,16 @@
+html.gray {
+
+    /// If 'gray' class is applied to the html element, some elements will need to have their white backgrounds replaced
+
+    background-color: $color-gray;
+    .content {
+        background-color: $color-gray;
+    }
+    body{
+        padding-bottom: 0 !important;
+    }
+    .progress-radial .overlay {
+        background-color: $color-gray;
+    }
+
+}
