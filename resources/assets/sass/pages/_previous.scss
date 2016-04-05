@@ -13,6 +13,11 @@
     .project-about {
         margin-top: 45px;
         margin-bottom: 25px;
+        color: #ACACAC;
+
+        .item {
+            color: #7B7B7B;
+        }
 
         span {
             margin-right: 25px;
@@ -30,5 +35,18 @@
             display: inline-block;
             margin-right: 50px;
         }
+    }
+
+    hr {
+        position: absolute;
+        left: 0;
+        width: 100vw;
+        border-color: #E7E7E7;
+        overflow: hidden;
+        margin-top: 40px;
+    }
+
+    .previous-project {
+        margin-bottom: 80px;
     }
 }

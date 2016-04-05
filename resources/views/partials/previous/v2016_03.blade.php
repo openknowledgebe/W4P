@@ -1,5 +1,5 @@
 {{-- Template for projects exported with version 2016.3 --}}
-
+<div class="previous-project">
 <div class="row">
     <div class="col-md-12">
         <h2>{{ $project->title }}</h2>
@@ -35,16 +35,16 @@
             <span>
                 <i class="icon icon-person icon-align-text"></i>
                 {{ trans('home.projectby') }}
-                <strong>
+                <span class="item">
                     {{ json_decode($project->meta)->organisation->name }}
-                </strong>
+                </span>
             </span>
             <span>
                 <i class="icon icon-calendar icon-align-text"></i>
                 {{ trans('home.ended_at') }}
-                <strong>
+                <span class="item">
                     {{ $project->ends_at->format("F j, Y") }}
-                </strong>
+                </span>
             </span>
         </div>
 
@@ -93,4 +93,6 @@
             </div>
         </div>
     </div>
+</div>
+<hr/>
 </div>
