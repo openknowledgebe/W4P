@@ -26,5 +26,8 @@ return [
     "previous" => "Previous projects",
     "reached" => "reached",
     "donors" => "donors",
-    "raised" => "total raised"
+    "raised" => "total raised",
+    "vat" => "VAT number",
+    "address" => "Address",
+    "contact" => "Contact"
 ];

@@ -144,7 +144,10 @@ class SetupController extends Controller
                     "organisationName" => Setting::get('organisation.name'),
                     "organisationDescription" => Setting::get('organisation.description'),
                     "organisationLogo" => Setting::get('organisation.logo'),
-                    "organisationWebsite" => Setting::get('organisation.website')
+                    "organisationWebsite" => Setting::get('organisation.website'),
+                    "organisationAddress" => Setting::get('organisation.address'),
+                    "organisationVAT" => Setting::get('organisation.vat'),
+                    "organisationEmail" => Setting::get('organisation.email')
                 ];
                 break;
             case 4:
@@ -319,14 +322,41 @@ class SetupController extends Controller
         if (file_exists(public_path() . "/organisation/logo.png")) {
             $logoValidationRule = 'image';
         }
+
+        // Default validation rules
+        $defaultRules = [
+            'organisationName' => 'required|min:4',
+            'organisationDescription' => 'required|min:4',
+            'organisationWebsite' => 'required|min:4',
+            'organisationLogo' => $logoValidationRule
+        ];
+
+        // Validation rules if organisation address, vat, email are not required
+        // (mollie has not been setup!)
+        $notRequired = [
+            "organisationAddress" => 'min:5',
+            "organisationVAT" => 'min:5',
+            "organisationEmail" => 'email'
+        ];
+
+        // Validation rules if organisation address, vat and email ARE required
+        $required = [
+            "organisationAddress" => 'required|min:5',
+            "organisationVAT" => 'required|min:5',
+            "organisationEmail" => 'required|email'
+        ];
+
+
+        $mollie = Setting::get('platform.mollie-key');
+        if ($mollie != "" && $mollie != null) {
+            $validation = array_merge($defaultRules, $required);
+        } else {
+            $validation = array_merge($defaultRules, $notRequired);
+        }
+
         $validator = Validator::make(
             Input::all(),
-            [
-                'organisationName' => 'required|min:4',
-                'organisationDescription' => 'required|min:4',
-                'organisationWebsite' => 'required|min:4',
-                'organisationLogo' => $logoValidationRule
-            ]
+            $validation
         );
         // Check if the validator fails
         if (!$validator->fails()) {
@@ -339,6 +369,9 @@ class SetupController extends Controller
             Setting::set('organisation.name', Input::get('organisationName'));
             Setting::set('organisation.description', Input::get('organisationDescription'));
             Setting::set('organisation.website', Input::get('organisationWebsite'));
+            Setting::set('organisation.vat', Input::get('organisationVAT'));
+            Setting::set('organisation.address', Input::get('organisationAddress'));
+            Setting::set('organisation.email', Input::get('organisationEmail'));
             Setting::set('organisation.valid', 'true');
         } else {
             // Validation has failed. Set success to false. Set validator messages

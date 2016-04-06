@@ -21,6 +21,10 @@ return [
         'finish' => "Finalize"
     ],
 
+    'warnings' => [
+        'mollie' => "NOTE: You've entered a Mollie API key. To use Mollie, you need to provide a valid address, VAT number and email address. This information needs to be visible on your site before Mollie will approve your payments. We'll show it in your footer once you add this information."
+    ],
+
     // Generic setup strings (like 'Next', 'Back', and 'Oops' (reused on multiple pages)
     'generic' => [
         'back' => 'Back',
@@ -133,6 +137,21 @@ return [
                     'name' => "Website of your organisation",
                     'placeholder' => "http://website.com",
                     'info' => "Enter your organisation's website URL here."
+                ],
+                'vat' => [
+                    'name' => "VAT-number",
+                    'placeholder' => "Enter your VAT number",
+                    'info' => "Enter your organisation's VAT number. Required for Mollie. Will show in the footer."
+                ],
+                'address' => [
+                    'name' => "Address of your organisation",
+                    'placeholder' => "Enter your address",
+                    'info' => "Enter your organisation's address. Required for Mollie. Will show in the footer."
+                ],
+                'email' => [
+                    'name' => "Support email address",
+                    'placeholder' => "Enter an email",
+                    'info' => "Enter your organisation's email address that will be used for support or questions about payments. Required for Mollie. Will show in the footer."
                 ],
             ]
         ],

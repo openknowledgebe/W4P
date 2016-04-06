@@ -2,7 +2,15 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-
+                @if (property_exists($settings, 'legal'))
+                    <div class="small-legal">
+                        <strong>{{ $settings->org }}</strong><br/>
+                        <br/>
+                        <strong>{{ trans('generic.address') }}:</strong><br/> {!! nl2br($settings->legal->address) !!}<br/>
+                        <strong>{{ trans('generic.vat') }}:</strong> {{ $settings->legal->vat }}<br/>
+                        <strong>{{ trans('generic.contact') }}:</strong> {{ $settings->legal->email }}
+                    </div>
+                @endif
             </div>
             <div class="col-md-3">
                 <ul>

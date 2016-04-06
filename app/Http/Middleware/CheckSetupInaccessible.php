@@ -24,6 +24,7 @@ class CheckSetupInaccessible
         foreach ($allSettings as $setting) {
             $settings[$setting->key] = $setting->value;
         }
+        
         // Check if the settings are valid
         if (array_key_exists('pwd', $settings) &&
             array_key_exists('platform.name', $settings) &&

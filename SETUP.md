@@ -1,5 +1,9 @@
 # Setup
 
+## Important
+
+There are some things you'll need to do after a succesful installation. You'll find the details below.
+
 ## Setup instructions for developers
 
 ### A note on newer builds
@@ -98,3 +102,32 @@ Terminal commands:
     cd ..
     chmod -R a+w database
     chmod -R a+w storage
+
+## Post installation instructions
+
+### Twitter cards
+
+Twitter cards with a player need validation - so you need to run your hostname through a validation procedure: see https://cards-dev.twitter.com/validator
+
+### Mollie
+
+Mollie also has a validation procedure for accepting payments.
+
+**Before you can accept payments, you need to have them validate your website. In order to make complying to the TOS easier, we require you to fill in some information (more below)**.
+
+They will check these guidlines before approving you:
+
+> Uw ondernemingsnummer ... moet duidelijk zichtbaar zijn voor al uw bezoekers. Alleen vermelden in uw algemene voorwaarden is niet voldoende.
+  De handelsnaam ... moet bij de Kamer van Koophandel geregistreerd staan onder hetzelfde ondernemingsnummer ... .
+  Als u BTW-plichtig bent, is het vermelden van uw BTW-nummer op de website verplicht.
+  Het vermelden van een vestigingsadres is verplicht. Een postbus is helaas niet toegestaan. Vermeld eventueel dat het géén bezoekadres is.
+  Het e-mailadres ... in het websiteprofiel moet duidelijk zichtbaar zijn voor al uw bezoekers of eventueel te bereiken zijn via een contactformulier, mochten zij vragen hebben over hun bestelling.
+  Naast het vermelden van uw e-mailadres dient u ook een manier aan te bieden waar op klanten direct contact met u kunnen opnemen, bijvoorbeeld een telefoonnummer.
+
+If you enter a Mollie API key in the setup, you are REQUIRED to enter valid organisation information for:
+
+* Your organisation's VAT number
+* Your organisation's email address
+* Your organisation's physical address
+
+Remember, you can also customize your footer to provide additional information.
