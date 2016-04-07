@@ -16,6 +16,8 @@ return [
     "of" => "of",
     "daysleft" => "days left",
     "hoursleft" => "hours left",
+    "minutesleft" => "minutes left",
+    "over" => "This campaign has ended.",
     "story" => "Our story",
     "updates" => "Updates",
     "howdoesitwork" => "How does it work?",

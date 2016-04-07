@@ -45,8 +45,16 @@ class HomeController extends Controller
         // Get when the project runs out
         $ends_at = new Carbon($project->ends_at);
         $now = Carbon::now();
-        $leftDays = $now->diffInDays($ends_at);
-        $leftHours = $now->diffInHours($ends_at);
+
+        if ($ends_at->lt($now)) {
+            $leftDays = 0;
+            $leftHours = 0;
+            $leftMinutes = 0;
+        } else {
+            $leftDays = $now->diffInDays($ends_at);
+            $leftHours = $now->diffInHours($ends_at);
+            $leftMinutes = $now->diffInMinutes($ends_at);
+        }
 
         // Get how many contributors there are
         $donorQuery = Donation::whereNotNull('confirmed')->get();
@@ -83,6 +91,7 @@ class HomeController extends Controller
             ->with("tiers", Tier::all()->sortBy('pledge'))
             ->with("hoursleft", $leftHours)
             ->with("daysleft", $leftDays)
+            ->with("minutesleft", $leftMinutes)
             ->with('donationTypes', $donationTypes)
             ->with('donationKinds', $donationKinds)
             ->with('donorCount', $donorCount)
