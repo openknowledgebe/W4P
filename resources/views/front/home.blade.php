@@ -79,15 +79,25 @@
                                 </div>
                                 <div class="col-md-4">
                                     @if ($hoursleft < 24)
-                                        <span class="number-lg">{{ $hoursleft }}</span><br/>
-                                        <span class="number-sm">{{ trans('home.hoursleft') }}</span>
+                                            @if ($hoursleft <= 2)
+                                                <span class="number-lg">{{ $minutesleft }}</span><br/>
+                                                <span class="number-sm">{{ trans('home.minutesleft') }}</span>
+                                            @else
+                                                <span class="number-lg">{{ $hoursleft }}</span><br/>
+                                                <span class="number-sm">{{ trans('home.hoursleft') }}</span>
+                                            @endif
                                     @else
                                         <span class="number-lg">{{ $daysleft }}</span><br/>
                                         <span class="number-sm">{{ trans('home.daysleft') }}</span>
                                     @endif
                                 </div>
                             </div>
-                            <a href="{{ URL::route('donate::start') }}" class="btn-support">{{ trans('home.support') }}</a>
+                            @if ($minutesleft > 0)
+                                <a href="{{ URL::route('donate::start') }}" class="btn-support">{{ trans('home.support') }}</a>
+                            @else
+                                <br/>
+                                <p class="campaign-over">{{ trans('home.over') }}</p>
+                            @endif
                         </section>
                     </div>
                 </div>
