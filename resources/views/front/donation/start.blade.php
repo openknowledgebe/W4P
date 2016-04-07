@@ -66,12 +66,12 @@
                                         </div>
                                     {{-- End of reward tiers --}}
                                     @endif
-                                            <p>{{ trans('donation.or_custom_amount') }}:</p>
-                                            <div class="form-group">
-                                                <input type="number" step="any"
-                                                       class="form-control" id="currency" name="currency"
-                                                       placeholder="Pledge amount" min="0">
-                                            </div>
+                                            <p>{{ trans('donation.or_custom_amount') }}</p>
+                                    <div class="form-group">
+                                        <input type="number" step="any"
+                                               class="form-control" id="currency" name="currency"
+                                               placeholder="Pledge amount" min="0">
+                                    </div>
                                 </div>
                             </div>
                         @endif

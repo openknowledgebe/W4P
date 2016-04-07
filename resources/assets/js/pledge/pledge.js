@@ -24,12 +24,10 @@ $(document).ready(function() {
         $('.donation-tier-item').removeClass('active');
         $(this).addClass('active');
         var money = $(this).attr('data-tier');
-        console.log(money);
         $("#currency").val(money);
     })
 
     $("#currency").keyup(function(){
-        console.log('firin');
         var currency = $("#currency").val();
         $('.donation-tier-item').removeClass('active');
         $('.donation-tier-item').each(function(index) {
