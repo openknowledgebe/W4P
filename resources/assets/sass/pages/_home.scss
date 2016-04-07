@@ -39,13 +39,14 @@
 
 .goals {
     position: relative;
-    top: -34px;
+    margin-top: -34px;
 
     .meta-container {
         background-color: white;
         padding: 0;
         position: relative;
         z-index: 0;
+        height: 350px + 34px;
 
         &:after{
             content:'';
@@ -106,31 +107,46 @@
 
             .percentage {
                 display: inline-block;
-                width: 200px;
+                text-align: center;
+                padding: 0 40px 10px 40px;
+                border-right: 1px solid #E7E7E7;
+                vertical-align: top;
 
                 .number{
-                    font-size: 4em;
-                    font-weight: bold;
+                    font-size: 68px;
+                    font-weight: normal;
                 }
 
                 .percent {
-                    font-size: 1.2em;
+                    font-size: 20px;
                 }
 
                 .reached {
                     position: relative;
-                    top: -20px;
-                    left: 10px;
                     font-size: 0.9em;
                     text-transform: uppercase;
                     color: $color-primary;
+                }
+            }
+
+            .progress-radials{
+                display: inline-block;
+                padding: 0 40px;
+
+                .progress-radial{
+                    margin-left: 5px;
+                    margin-top: 18px;
+
+                    i{
+                        margin-top: 17px;
+                    }
                 }
             }
         }
     }
 
     .numbers-container {
-        padding: 25px;
+        padding: 25px 50px;
         position: relative;
         top: 34px;
         background-color: $color-primary;
@@ -142,7 +158,7 @@
             margin-top: 40px;
             line-height: 0.3;
             font-size: 84px;
-            font-weight: bold;
+            font-weight: normal;
         }
 
         span.number-sm{
@@ -151,9 +167,8 @@
             text-transform: uppercase;
             line-height: 1;
             font-size: 16px;
-            font-weight: 300;
+            font-weight: normal;
             color: $color-primary-contrast;
-            max-height: 20px;
         }
 
         .btn-support{
