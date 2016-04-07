@@ -29,5 +29,5 @@ return [
     "raised" => "total raised",
     "vat" => "VAT number",
     "address" => "Address",
-    "contact" => "Contact"
+    "contact" => "Contact",
 ];

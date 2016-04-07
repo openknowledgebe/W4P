@@ -43,7 +43,7 @@
                             <div class="percentage">
                                 <span class="number">{{$totalPercentage}}</span><!--
                              --><span class="percent">%</span><br/>
-                                <span class="reached">reached</span>
+                                <span class="reached">{{ trans('home.reached') }}</span>
                             </div>
                             <div class="progress-radials">
                                 @if ($project->currency > 0 && count($donationTypes) > 0)
@@ -314,7 +314,7 @@
             {{-- Tab panes for extra categories --}}
             <div class='tabs'>
                 <div class="container">
-                    <h3>What we need</h3>
+                    <h3>{{ trans('home.what_we_need') }}</h3>
 
                     <?php $count = 0; ?>
                     <div class='tab-content clearfix'>
@@ -328,7 +328,7 @@
                                     {{ $donation_item->required_amount }} x<br/>
                                     <h4>{{ $donation_item->name }}</h4>
                                     <span class="orange">
-                                        {{ $percentages[$kind]["items"][$key]['required'] }} more required
+                                        {{ $percentages[$kind]["items"][$key]['required'] }} {{ trans('home.more_required') }}
                                     </span>
                                 </div>
                             </div>

@@ -40,6 +40,7 @@ return [
     "previous_projects" => "Previous projects",
     "import_previous_project" => "Import previous project",
     "do_import" => "Import",
+    "general_platform" => "General configuration",
 
     /**
      * KINDS OF TYPES

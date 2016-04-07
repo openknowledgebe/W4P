@@ -180,9 +180,6 @@ class AdminController extends Controller
             "organisationDescription" => Setting::get('organisation.description'),
             "organisationLogo" => Setting::get('organisation.logo'),
             "organisationWebsite" => Setting::get('organisation.website'),
-            "organisationAddress" => Setting::get('organisation.address'),
-            "organisationVAT" => Setting::get('organisation.vat'),
-            "organisationEmail" => Setting::get('organisation.email')
         ];
         return View::make('backoffice.organisation')
             ->with('data', $data);
@@ -211,32 +208,9 @@ class AdminController extends Controller
             'organisationLogo' => $logoValidationRule
         ];
 
-        // Validation rules if organisation address, vat, email are not required
-        // (mollie has not been setup!)
-        $notRequired = [
-            "organisationAddress" => 'min:5',
-            "organisationVAT" => 'min:5',
-            "organisationEmail" => 'email'
-        ];
-
-        // Validation rules if organisation address, vat and email ARE required
-        $required = [
-            "organisationAddress" => 'required|min:5',
-            "organisationVAT" => 'required|min:5',
-            "organisationEmail" => 'required|email'
-        ];
-
-
-        $mollie = Setting::get('platform.mollie-key');
-        if ($mollie != "" && $mollie != null) {
-            $validation = array_merge($defaultRules, $required);
-        } else {
-            $validation = array_merge($defaultRules, $notRequired);
-        }
-
         $validator = Validator::make(
             Input::all(),
-            $validation
+            $defaultRules
         );
 
         // Check if the validator fails
@@ -250,11 +224,6 @@ class AdminController extends Controller
             Setting::set('organisation.name', Input::get('organisationName'));
             Setting::set('organisation.description', Input::get('organisationDescription'));
             Setting::set('organisation.website', Input::get('organisationWebsite'));
-            if ($mollie) {
-                Setting::set('organisation.vat', Input::get('organisationVAT'));
-                Setting::set('organisation.address', Input::get('organisationAddress'));
-                Setting::set('organisation.email', Input::get('organisationEmail'));
-            }
             Setting::set('organisation.valid', 'true');
             Session::flash('info', trans('backoffice.flash.org_update_success'));
         } else {
@@ -281,6 +250,10 @@ class AdminController extends Controller
             "platformCopyright" => Setting::get('platform.copyright'),
             "analyticsId" => Setting::get('platform.analytics-id'),
             "mollieApiKey" => Setting::get('platform.mollie-key'),
+            "platformOrganisationName" => Setting::get('platform.organisation.name'),
+            "platformOrganisationAddress" => Setting::get('platform.organisation.address'),
+            "platformOrganisationVAT" => Setting::get('platform.organisation.vat'),
+            "platformOrganisationEmail" => Setting::get('platform.organisation.email')
         ];
         return View::make('backoffice.platform')
             ->with('data', $data);
@@ -301,12 +274,40 @@ class AdminController extends Controller
             $logoValidationRule = 'image';
         }
 
+        $defaultRules = [
+            'platformOwnerName' => 'required|min:4',
+            'platformOwnerLogo' => $logoValidationRule
+        ];
+
+        // Validation rules if organisation address, vat, email are not required
+        // (mollie has not been setup!)
+        $notRequired = [
+            "platformOrganisationAddress" => 'min:5',
+            "platformOrganisationVAT" => 'min:5',
+            "platformOrganisationEmail" => 'email',
+            "platformOrganisationName" => 'min:2',
+        ];
+
+        // Validation rules if organisation address, vat and email ARE required
+        $required = [
+            "platformOrganisationAddress" => 'required|min:5',
+            "platformOrganisationVAT" => 'required|min:5',
+            "platformOrganisationEmail" => 'required|email',
+            "platformOrganisationName" => 'required|min:2'
+        ];
+
+        Setting::set('platform.organisation.valid', 'true');
+
+        $mollie = Input::get('mollieApiKey');
+        if ($mollie != "" && $mollie != null) {
+            $validation = array_merge($defaultRules, $required);
+        } else {
+            $validation = array_merge($defaultRules, $notRequired);
+        }
+
         $validator = Validator::make(
             Input::all(),
-            [
-                'platformOwnerName' => 'required|min:4',
-                'platformOwnerLogo' => $logoValidationRule
-            ]
+            $validation
         );
 
         // Check if the validator fails
@@ -324,6 +325,11 @@ class AdminController extends Controller
             Setting::set('platform.analytics-id', Input::get('analyticsId'));
             // Save the Mollie API key
             Setting::set('platform.mollie-key', Input::get('mollieApiKey'));
+            // Save org details
+            Setting::set('platform.organisation.address', Input::get('platformOrganisationAddress'));
+            Setting::set('platform.organisation.email', Input::get('platformOrganisationEmail'));
+            Setting::set('platform.organisation.name', Input::get('platformOrganisationName'));
+            Setting::set('platform.organisation.vat', Input::get('platformOrganisationVAT'));
             Session::flash('info', trans('backoffice.flash.platform_update_success'));
         } else {
             // Validation has failed. Set success to false. Set validator messages
