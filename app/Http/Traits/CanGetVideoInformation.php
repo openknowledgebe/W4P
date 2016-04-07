@@ -8,6 +8,16 @@ use Session;
 trait CanGetVideoInformation
 {
     /**
+     * Get video information
+     * This is only called when a Twitter handle has been set
+     */
+    public function getVideoInformation()
+    {
+        $this->video_thumb = $this->getThumbnailUrl();
+        $this->video_embed = $this->getEmbed();
+    }
+
+    /**
      * Gets the video provider given an url
      * @return null|string
      */

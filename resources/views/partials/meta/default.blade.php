@@ -1,5 +1,7 @@
 {{-- If no project is available, do not generate any meta tags --}}
 @if (isset($project))
+        {{-- Fetch the video information --}}
+        {{ $project->getVideoInformation() }}
         {{-- Facebook OpenGraph --}}
         <meta property="og:url" content="{{ Request::url() }}" />
         <meta property="og:type" content="product" />
@@ -48,24 +50,28 @@
                 {{-- Use project desc --}}
                 <meta name="twitter:description" content="{{ $project->brief }}" />
             @endif
-            @if ($settings->social->seo_image)
-                <meta name="twitter:image" content="{{ $settings->social->seo_image }}">
-            @else
-                <meta name="twitter:image" content="{{ URL::to('project/banner.jpg') }}">
+            @if ($video_provider == null)
+                @if ($settings->social->seo_image)
+                    <meta name="twitter:image" content="{{ $settings->social->seo_image }}">
+                @else
+                    <meta name="twitter:image" content="{{ URL::to('project/banner.jpg') }}">
+                @endif
+            @endif
+            {{-- If video provider --}}
+            @if ($video_provider != null)
+                <meta name="twitter:player:width" content="1280">
+                <meta name="twitter:player:height" content="720">
+                <meta name="twitter:player" content="{{ $project->video_embed }}">
+                <meta name="twitter:image" content="{{ $project->video_thumb }}">
             @endif
         @endif
-        {{-- If video provider --}}
-        @if ($video_provider != null)
-            <meta name="twitter:player:width" content="1280">
-            <meta name="twitter:player:height" content="720">
-            <meta name="twitter:player" content="{{ $project->getEmbed() }}">
-            <meta name="twitter:image" content="{{ $project->getThumbnailUrl() }}">
-            <!-- Google Structured Data -->
-            <div itemscope itemtype="http://schema.org/VideoObject" class="hidden">
-                <span itemprop="name">{{ $project->title }}</span>
-                <span itemprop="description">{{ $project->brief }}</span>
-                <img itemprop="thumbnailUrl" src="{{ URL::to('project/banner.jpg') }}" alt=""/>
-                <link itemprop="contentUrl" href="{{ $project->video_url }}" />
-            </div>
+    @if ($video_provider != null)
+    <!-- Google Structured Data -->
+    <div itemscope itemtype="http://schema.org/VideoObject" class="hidden">
+        <span itemprop="name">{{ $project->title }}</span>
+        <span itemprop="description">{{ $project->brief }}</span>
+        <img itemprop="thumbnailUrl" src="{{ $project->video_thumb }}" alt=""/>
+        <link itemprop="contentUrl" href="{{ $project->video_url }}" />
+    </div>
     @endif
 @endif
