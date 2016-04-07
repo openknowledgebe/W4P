@@ -190,7 +190,11 @@
                             {{ trans("home.updates") }} (<strong>{{ count($posts) }}</strong>)
                         </a></li>
                 </ul>
+            </div>
 
+            <hr class='no-margin'/>
+
+            <div class="container">
                 {{-- Actual tab panes --}}
                 <div class="tab-content">
                     {{-- Story tab page; this tab pane contains Markdown transformed to HTML. --}}
