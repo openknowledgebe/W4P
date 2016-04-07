@@ -11,9 +11,9 @@
 @section('content')
 
     <div class="project previous">
+        @foreach ($previous as $project)
         <div class="container">
             <div class="row project-overview">
-                @foreach ($previous as $project)
                     {{--
                     PREVIOUS PROJECTS
                     First, we find out what version of the previous project was deployed on.
@@ -27,8 +27,9 @@
                     @if (in_array($version . ".blade.php", $available_partials))
                         @include('partials.previous.' . $version)
                     @endif
-                @endforeach
             </div>
         </div>
+        <hr/>
+        @endforeach
     </div>
 @endsection
