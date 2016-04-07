@@ -1,0 +1,45 @@
+$tabs-height: 70px;
+
+.nav-tabs{
+    border: 0px none;
+    height: $tabs-height;
+
+    li{
+        a{
+            display: inline-block;
+            height: $tabs-height;
+            line-height: $tabs-height;
+            padding: 0 18px;
+            border: 0;
+            border-radius: 0;
+            position: relative;
+
+            &:after{
+                position: absolute;
+                content: '';
+                width: 1px;
+                background: #E7E7E7;
+                right: 0px;
+                height: $tabs-height - 38px;
+                top: 19px;
+            }
+
+            i{
+                margin-right: 5px;
+            }
+
+            &:hover, &:focus{
+                border: 0px;
+                background: $color-gray;
+            }
+        }
+
+        &:last-child{
+            a{
+                &:after{
+                    display: none;
+                }
+            }
+        }
+    }
+}

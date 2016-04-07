@@ -262,15 +262,21 @@
             background-color: #FFF;
             padding: 25px;
             border-radius: 5px;
+            position: relative;
+            min-height: 150px;
+            word-wrap: break-word;
         }
 
         span{
             &.grey{
-                color: #E7E7E7;
+                color: #ACACAC;
             }
 
             &.status{
-                margin-top: 20px;
+                position: absolute;
+                left: 25px;
+                bottom: 25px;
+                display: inline-block;
                 font-size: 0.8em;
                 text-transform: uppercase;
 
