@@ -46,7 +46,13 @@
         <div class="row">
             <div class="col-md-12">
                 @if ($settings->copyright == null)
-                    <p class="gray">&copy; {{ date('Y') }} {{ $settings->org }}</p>
+                    <p class="gray">&copy; {{ date('Y') }}
+                        @if (property_exists($settings, 'legal'))
+                            {{ $settings->legal->org }}
+                        @else
+                            {{ $settings->org }}
+                        @endif
+                    </p>
                 @else
                     {{ $settings->copyright }}
                 @endif

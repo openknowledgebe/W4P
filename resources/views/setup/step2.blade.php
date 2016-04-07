@@ -86,6 +86,82 @@
                         {{ trans('setup.detail.platform.fields.mollie.info') }}
                     </span>
                 </div>
+
+                <div class="form-group">
+                    <label for="platformOrganisationName">
+                        {{ trans('setup.detail.platform.fields.name.name') }}
+                    </label>
+
+                    <input type="text" class="form-control" name="platformOrganisationName"
+                           placeholder="{{ trans('setup.detail.platform.fields.name.placeholder') }}"
+                           value=
+                           "<?php
+                           if (Request::old('platformOrganisationName')) {
+                               echo Request::old('platformOrganisationName');
+                           } else {
+                               echo $data["platformOrganisationName"];
+                           }
+                           ?>"
+                           maxlength="255">
+                    <span id="helpBlock" class="help-block">
+                        {{ trans('setup.detail.platform.fields.name.info') }}
+                    </span>
+                </div>
+
+                <div class="form-group">
+                    <label for="platformOrganisationAddress">
+                        {{ trans('setup.detail.platform.fields.address.name') }}
+                    </label>
+
+                     <textarea class="form-control" rows="3" name="platformOrganisationAddress"
+                               placeholder="{{ trans('setup.detail.platform.fields.address.placeholder') }}"><?php if (Request::old('platformOrganisationAddress')) { echo Request::old('platformOrganisationAddress');
+                         } else if (isset($data["platformOrganisationAddress"])) { echo $data["platformOrganisationAddress"]; } ?></textarea>
+                    <span id="helpBlock" class="help-block">
+                        {{ trans('setup.detail.platform.fields.address.info') }}
+                    </span>
+                </div>
+
+                <div class="form-group">
+                    <label for="platformOrganisationVAT">
+                        {{ trans('setup.detail.platform.fields.vat.name') }}
+                    </label>
+                    <input type="text" class="form-control" name="platformOrganisationVAT"
+                           placeholder="{{ trans('setup.detail.platform.fields.vat.placeholder') }}"
+                           value=
+                           "<?php
+                           if (Request::old('platformOrganisationVAT')) {
+                               echo Request::old('platformOrganisationVAT');
+                           } else {
+                               echo $data["platformOrganisationVAT"];
+                           }
+                           ?>"
+                           maxlength="255">
+                    <span id="helpBlock" class="help-block">
+                        {{ trans('setup.detail.platform.fields.vat.info') }}
+                    </span>
+                </div>
+
+                <div class="form-group">
+                    <label for="platformOrganisationEmail">
+                        {{ trans('setup.detail.platform.fields.email.name') }}
+                    </label>
+
+                    <input type="text" class="form-control" name="platformOrganisationEmail"
+                           placeholder="{{ trans('setup.detail.platform.fields.email.placeholder') }}"
+                           value=
+                           "<?php
+                           if (Request::old('platformOrganisationEmail')) {
+                               echo Request::old('platformOrganisationEmail');
+                           } else {
+                               echo $data["platformOrganisationEmail"];
+                           }
+                           ?>"
+                           maxlength="255">
+                    <span id="helpBlock" class="help-block">
+                        {{ trans('setup.detail.platform.fields.email.info') }}
+                    </span>
+                </div>
+
             <hr/>
 
             <a class="btn4 btn-sm" href="{{ URL::route('setup::step', 1) }}">&larr; {{ trans('setup.generic.back') }}</a>

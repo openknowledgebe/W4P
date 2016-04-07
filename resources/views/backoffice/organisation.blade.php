@@ -91,60 +91,6 @@
                     </span>
                 </div>
 
-                <div class="form-group">
-                    <label for="organisationAddress">
-                        {{ trans('setup.detail.organisation.fields.address.name') }}
-                    </label>
-
-                     <textarea class="form-control" rows="3" name="organisationAddress"
-                               placeholder="{{ trans('setup.detail.organisation.fields.address.placeholder') }}"><?php if (Request::old('organisationAddress')) { echo Request::old('organisationAddress');
-                         } else if (isset($data["organisationAddress"])) { echo $data["organisationAddress"]; } ?></textarea>
-                    <span id="helpBlock" class="help-block">
-                        {{ trans('setup.detail.organisation.fields.address.info') }}
-                    </span>
-                </div>
-
-                <div class="form-group">
-                    <label for="organisationVAT">
-                        {{ trans('setup.detail.organisation.fields.vat.name') }}
-                    </label>
-                    <input type="text" class="form-control" name="organisationVAT"
-                           placeholder="{{ trans('setup.detail.organisation.fields.vat.placeholder') }}"
-                           value=
-                           "<?php
-                           if (Request::old('organisationVAT')) {
-                               echo Request::old('organisationVAT');
-                           } else {
-                               echo $data["organisationVAT"];
-                           }
-                           ?>"
-                           maxlength="255">
-                    <span id="helpBlock" class="help-block">
-                        {{ trans('setup.detail.organisation.fields.vat.info') }}
-                    </span>
-                </div>
-
-                <div class="form-group">
-                    <label for="organisationEmail">
-                        {{ trans('setup.detail.organisation.fields.email.name') }}
-                    </label>
-
-                    <input type="text" class="form-control" name="organisationEmail"
-                           placeholder="{{ trans('setup.detail.organisation.fields.email.placeholder') }}"
-                           value=
-                           "<?php
-                           if (Request::old('organisationEmail')) {
-                               echo Request::old('organisationEmail');
-                           } else {
-                               echo $data["organisationEmail"];
-                           }
-                           ?>"
-                           maxlength="255">
-                    <span id="helpBlock" class="help-block">
-                        {{ trans('setup.detail.organisation.fields.email.info') }}
-                    </span>
-                </div>
-
                 <hr/>
                 <button type="submit" class="btn btn-primary pull-right">{{ trans('backoffice.save') }}</button>
             </form>

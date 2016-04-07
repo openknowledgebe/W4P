@@ -109,7 +109,27 @@ return [
                     'name' => "Footer copyright",
                     'placeholder' => 'Enter your full copyright message here',
                     'info' => "This will replace the complete message. By default, your organisation's name and the year are shown."
-                ]
+                ],
+                'name' => [
+                    'name' => "Platform owner organisation name",
+                    'placeholder' => "Enter an organisation name",
+                    'info' => "Enter your organisation's name that will be used for support or questions about payments. Required for Mollie. Will show in the footer. You can also enter your organisation's number here."
+                ],
+                'vat' => [
+                    'name' => "VAT-number",
+                    'placeholder' => "Enter your VAT number",
+                    'info' => "Enter the platform organisation's VAT number. Required for Mollie. Will show in the footer."
+                ],
+                'address' => [
+                    'name' => "Address of your organisation",
+                    'placeholder' => "Enter your address",
+                    'info' => "Enter the platform organisation's address. Required for Mollie. Will show in the footer."
+                ],
+                'email' => [
+                    'name' => "Support email address",
+                    'placeholder' => "Enter an email",
+                    'info' => "Enter the platform organisation's email address that will be used for support or questions about payments. Required for Mollie. Will show in the footer."
+                ],
             ]
         ],
 
@@ -138,21 +158,6 @@ return [
                     'name' => "Website of your organisation",
                     'placeholder' => "http://website.com",
                     'info' => "Enter your organisation's website URL here."
-                ],
-                'vat' => [
-                    'name' => "VAT-number",
-                    'placeholder' => "Enter your VAT number",
-                    'info' => "Enter your organisation's VAT number. Required for Mollie. Will show in the footer."
-                ],
-                'address' => [
-                    'name' => "Address of your organisation",
-                    'placeholder' => "Enter your address",
-                    'info' => "Enter your organisation's address. Required for Mollie. Will show in the footer."
-                ],
-                'email' => [
-                    'name' => "Support email address",
-                    'placeholder' => "Enter an email",
-                    'info' => "Enter your organisation's email address that will be used for support or questions about payments. Required for Mollie. Will show in the footer."
                 ],
             ]
         ],

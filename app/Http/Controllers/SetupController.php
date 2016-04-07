@@ -137,6 +137,10 @@ class SetupController extends Controller
                     "platformOwnerName" => Setting::get('platform.name'),
                     "analyticsId" => Setting::get('platform.analytics-id'),
                     "mollieApiKey" => Setting::get('platform.mollie-key'),
+                    "platformOrganisationName" => Setting::get('platform.organisation.name'),
+                    "platformOrganisationAddress" => Setting::get('platform.organisation.address'),
+                    "platformOrganisationVAT" => Setting::get('platform.organisation.vat'),
+                    "platformOrganisationEmail" => Setting::get('platform.organisation.email')
                 ];
                 break;
             case 3:
@@ -145,9 +149,6 @@ class SetupController extends Controller
                     "organisationDescription" => Setting::get('organisation.description'),
                     "organisationLogo" => Setting::get('organisation.logo'),
                     "organisationWebsite" => Setting::get('organisation.website'),
-                    "organisationAddress" => Setting::get('organisation.address'),
-                    "organisationVAT" => Setting::get('organisation.vat'),
-                    "organisationEmail" => Setting::get('organisation.email')
                 ];
                 break;
             case 4:
@@ -307,11 +308,9 @@ class SetupController extends Controller
             "platformOrganisationName" => 'required|min:2'
         ];
 
-        Setting::set('platform.organisation.address', Input::get('organisationAddress'));
-        Setting::set('platform.organisation.email', Input::get('organisationEmail'));
         Setting::set('platform.organisation.valid', 'true');
 
-        $mollie = Setting::get('platform.mollie-key');
+        $mollie = Input::get('mollieApiKey');
         if ($mollie != "" && $mollie != null) {
             $validation = array_merge($defaultRules, $required);
         } else {
@@ -336,9 +335,11 @@ class SetupController extends Controller
             Setting::set('platform.analytics-id', Input::get('analyticsId'));
             // Save the Mollie API key
             Setting::set('platform.mollie-key', Input::get('mollieApiKey'));
-
-
-
+            // Save org details
+            Setting::set('platform.organisation.address', Input::get('platformOrganisationAddress'));
+            Setting::set('platform.organisation.email', Input::get('platformOrganisationEmail'));
+            Setting::set('platform.organisation.name', Input::get('platformOrganisationName'));
+            Setting::set('platform.organisation.vat', Input::get('platformOrganisationVAT'));
         } else {
             // Validation has failed. Set success to false. Set validator messages
             $this->success = false;
@@ -367,7 +368,7 @@ class SetupController extends Controller
 
         $validator = Validator::make(
             Input::all(),
-            $validation
+            $defaultRules
         );
         // Check if the validator fails
         if (!$validator->fails()) {
