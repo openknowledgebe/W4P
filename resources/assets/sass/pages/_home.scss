@@ -1,9 +1,11 @@
+
 .home-banner {
     height: $banner-height;
     background-color: $color-primary-contrast;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    z-index: -1;
 
     .banner-text {
         padding-top: ($banner-height / 2) - 20px;
@@ -11,36 +13,6 @@
         text-align: center;
         font-size: 2.9em;
         color: #FFF;
-    }
-}
-
-.meta-container {
-    padding-left: 25px;
-    padding-right: 25px;
-}
-
-.meta {
-    .percentage {
-        display: inline-block;
-        width: 200px;
-
-        .number{
-            font-size: 4em;
-            font-weight: bold;
-        }
-
-        .percent {
-            font-size: 1.2em;
-        }
-
-        .reached {
-            position: relative;
-            top: -20px;
-            left: 10px;
-            font-size: 0.9em;
-            text-transform: uppercase;
-            color: $color-primary;
-        }
     }
 }
 
@@ -67,16 +39,100 @@
 
 .goals {
     position: relative;
-    top: -20px;
+    top: -34px;
 
     .meta-container {
         background-color: white;
+        padding: 0;
+        position: relative;
+        z-index: 0;
+
+        &:after{
+            content:'';
+            background-color: white;
+            height: 100%;
+            width: 3000px;
+            right: 0px;
+            top: 0px;
+            position: absolute;
+            z-index: -1;
+        }
+
+
+        .meta {
+            position: relative;
+            z-index: 0;
+            padding: 38px 0;
+            padding-right: 34px;
+
+            &:first-child{
+
+                &:after{
+                    content:'';
+                    border-bottom: 1px solid #E7E7E7;
+                    height: 100%;
+                    width: 3000px;
+                    right: 0px;
+                    top: 0px;
+                    position: absolute;
+                    z-index: -1;
+                }
+            }
+
+            h1{
+                margin-top: 0px;
+                margin-bottom: 20px;
+            }
+
+            &.project-meta{
+                span{
+                    color: #ACACAC;
+                    font-size: 14px;
+                    margin-right:  20px;
+
+                    i{
+                        width: 21.8px;
+                        height: 20.9px;
+                        margin-right: 5px;
+                        display: inline-block;
+                    }
+
+                    strong{
+                        color: #676767;
+                        font-weight: normal;
+                    }
+                }
+            }
+
+            .percentage {
+                display: inline-block;
+                width: 200px;
+
+                .number{
+                    font-size: 4em;
+                    font-weight: bold;
+                }
+
+                .percent {
+                    font-size: 1.2em;
+                }
+
+                .reached {
+                    position: relative;
+                    top: -20px;
+                    left: 10px;
+                    font-size: 0.9em;
+                    text-transform: uppercase;
+                    color: $color-primary;
+                }
+            }
+        }
     }
 
     .numbers-container {
         padding: 25px;
         position: relative;
-        top: 20px;
+        top: 34px;
         background-color: $color-primary;
         color: #FFF;
         height: 350px;
@@ -101,14 +157,26 @@
         }
 
         .btn-support{
-            padding: 15px;
+            padding: 5px 30px 13px 30px;
             background-color: $color-primary-contrast;
             text-transform: uppercase;
             color: #FFF;
             border-radius: 30px;
             display: inline-block;
-            margin-bottom: 15px;
-            margin-top: 15px;
+            margin-bottom: 22px;
+            margin-top: 22px;
+            font-size: 16px;
+            font-weight: 300;
+
+            span{
+                margin-left: 20px;
+                font-size: 24px;
+            }
+
+            &:hover, &:focus{
+                text-decoration: none;
+                background-color: darken($color-primary-contrast, 5%);
+            }
         }
     }
 }

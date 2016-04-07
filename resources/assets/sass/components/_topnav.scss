@@ -1,11 +1,5 @@
-.navlogo {
-    max-height: 51px;
-    position: relative;
-    top: -15px;
-    left: -15px;
-}
-
 .dropdown-menu{
+
     .separator
     {
         font-size: 0.85em;
@@ -16,13 +10,54 @@
         text-transform: uppercase;
         cursor: default;
     }
+
     .disabled
     {
         cursor: default;
         color: #CCC;
+
         &:hover{
             background-color: #FFF;
             color: #CCC;
+        }
+    }
+}
+
+.navbar{
+    .navbar-brand{
+        padding: 0;
+    }
+
+    .navlogo {
+        max-height: $navlogo-height;
+        position: relative;
+        margin-right: 100px;
+        margin-top: ($navbar-height - $navlogo-height)/2;
+    }
+
+    .navbar-nav{
+        li{
+            a{
+                box-sizing: border-box;
+                padding: 0 30px;
+                height: $navbar-height;
+                line-height: $navbar-height;
+
+                &:hover, &:focus{
+                    // border-bottom: 0px none;
+                    background-color: lighten($color-orange, 43%);
+                }
+            }
+
+            &.active{
+                a{
+                    // border-bottom: 0px none;
+
+                    &:hover, &:focus{
+                        // border-bottom: 0px none;
+                    }
+                }
+            }
         }
     }
 }

@@ -7,7 +7,7 @@
         {{-- Elixir is responsible for the versioned css so you'll need npm :) --}}
         <link rel="stylesheet" href="{{ elixir('css/app.css') }}">
         {{-- Google Web Fonts are inserted here --}}
-        <link href='https://fonts.googleapis.com/css?family=Istok+Web:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
         {{-- Check if the meta section exists --}}
         @if (array_key_exists('meta', View::getSections()))
             {{-- If the meta section exists, it is rendered here --}}
