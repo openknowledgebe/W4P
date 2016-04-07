@@ -22,6 +22,7 @@ return array(
     // Info about money
     "money_pledge" => "You're donating the following amount:",
     "you_pledged" => "You're pledging:",
+    "pledge_amount" => "The amount you'd like to donate in €",
 
     // Payment statuses
     "payment_status" => [

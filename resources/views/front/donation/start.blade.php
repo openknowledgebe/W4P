@@ -70,7 +70,7 @@
                                     <div class="form-group">
                                         <input type="number" step="any"
                                                class="form-control" id="currency" name="currency"
-                                               placeholder="Pledge amount" min="0">
+                                               placeholder="{{ trans('donation.pledge_amount') }}" min="0">
                                     </div>
                                 </div>
                             </div>
@@ -92,6 +92,7 @@
                                 <div class="col-md-10">
                                     @foreach ($donationType as $key => $option)
                                         <div class="about">
+                                            <strong>{{ $option['name'] }}</strong><br/>
                                             <i>{{ $option['description'] }}</i><br/>
                                             1x {{ trans('donation.unit') }}: <i>{{ $option['unit_description'] }}</i>
                                         </div>
@@ -102,8 +103,8 @@
                                                 @endif
                                             @endfor
                                         </div>
-                                        <a href="#" class="btn btn-default plus" data-key="{{ $option['id'] }}">+</a>
                                         <a href="#" class="btn btn-default minus" data-key="{{ $option['id'] }}">-</a>
+                                        <a href="#" class="btn btn-default plus" data-key="{{ $option['id'] }}">+</a>
                                         <input type="hidden" id="pledge_{{str_slug($option['id'])}}" name="pledge_{{str_slug($option['id'])}}">
                                     @endforeach
                                 </div>

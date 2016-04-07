@@ -22,6 +22,7 @@ return array(
     // Info about money
     "money_pledge" => "U doneert het volgende bedrag:",
     "you_pledged" => "U belooft het volgende:",
+    "pledge_amount" => "Het bedrag dat u wenst te doneren in €",
 
     // Payment statuses
     "payment_status" => [
