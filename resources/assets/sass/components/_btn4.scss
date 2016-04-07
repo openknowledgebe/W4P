@@ -26,7 +26,7 @@
         border: 2px solid #FFF;
         color: #FFF;
 
-        &:hover, &:active, &:visited {
+        &:hover, &:focus {
             background-color: white;
             text-decoration: none;
             color: $color-primary;
@@ -37,7 +37,7 @@
         border: 2px solid $color-primary;
         color: $color-primary;
 
-        &:hover, &:active, &:visited {
+        &:hover, &:active {
             text-decoration: none !important;
             border: 2px solid darken($color-primary, 10);
             color: darken($color-primary, 10);

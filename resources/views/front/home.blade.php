@@ -325,9 +325,9 @@
                             @foreach ($donationTypes[$kind] as $key => $donation_item)
                             <div class="col-md-3 donor-box">
                                 <div>
-                                    {{ $donation_item->required_amount }} x<br/>
+                                    {{ $donation_item->required_amount }} <span class='grey'>x</span><br/>
                                     <h4>{{ $donation_item->name }}</h4>
-                                    <span class="orange">
+                                    <span class="status orange">
                                         {{ $percentages[$kind]["items"][$key]['required'] }} {{ trans('home.more_required') }}
                                     </span>
                                 </div>

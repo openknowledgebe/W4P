@@ -263,19 +263,32 @@
             padding: 25px;
             border-radius: 5px;
         }
+
+        span{
+            &.grey{
+                color: #E7E7E7;
+            }
+
+            &.status{
+                margin-top: 20px;
+                font-size: 0.8em;
+                text-transform: uppercase;
+
+                &.orange {
+                    color: $color-orange;
+                }
+
+                &.green{
+                    color: $color-primary;
+                }
+            }
+        }
     }
 
     h4 {
         margin: 0;
         padding: 0;
         margin-bottom: 10px;
-    }
-
-    .orange {
-        margin-top: 15px;
-        color: #FB5B42;
-        font-size: 0.8em;
-        text-transform: uppercase;
     }
 }
 
