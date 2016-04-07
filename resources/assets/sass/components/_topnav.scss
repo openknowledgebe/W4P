@@ -23,7 +23,7 @@
     }
 }
 
-.navbar{
+.navbar-default{
     .navbar-brand{
         padding: 0;
     }
@@ -55,18 +55,6 @@
 
                     &:hover, &:focus{
                         // border-bottom: 0px none;
-                    }
-                }
-            }
-        }
-        .dropdown-menu {
-            li {
-                a {
-                    height: 35px;
-                    line-height: 2em;
-
-                    &:hover, &:focus {
-                        background-color: #d7d7d7;
                     }
                 }
             }
