@@ -202,7 +202,7 @@
                         <div class="row">
                             @if ($project->description != null || $project->description != "")
                             {{-- Left column (9/12): MARKDOWN STORY --}}
-                            <div class="col-md-9">
+                            <div class="col-md-9 story-body">
                                 {!! Markdown::convertToHtml($project->description) !!}
                             </div>
                             @else

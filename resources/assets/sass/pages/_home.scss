@@ -302,13 +302,20 @@ $date-width: 100px;
 $date-icon-box-height: 75px;
 
 .no-updates {
-    padding: 20px;
+    padding: 100px 20px;
 
     p{
-        margin-top: 10px;
         font-size: 1.2em;
         color: $color-primary-contrast;
         text-align: center;
+    }
+}
+
+.story-body{
+    padding: 25px 0;
+
+    p{
+        color: $color-grey-text;
     }
 }
 
