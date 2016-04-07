@@ -28,6 +28,6 @@ return [
     "donors" => "donoren",
     "raised" => "totaal ingezameld",
     "vat" => "BTW-nummer",
-    "address" => "Addres",
+    "address" => "Adres",
     "contact" => "Contact"
 ];
