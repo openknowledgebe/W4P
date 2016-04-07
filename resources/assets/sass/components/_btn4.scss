@@ -27,9 +27,9 @@
         color: #FFF;
 
         &:hover, &:active, &:visited {
-            text-decoration: none !important;
-            border: 2px solid darken(#FFF, 10);
-            color: darken(#FFF, 10);
+            background-color: white;
+            text-decoration: none;
+            color: $color-primary;
         }
     }
 
@@ -45,10 +45,7 @@
     }
 
     &.center {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 230px;
+        display: inline-block;
         text-align: center;
     }
 }

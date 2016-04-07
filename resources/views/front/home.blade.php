@@ -190,6 +190,7 @@
                             {{ trans("home.updates") }} (<strong>{{ count($posts) }}</strong>)
                         </a></li>
                 </ul>
+
                 {{-- Actual tab panes --}}
                 <div class="tab-content">
                     {{-- Story tab page; this tab pane contains Markdown transformed to HTML. --}}
@@ -288,8 +289,9 @@
                 </div>
             </div>
         </div>
+
         {{-- Extra tabs for donation kinds (manpower, coaching, etc) --}}
-        <div class="tabanddonations">
+        <div class="tab-donations">
             <div class="container">
                 {{-- Tabs per extra category (coaching, etc) --}}
                 <ul class="nav nav-tabs" role="tablist">
@@ -307,33 +309,45 @@
                         @endif
                     @endforeach
                 </ul>
-                {{-- Tab panes for extra categories --}}
-                <div class="tab-content">
+            </div>
+
+            {{-- Tab panes for extra categories --}}
+            <div class='tabs'>
+                <div class="container">
+                    <h3>What we need</h3>
+
                     <?php $count = 0; ?>
+                    <div class='tab-content clearfix'>
                     @foreach ($donationKinds as $kind)
                         @if ($kind != "currency" && isset($donationTypes[$kind]) && count($donationTypes[$kind]) > 0)
                         {{-- Generate a tab for each --}}
                         <div role="tabpanel" class="tab-pane-donation tab-pane @if ($count == 0) active @endif tab-{{ $kind }}" id="{{ $kind }}">
-                            <h3>What we need</h3>
-                            <div class="row">
-                                @foreach ($donationTypes[$kind] as $key => $donation_item)
-                                <div class="col-md-3 donor-box">
+                            @foreach ($donationTypes[$kind] as $key => $donation_item)
+                            <div class="col-md-3 donor-box">
+                                <div>
                                     {{ $donation_item->required_amount }} x<br/>
                                     <h4>{{ $donation_item->name }}</h4>
                                     <span class="orange">
                                         {{ $percentages[$kind]["items"][$key]['required'] }} more required
                                     </span>
                                 </div>
-                                    <?php $count++ ?>
-                                @endforeach
                             </div>
-                            <a href="{{ URL::route('donate::start') }}" class="btn4 white center">Support this project</a>
+                            <?php $count++ ?>
+                            @endforeach
                         </div>
                         @endif
                     @endforeach
+                    </div>
+
+                    <div class='text-center'>
+                        <a href="{{ URL::route('donate::start') }}" class="btn4 white center">
+                            Support this project <span>&rarr;</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
+
         {{-- How does it work & Previous projects buttons --}}
         <div class="container">
             <div class="row">

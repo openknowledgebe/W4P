@@ -234,19 +234,35 @@
     padding-bottom: 40px;
 }
 
+.tab-donations{
+    .tabs{
+        background-image: url('../../assets/bg/bg_people.jpg');
+        background-size: cover;
+        padding: 34px 0;
+
+        h3 {
+            color: white;
+            margin-bottom: 34px;
+        }
+
+        a.btn4{
+            margin-top: 24px;
+        }
+    }
+}
+
 .tab-pane-donation{
-    padding: 25px;
-    background-image: url('../../assets/bg/bg_people.jpg');
-    background-size: cover;
 
     .donor-box {
-        background-color: #FFF;
-        padding: 25px;
-        margin-left: 15px;
-    }
+        padding: 0;
+        margin-bottom: 10px;
+        padding-right: 10px;
 
-    h3 {
-        color: white;
+        div{
+            background-color: #FFF;
+            padding: 25px;
+            border-radius: 5px;
+        }
     }
 
     h4 {
