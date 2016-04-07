@@ -4,7 +4,7 @@
             <div class="col-md-3">
                 @if (property_exists($settings, 'legal'))
                     <div class="small-legal">
-                        <strong>{{ $settings->org }}</strong><br/>
+                        <strong>{{ $settings->legal->org }}</strong><br/>
                         <br/>
                         <strong>{{ trans('generic.address') }}:</strong><br/> {!! nl2br($settings->legal->address) !!}<br/>
                         <strong>{{ trans('generic.vat') }}:</strong> {{ $settings->legal->vat }}<br/>

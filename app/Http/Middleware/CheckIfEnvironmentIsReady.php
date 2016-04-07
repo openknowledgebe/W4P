@@ -121,13 +121,15 @@ class CheckIfEnvironmentIsReady
             ],
         ];
 
-        if ($mollie && array_key_exists('organisation.address', $settings) &&
-        array_key_exists('organisation.vat', $settings) &&
-        array_key_exists('organisation.email', $settings)) {
+        if ($mollie && array_key_exists('platform.organisation.address', $settings) &&
+        array_key_exists('platform.organisation.vat', $settings) &&
+        array_key_exists('platform.organisation.email', $settings) &&
+        array_key_exists('platform.organisation.name', $settings)) {
             $public_settings["legal"] = (object)[
-                'address' => $settings["organisation.address"],
-                'vat' => $settings["organisation.vat"],
-                'email' => $settings["organisation.email"],
+                'org' => $settings["platform.organisation.name"],
+                'address' => $settings["platform.organisation.address"],
+                'vat' => $settings["platform.organisation.vat"],
+                'email' => $settings["platform.organisation.email"],
             ];
         }
 
