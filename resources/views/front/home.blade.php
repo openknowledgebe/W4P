@@ -341,7 +341,7 @@
 
                     <div class='text-center'>
                         <a href="{{ URL::route('donate::start') }}" class="btn4 white center">
-                            Support this project <span>&rarr;</span>
+                            {{ trans('home.support') }} <span>&rarr;</span>
                         </a>
                     </div>
                 </div>
