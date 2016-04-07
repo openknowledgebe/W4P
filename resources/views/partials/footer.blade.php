@@ -14,7 +14,7 @@
             </div>
             <div class="col-md-3">
                 <ul>
-                    <li class="subtitle">About</li>
+                    <li class="subtitle">{{ trans('footer.about') }}</li>
                     <li><a href="{{ URL::route('home') }}">{{ trans('footer.homepage') }}</a></li>
                     <li><a href="{{ URL::route('how') }}">{{ trans('footer.howdoesitwork') }}</a></li>
                     <li><a href="{{ URL::route('press') }}">{{ trans('footer.press') }}</a></li>
@@ -24,9 +24,9 @@
             </div>
             <div class="col-md-3">
                 <ul>
-                    <li class="subtitle">Projects</li>
+                    <li class="subtitle">{{ trans('footer.projects') }}</li>
                     @if ($archived_count > 0)
-                    <li><a href="{{ URL::route('previous') }}">Previous projects</a></li>
+                    <li><a href="{{ URL::route('previous') }}">{{ trans('footer.previous_projects') }}</a></li>
                     @endif
                     <li><a href="{{ URL::route('admin::index') }}">{{ trans('footer.administration') }}</a></li>
                 </ul>

@@ -25,4 +25,7 @@ return [
     "complete" => "complete",
     "share" => "Share",
     "donors" => "donors",
+    "more_required" => "more required",
+    "what_we_need" => "What we need",
+    "reached" => "reached",
 ];

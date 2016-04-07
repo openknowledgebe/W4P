@@ -43,7 +43,7 @@
                             <div class="percentage">
                                 <span class="number">{{$totalPercentage}}</span><!--
                              --><span class="percent">%</span><br/>
-                                <span class="reached">reached</span>
+                                <span class="reached">{{ trans('home.reached') }}</span>
                             </div>
                             <div class="progress-radials">
                                 @if ($project->currency > 0 && count($donationTypes) > 0)
@@ -314,20 +314,20 @@
                         @if ($kind != "currency" && isset($donationTypes[$kind]) && count($donationTypes[$kind]) > 0)
                         {{-- Generate a tab for each --}}
                         <div role="tabpanel" class="tab-pane-donation tab-pane @if ($count == 0) active @endif tab-{{ $kind }}" id="{{ $kind }}">
-                            <h3>What we need</h3>
+                            <h3>{{ trans('home.what_we_need') }}</h3>
                             <div class="row">
                                 @foreach ($donationTypes[$kind] as $key => $donation_item)
                                 <div class="col-md-3 donor-box">
                                     {{ $donation_item->required_amount }} x<br/>
                                     <h4>{{ $donation_item->name }}</h4>
                                     <span class="orange">
-                                        {{ $percentages[$kind]["items"][$key]['required'] }} more required
+                                        {{ $percentages[$kind]["items"][$key]['required'] }} {{ trans('home.more_required') }}
                                     </span>
                                 </div>
                                     <?php $count++ ?>
                                 @endforeach
                             </div>
-                            <a href="{{ URL::route('donate::start') }}" class="btn4 white center">Support this project</a>
+                            <a href="{{ URL::route('donate::start') }}" class="btn4 white center">{{ trans('home.support') }}</a>
                         </div>
                         @endif
                     @endforeach

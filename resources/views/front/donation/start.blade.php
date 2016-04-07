@@ -49,7 +49,7 @@
                                 </div>
                                 <div class="col-md-10">
                                     {{-- Start of reward tiers --}}
-                                    <p>Select your reward tier</p>
+                                    <p>{{ trans('donation.select_tier') }}</p>
                                     @if ($project->currency > 0 && count($tiers) > 0)
                                         <div class="list-group">
                                         @foreach ($tiers as $tier)
@@ -66,7 +66,7 @@
                                         </div>
                                     {{-- End of reward tiers --}}
                                     @endif
-                                            <p>or enter a custom amount:</p>
+                                            <p>{{ trans('donation.or_custom_amount') }}:</p>
                                             <div class="form-group">
                                                 <input type="number" step="any"
                                                        class="form-control" id="currency" name="currency"
@@ -92,8 +92,8 @@
                                 <div class="col-md-10">
                                     @foreach ($donationType as $key => $option)
                                         <div class="about">
-                                            Description: <i>{{ $option['description'] }}</i><br/>
-                                            1x unit: <i>{{ $option['unit_description'] }}</i>
+                                            <i>{{ $option['description'] }}</i><br/>
+                                            1x {{ trans('donation.unit') }}: <i>{{ $option['unit_description'] }}</i>
                                         </div>
                                         <div class="checkboxes_pledge_{{str_slug($option['id'])}}">
                                             @for ($i = 0; $i < $option["required_amount"]; $i++)

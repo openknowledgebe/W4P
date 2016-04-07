@@ -284,12 +284,43 @@ class SetupController extends Controller
         if (file_exists(public_path() . "/platform/logo.png")) {
             $logoValidationRule = 'image';
         }
+
+        $defaultRules = [
+            'platformOwnerName' => 'required|min:4',
+            'platformOwnerLogo' => $logoValidationRule
+        ];
+
+        // Validation rules if organisation address, vat, email are not required
+        // (mollie has not been setup!)
+        $notRequired = [
+            "platformOrganisationAddress" => 'min:5',
+            "platformOrganisationVAT" => 'min:5',
+            "platformOrganisationEmail" => 'email',
+            "platformOrganisationName" => 'min:2',
+        ];
+
+        // Validation rules if organisation address, vat and email ARE required
+        $required = [
+            "platformOrganisationAddress" => 'required|min:5',
+            "platformOrganisationVAT" => 'required|min:5',
+            "platformOrganisationEmail" => 'required|email',
+            "platformOrganisationName" => 'required|min:2'
+        ];
+
+        Setting::set('platform.organisation.address', Input::get('organisationAddress'));
+        Setting::set('platform.organisation.email', Input::get('organisationEmail'));
+        Setting::set('platform.organisation.valid', 'true');
+
+        $mollie = Setting::get('platform.mollie-key');
+        if ($mollie != "" && $mollie != null) {
+            $validation = array_merge($defaultRules, $required);
+        } else {
+            $validation = array_merge($defaultRules, $notRequired);
+        }
+
         $validator = Validator::make(
             Input::all(),
-            [
-                'platformOwnerName' => 'required|min:4',
-                'platformOwnerLogo' => $logoValidationRule
-            ]
+            $validation
         );
         // Check if the validator fails
         if (!$validator->fails()) {
@@ -305,6 +336,9 @@ class SetupController extends Controller
             Setting::set('platform.analytics-id', Input::get('analyticsId'));
             // Save the Mollie API key
             Setting::set('platform.mollie-key', Input::get('mollieApiKey'));
+
+
+
         } else {
             // Validation has failed. Set success to false. Set validator messages
             $this->success = false;
@@ -331,29 +365,6 @@ class SetupController extends Controller
             'organisationLogo' => $logoValidationRule
         ];
 
-        // Validation rules if organisation address, vat, email are not required
-        // (mollie has not been setup!)
-        $notRequired = [
-            "organisationAddress" => 'min:5',
-            "organisationVAT" => 'min:5',
-            "organisationEmail" => 'email'
-        ];
-
-        // Validation rules if organisation address, vat and email ARE required
-        $required = [
-            "organisationAddress" => 'required|min:5',
-            "organisationVAT" => 'required|min:5',
-            "organisationEmail" => 'required|email'
-        ];
-
-
-        $mollie = Setting::get('platform.mollie-key');
-        if ($mollie != "" && $mollie != null) {
-            $validation = array_merge($defaultRules, $required);
-        } else {
-            $validation = array_merge($defaultRules, $notRequired);
-        }
-
         $validator = Validator::make(
             Input::all(),
             $validation
@@ -370,9 +381,6 @@ class SetupController extends Controller
             Setting::set('organisation.description', Input::get('organisationDescription'));
             Setting::set('organisation.website', Input::get('organisationWebsite'));
             Setting::set('organisation.vat', Input::get('organisationVAT'));
-            Setting::set('organisation.address', Input::get('organisationAddress'));
-            Setting::set('organisation.email', Input::get('organisationEmail'));
-            Setting::set('organisation.valid', 'true');
         } else {
             // Validation has failed. Set success to false. Set validator messages
             $this->success = false;

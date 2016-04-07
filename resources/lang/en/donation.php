@@ -12,6 +12,9 @@ return array(
     "your_details" => "Your details",
     "message" => "Your message",
     "tier" => "Your donation tier",
+    "select_tier" => "Select a donation tier",
+    "or_custom_amount" => "or enter a custom amount:",
+    "unit" => "unit",
 
     // Mollie: about
     "donation_for" => "Donation for",
