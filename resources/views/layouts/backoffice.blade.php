@@ -18,11 +18,10 @@
                                 <li>
                                     <a href="{{ URL::route('admin::index') }}">{{ trans('backoffice.dashboard') }}</a>
                                 </li>
-
                                 {{-- First dropdown --}}
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        {{ trans('backoffice.manage') }} <span class="caret"></span></a>
+                                        {{ trans('backoffice.platform') }} <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
                                         <li class="separator">{{ trans('backoffice.manage_pages') }}</li>
                                         <li>
@@ -45,10 +44,16 @@
                                         <li role="separator" class="divider"></li>
                                         <li class="separator">{{ trans('backoffice.administration') }}</li>
                                         <li>
+                                            <a href="{{ URL::route('admin::platform') }}">{{ trans('backoffice.general_platform') }}</a>
+                                        </li>
+                                        <li>
                                             <a href="{{ URL::route('admin::password') }}">{{ trans('backoffice.change_password') }}</a>
                                         </li>
                                         <li>
                                             <a href="{{ URL::route('admin::previous') }}">{{ trans('backoffice.previous_projects') }}</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ URL::route('admin::email') }}">{{ trans('backoffice.email') }}</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -59,6 +64,9 @@
                                         {{ trans('backoffice.project') }} <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
                                         <li class="separator">{{ trans('backoffice.manage') }}</li>
+                                        <li>
+                                            <a href="{{ URL::route('admin::organisation') }}">{{ trans('backoffice.organisation') }}</a>
+                                        </li>
                                         <li>
                                             <a href="{{ URL::route('admin::project') }}">{{ trans('backoffice.project') }}</a>
                                         </li>
@@ -89,16 +97,6 @@
                                             </a>
                                         </li>
                                     </ul>
-                                </li>
-
-                                <li>
-                                    <a href="{{ URL::route('admin::organisation') }}">{{ trans('backoffice.organisation') }}</a>
-                                </li>
-                                <li>
-                                    <a href="{{ URL::route('admin::platform') }}">{{ trans('backoffice.platform') }}</a>
-                                </li>
-                                <li>
-                                    <a href="{{ URL::route('admin::email') }}">{{ trans('backoffice.email') }}</a>
                                 </li>
                             </ul>
                         </div>

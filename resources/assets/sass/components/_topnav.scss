@@ -59,5 +59,17 @@
                 }
             }
         }
+        .dropdown-menu {
+            li {
+                a {
+                    height: 35px;
+                    line-height: 2em;
+
+                    &:hover, &:focus {
+                        background-color: #d7d7d7;
+                    }
+                }
+            }
+        }
     }
 }
