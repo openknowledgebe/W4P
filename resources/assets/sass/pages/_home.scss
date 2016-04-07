@@ -146,7 +146,7 @@
     }
 
     .numbers-container {
-        padding: 25px 50px;
+        padding: 20px 40px;
         position: relative;
         top: 34px;
         background-color: $color-primary;
@@ -155,9 +155,20 @@
 
         span.number-lg{
             display: block;
-            margin-top: 40px;
-            line-height: 0.3;
+            margin-top: 30px;
+            line-height: 0.4;
             font-size: 84px;
+            font-weight: normal;
+        }
+
+        span.number-md{
+            display: inline-block;
+            overflow: hidden;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-top: 30px;
+            line-height: 0.8;
+            font-size: 62px;
             font-weight: normal;
         }
 
@@ -169,6 +180,11 @@
             font-size: 16px;
             font-weight: normal;
             color: $color-primary-contrast;
+            margin-top: 6px;
+        }
+
+        p{
+            margin-top: 36px;
         }
 
         .btn-support{

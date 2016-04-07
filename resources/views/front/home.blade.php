@@ -77,20 +77,20 @@
                                 </div>
                             @endif
                             <div class="col-md-4">
-                                <span class="number-lg">{{ $donorCount }}</span><br/>
+                                <span class="number-md">{{ $donorCount }}</span><br/>
                                 <span class="number-sm">{{ trans('home.donors') }}</span>
                             </div>
                             <div class="col-md-4">
                                 @if ($hoursleft < 24)
                                         @if ($hoursleft <= 2)
-                                            <span class="number-lg">{{ $minutesleft }}</span><br/>
+                                            <span class="number-md">{{ $minutesleft }}</span><br/>
                                             <span class="number-sm">{{ trans('home.minutesleft') }}</span>
                                         @else
-                                            <span class="number-lg">{{ $hoursleft }}</span><br/>
+                                            <span class="number-md">{{ $hoursleft }}</span><br/>
                                             <span class="number-sm">{{ trans('home.hoursleft') }}</span>
                                         @endif
                                 @else
-                                    <span class="number-lg">{{ $daysleft }}</span><br/>
+                                    <span class="number-md">{{ $daysleft }}</span><br/>
                                     <span class="number-sm">{{ trans('home.daysleft') }}</span>
                                 @endif
                             </div>
@@ -98,7 +98,6 @@
                         @if ($minutesleft > 0)
                             <a href="{{ URL::route('donate::start') }}" class="btn-support">{{ trans('home.support') }}<span>&rarr;</span></a>
                         @else
-                            <br/>
                             <p class="campaign-over">{{ trans('home.over') }}</p>
                         @endif
                     </section>
