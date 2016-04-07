@@ -28,4 +28,5 @@ return [
     "more_required" => "meer nodig",
     "what_we_need" => "Wat we nodig hebben",
     "reached" => "bereikt",
+    "completed" => "compleet"
 ];

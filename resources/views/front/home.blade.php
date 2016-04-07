@@ -327,9 +327,17 @@
                                 <div>
                                     {{ $donation_item->required_amount }} <span class='grey'>x</span><br/>
                                     <h4>{{ $donation_item->name }}</h4>
+                                    {{-- X ITEMS REQUIRED (orange) / COMPLETED (green) --}}
+                                    @if ($percentages[$kind]["items"][$key]['required'] == 0)
+                                        <span class="status green">
+                                        {{ trans('home.completed') }}
+                                    </span>
+                                    @else
                                     <span class="status orange">
                                         {{ $percentages[$kind]["items"][$key]['required'] }} {{ trans('home.more_required') }}
                                     </span>
+                                    {{-- END ITEMS REQUIRED / COMPLETED --}}
+                                    @endif
                                 </div>
                             </div>
                             <?php $count++ ?>
