@@ -46,7 +46,7 @@ class HomeController extends Controller
         $ends_at = new Carbon($project->ends_at);
         $now = Carbon::now();
 
-        if ($ends_at->lt($now)) {
+        if ($ends_at->lte($now)) {
             $leftDays = 0;
             $leftHours = 0;
             $leftMinutes = 0;

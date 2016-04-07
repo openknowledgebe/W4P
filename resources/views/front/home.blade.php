@@ -292,7 +292,8 @@
                 {{-- Tabs per extra category (coaching, etc) --}}
                 <ul class="nav nav-tabs" role="tablist">
                     {{-- Generate a tab for each --}}
-                    @foreach ($donationKinds as $count => $kind)
+                    <?php $count = 0; ?>
+                    @foreach ($donationKinds as $kind)
                         @if ($kind != "currency" && isset($donationTypes[$kind]) && count($donationTypes[$kind]) > 0)
                             <li role="presentation" @if ($count == 0) class="active" @endif>
                                 <a href="#{{ $kind }}" aria-controls="{{ $kind }}" role="tab" data-toggle="tab">
@@ -300,12 +301,14 @@
                                     {{ trans("backoffice." . $kind) }}
                                 </a>
                             </li>
+                            <?php $count++ ?>
                         @endif
                     @endforeach
                 </ul>
                 {{-- Tab panes for extra categories --}}
                 <div class="tab-content">
-                    @foreach ($donationKinds as $count => $kind)
+                    <?php $count = 0; ?>
+                    @foreach ($donationKinds as $kind)
                         @if ($kind != "currency" && isset($donationTypes[$kind]) && count($donationTypes[$kind]) > 0)
                         {{-- Generate a tab for each --}}
                         <div role="tabpanel" class="tab-pane-donation tab-pane @if ($count == 0) active @endif tab-{{ $kind }}" id="{{ $kind }}">
@@ -319,6 +322,7 @@
                                         {{ $percentages[$kind]["items"][$key]['required'] }} more required
                                     </span>
                                 </div>
+                                    <?php $count++ ?>
                                 @endforeach
                             </div>
                             <a href="{{ URL::route('donate::start') }}" class="btn4 white center">Support this project</a>
