@@ -290,6 +290,8 @@
             </div>
         </div>
 
+        <hr class='no-margin'/>
+
         {{-- Extra tabs for donation kinds (manpower, coaching, etc) --}}
         <div class="tab-donations">
             <div class="container">
