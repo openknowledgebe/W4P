@@ -152,6 +152,11 @@
                     <span id="helpBlock" class="help-block">
                         {{ trans('backoffice.page.project.fields.video-url.info') }}
                     </span>
+                            @if (\W4P\Models\Setting::get('vimeo.thumbnail_url') == 'failed_thumb')
+                            <div class="alert alert-danger" role="alert">
+                                {{ trans('setup.warnings.vimeo_thumbnail') }}
+                            </div>
+                            @endif
                         </div>
                     </div>
                 </div>

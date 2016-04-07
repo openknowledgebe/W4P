@@ -108,7 +108,6 @@ class AdminController extends Controller
                 'projectDescription' => 'min:4',
                 'projectLogo' => 'image',
                 'projectBanner' => 'image',
-                'projectVideoProvider' => 'in:null,youtube,vimeo',
                 'projectVideo' => 'min:4',
                 'projectStartDate' => 'date',
                 'projectEndDate' => 'date'
@@ -143,13 +142,6 @@ class AdminController extends Controller
                 Image::make($image->getRealPath())->save($destinationPath);
             }
 
-            $video = Input::file('projectVideo');
-            if ($video != null && $video->isValid()) {
-                $destinationPath = public_path() . '/project/video.mp4';
-                // Move the video
-                $video->move($destinationPath);
-            }
-
             // Save the project
             $project = Project::get();
             $project->update([
@@ -160,6 +152,9 @@ class AdminController extends Controller
                 'starts_at' => Carbon::createFromFormat('Y-m-d H:i', Input::get('projectStartDate')),
                 'ends_at' => Carbon::createFromFormat('Y-m-d H:i', Input::get('projectEndDate')),
             ]);
+            // Reset Vimeo URL
+            Setting::set('vimeo.thumbnail_url', "");
+            $project->getThumbnailUrl();
             Session::flash('info', trans('backoffice.flash.project_update_success'));
         } else {
             // Validation has failed. Set success to false. Set validator messages

@@ -22,7 +22,8 @@ return [
     ],
 
     'warnings' => [
-        'mollie' => "NOTE: You've entered a Mollie API key. To use Mollie, you need to provide a valid address, VAT number and email address. This information needs to be visible on your site before Mollie will approve your payments. We'll show it in your footer once you add this information."
+        'mollie' => "NOTE: You've entered a Mollie API key. To use Mollie, you need to provide a valid address, VAT number and email address. This information needs to be visible on your site before Mollie will approve your payments. We'll show it in your footer once you add this information.",
+        'vimeo_thumbnail' => "We could not fetch the Vimeo thumbnail for this video for the Twitter cards! Update your project to fix this. (Just hit save below.) Make sure your server is connected to the internet and can access Vimeo's API. We cache this thumbnail information each time you update your project."
     ],
 
     // Generic setup strings (like 'Next', 'Back', and 'Oops' (reused on multiple pages)

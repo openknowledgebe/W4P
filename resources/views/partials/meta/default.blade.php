@@ -58,8 +58,8 @@
         @if ($video_provider != null)
             <meta name="twitter:player:width" content="1280">
             <meta name="twitter:player:height" content="720">
-            <meta name="twitter:player:stream" content="{{ $project->video_url }}">
-            <meta name="twitter:player:stream:content_type" content="video/mp4">
+            <meta name="twitter:player" content="{{ $project->getEmbed() }}">
+            <meta name="twitter:image" content="{{ $project->getThumbnailUrl() }}">
             <!-- Google Structured Data -->
             <div itemscope itemtype="http://schema.org/VideoObject" class="hidden">
                 <span itemprop="name">{{ $project->title }}</span>
