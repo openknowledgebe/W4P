@@ -17,90 +17,92 @@
         </div>
 
         {{-- Goals --}}
-        <div class="container goals">
-            <div class="row">
-                {{-- Goals left column (with progress) --}}
-                <div class="col-md-7 meta-container">
-                    <section class="meta project-meta">
-                        <h1>{{ $project->title }}</h1>
-                        <span>
-                            <i class="icon icon-person icon-align-text"></i>
-                            {{ trans('home.projectby') }}
-                            <strong>
-                                {{ $data['organisation.name'] }}
-                            </strong>
-                        </span>
-                        <span>
-                            <i class="icon icon-calendar icon-align-text"></i>
-                            {{ trans('home.ends_at') }}
-                            <strong>
-                                {{ $project->ends_at->format("j F Y") }}
-                            </strong>
-                        </span>
-                    </section>
-                    <section class="meta">
-                        <div class="percentage">
-                            <span class="number">{{$totalPercentage}}</span><!--
-                         --><span class="percent">%</span><br/>
-                            <span class="reached">reached</span>
-                        </div>
-                        <div class="progress-radials">
-                            @if ($project->currency > 0 && count($donationTypes) > 0)
-                                <div class="progress-radial @if($contributedPercentage > 100) progress-100 @else progress-{{round($contributedPercentage)}} @endif">
-                                    <div class="overlay">
-                                        <i class="icon icon-progress-currency icon-lg"></i><br/>
-                                        <span class="about">{{ trans("backoffice.currency") }}</span>
-                                    </div>
-                                </div>
-                            @endif
-                            @foreach ($donationKinds as $kind)
-                                @if ($kind != "currency" && isset($donationTypes[$kind]) && count($donationTypes[$kind]) > 0)
-                                    <div class="progress-radial progress-{{ round($percentages[$kind]["percentage"]) }}">
+        <div class="goals-container">
+            <div class="container goals">
+                <div class="row">
+                    {{-- Goals left column (with progress) --}}
+                    <div class="col-md-7 meta-container">
+                        <section class="meta project-meta">
+                            <h1>{{ $project->title }}</h1>
+                            <span>
+                                <i class="icon icon-person icon-align-text"></i>
+                                {{ trans('home.projectby') }}
+                                <strong>
+                                    {{ $data['organisation.name'] }}
+                                </strong>
+                            </span>
+                            <span>
+                                <i class="icon icon-calendar icon-align-text"></i>
+                                {{ trans('home.ends_at') }}
+                                <strong>
+                                    {{ $project->ends_at->format("j F Y") }}
+                                </strong>
+                            </span>
+                        </section>
+                        <section class="meta">
+                            <div class="percentage">
+                                <span class="number">{{$totalPercentage}}</span><!--
+                             --><span class="percent">%</span><br/>
+                                <span class="reached">reached</span>
+                            </div>
+                            <div class="progress-radials">
+                                @if ($project->currency > 0 && count($donationTypes) > 0)
+                                    <div class="progress-radial @if($contributedPercentage > 100) progress-100 @else progress-{{round($contributedPercentage)}} @endif">
                                         <div class="overlay">
-                                            <i class="icon icon-progress-{{$kind}} icon-lg"></i><br/>
-                                            <span class="about">{{ trans("backoffice." . $kind) }}</span>
+                                            <i class="icon icon-progress-currency icon-lg"></i><br/>
+                                            <span class="about">{{ trans("backoffice.currency") }}</span>
                                         </div>
                                     </div>
                                 @endif
-                            @endforeach
-                        </div>
-                    </section>
-                </div>
-                {{-- Goals right column --}}
-                <div class="col-md-5 numbers-container">
-                    <section class="numbers">
-                        <div class="row">
-                            @if ($project->currency > 0)
-                                <div class="col-md-12">
-                                    <span class="number-lg">€{{ $contributed }}</span><br/>
-                                    <span class="number-sm">{{ trans('home.of') }} €{{ round($project->currency) }}</span>
-                                </div>
-                            @endif
-                            <div class="col-md-4">
-                                <span class="number-md">{{ $donorCount }}</span><br/>
-                                <span class="number-sm">{{ trans('home.donors') }}</span>
+                                @foreach ($donationKinds as $kind)
+                                    @if ($kind != "currency" && isset($donationTypes[$kind]) && count($donationTypes[$kind]) > 0)
+                                        <div class="progress-radial progress-{{ round($percentages[$kind]["percentage"]) }}">
+                                            <div class="overlay">
+                                                <i class="icon icon-progress-{{$kind}} icon-lg"></i><br/>
+                                                <span class="about">{{ trans("backoffice." . $kind) }}</span>
+                                            </div>
+                                        </div>
+                                    @endif
+                                @endforeach
                             </div>
-                            <div class="col-md-4">
-                                @if ($hoursleft < 24)
-                                        @if ($hoursleft <= 2)
-                                            <span class="number-md">{{ $minutesleft }}</span><br/>
-                                            <span class="number-sm">{{ trans('home.minutesleft') }}</span>
-                                        @else
-                                            <span class="number-md">{{ $hoursleft }}</span><br/>
-                                            <span class="number-sm">{{ trans('home.hoursleft') }}</span>
-                                        @endif
-                                @else
-                                    <span class="number-md">{{ $daysleft }}</span><br/>
-                                    <span class="number-sm">{{ trans('home.daysleft') }}</span>
+                        </section>
+                    </div>
+                    {{-- Goals right column --}}
+                    <div class="col-md-5 numbers-container">
+                        <section class="numbers">
+                            <div class="row">
+                                @if ($project->currency > 0)
+                                    <div class="col-md-12">
+                                        <span class="number-lg">€{{ $contributed }}</span><br/>
+                                        <span class="number-sm">{{ trans('home.of') }} €{{ round($project->currency) }}</span>
+                                    </div>
                                 @endif
+                                <div class="col-md-4">
+                                    <span class="number-md">{{ $donorCount }}</span><br/>
+                                    <span class="number-sm">{{ trans('home.donors') }}</span>
+                                </div>
+                                <div class="col-md-4">
+                                    @if ($hoursleft < 24)
+                                            @if ($hoursleft <= 2)
+                                                <span class="number-md">{{ $minutesleft }}</span><br/>
+                                                <span class="number-sm">{{ trans('home.minutesleft') }}</span>
+                                            @else
+                                                <span class="number-md">{{ $hoursleft }}</span><br/>
+                                                <span class="number-sm">{{ trans('home.hoursleft') }}</span>
+                                            @endif
+                                    @else
+                                        <span class="number-md">{{ $daysleft }}</span><br/>
+                                        <span class="number-sm">{{ trans('home.daysleft') }}</span>
+                                    @endif
+                                </div>
                             </div>
-                        </div>
-                        @if ($minutesleft > 0)
-                            <a href="{{ URL::route('donate::start') }}" class="btn-support">{{ trans('home.support') }}<span>&rarr;</span></a>
-                        @else
-                            <p class="campaign-over">{{ trans('home.over') }}</p>
-                        @endif
-                    </section>
+                            @if ($minutesleft > 0)
+                                <a href="{{ URL::route('donate::start') }}" class="btn-support">{{ trans('home.support') }}<span>&rarr;</span></a>
+                            @else
+                                <p class="campaign-over">{{ trans('home.over') }}</p>
+                            @endif
+                        </section>
+                    </div>
                 </div>
             </div>
         </div>
