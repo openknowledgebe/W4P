@@ -63,10 +63,10 @@ class CheckIfEnvironmentIsReady
                     !array_key_exists('organisation.vat', $settings) ||
                     !array_key_exists('organisation.email', $settings)
                 ) {
+                    Session::flash('info', trans('setup.warnings.mollie'));
                     if (!array_key_exists('setup.complete', $settings)) {
-                        Session::flash('info', trans('setup.warnings.mollie'));
+                        return redirect()->route('setup::step', 3);
                     }
-                    return redirect()->route('setup::step', 3);
                 }
             }
         }

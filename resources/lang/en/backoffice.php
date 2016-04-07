@@ -113,7 +113,7 @@ return [
                 "video-url" => [
                     "name" => "Video URL",
                     "placeholder" => "YouTube/Vimeo URL",
-                    "info" => "You can enter a video URL here."
+                    "info" => "You can enter a video URL here. YouTube and Vimeo URLs are currently supported."
                 ],
                 "banner" => [
                     "name" => "Project banner",
