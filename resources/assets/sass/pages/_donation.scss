@@ -1,0 +1,12 @@
+#donation__start, #donation__details{
+  margin-bottom: 0;
+
+  #donation__start-title, #donation__details-title{
+    padding:50px 7% 50px 7%;
+  }
+
+  #donation__start-options, #donation__details-options{
+    padding:7%;
+    background-color: $color-gray;
+  }
+}

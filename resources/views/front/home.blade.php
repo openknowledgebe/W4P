@@ -18,12 +18,12 @@
 
         {{-- Goals --}}
         <div class="goals-container">
-            <div class="container goals">
+            <div class="container-fluid goals">
                 <div class="row">
-                    {{-- Goals left column (with progress) --}}
-                    <div class="col-md-7 meta-container">
+                    {{-- Gdoals left column (with progress) --}}
+                    <div class="col-lg-7 col-md-7 col-sm-12 meta-container">
                         <section class="meta project-meta">
-                            <h1>{{ $project->title }}</h1>
+                            <h1 class="">{{ $project->title }}</h1>
                             <span>
                                 <i class="icon icon-person icon-align-text"></i>
                                 {{ trans('home.projectby') }}
@@ -68,20 +68,20 @@
                         </section>
                     </div>
                     {{-- Goals right column --}}
-                    <div class="col-md-5 numbers-container">
+                    <div class="col-lg-5 col-md-5 col-sm-12 numbers-container">
                         <section class="numbers">
                             <div class="row">
                                 @if ($project->currency > 0)
-                                    <div class="col-md-12">
+                                    <div class="col-lg-4 col-md-4 col-sm-4">
                                         <span class="number-lg">€{{ $contributed }}</span><br/>
                                         <span class="number-sm">{{ trans('home.of') }} €{{ round($project->currency) }}</span>
                                     </div>
                                 @endif
-                                <div class="col-md-4">
+                                <div class="col-lg-4 col-md-4 col-sm-4">
                                     <span class="number-md">{{ $donorCount }}</span><br/>
                                     <span class="number-sm">{{ trans('home.donors') }}</span>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-lg-4 col-md-4 col-sm-4">
                                     @if ($hoursleft < 24)
                                             @if ($hoursleft <= 2)
                                                 <span class="number-md">{{ $minutesleft }}</span><br/>
@@ -111,10 +111,14 @@
         <div class="about">
             <div class="container">
                 <div class="row">
+                    <div class="col-lg-12">
+                        <h2>{{ trans('home.aboutproject') }}</h2>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-md-7">
                         {{-- About video --}}
                         <section class="about-video">
-                            <h2>{{ trans('home.aboutproject') }}</h2>
                             <br/>
                             <div class="video-container">
                             {{-- Based on the provider, the output differs --}}

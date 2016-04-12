@@ -1,0 +1,109 @@
+/*
+  These are the media queries in which we include all our responsive code if it's necessary. Please note that these
+  have the same breakpoints as Twitter Bootstrap does, considering we use Twitter Bootstrap.
+*/
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+@media (min-width : 1200px){
+
+  #donation__start-form{
+    .about:nth-of-type(1) {
+      padding-top: 0;
+    }
+
+    .about{
+      padding-bottom:0;
+    }
+  }
+}
+
+@media (min-width : 992px) and (max-width: 1199px) {
+
+  #donation__start-form {
+    .about:nth-of-type(1) {
+      padding-top: 0;
+    }
+    .about {
+      padding-top: 40px;
+      padding-bottom:0;
+    }
+
+    //Donation Start Page - Form - col-md-10
+    .donation__form__item-margin-top {
+      margin-top: 40px;
+    }
+  }
+}
+
+@media (min-width : 768px) and (max-width: 991px) {
+
+  #donation__start-form {
+    .about:nth-of-type(1) {
+      padding-top: 0;
+    }
+    .about {
+      padding-top: 40px;
+      padding-bottom:0;
+    }
+
+    //Donation Start Page - Form - col-md-10
+    .donation__form__item-margin-top {
+      margin-top: 40px;
+    }
+  }
+}
+
+@media  (min-width : 480px) and (max-width: 767px) {
+
+  //Homepage
+  .goals .numbers-container {
+    height:500px !important;
+  }
+
+
+  #donation__start-form {
+    .about:nth-of-type(1) {
+      padding-top:0;
+    }
+    .about{
+      padding-top: 40px;
+      padding-bottom:0;
+    }
+
+    //Donation Start Page - Form - col-md-10
+    .donation__form__item-margin-top {
+      margin-top:40px;
+    }
+  }
+}
+
+@media (min-width : 320px) and (max-width: 479px) {
+  // height for container goals must be given so that it overwrites the standard height
+  .goals {
+    .numbers-container {
+      height: 500px !important;
+    }
+  }
+
+
+  #donation__start-form {
+    .about:nth-of-type(1) {
+      padding-top:0;
+    }
+    .about{
+      padding-top: 40px;
+      padding-bottom:0;
+    }
+
+    //Donation Start Page - Form - col-md-10
+    .donation__form__item-margin-top {
+      margin-top:40px;
+    }
+  }
+}
+
