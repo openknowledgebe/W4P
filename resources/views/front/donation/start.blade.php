@@ -73,7 +73,14 @@
                                                class="form-control" id="currency" name="currency"
                                                placeholder="{{ trans('donation.pledge_amount') }}" min="0">
                                     </div>
+                                    <div>
+                                        <p>{{ trans('donation.we_accept') }}</p>
+                                        @foreach ($paymentMethods as $method)
+                                            <img src="{{ $method->image->normal }}" style="display:inline-block" alt="{{ $method->description }}" title="{{ $method->description }}"/>
+                                        @endforeach
+                                    </div>
                                 </div>
+
                             </div>
                         @endif
                         @foreach ($donationTypes as $donationKind => $donationType)

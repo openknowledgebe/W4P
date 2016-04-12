@@ -18,6 +18,7 @@ return array(
 
     // Mollie: about
     "donation_for" => "Donatie voor",
+    "we_accept" => "We accepteren de volgende betaalmethoden:",
 
     // Info about money
     "money_pledge" => "U doneert het volgende bedrag:",

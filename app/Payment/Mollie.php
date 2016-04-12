@@ -7,6 +7,7 @@ use W4P\Models\Donation;
 use W4P\Models\Project;
 use W4P\Models\Setting;
 use Carbon\Carbon;
+use Cache;
 use URL;
 use Log;
 
@@ -85,7 +86,6 @@ class Mollie
                     "Failed on field:" . htmlspecialchars($e->getField() . ".")
                 ];
                 // Also log this particular API exception
-                // TODO: Verify if the logging occurs when there's an issue with the API
                 Log::error(
                     "API call failed: " . $e->getMessage() . ".",
                     ["context" => "Failed on field:" . $e->getField() . "."]
@@ -100,6 +100,37 @@ class Mollie
             "This donation is not eligible for payment via Mollie."
         ];
         return $this->error;
+    }
+
+    /**
+     * Return the payment methods
+     * @return \Mollie_API_Object_List|\Mollie_API_Object_Method[]
+     */
+    public function getPaymentMethods()
+    {
+        try {
+            if (Cache::has('payment.methods')) {
+                return json_decode(Cache::get('payment.methods'));
+            } else {
+                $methods = $this->client->methods->all();
+                $expiresAt = Carbon::now()->addMinutes(60);
+                Cache::put('payment.methods', json_encode($methods), $expiresAt);
+                return $methods;
+            }
+        } catch (\Mollie_API_Exception $e) {
+            // If an exception occurs, fill the relevant information into the error message
+            $this->error = [
+                "API call failed: " . htmlspecialchars($e->getMessage() . "."),
+                "Failed on field:" . htmlspecialchars($e->getField() . ".")
+            ];
+            // Also log this particular API exception
+            Log::error(
+                "API call failed: " . $e->getMessage() . ".",
+                ["context" => "Failed on field:" . $e->getField() . "."]
+            );
+            // Return the error message
+            return [];
+        }
     }
 
     /**
