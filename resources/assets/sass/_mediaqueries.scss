@@ -3,12 +3,20 @@
   have the same breakpoints as Twitter Bootstrap does, considering we use Twitter Bootstrap.
 */
 
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
 
-@media (min-width : 1200px) {
+@media (min-width : 1200px){
 
   #donation__start-form{
+    .about:nth-of-type(1) {
+      padding-top: 0;
+    }
+
     .about{
-      padding-top:0;
       padding-bottom:0;
     }
   }
@@ -22,6 +30,7 @@
     }
     .about {
       padding-top: 40px;
+      padding-bottom:0;
     }
 
     //Donation Start Page - Form - col-md-10
@@ -39,6 +48,7 @@
     }
     .about {
       padding-top: 40px;
+      padding-bottom:0;
     }
 
     //Donation Start Page - Form - col-md-10
@@ -50,6 +60,7 @@
 
 @media  (min-width : 480px) and (max-width: 767px) {
 
+  //Homepage
   .goals .numbers-container {
     height:500px !important;
   }
@@ -61,6 +72,7 @@
     }
     .about{
       padding-top: 40px;
+      padding-bottom:0;
     }
 
     //Donation Start Page - Form - col-md-10
@@ -70,10 +82,12 @@
   }
 }
 
-@media (min-width : 320px) and (max-width: 479px)  {
-
-  .goals .numbers-container {
-    height:500px !important;
+@media (min-width : 320px) and (max-width: 479px) {
+  // height for container goals must be given so that it overwrites the standard height
+  .goals {
+    .numbers-container {
+      height: 500px !important;
+    }
   }
 
 
@@ -83,6 +97,7 @@
     }
     .about{
       padding-top: 40px;
+      padding-bottom:0;
     }
 
     //Donation Start Page - Form - col-md-10

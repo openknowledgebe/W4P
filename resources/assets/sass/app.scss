@@ -3,7 +3,6 @@
 @import "config";
 @import "colors";
 @import "setup";
-@import "mediaqueries";
 
 // Libraries
 @import "bootstrap";
@@ -33,3 +32,6 @@
 
 // Sticky footer
 @import "stickyfooter";
+
+//media queries
+@import "mediaqueries";
