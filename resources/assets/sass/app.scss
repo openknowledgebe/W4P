@@ -3,6 +3,7 @@
 @import "config";
 @import "colors";
 @import "setup";
+@import "mediaqueries";
 
 // Libraries
 @import "bootstrap";
@@ -11,6 +12,7 @@
 @import "pages/home";
 @import "pages/post";
 @import "pages/previous";
+@import "pages/donation";
 
 // Components
 @import "components/form";

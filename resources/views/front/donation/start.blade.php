@@ -3,20 +3,19 @@
 @section('title', trans('generic.donate'))
 
 @section('content')
-    <div class="project">
+    <div class="project" id="donation__start">
         <!-- Banner -->
         <div class="home-banner"
              @if (file_exists(public_path() . "/project/banner.png")) style="background-image: url('{{ URL::to("/project/banner.png") }}');" @endif>
         </div>
         @if (!$donationsDisabled)
         <!-- Donation page -->
-        <div class="container">
+        <div class="container-fluid" id="donation__start-title">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12" id>
                     <!-- Donation header block -->
                     <h1>{{ trans('donation.title') }}</h1>
                     <p>{{ trans('donation.description') }}</p>
-                    <hr/>
                 </div>
                 <div class="col-md-6 col-md-push-3">
                     @if($errors->any())
@@ -27,15 +26,17 @@
                     @endif
                 </div>
             </div>
+        </div>
+        <div class="container-fluid" id="donation__start-options">
             <div class="row">
                 <div class="col-md-12">
-                    <form method="POST" action="{{ URL::route('donate::details') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ URL::route('donate::details') }}" enctype="multipart/form-data" id="donation__start-form">
                         <input name="_method" type="hidden" value="POST">
                         {{ csrf_field() }}
 
                         @if ($project->currency > 0)
                             <div class="row">
-                                <div class="col-md-2">
+                                <div class="col-md-2 col-xs-12">
                                     {{-- Radial progress currency --}}
                                     @if ($project->currency > 0 && count($donationTypes) > 0)
                                         <div class="progress-radial @if($contributedPercentage > 100) progress-100 @else progress-{{round($contributedPercentage)}} @endif">
@@ -47,7 +48,7 @@
                                     @endif
                                     {{-- End radial progress currency --}}
                                 </div>
-                                <div class="col-md-10">
+                                <div class="col-md-10 col-xs-12 donation__form__item-margin-top">
                                     {{-- Start of reward tiers --}}
                                     <p>{{ trans('donation.select_tier') }}</p>
                                     @if ($project->currency > 0 && count($tiers) > 0)
@@ -77,7 +78,7 @@
                         @endif
                         @foreach ($donationTypes as $donationKind => $donationType)
                             <div class="row">
-                                <div class="col-md-2">
+                                <div class="col-md-2 col-xs-12">
                                     {{-- Radial progress --}}
                                     @if ($donationKind != "currency" && isset($donationTypes[$donationKind]) && count($donationTypes[$donationKind]) > 0)
                                         <div class="progress-radial progress-{{ round($percentages[$donationKind]["percentage"]) }}">
@@ -89,7 +90,7 @@
                                     @endif
                                     {{-- End radial progress --}}
                                 </div>
-                                <div class="col-md-10">
+                                <div class="col-md-10 col-xs-12 donation__form__item-margin-top">
                                     @foreach ($donationType as $key => $option)
                                         <div class="about">
                                             <strong>{{ $option['name'] }}</strong><br/>

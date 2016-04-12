@@ -2,6 +2,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3">
+                <h6>nieuwsbrief</h6>
+                <input type="text" placeholder="nieuwsbrief" value="nieuwsbrief">
+                <span class="newsletter__textbox-icon">-></span>
+
                 @if (property_exists($settings, 'legal'))
                     <div class="small-legal">
                         <strong>{{ $settings->legal->org }}</strong><br/>
