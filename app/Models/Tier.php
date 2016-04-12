@@ -22,7 +22,7 @@ class Tier extends Model
         $tiers = DB::table('donation')
             ->select(
                 DB::raw('tier_id, count(*) as count')
-            )
+            )->where('deleted_at', '=', null)
             ->groupBy('tier_id')
             ->get();
         foreach ($tiers as $tier) {

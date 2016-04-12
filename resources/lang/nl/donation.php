@@ -17,7 +17,7 @@ return array(
     "unit" => "eenheid",
 
     // Mollie: about
-    "donation_for" => "Donatie for",
+    "donation_for" => "Donatie voor",
 
     // Info about money
     "money_pledge" => "U doneert het volgende bedrag:",
