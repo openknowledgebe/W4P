@@ -78,7 +78,8 @@
         .meta {
             position: relative;
             z-index: 0;
-            padding: 38px 34px;
+            padding: 38px 0;
+            padding-right: 34px;
 
             &:first-child{
 
@@ -311,7 +312,7 @@ $date-icon-box-height: 75px;
 }
 
 .story-body{
-    padding: 25px 15px;
+    padding: 25px 0;
 
     p{
         color: $color-grey-text;
