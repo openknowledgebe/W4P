@@ -3,13 +3,18 @@
         <div class="row">
             <div class="col-md-3">
                 @if (property_exists($settings, 'legal'))
-                    <div class="small-legal">
-                        <strong>{{ $settings->legal->org }}</strong><br/>
-                        <br/>
-                        <strong>{{ trans('generic.address') }}:</strong><br/> {!! nl2br($settings->legal->address) !!}<br/>
-                        <strong>{{ trans('generic.vat') }}:</strong> {{ $settings->legal->vat }}<br/>
-                        <strong>{{ trans('generic.contact') }}:</strong> {{ $settings->legal->email }}
-                    </div>
+                <ul>
+                    <li class="subtitle">{{ $settings->legal->org }}</li>
+                    @if (property_exists($settings->legal, 'address'))
+                        <li>{!! nl2br($settings->legal->address) !!}</li>
+                    @endif
+                    @if (property_exists($settings->legal, 'vat'))
+                        <li>{!! nl2br($settings->legal->vat) !!}</li>
+                    @endif
+                    @if (property_exists($settings->legal, 'email'))
+                        <li>{!! nl2br($settings->legal->email) !!}</li>
+                    @endif
+                </ul>
                 @endif
             </div>
             <div class="col-md-3">
@@ -45,17 +50,18 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                @if ($settings->copyright == null)
-                    <p class="gray">&copy; {{ date('Y') }}
+                <p class="gray">
+                    @if ($settings->copyright == null)
+                        &copy; {{ date('Y') }}
                         @if (property_exists($settings, 'legal'))
                             {{ $settings->legal->org }}
                         @else
                             {{ $settings->org }}
                         @endif
-                    </p>
-                @else
-                    {{ $settings->copyright }}
-                @endif
+                    @else
+                        {{ $settings->copyright }}
+                    @endif
+                </p>
             </div>
         </div>
     </div>
