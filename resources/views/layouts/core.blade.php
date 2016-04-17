@@ -18,6 +18,7 @@
         @endif
     </head>
     <body>
+        @include('partials.ga')
         {{-- WRAPPER --}}
         <div class="wrapper">
             <div class="container">

@@ -111,6 +111,7 @@ class CheckIfEnvironmentIsReady
         $public_settings = [
             "copyright" => $settings["platform.copyright"],
             "org" => $settings["organisation.name"],
+            "analytics_id" => $settings["platform.analytics-id"],
             "social" => (object)[
                 "twitter_handle" => $settings["social.twitter_handle"],
                 "twitter_message" => $settings["social.twitter_message"],
