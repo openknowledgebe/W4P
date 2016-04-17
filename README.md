@@ -1,4 +1,4 @@
-![W4P logo](public/assets/logo/logo_w4p.png)
+<img src="public/assets/logo/logo_w4p.png" width="130" alt='W4P logo' />
 
 W4P is an easy-to-implement crowdsourcing platform.
 

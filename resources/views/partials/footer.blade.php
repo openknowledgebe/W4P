@@ -35,7 +35,7 @@
                 <ul>
                     <li class="subtitle">{{ trans('footer.poweredby') }}</li>
                     <li><a href="https://github.com/openknowledgebe/W4P">
-                            <img src="{{ URL::to('assets/logo/logo_w4p_small.png') }}" width="130" />
+                            <img src="{{ URL::to('assets/logo/logo_w4p.png') }}" width="130" />
                         </a></li>
                 </ul>
                 <span class="text-muted">
