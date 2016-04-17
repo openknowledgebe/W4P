@@ -1,27 +1,32 @@
-.share-btn,
-.share-btn:hover,
-.share-btn:active,
-.share-btn:visited {
+.share-btn{
     text-decoration: none !important;
-    width: 39px;
-    height: 39px;
-    background-size: contain;
+    width: 40px;
+    height: 40px;
+    background-image: url('../../assets/icons/share_icons.png');
+    background-size: 120px 80px;
     display: inline-block;
 
-    &:hover {
-        -webkit-filter: hue-rotate(180deg);
-        filter: hue-rotate(180deg);
-    }
-
     &.share-fb {
-        background-image: url('../../assets/icons/icon_share_fb@2x.png');
+        background-position: 0px 0px;
+
+        &:hover{
+            background-position: 0px 40px;
+        }
     }
 
     &.share-gp {
-        background-image: url('../../assets/icons/icon_share_gp@2x.png');
+        background-position: 40px 0px;
+
+        &:hover{
+            background-position: 40px 40px;
+        }
     }
 
     &.share-tw {
-        background-image: url('../../assets/icons/icon_share_tw@2x.png');
+        background-position: 80px 0px;
+
+        &:hover{
+            background-position: 80px 40px;
+        }
     }
 }

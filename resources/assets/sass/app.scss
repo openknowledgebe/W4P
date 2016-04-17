@@ -1,11 +1,11 @@
 // Core
-@import "typo";
 @import "config";
 @import "colors";
 @import "setup";
 
 // Libraries
 @import "bootstrap";
+@import "typo";
 
 // Page-specific CSS
 @import "pages/home";

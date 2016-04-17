@@ -114,8 +114,7 @@
                     <div class="col-md-7">
                         {{-- About video --}}
                         <section class="about-video">
-                            <h2>{{ trans('home.aboutproject') }}</h2>
-                            <br/>
+                            <h3>{{ trans('home.aboutproject') }}</h3>
                             <div class="video-container">
                             {{-- Based on the provider, the output differs --}}
                             @if ($video_provider == "vimeo")
@@ -135,7 +134,7 @@
                     <div class="col-md-5">
                         {{-- About organisation --}}
                         <section class="about-organisation">
-                            <h3>{{ $data['organisation.name'] }}</h3>
+                            <h4>{{ $data['organisation.name'] }}</h4>
                             <p>{!! nl2br($data['organisation.description']) !!}</p>
                             <a href="{{ $data['organisation.website'] }}">
                                 Website
@@ -146,7 +145,7 @@
                         </section>
                         {{-- Share options (buttons) --}}
                         <section class="share">
-                            <h3>{{ trans('home.share') }}</h3>
+                            <h4>{{ trans('home.share') }}</h4>
                             {{-- Facebook share button --}}
                             <a class="share-btn share-fb" href="https://www.facebook.com/sharer/sharer.php?u={{URL::route('home')}}" target="_blank" title="Share on Facebook">
                             </a>

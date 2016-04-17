@@ -1,12 +1,12 @@
 // Typography
-
-$sans-serif: "Open Sans", "Helvetica Neue", "Arial", sans-serif;
-$serif: "Georgia", "Times", "Times New Roman", serif;
-
 *{
     outline: none;
 }
 
 .no-margin{
     margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    color: #3E3E3E;
 }
