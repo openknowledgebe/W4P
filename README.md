@@ -1,6 +1,7 @@
 <img src="public/assets/logo/logo_w4p.png" width="130" alt='W4P logo' />
 
-W4P is an easy-to-implement crowdsourcing platform.
+[WORK IN PROGRESS]
+W4P is an easy-to-setup crowdsourcing platform.
 
 ## How to use
 To use W4P, simply download the latest release or clone/fork for your editing pleasure. Then, follow the instructions in [SETUP](./SETUP.md).
