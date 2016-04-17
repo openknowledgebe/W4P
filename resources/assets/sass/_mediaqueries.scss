@@ -107,3 +107,17 @@ img {
   }
 }
 
+
+
+@media  (max-width: 767px) {
+    .home-banner {
+        display: none;
+    }
+
+
+    .navbar-default{
+        .navbar-brand{
+            padding: 0 25px
+        }
+    }
+}
