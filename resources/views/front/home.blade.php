@@ -73,8 +73,8 @@
                             <div class="row">
                                 @if ($project->currency > 0)
                                     <div class="col-md-12">
-                                        <span class="number-lg">€{{ $contributed }}</span><br/>
-                                        <span class="number-sm">{{ trans('home.of') }} €{{ round($project->currency) }}</span>
+                                        <span class="number-lg">€&thinsp;{{ $contributed }}</span><br/>
+                                        <span class="number-sm">{{ trans('home.of') }} €&thinsp;{{ round($project->currency) }}</span>
                                     </div>
                                 @endif
                                 <div class="col-md-4">
@@ -217,25 +217,20 @@
                             been configured.)
                             --}}
                             @if ($project->currency > 0 && count($tiers) > 0)
-                            <div class="col-md-3">
+                            <div class="col-md-3 rewards">
                                 <h2>{{ trans('home.rewards') }}</h2>
                                 @foreach ($tiers as $tier)
-                                    <div class="panel panel-default">
-                                        <div class="panel-body support-panel">
-                                            <span>
-                                                <strong>
-                                                    {{ trans('home.tier.pledge', [
-                                                     "currency" => "€",
-                                                     "pledgeAmount" => $tier->pledge
-                                                     ]) }}
-                                                </strong>
-                                            </span><br/>
-                                            <span class="backer-count">{{ $tierCounts[$tier->id] }} {{ trans('home.donations') }}</span><br/>
-                                            <div class="description">
-                                                {!! nl2br(htmlspecialchars($tier->description)) !!}
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <h4>
+                                        {{ trans('home.tier.pledge', [
+                                         "currency" => "€&thinsp;",
+                                         "pledgeAmount" => $tier->pledge
+                                         ]) }}
+                                    </h4>
+                                    <p class="backer-count">
+                                    {{ $tierCounts[$tier->id] }} {{ trans('home.donations') }}</p>
+                                    <p class="description">
+                                        {!! nl2br(htmlspecialchars($tier->description)) !!}
+                                    </p>
                                 @endforeach
                             </div>
                             {{-- END OF REWARD TIERS --}}
