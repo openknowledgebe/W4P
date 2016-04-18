@@ -228,12 +228,14 @@
     }
 }
 
+
+
 .about {
     background-color: $color-gray;
-    padding: 40px 0px;
+    padding: 50px 0px;
 
     p{
-        color: #676767;
+        color: $color-grey-text;
     }
 
     h3{
@@ -258,7 +260,7 @@
     .tabs{
         background-image: url('../../assets/bg/bg_people.jpg');
         background-size: cover;
-        padding: 34px 0;
+        padding: 50px 0;
 
         h3 {
             color: white;
@@ -326,14 +328,26 @@ $date-icon-box-height: 75px;
 
     p{
         font-size: 1.2em;
-        color: $color-primary-contrast;
+        color: $color-grey-text;
         text-align: center;
     }
 }
 
-.story-body{
-    padding-top: 25px;
-    padding-bottom: 25px;
+.story{
+    .tab-content{
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+        font-weight: normal;
+        margin-top: 40px;
+        margin-bottom: 20px;
+
+        &:first-child{
+            margin-top: 0;
+        }
+    }
 
     p{
         color: $color-grey-text;
