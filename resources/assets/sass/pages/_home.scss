@@ -13,6 +13,10 @@
         text-align: center;
         font-size: 2.9em;
         color: #FFF;
+
+        h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+            color: inherit;
+        }
     }
 }
 
@@ -337,11 +341,6 @@ $date-icon-box-height: 75px;
         }
     }
 
-    p, li, span{
-        color: $color-grey-text;
-        line-height: 1.8em;
-    }
-
     .rewards{
 
         h4{
@@ -355,7 +354,6 @@ $date-icon-box-height: 75px;
             padding: 0;
             font-weight: 300;
             line-height: 1.5em;
-            font-size: 0.85em;
         }
     }
 }

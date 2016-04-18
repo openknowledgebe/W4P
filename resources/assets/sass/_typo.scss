@@ -9,6 +9,19 @@
 
 a{
     color: $color-primary;
+
+    &:hover, &:focus{
+        color: $color-primary;
+    }
+}
+
+p, li{
+    color: $color-grey-text;
+    line-height: 1.8em;
+
+    &:last-child{
+        margin-bottom: 0;
+    }
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
