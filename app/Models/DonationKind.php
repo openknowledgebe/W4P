@@ -72,9 +72,14 @@ class DonationKind
             if ($percentage > 100) {
                 $percentage = 100;
             }
+
+            $weights = Setting::getBeginsWith("weight.");
+
             $kinds[$kind] = [
                 "percentage" => $percentage,
-                "items" => $subitems
+                "items" => $subitems,
+                "custom_weight" => (array_key_exists("weight." . $kind, $weights)
+                    ? (int)$weights["weight." . $kind] : null),
             ];
         }
         return $kinds;
@@ -88,25 +93,49 @@ class DonationKind
      */
     public static function getTotalPercentage($categoryPercentages, $currencyPercentage = null)
     {
+        // Start counting at 0 for categories and weight
         $totalCategories = 0;
+        $totalWeight = 0;
 
+        // Default weight is 1 (if unset)
+        $defaultWeight = 1;
+
+        // Total weight calculation
+        foreach ($categoryPercentages as $key => $category) {
+            // Items must be present or currency must be set for items to count towards to total weight
+            if (count($category["items"]) > 0 || ($key == "currency" && $currencyPercentage !== null)) {
+                if (array_key_exists("custom_weight", $category) && $category["custom_weight"] !== null) {
+                    $totalWeight += $category["custom_weight"];
+                } else {
+                    $totalWeight += $defaultWeight;
+                }
+            }
+        }
+
+        // Total category count calculation (valid)
         $total = 0;
-        foreach ($categoryPercentages as $category) {
-            if (count($category["items"]) > 0) {
+        foreach ($categoryPercentages as $key => $category) {
+            // Items must be present or currency must be set for items to count towards to total weight
+            if (count($category["items"]) > 0 || ($key == "currency" && $currencyPercentage !== null)) {
                 $totalCategories++;
             }
         }
 
-        if ($currencyPercentage !== null) {
-            $totalCategories++;
-            $total = $total + ($currencyPercentage / $totalCategories);
-        }
-
         // Total is amount of categories tops
-        if ($totalCategories > 0) {
-            foreach ($categoryPercentages as $category) {
-                if (count($category["items"]) > 0) {
-                    $total = $total + ($category["percentage"] / $totalCategories);
+        if ($totalCategories > 0 && $totalWeight > 0) {
+            foreach ($categoryPercentages as $kind => $category) {
+                $weight = $defaultWeight;
+                // If custom weight is set and valid
+                if (array_key_exists("custom_weight", $category) && $category["custom_weight"] !== null) {
+                    $weight = $category["custom_weight"];
+                }
+                // Items must be present or currency must be set for items to count towards to total weight
+                if (count($category["items"]) > 0 || ($kind == "currency")) {
+                    // If the currency is set, get the more precise currency percentage
+                    if ($kind == "currency") {
+                        $category["percentage"] = $currencyPercentage;
+                    }
+                    $total = $total + ($category["percentage"] * ($weight / $totalWeight));
                 }
             }
             return $total;

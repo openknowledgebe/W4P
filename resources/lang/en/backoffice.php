@@ -41,6 +41,7 @@ return [
     "import_previous_project" => "Import previous project",
     "do_import" => "Import",
     "general_platform" => "General configuration",
+    "manage_weights" => "Manage category weights",
 
     /**
      * KINDS OF TYPES
