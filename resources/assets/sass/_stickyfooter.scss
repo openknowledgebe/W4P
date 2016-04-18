@@ -6,7 +6,6 @@ html {
 body {
     /* Margin bottom by footer height */
     margin-bottom: $footer-height;
-    padding-bottom: $footer-additional-padding;
 
     &.setup{
         margin-bottom: 0px;

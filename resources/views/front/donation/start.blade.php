@@ -3,31 +3,33 @@
 @section('title', trans('generic.donate'))
 
 @section('content')
-    <div class="project" id="donation__start">
+    <div class="project grey-bg" id="donation__start">
         <!-- Banner -->
         <div class="home-banner"
              @if (file_exists(public_path() . "/project/banner.png")) style="background-image: url('{{ URL::to("/project/banner.png") }}');" @endif>
         </div>
         @if (!$donationsDisabled)
         <!-- Donation page -->
-        <div class="container-fluid" id="donation__start-title">
-            <div class="row">
-                <div class="col-md-12" id>
-                    <!-- Donation header block -->
-                    <h1>{{ trans('donation.title') }}</h1>
-                    <p>{{ trans('donation.description') }}</p>
-                </div>
-                <div class="col-md-6 col-md-push-3">
-                    @if($errors->any())
-                        <div class="alert alert-danger" role="alert">
-                            <strong>{{ trans('setup.generic.oops') }}</strong>
-                            {{$errors->first()}}
-                        </div>
-                    @endif
+        <div class='white-bg'>
+            <div class="container" id="donation__start-title">
+                <div class="row">
+                    <div class="col-md-12" id>
+                        <!-- Donation header block -->
+                        <h1>{{ trans('donation.title') }}</h1>
+                        <p>{{ trans('donation.description') }}</p>
+                    </div>
+                    <div class="col-md-6 col-md-push-3">
+                        @if($errors->any())
+                            <div class="alert alert-danger" role="alert">
+                                <strong>{{ trans('setup.generic.oops') }}</strong>
+                                {{$errors->first()}}
+                            </div>
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="container-fluid" id="donation__start-options">
+        <div class="container" id="donation__start-options">
             <div class="row">
                 <div class="col-md-12">
                     <form method="POST" action="{{ URL::route('donate::details') }}" enctype="multipart/form-data" id="donation__start-form">

@@ -1,4 +1,20 @@
 .post, .post-brief {
+    padding-top: 40px;
+    padding-bottom: 40px;
+
+    .row{
+        padding-top: 40px;
+        padding-bottom: 40px;
+
+        &:first-child{
+            padding-top: 0;
+        }
+
+        &:last-child{
+            padding-bottom: 0;
+        }
+    }
+
     img {
         max-width: 100%;
     }
