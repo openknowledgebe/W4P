@@ -33,7 +33,7 @@
                 @endforeach
             </ul>
             <br/>
-            <a href="#" class="btn btn-default">{{ trans('backoffice.manage_weights') }}</a>
+            <a href="{{ URL::route('admin::goalsWeight') }}" class="btn btn-default">{{ trans('backoffice.manage_weights') }}</a>
         </div>
     </div>
 

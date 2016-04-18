@@ -8,6 +8,7 @@ use W4P\Http\Requests;
 use W4P\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 
+use W4P\Models\Donation;
 use W4P\Models\DonationType;
 use W4P\Models\DonationKind; // fake model
 use W4P\Models\Setting;
@@ -19,6 +20,44 @@ use Redirect;
 
 class AdminGoalController extends Controller
 {
+
+    public function weights(Request $request)
+    {
+        $donationKinds = DonationKind::all();
+        $weights = Setting::getBeginsWith('weight.');
+        return View::make('backoffice.goals.weights')
+            ->with('donationKinds', $donationKinds)
+            ->with('weights', $weights);
+    }
+
+    public function saveWeights(Request $request)
+    {
+
+        // Validation rules
+        $kinds = DonationKind::all();
+        $rules = [];
+        foreach ($kinds as $kind) {
+            $rules['weight_' . $kind] = 'required|min:0|integer';
+        }
+
+        // Validate
+        $validator = Validator::make(
+            Input::all(),
+            $rules
+        );
+
+        // Check if the validator fails
+        if (!$validator->fails()) {
+            foreach ($kinds as $kind) {
+                Setting::set('weight.' . $kind, Input::get('weight_' . $kind));
+            }
+            return Redirect::route('admin::goalsWeight');
+        } else {
+            $errors = $validator->messages();
+            return Redirect::back()->withErrors($errors)->withInput(Input::all());
+        }
+    }
+
     /**
      * Get a list of all categories and a count of subcategories
      * @param Request $request

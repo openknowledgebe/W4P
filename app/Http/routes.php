@@ -171,6 +171,10 @@ Route::group(['middleware' => ['web']], function () {
             Route::get('/goals', ['as' => 'goals', 'uses' => 'AdminGoalController@index']);
             Route::get('/goals/{kind}', ['as' => 'goalsDetail', 'uses' => 'AdminGoalController@kind']);
 
+            // Weights
+            Route::get('/weights', ['as' => 'goalsWeight', 'uses' => 'AdminGoalController@weights']);
+            Route::post('/weights', ['as' => 'goalsWeight', 'uses' => 'AdminGoalController@saveWeights']);
+
             // Currency goal
             Route::get('/currency', ['as' => 'goalsCurrency', 'uses' => 'AdminGoalController@currency']);
             Route::post('/currency', ['as' => 'goalsCurrency', 'uses' => 'AdminGoalController@updateCurrency']);

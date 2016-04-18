@@ -14,6 +14,8 @@ return [
     "platform" => "Platform",
     "posts" => "Posts",
     "goals" => "Goals",
+    "goals_weight" => "Weight for categories",
+    "weight" => "Weight",
     "backers" => "Backers",
     "donations" => "Donations",
     "dashboard" => "Dashboard",
@@ -145,6 +147,9 @@ return [
             "desc" => "Description:",
             "unit_desc" => "Unit description:",
             "required_amount" => "Required units:"
+        ],
+        "goals_weight" => [
+            "about" => "You can set weights for each category here. You MUST enter a number for each category. 0 is allowed, and those categories won't count towards the global percentage. You must enter a valid integer between 0 and 10 000.",
         ],
         "goal_kind" => [
             "about" => "You can manage all types of contributions that donors can do in this category. You can create new subcategories for this kind of contribution. (e.g. for people you can add 'cook')."
