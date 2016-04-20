@@ -19,12 +19,20 @@ class Tier extends Model
     public static function getCounts()
     {
         $kvpArray = [];
-        $tiers = DB::table('donation')
+        $tiers =
+            DB::table('donation')
             ->select(
                 DB::raw('tier_id, count(*) as count')
-            )->where('deleted_at', '=', null)
+            )
+            // Only donors with a completed payment status and not deleted donation count
+            ->where(function ($query) {
+                $query
+                    ->where('payment_status', '=', 'completed')
+                    ->where('deleted_at', '=', null);
+            })
             ->groupBy('tier_id')
             ->get();
+
         foreach ($tiers as $tier) {
             if ($tier->tier_id != null) {
                 $kvpArray[$tier->tier_id] = (int)$tier->count;
