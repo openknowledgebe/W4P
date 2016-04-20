@@ -27,7 +27,7 @@ class Tier extends Model
             // Only donors with a completed payment status and not deleted donation count
             ->where(function ($query) {
                 $query
-                    ->where('payment_status', '=', 'completed')
+                    ->where('payment_status', '=', 'paid')
                     ->where('deleted_at', '=', null);
             })
             ->groupBy('tier_id')
