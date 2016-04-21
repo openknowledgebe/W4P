@@ -97,14 +97,29 @@ class DonationController extends Controller
         // Set up validation rules for incoming request
         $input = Input::all();
 
+        $lowest_tier = Tier::where('pledge', '>', 0)->orderBy('pledge', 'asc')->first();
+
+        $min = 1;
+
+        $lowest_tier_price = 0;
+        if ($lowest_tier) {
+            $lowest_tier_price = (double)$lowest_tier->pledge;
+        }
+
+        if ($lowest_tier_price > $min) {
+            $min = $lowest_tier_price;
+        }
+
         // Get the fields that start with pledge_
         $fields = array_keys($input);
         foreach ($fields as $field) {
             // Check pledge fields: if the amount > 0
             if (strpos($field, "pledge_") === 0 && $input[$field] != "" && $input[$field] != 0) {
-                $validation[$field] = "numeric|min:0";
+                $validation[$field] = "numeric|min:1";
             }
         }
+
+        $validation['currency'] = "numeric|min:" . $min;
 
         // Create validator
         $validator = Validator::make(
@@ -115,7 +130,7 @@ class DonationController extends Controller
         // If validation fails... return errors
         if ($validator->fails()) {
             $errors = [
-                trans('donation.errors.donations_invalid')
+                trans('donation.errors.donations_invalid', ['minimum' => $min])
             ];
             return Redirect::back()->withErrors($errors);
         }

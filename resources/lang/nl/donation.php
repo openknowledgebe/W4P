@@ -98,6 +98,6 @@ return array(
     // Actual error messages for input
     "errors" => [
         "no_donations_made" => "U moet minstens 1 eenheid kiezen of een bedrag doneren (als dit project een monetair doel heeft).",
-        "donations_invalid" => "U heeft een ongeldig aantal donaties ingevuld. Gelieve een correct getal in te vullen."
+        "donations_invalid" => "U heeft een ongeldig aantal donaties ingevuld of uw donatie is te klein (min. € :minimum). Gelieve een correct getal in te vullen."
     ]
 );

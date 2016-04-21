@@ -98,6 +98,6 @@ return array(
     // Actual error messages for input
     "errors" => [
         "no_donations_made" => "You must pledge at least 1 unit or money (if this project has a monetary goal).",
-        "donations_invalid" => "You have entered an invalid number of donations. Please enter a correct count."
+        "donations_invalid" => "You have entered an invalid number of donations or your pledge is too small (min. € :minimum). Please enter a correct count."
     ]
 );
