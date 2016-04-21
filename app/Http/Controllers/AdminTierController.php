@@ -52,7 +52,7 @@ class AdminTierController extends Controller
         $validator = Validator::make(
             Input::all(),
             [
-                'tierValue' => 'required|numeric|unique:tier,pledge',
+                'tierValue' => 'required|numeric|unique:tier,pledge|min:1',
                 'tierDescription' => 'required|min:4',
             ]
         );
@@ -106,7 +106,7 @@ class AdminTierController extends Controller
         $success = true;
         $errors = [];
 
-        $tierValueValidation = 'required|numeric|unique:tier,pledge,' . $id;
+        $tierValueValidation = 'required|numeric|min:1|unique:tier,pledge,' . $id;
 
         // Validate
         $validator = Validator::make(
