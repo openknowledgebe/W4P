@@ -34,7 +34,7 @@ return [
             "header" => "Hartelijk bedankt voor uw donatie!",
             "intro" => "<p>Hello, :name.</p><p>We hebben uw donatie-betaling succesvol ontvangen. Dit gaat over €:amount voor <strong>:project</strong>.</p>",
             "additional_pledge" => "Hierbij heeft u ook het volgende beloofd:",
-            "additional_pledge_disclaimer" => "Sinds u reeds betaalt heeft voor uw donatie, is deze automatisch bevestigd. De maker van dit project neemt mogelijk contact met u op over de bovenstaande items.",
+            "additional_pledge_disclaimer" => "Uw betaling werd reeds bevestigd: de maker van dit project neemt mogelijk contact met u op over de bovenstaande items.",
             "confirm" => "Om uw beloofde items te raadplegen (samen met uw rewards) klikt u op de link hieronder:",
             "confirm_action" => "Bekijk mijn donatie"
         ],
