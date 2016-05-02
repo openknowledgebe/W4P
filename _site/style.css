@@ -869,10 +869,3 @@ img::-moz-selection {
 body {
     webkit-tap-highlight-color: #42cfd2;
 }
-
-
-.contact-text {
-    color:white;
-    font-size:18px;
-}
-
