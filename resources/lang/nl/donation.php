@@ -31,7 +31,7 @@ return array(
         "pending" => "Afwachten",
         "refunded" => "Terugbetaald",
         "chargedback" => "Chargeback",
-        "cancelled" => "Geannulleerd",
+        "cancelled" => "Geannuleerd",
         "expired" => "Verlopen",
         "completed" => "Afgerond"
     ],
