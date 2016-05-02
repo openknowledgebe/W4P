@@ -862,3 +862,8 @@ img::-moz-selection {
 body {
     webkit-tap-highlight-color: #{{ site.color.primary }};
 }
+
+.contact-text {
+    color:white;
+    font-size:18px;
+}
