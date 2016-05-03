@@ -247,6 +247,11 @@ return [
             "placeholder" => "e.g. Update #1: This is an update!",
             "info" => "The title of your post should be short but sweet.",
         ],
+        "summary" => [
+            "name" => "Summary (SEO)",
+            "placeholder" => "Keep your SEO-friendly summary of this update brief.",
+            "info" => "Your SEO-friendly summary. Used in the description meta tags for Twitter, Facebook,...",
+        ],
         "content" => [
             "name" => "Content",
             "placeholder" => "You can write the content of your post here.",

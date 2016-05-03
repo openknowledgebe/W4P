@@ -8,7 +8,7 @@
 <meta name="dcterms.title" content="{{ $page->title }}" />
 {{-- Twitter cards --}}
  @if ($settings->social->twitter_handle != null)
-     <meta name="twitter:card" content="player">
+     <meta name="twitter:card" content="summary">
      <meta name="twitter:site" content="{{ $settings->social->twitter_handle }}">
      <meta name="twitter:title" content="{{ $page->title }}" />
      @if ($settings->social->seo_image)

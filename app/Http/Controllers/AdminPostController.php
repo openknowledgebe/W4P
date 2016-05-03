@@ -52,6 +52,7 @@ class AdminPostController extends Controller
             Input::all(),
             [
                 'title' => 'required|min:4',
+                'summary' => 'required|min:1|max:255',
                 'content' => 'required|min:4',
             ]
         );
@@ -62,6 +63,7 @@ class AdminPostController extends Controller
             Post::create([
                 'title' => Input::get('title'),
                 'content' => Input::get('content'),
+                "summary" => Input::get('summary'),
             ]);
             Session::flash('info', trans('backoffice.flash.post_create_success'));
         } else {
@@ -89,6 +91,7 @@ class AdminPostController extends Controller
             ->with('data', [
                 "title" => $post->title,
                 "content" => $post->content,
+                "summary" => $post->summary,
             ])
             ->with('id', $id)
             ->with('new', false);
@@ -109,6 +112,7 @@ class AdminPostController extends Controller
             Input::all(),
             [
                 'title' => 'required|min:4',
+                'summary' => 'required|min:1|max:255',
                 'content' => 'required|min:4',
             ]
         );
@@ -118,7 +122,8 @@ class AdminPostController extends Controller
             // Save the tier
             Post::find($id)->update([
                 "title" => Input::get('title'),
-                "content" => Input::get('content')
+                "content" => Input::get('content'),
+                "summary" => Input::get('summary')
             ]);
             Session::flash('info', trans('backoffice.flash.post_update_success'));
         } else {

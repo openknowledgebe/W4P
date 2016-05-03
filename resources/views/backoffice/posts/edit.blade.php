@@ -57,6 +57,26 @@
                     </span>
                 </div>
 
+                        <div class="form-group">
+                            <label for="summary">
+                                {{ trans('backoffice.post_form.summary.name') }}
+                            </label>
+                            <input type="text" class="form-control" name="summary"
+                                   placeholder="{{ trans('backoffice.post_form.summary.placeholder') }}"
+                                   value=
+                                   "<?php
+                                   if (Request::old('summary')) {
+                                       echo Request::old('summary');
+                                   } else if (isset($data["summary"])) {
+                                       echo $data["summary"];
+                                   }
+                                   ?>"
+                                   maxlength="255">
+                    <span id="helpBlock" class="help-block">
+                        {{ trans('backoffice.post_form.summary.info') }}
+                    </span>
+                        </div>
+
                 <div class="form-group">
                     <label for="content">
                         {{ trans('backoffice.post_form.content.name') }}

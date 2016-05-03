@@ -15,9 +15,11 @@
         @if ($settings->social->seo_description)
             {{-- Use SEO desc --}}
             <meta property="og:description" content="{{ $settings->social->seo_description }}" />
+            <meta name="description" content="{{ $settings->social->seo_description }}">
         @else
             {{-- Use project desc --}}
             <meta property="og:description" content="{{ $project->brief }}" />
+            <meta name="description" content="{{ $project->brief }}">
         @endif
 
         {{-- Dublin Core --}}
