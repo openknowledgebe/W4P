@@ -52,7 +52,7 @@
                             @endif
                         </td>
                         <td>
-                            <a class="btn btn-default btn-sm" href="{{ URL::route('donate::info', ['code' => $donation->secret_url, 'email' => $donation->email]) }}">Go to page</a>
+                            <a class="btn btn-default btn-sm" href="{{ URL::route('admin::donations::detail', $donation->id) }}">Go to page</a>
                         </td>
                     </tr>
                 @endforeach

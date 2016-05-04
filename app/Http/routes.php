@@ -185,6 +185,7 @@ Route::group(['middleware' => ['web']], function () {
 
             // Donations
             Route::get('/donations', ['as' => 'donations', 'uses' => 'AdminController@donations']);
+            Route::get('/donations/{id}', ['as' => 'donations::detail', 'uses' => 'AdminController@donationDetail']);
             Route::get('/donations/delete/{id}', ['as' => 'donations::delete', 'uses' => 'AdminController@deleteDonation']);
             Route::get('/donations/undelete/{id}', ['as' => 'donations::undelete', 'uses' => 'AdminController@undeleteDonation']);
 

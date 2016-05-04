@@ -509,6 +509,28 @@ class AdminController extends Controller
         return View::make('backoffice.donations')->with('donations', $donations);
     }
 
+    public function donationDetail($id)
+    {
+        $donation = Donation::withTrashed()->where('id', '=', $id)->first();
+
+        $tier = null;
+        if ($donation->tier_id != null) {
+            $tier = Tier::find($donation->tier_id);
+        }
+
+        return View::make('front.donation.info')
+            ->with("email", $donation->email)
+            ->with("firstName", $donation->first_name)
+            ->with("lastName", $donation->last_name)
+            ->with("name", $donation->first_name . " " . $donation->last_name)
+            ->with("projectTitle", Project::first()->title)
+            ->with("secretUrl", $donation->secret_url)
+            ->with("amount", $donation->currency)
+            ->with("userMessage", $donation->message)
+            ->with("donationContents", $donation->donationContents())
+            ->with("tier", $tier);
+    }
+
     public function deleteDonation($id)
     {
         $donation = Donation::find($id);

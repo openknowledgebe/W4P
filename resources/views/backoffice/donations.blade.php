@@ -56,7 +56,7 @@
                         @endif
                     </td>
                     <td>
-                        <a class="btn btn-default btn-sm" href="{{ URL::route('donate::info', ['code' => $donation->secret_url, 'email' => $donation->email]) }}">Go to page</a>
+                        <a class="btn btn-default btn-sm" href="{{ URL::route('admin::donations::detail', $donation->id) }}">Go to page</a>
                         @if ($donation->deleted_at)
                             <a class="btn btn-warning btn-sm" href="{{ URL::route('admin::donations::undelete', ['id' => $donation->id]) }}">Unhide</a>
                         @else
