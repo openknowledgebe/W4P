@@ -688,17 +688,29 @@ class AdminController extends Controller
         $tierIds = Donation::whereNotNull('confirmed')->orderBy('tier_id', 'ASC')->get()->groupBy('tier_id');
 
         $output = fopen('php://output', 'w');
-        fputcsv($output, array('tier_id', 'min', 'pledged', 'name', 'email'));
+        fputcsv($output, array('tier_id', 'tier_min', 'pledged', 'name', 'email'));
         foreach ($tierIds as $tierId => $tierData) {
-            $tier = $tiers[$tierId];
-            foreach ($tierData as $user) {
-                fputcsv($output, [
-                    $tier->id,
-                    "€" . $tier->pledge,
-                    "€" . $user->currency,
-                    $user->first_name . " " . $user->last_name,
-                    $user->email
-                ]);
+            if (array_key_exists($tierId, $tiers)) {
+                $tier = $tiers[$tierId];
+                foreach ($tierData as $user) {
+                    fputcsv($output, [
+                        $tier->id,
+                        "€" . $tier->pledge,
+                        "€" . $user->currency,
+                        $user->first_name . " " . $user->last_name,
+                        $user->email
+                    ]);
+                }
+            } else {
+                foreach ($tierData as $user) {
+                    fputcsv($output, [
+                        "—",
+                        "—",
+                        "€" . $user->currency,
+                        $user->first_name . " " . $user->last_name,
+                        $user->email
+                    ]);
+                }
             }
         }
 
