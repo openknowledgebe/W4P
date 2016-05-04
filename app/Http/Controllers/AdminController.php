@@ -677,12 +677,57 @@ class AdminController extends Controller
 
         // Get all users (unique)
         $users = Donation::whereNotNull('confirmed')->get()->groupBy('email');
+
         $output = fopen('php://output', 'w');
-        fputcsv($output, array('name', 'email'));
-        foreach ($users as $key => $user) {
+
+        fputcsv($output, array('email', 'pledged_as', 'donation_count', 'total_donated', 'messages'));
+
+        foreach ($users as $key => $donations) {
+
+            // String concatenation of all names
+            $names = "";
+
+            // Calculation of total pledge
+            $totalPledged = 0;
+
+            // String concatenation of all messages
+            $messages = "";
+
+            // List of unique names used by a specific email address
+            $foundNames = [];
+
+            foreach ($donations as $donation) {
+
+                // Get the name
+                $name = trim($donation->first_name) . " " . trim($donation->last_name);
+
+                // Make sure no duplicate names are inserted
+                if (!in_array($name, $foundNames)) {
+                    $foundNames[] = $name;
+                }
+
+                // Concatenate messages; if a message exists already separate by ";"
+                if ($messages != "") {
+                    $messages .= "; ";
+                }
+                $messages .= $donation->message;
+                $totalPledged += floatval($donation->currency);
+            }
+
+            // Insert unique names
+            foreach ($foundNames as $donation_name) {
+                if ($names != "") {
+                    $names .= "; ";
+                }
+                $names .= $donation_name;
+            }
+
             fputcsv($output, [
-                $user[0]->first_name . " " . $user[0]->last_name,
-                $key
+                $key,
+                $names,
+                count($donations),
+                $totalPledged,
+                $messages
             ]);
         }
 
