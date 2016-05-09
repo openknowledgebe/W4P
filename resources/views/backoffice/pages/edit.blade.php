@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-push-3 col-md-6">
+        <div class="col-md-push-1 col-md-10">
 
             <h1>{{ trans('backoffice.edit_page.title') }}</h1>
             <p>{{ trans('backoffice.edit_page.about') }}</p>
@@ -61,7 +61,7 @@
                     <label for="content">
                         {{ trans('backoffice.page_form.content.name') }}
                     </label>
-                    <textarea class="form-control markdown allowsinline" rows="20" name="content"
+                    <textarea data-provide="markdown" class="form-control markdown allowsinline" rows="20" name="content"
                               placeholder="{{ trans('backoffice.page_form.content.placeholder') }}"><?php if (Request::old('content')) { echo Request::old('content');
                         } else if (isset($page->content)) { echo $page->content; } ?></textarea>
                     <span id="helpBlock" class="help-block">

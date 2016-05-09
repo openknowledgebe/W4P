@@ -27,6 +27,9 @@ If you want to locally develop on the platform, you can follow the instructions 
     # Migrations
     php artisan migrate && php artisan db:seed
 
+    # If this is the first time setting the project up, seed the default pages (running this again will result in duplicates!)
+    php artisan db:seed --class=DefaultPagesSeeder
+
     # Environment file
     cp .env.example .env
 

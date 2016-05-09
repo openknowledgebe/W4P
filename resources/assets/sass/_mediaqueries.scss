@@ -58,6 +58,18 @@ img {
   }
 }
 
+@media (min-width: 0px) and (max-width:768px) {
+  .project {
+    margin-top: 50px !important;
+  }
+  .navbar-header {
+    border-bottom: 1px solid #CCC;
+  }
+  footer {
+    height: 800px !important;
+  }
+}
+
 @media  (min-width : 480px) and (max-width: 767px) {
 
   //Homepage

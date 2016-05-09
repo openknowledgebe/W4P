@@ -100,7 +100,7 @@
                             <label for="projectDescription">
                                 {{ trans('backoffice.page.project.fields.description.name') }}
                             </label>
-            <textarea class="form-control markdown allowsinline" rows="10" name="projectDescription"
+            <textarea data-provide="markdown" class="form-control markdown allowsinline" rows="10" name="projectDescription"
                       placeholder="{{ trans('backoffice.page.project.fields.description.placeholder') }}"><?php if (Request::old('projectDescription')) { echo Request::old('projectDescription');
                 } else if (isset($data["project"]->description)) { echo $data["project"]->description; } ?></textarea>
                             <span id="helpBlock" class="help-block">{{ trans('backoffice.page.project.fields.description.info') }}</span>

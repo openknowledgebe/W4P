@@ -81,7 +81,7 @@
                     <label for="content">
                         {{ trans('backoffice.post_form.content.name') }}
                     </label>
-                    <textarea class="form-control markdown allowsinline" rows="3" name="content"
+                    <textarea data-provide="markdown" class="form-control markdown allowsinline" rows="12" name="content"
                               placeholder="{{ trans('backoffice.post_form.content.placeholder') }}"><?php if (Request::old('content')) { echo Request::old('content');
                         } else if (isset($data["content"])) { echo $data["content"]; } ?></textarea>
                     <span id="helpBlock" class="help-block">
