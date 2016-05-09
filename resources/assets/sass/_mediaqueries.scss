@@ -58,22 +58,6 @@ img {
   }
 }
 
-@media (min-width: 0px) and (max-width:768px) {
-  .project {
-    margin-top: 50px !important;
-  }
-  .navbar-header {
-    border-bottom: 1px solid #CCC;
-  }
-
-  footer {
-    height: 800px !important;
-  }
-  body {
-    margin-bottom: 800px !important;
-  }
-}
-
 @media  (min-width : 480px) and (max-width: 767px) {
 
   //Homepage
@@ -130,10 +114,28 @@ img {
         display: none;
     }
 
-
     .navbar-default{
         .navbar-brand{
             padding: 0 25px
         }
     }
+}
+
+@media (min-width: 0px) and (max-width:992px) {
+  footer {
+    height: 800px !important;
+  }
+  body {
+    margin-bottom: 800px !important;
+    padding-bottom: 0px !important;
+  }
+}
+
+@media (min-width: 0px) and (max-width:768px) {
+  .project {
+    margin-top: 50px !important;
+  }
+  .navbar-header {
+    border-bottom: 1px solid #CCC;
+  }
 }

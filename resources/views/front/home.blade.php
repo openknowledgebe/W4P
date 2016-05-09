@@ -357,7 +357,7 @@
         </div>
 
         {{-- How does it work & Previous projects buttons --}}
-        <div class="container">
+        <div class="container hidden-sm hidden-xs">
             <div class="row">
                 <div @if ($archived_count > 0) class="col-md-6" @else class="col-md-12" @endif >
                     <div class="padded-panel">
