@@ -11,8 +11,17 @@
 <body>
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
+        <a class="navbar-brand" href="/">{{ \W4P\Models\Setting::get('platform.name') }}</a>
         <div class="navbar-header">
-            <a class="navbar-brand" href="/">{{ \W4P\Models\Setting::get('platform.name') }}</a>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#hamburger" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+
+            </button>
+
+            <div class="collapse navbar-collapse" id="hamburger">
             <ul class="nav navbar-nav">
                 <li>
                     <a href="{{ URL::route('admin::index') }}">{{ trans('backoffice.dashboard') }}</a>
@@ -99,8 +108,10 @@
                 </li>
             </ul>
         </div>
+            </div>
     </div>
 </nav>
+<br/>
 <div class="container">
     <div class="row">
     </div>
