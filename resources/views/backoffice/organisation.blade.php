@@ -63,7 +63,7 @@
                     <label for="organisationDescription">
                         {{ trans('setup.detail.organisation.fields.description.name') }}
                     </label>
-                    <textarea class="form-control" rows="3" name="organisationDescription"
+                    <textarea data-provide="markdown" class="form-control" rows="3" name="organisationDescription"
                                           placeholder="{{ trans('setup.detail.organisation.fields.description.placeholder') }}"><?php if (Request::old('organisationDescription')) { echo Request::old('organisationDescription');
                                     } else if (isset($data["organisationDescription"])) { echo $data["organisationDescription"]; } ?></textarea>
                     <span id="helpBlock" class="help-block">
