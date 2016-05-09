@@ -18,11 +18,11 @@ If this is your first time setting up the project, you can use the script or fol
 
 If you want to locally develop on the platform, you can follow the instructions above using the script to configure the application. However, you can also perform these operations manually:
 
-    # Composer install
-    composer install
-
     # Create a new database
     touch database/database.sqlite
+
+    # Composer install
+    composer install
 
     # Migrations
     php artisan migrate && php artisan db:seed
