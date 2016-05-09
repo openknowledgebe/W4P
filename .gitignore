@@ -19,14 +19,4 @@ Homestead.json
 /vagrant/.vagrant
 /vagrant/puphpet
 /vagrant/html
-.idea/blade.xml
-
-.idea/copyright/profiles_settings.xml
-
-.idea/modules.xml
-
-.idea/workspace.xml
-
-.idea/vcs.xml
-
-.idea/W4P.iml
+.idea
