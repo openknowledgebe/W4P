@@ -27,24 +27,23 @@
                     <nav class="navbar navbar-default">
                         <div class="container-fluid">
                             <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#hamburger" aria-expanded="false">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
                                 <a class="navbar-brand" href="{{ URL::route('home') }}">
                                     <img src="{{ URL::to('/platform/logo.png') }}" class="navlogo" />
                                 </a>
                             </div>
-                            <div>
+                            <div class="collapse navbar-collapse" id="hamburger">
                                 <ul class="nav navbar-nav">
                                     <li @if (Request::is('/')) class="active" @endif>
                                         <a href="{{ URL::route('home') }}">{{ $W4P_project->title }}</a>
                                     </li>
                                     <li @if (Request::is('how-it-works')) class="active" @endif>
                                         <a href="{{ URL::route('how') }}">{{ trans('generic.how_does_it_work') }}</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div>
-                                <ul class="nav navbar-nav navbar-right">
-                                    <li>
-                                        {{-- For now, the navbar on the right remains empty --}}
                                     </li>
                                 </ul>
                             </div>
