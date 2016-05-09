@@ -292,7 +292,7 @@ class SetupController extends Controller
         ];
 
         // Validation rules if organisation address, vat, email are not required
-        // (mollie has not been setup!)
+        // (Mollie has not been setup!)
         $notRequired = [
             "platformOrganisationAddress" => 'min:5',
             "platformOrganisationVAT" => 'min:5',
@@ -363,7 +363,6 @@ class SetupController extends Controller
             'organisationName' => 'required|min:4',
             'organisationDescription' => 'required|min:4',
             'organisationWebsite' => 'required|min:4',
-            'organisationVAT' => 'required|min:3',
             'organisationLogo' => $logoValidationRule
         ];
 
@@ -382,7 +381,6 @@ class SetupController extends Controller
             Setting::set('organisation.name', Input::get('organisationName'));
             Setting::set('organisation.description', Input::get('organisationDescription'));
             Setting::set('organisation.website', Input::get('organisationWebsite'));
-            Setting::set('organisation.vat', Input::get('organisationVAT'));
         } else {
             // Validation has failed. Set success to false. Set validator messages
             $this->success = false;
