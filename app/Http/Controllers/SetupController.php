@@ -363,6 +363,7 @@ class SetupController extends Controller
             'organisationName' => 'required|min:4',
             'organisationDescription' => 'required|min:4',
             'organisationWebsite' => 'required|min:4',
+            'organisationVAT' => 'required|min:3',
             'organisationLogo' => $logoValidationRule
         ];
 

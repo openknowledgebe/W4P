@@ -74,11 +74,8 @@ You can do it like this:
         "howdoesitwork" => "Hoe werkt het?"
     ];
 
-### ez-mode
 
-To set it all up in one go:
-
-    touch database/database.sqlite && composer install && php artisan migrate && php artisan db:seed && php artisan key:generate && cp .env.example .env
+### Without wizard
 
 If you do not want to go through the wizard, you can use the SettingsTestSeeder to seed default data. (This is the data that is also used by the unit tests.)
 
