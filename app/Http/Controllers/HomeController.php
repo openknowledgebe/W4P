@@ -64,7 +64,7 @@ class HomeController extends Controller
         // Calculate the contributed percentage of the total amount of money
         $contributedPercentage = 0;
         if ($project->currency > 0) {
-            $contributedPercentage = round(($contributed / $project->currency) * 100, 1);
+            $contributedPercentage = floor(($contributed / $project->currency) * 100, 1);
             if ($contributedPercentage > 100) {
                 $currencyPercentage = 100;
             } else {
