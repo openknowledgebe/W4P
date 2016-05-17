@@ -73,7 +73,7 @@
                             <div class="row">
                                 @if ($project->currency > 0)
                                     <div class="col-md-12">
-                                        <div class="number-lg"><span>€</span>&thinsp;3.215,3{{ $contributed }}</div>
+                                        <div class="number-lg"><span>€</span>&thinsp;{{ $contributed }}</div>
                                         <div class="number-sm">{{ trans('home.of') }} <span>€</span>&thinsp;{{ round($project->currency) }}</div>
                                     </div>
                                 @endif
