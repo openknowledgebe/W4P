@@ -64,7 +64,7 @@ class HomeController extends Controller
         // Calculate the contributed percentage of the total amount of money
         $contributedPercentage = 0;
         if ($project->currency > 0) {
-            $contributedPercentage = floor(($contributed / $project->currency) * 100, 1);
+            $contributedPercentage = round(($contributed / $project->currency) * 100, 1);
             if ($contributedPercentage > 100) {
                 $currencyPercentage = 100;
             } else {
@@ -76,7 +76,7 @@ class HomeController extends Controller
 
         // Get percentages from donations (for 4 kinds -> manpower, coaching, etc.)
         $percentages = DonationKind::getAllPercentages($donorQuery);
-        $totalPercentage = floor(
+        $totalPercentage = round(
             DonationKind::getTotalPercentage($percentages, $currencyPercentage)
         );
 
