@@ -76,7 +76,7 @@ class HomeController extends Controller
 
         // Get percentages from donations (for 4 kinds -> manpower, coaching, etc.)
         $percentages = DonationKind::getAllPercentages($donorQuery);
-        $totalPercentage = round(
+        $totalPercentage = floor(
             DonationKind::getTotalPercentage($percentages, $currencyPercentage)
         );
 
