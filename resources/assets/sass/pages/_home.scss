@@ -161,15 +161,20 @@
         color: #FFF;
         height: 350px;
 
-        span.number-lg{
+        .number-lg{
             display: block;
             margin-top: 30px;
-            line-height: 0.4;
-            font-size: 84px;
+            line-height: 1;
+            font-size: 70px;
             font-weight: 500;
+
+            span{
+                font-weight: 300;
+                font-size: 40px;
+            }
         }
 
-        span.number-md{
+        .number-md{
             display: inline-block;
             overflow: hidden;
             text-transform: uppercase;
@@ -180,7 +185,7 @@
             font-weight: normal;
         }
 
-        span.number-sm{
+        .number-sm{
             display: inline-block;
             overflow: hidden;
             text-transform: uppercase;

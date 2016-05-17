@@ -119,6 +119,50 @@ img {
             padding: 0 25px
         }
     }
+
+    .navbar-collapse{
+        padding: 0;
+        .navbar-nav{
+            margin: 0;
+
+            li:last-child{
+                border-bottom: 1px solid #ddd;
+            }
+        }
+    }
+
+    .goals{
+        .meta-container{
+            text-align: center;
+
+            .meta{
+                padding-right: 0;
+
+                .percentage{
+                    border: 0;
+                }
+
+                &.project-meta{
+                    span{
+                        margin-right: 0;
+                        display: block;
+                    }
+                }
+            }
+        }
+
+        .numbers-container{
+            text-align: center;
+
+            .number-lg{
+                font-size: 50px;
+            }
+
+            .number-md{
+                font-size: 40px;
+            }
+        }
+    }
 }
 
 @media (min-width: 0px) and (max-width:992px) {
