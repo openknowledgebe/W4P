@@ -638,6 +638,8 @@ class AdminController extends Controller
         $totalPercentage = round(
             DonationKind::getTotalPercentage($percentages, $currencyPercentage)
         );
+        // Set currency percentage
+        $percentages['currency']['percentage'] = $currencyPercentage;
 
         // Get tier counts
         $tierCounts = Tier::getCounts();
