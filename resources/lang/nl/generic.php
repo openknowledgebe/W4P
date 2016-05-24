@@ -29,5 +29,6 @@ return [
     "raised" => "totaal ingezameld",
     "vat" => "BTW-nummer",
     "address" => "Adres",
-    "contact" => "Contact"
+    "contact" => "Contact",
+    "or_more" => "of meer"
 ];
