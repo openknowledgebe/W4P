@@ -224,7 +224,7 @@
                                         {{ trans('home.tier.pledge', [
                                          "currency" => "€&thinsp;",
                                          "pledgeAmount" => $tier->pledge
-                                         ]) }}
+                                         ]) }} {{ trans('generic.or_more') }}
                                     </h4>
                                     <p class="backer-count">
                                     {{ $tierCounts[$tier->id] }} {{ trans('home.donations') }}</p>
@@ -347,11 +347,13 @@
                     @endforeach
                     </div>
 
-                    <div class='text-center'>
-                        <a href="{{ URL::route('donate::start') }}" class="btn4 white center">
-                            {{ trans('home.support') }} <span>&rarr;</span>
-                        </a>
-                    </div>
+                    @if ($minutesleft > 0)
+                        <div class='text-center'> 
+                            <a href="{{ URL::route('donate::start') }}" class="btn4 white center">
+                                {{ trans('home.support') }} <span>&rarr;</span>
+                            </a>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

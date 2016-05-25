@@ -30,4 +30,5 @@ return [
     "vat" => "VAT number",
     "address" => "Address",
     "contact" => "Contact",
+    "or_more" => "or more"
 ];
