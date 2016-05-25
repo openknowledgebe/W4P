@@ -69,8 +69,12 @@ class DonationController extends Controller
         // Get percentages from donations (for 4 kinds -> manpower, coaching, etc.)
         $percentages = DonationKind::getAllPercentages($donorQuery);
 
-        // Get payment methods from cache or live
-        $paymentMethods = Mollie::getPaymentMethods();
+        if ($project->currency > 0) {
+            // Get payment methods from cache or live
+            $paymentMethods = Mollie::getPaymentMethods();
+        } else {
+            $paymentMethods = [];
+        }
 
         // Return view
         return View::make('front.donation.start')
