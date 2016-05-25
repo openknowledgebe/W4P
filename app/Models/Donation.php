@@ -67,11 +67,13 @@ class Donation extends Model
 
             // Loop over all donationItemGroups
             foreach (array_keys($donationItemsGroups) as $array_key) {
-                if ($types[$array_key]["kind"] == $kind) {
-                    array_push($items, [
-                        "name" => $types[$array_key]["name"],
-                        "count" => count($donationItemsGroups[$array_key])
-                    ]);
+                if (array_has($types, $array_key)) {
+                    if ($types[$array_key]["kind"] == $kind) {
+                        array_push($items, [
+                            "name" => $types[$array_key]["name"],
+                            "count" => count($donationItemsGroups[$array_key])
+                        ]);
+                    }
                 }
             }
             if (count($items) > 0) {

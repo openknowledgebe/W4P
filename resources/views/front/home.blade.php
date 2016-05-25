@@ -235,12 +235,14 @@
                             </div>
                             {{-- END OF REWARD TIERS --}}
                             @else
+                            @if ($project->currency > 0)
                             <div class="col-md-3">
                                 <br/>
                                 <p>
                                     {{ trans('generic.no_tiers') }}
                                 </p>
                             </div>
+                            @endif
                             @endif
                         </div>
                     </div>
@@ -348,7 +350,7 @@
                     </div>
 
                     @if ($minutesleft > 0)
-                        <div class='text-center'> 
+                        <div class='text-center'>
                             <a href="{{ URL::route('donate::start') }}" class="btn4 white center">
                                 {{ trans('home.support') }} <span>&rarr;</span>
                             </a>
