@@ -9,7 +9,7 @@
              @if (file_exists(public_path() . "/project/banner.png")) style="background-image: url('{{ URL::to("/project/banner.png") }}');" @endif>
         </div>
         <!-- Donation page -->
-        <div class="container">
+        <div class="container white-bg">
             <div class="row">
                 @if ($tier != null || $userMessage != "")
                 <div class="col-md-8 col-md-push-2">

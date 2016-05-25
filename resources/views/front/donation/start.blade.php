@@ -10,7 +10,7 @@
         </div>
         @if (!$donationsDisabled)
         <!-- Donation page -->
-        <div class='white-bg'>
+        <div class='white-bg np'>
             <div class="container" id="donation__start-title">
                 <div class="row">
                     <div class="col-md-12" id>
@@ -18,18 +18,16 @@
                         <h1>{{ trans('donation.title') }}</h1>
                         <p>{{ trans('donation.description') }}</p>
                     </div>
-                    <div class="col-md-6 col-md-push-3">
-                        @if($errors->any())
-                            <div class="alert alert-danger" role="alert">
-                                <strong>{{ trans('setup.generic.oops') }}</strong>
-                                {{$errors->first()}}
-                            </div>
-                        @endif
-                    </div>
                 </div>
             </div>
         </div>
         <div class="container" id="donation__start-options">
+                @if($errors->any())
+                    <div class="alert alert-danger" role="alert">
+                        <strong>{{ trans('setup.generic.oops') }}</strong>
+                        {{$errors->first()}}
+                    </div>
+                @endif
             <div class="row">
                 <div class="col-md-12">
                     <form method="POST" action="{{ URL::route('donate::details') }}" enctype="multipart/form-data" id="donation__start-form">
@@ -126,10 +124,14 @@
             </div>
         </div>
         @else
-            <div class="row">
-                <div class="col-md-6 col-md-push-3">
-                    <h1>{{ trans('donation.no_donation_options.title') }}</h1>
-                    <p>{{ trans('donation.no_donation_options.description') }}</p>
+            <div class="white-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-md-push-3">
+                            <h1>{{ trans('donation.no_donation_options.title') }}</h1>
+                            <p>{{ trans('donation.no_donation_options.description') }}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         @endif
