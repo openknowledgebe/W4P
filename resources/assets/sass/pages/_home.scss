@@ -21,10 +21,24 @@
 }
 
 .white-bg {
+
     padding-top: 40px;
+    padding-bottom: 40px;
 
     &.np {
-        padding-top: 0px;
+        padding: 0px;
+    }
+
+    h1 {
+        margin-bottom: 25px;
+    }
+
+    h2 {
+        margin-bottom: 18px;
+    }
+
+    h3 {
+        margin-bottom: 12px;
     }
 }
 
