@@ -125,7 +125,7 @@
                             @elseif ($video_provider == "youtube")
                                 {{-- YOUTUBE --}}
                                 <iframe width="585" height="329" frameborder="0" webkitallowfullscreen  mozallowfullscreen allowfullscreen
-                                        src="https://www.youtube.com/embed/{{ $video_id }}?autoplay=0">
+                                        src="https://www.youtube.com/embed/{{ $video_id }}?autoplay=0&rel=0">
                                 </iframe>
                             @endif
                             </div>
