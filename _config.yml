@@ -22,7 +22,7 @@ people:
     - title: twitter
       url: https://twitter.com/openknowledgebe
     - title: envelope
-      url: mailto:pieterjan@openknowledge.be
+      url: mailto:pieterjan [at] openknowledge.be
 
 - name: iDrops vzw
   pic: 2
@@ -33,7 +33,7 @@ people:
     - title: twitter
       url: https://twitter.com/idropslabs
     - title: envelope
-      url: mailto:bart.cornille@idrops.be
+      url: mailto:bart.cornille [at] idrops.be
 
 - name: Underlined
   pic: 3
@@ -44,7 +44,7 @@ people:
     - title: twitter
       url: https://twitter.com/underlined_be
     - title: envelope
-      url: mailto:michiel@underlined.be
+      url: mailto:michiel [at] underlined.be
 
 # Social networks usernames (many more available: google-plus, flickr, dribbble, pinterest, instagram, tumblr, linkedin, etc.)
 social:
