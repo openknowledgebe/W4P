@@ -23,7 +23,7 @@
     }
 }
 
-.navbar-default{
+.navbar-default, .navbar-inverse{
     .navbar-brand{
         padding: 0;
     }
@@ -34,8 +34,10 @@
         margin-right: 100px;
         margin-top: ($navbar-height - $navlogo-height)/2;
     }
+}
 
-    .navbar-nav{
+.navbar-default {
+        .navbar-nav{
         li{
             a{
                 box-sizing: border-box;
@@ -46,6 +48,34 @@
                 &:hover, &:focus{
                     // border-bottom: 0px none;
                     background-color: lighten($color-orange, 43%);
+                }
+            }
+
+            &.active{
+                a{
+                    // border-bottom: 0px none;
+
+                    &:hover, &:focus{
+                        // border-bottom: 0px none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.navbar-inverse {
+        .navbar-nav{
+        li{
+            a{
+                box-sizing: border-box;
+                padding: 0 30px;
+                height: $navbar-height;
+                line-height: $navbar-height;
+
+                &:hover, &:focus{
+                    // border-bottom: 0px none;
+                    background-color: darken($color-orange, 43%);
                 }
             }
 
