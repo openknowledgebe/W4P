@@ -29,13 +29,15 @@
                             </div>
                             <div class="collapse navbar-collapse" id="hamburger">
                                 <ul class="nav navbar-nav">
-                                    <li>
+                                    <li @if (Request::is('admin')) class="active" @endif>
                                         <a href="{{ URL::route('admin::index') }}">{{ trans('backoffice.dashboard') }}</a>
                                     </li>
                                     {{-- First dropdown --}}
-                                    <li class="dropdown">
+                                    <li @if(Request::is('admin/pages/*') || Request::is('admin/socialmedia') || Request::is('admin/platform') || Request::is('admin/password')
+                                    || Request::is('admin/previous') || Request::is('admin/email')) class="active" @endif>
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                            {{ trans('backoffice.platform') }} <span class="caret"></span></a>
+                                            {{ trans('backoffice.platform') }} <span class="caret"></span>
+                                        </a>
                                         <ul class="dropdown-menu">
                                             <li class="separator">{{ trans('backoffice.manage_pages') }}</li>
                                             <li>
@@ -73,7 +75,8 @@
                                     </li>
 
                                     {{-- Second dropdown --}}
-                                    <li class="dropdown">
+                                    <li @if(Request::is('admin/organisation') || Request::is('admin/project') || Request::is('admin/tiers') || Request::is('admin/posts')
+                                    || Request::is('admin/goals') || Request::is('admin/donations')) class="active" @endif>
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                             {{ trans('backoffice.project') }} <span class="caret"></span></a>
                                         <ul class="dropdown-menu">
