@@ -69,6 +69,10 @@ return array(
             "placeholder" => "You can leave an optional message to the project creator here.",
             "info" => "This message is optional."
         ],
+        "visibility" => [
+            "description" => "Allow your message to be public.",
+            "info" => "This allows us to make your message publicly visible."
+        ],
     ],
 
     "buttons" => [

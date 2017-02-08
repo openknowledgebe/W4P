@@ -114,6 +114,13 @@
                                 {{ trans('donation.user.message.info') }}
                             </span>
                         </div>
+                        <div class="form-group">
+                            <input checked="checked" name="visibility" type="checkbox" value="1"> {{ trans('donation.user.visibility.description') }}<br>
+
+                            <span id="helpBlock" class="help-block">
+                                {{ trans('donation.user.visibility.info') }}
+                            </span>
+                        </div>
 
                         <button type="submit" class="btn4 pull-right">{{ trans('donation.buttons.confirm') }}</button>
                     </form>

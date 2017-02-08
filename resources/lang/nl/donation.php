@@ -69,6 +69,10 @@ return array(
             "placeholder" => "U kunt een optioneel bericht achterlaten voor de makers van dit project.",
             "info" => "Dit bericht is optioneel. U kunt dit leeg laten."
         ],
+        "visibility" => [
+            "description" => "Toestaan om je bericht public te maken.",
+            "info" => "Dit laat ons toe om uw bericht publiek zichtbaar te maken."
+        ],
     ],
 
     "buttons" => [
