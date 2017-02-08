@@ -42,7 +42,7 @@
                                      "currency" => "€",
                                      "pledgeAmount" => $tier->pledge
                                      ]) }}
-                                     or more
+                                    {{ trans('generic.or_more') }}
                                 </strong>
                             </span><br/>
                         <div class="description">
