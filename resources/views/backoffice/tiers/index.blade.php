@@ -42,6 +42,7 @@
                                      "currency" => "€",
                                      "pledgeAmount" => $tier->pledge
                                      ]) }}
+                                     or more
                                 </strong>
                             </span><br/>
                         <div class="description">
